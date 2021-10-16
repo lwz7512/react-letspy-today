@@ -1,0 +1,58 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "80+ COMPONENTS",
+      "description": "The most complete set of native widgets featuring 80+ easy to use components for all your UI requirements.",
+      "image": "showcase/images/home/react-components.png"
+    },
+    {
+      "id": 2,
+      "title": "OPEN SOURCE",
+      "description": "Hosted at GitHub, all widgets are open source and free to use under MIT license. Feel the power of open source.",
+      "image": "showcase/images/home/react-opensource.png"
+    },
+    {
+      "id": 3,
+      "title": "THEMES",
+      "description": "Don’t get tied up in just one look&feel. Choose from a variety of options including material and bootstrap design.",
+      "image": "showcase/images/home/react-themes.png"
+    },
+    {
+      "id": 4,
+      "title": "TEMPLATES",
+      "description": "Professionally designed highly customizable PrimeReact application templates to get started in no time.",
+      "image": "showcase/images/home/react-templates.png"
+    },
+    {
+      "id": 5,
+      "title": "ACCESSIBILITY",
+      "description": "Fully accessible and in compliance with Section 508 standards.",
+      "image": "showcase/images/home/react-accesibility.png"
+    },
+    {
+      "id": 6,
+      "title": "PRO SUPPORT",
+      "description": "With the exclusive services of Pro account, you no longer need to post your questions in the community forum and your issues to community issue tracker.",
+      "image": "showcase/images/home/react-pro.png"
+    },
+    {
+      "id": 7,
+      "title": "PRODUCTIVITY",
+      "description": "Allocate your valuable time on business logic rather than dealing with the complex user interface requirements.",
+      "image": "showcase/images/home/react-productivity.png"
+    },
+    {
+      "id": 8,
+      "title": "COMMUNITY",
+      "description": "Join PrimeReact community to become a part of an active, vibrant and growing open source foundation.",
+      "image": "showcase/images/home/react-community.png"
+    },
+    {
+      "id": 9,
+      "title": "MOBILE",
+      "description": "Enhanced mobile user experience with touch optimized responsive design elements.",
+      "image": "showcase/images/home/react-mobile.png"
+    }
+  ]
+}
