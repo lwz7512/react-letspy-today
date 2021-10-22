@@ -1,10 +1,23 @@
 import React  from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import { useHistory,  } from 'react-router-dom';
 
 const logoly = 'assets/layout/images/Ly.png'
 
 export const AppTopbar = (props) => {
+
+    const history = useHistory()
+
+    const handleRouteChange = (target, queryParams = '', data = null) => {
+      history.push({
+          pathname: target,
+          search: `?${queryParams}`,
+          state: data
+      })
+      window.scrollTo(0, 0)
+    }
+
 
     return (
         <div className="layout-topbar">
@@ -12,9 +25,7 @@ export const AppTopbar = (props) => {
                 <img src={props.layoutColorMode === 'light' ? logoly : 'assets/layout/images/logo-white.svg'} alt="logo"/>
                 <span>LetsPY</span>
             </Link>
-            {/* <button type="button" className="p-link  layout-menu-button layout-topbar-button" onClick={props.onToggleMenuClick}>
-                <i className="pi pi-bars"/>
-            </button> */}
+            {/* menu button on mobile */}
             <button 
                 type="button" 
                 className="p-link layout-topbar-menu-button layout-topbar-button" 
@@ -25,9 +36,9 @@ export const AppTopbar = (props) => {
                     <li>
                         <button 
                             className="p-link layout-topbar-button" 
-                            onClick={props.onMobileSubTopbarMenuClick}>
+                            onClick={()=>handleRouteChange('/')}>
                             <i className="pi pi-home"/>
-                            <span>Events</span>
+                            <span>Home</span>
                         </button>
                     </li>
                     <li>

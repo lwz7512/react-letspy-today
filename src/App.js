@@ -1,10 +1,8 @@
 import { Route } from 'react-router-dom';
 
-
 import EmptyPage from './pages/EmptyPage';
 import HomePage from './pages/HomePage';
-
-// import PrimeReact from 'primereact/api';
+import ProjectPage from './pages/ProjectPage';
 
 import { AppTopbar } from './AppTopbar';
 import { AppFooter } from './AppFooter';
@@ -21,11 +19,15 @@ import './assets/style/App.scss';
 function App() {
   return (
     <div className="app layout-wrapper layout-theme-light">
-      <AppTopbar layoutColorMode="light" />
+      <AppTopbar 
+        layoutColorMode="light" 
+        onMobileTopbarMenuClick={()=>console.log(">>> popup menu")} 
+        />
       <div className="layout-main-container">
         <div className="layout-main">
-            <Route path="/" exact component={HomePage}/>
+            <Route path="/project/:pid" component={ProjectPage}/>
             <Route path="/empty" component={EmptyPage}/>
+            <Route path="/" exact component={HomePage}/>
         </div>
         <AppFooter layoutColorMode="light"/>
       </div>

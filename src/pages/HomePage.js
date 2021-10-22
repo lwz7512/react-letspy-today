@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, } from 'react-router-dom';
 
 import { app_brand } from '../constants'
 import { getProjects } from '../service/ProjectService'
+import ProjectCard from '../components/ProjectCard';
 
 const HomePage = () => {
 
+    const history = useHistory()
     const [projects, setProjects] = useState([]);
+
+    const handleRouteChange = (target, queryParams = '', data = null) => {
+        history.push({
+            pathname: target,
+            search: `?${queryParams}`,
+            state: data
+        })
+        window.scrollTo(0, 0)
+    }
 
     useEffect(() => {
         setTimeout(() => {
@@ -20,23 +31,11 @@ const HomePage = () => {
         <i className="pi pi-spin pi-spinner" style={{'fontSize': '2em'}}></i>
     )
 
-    const ProjectCard = ({ project }) => (
-        <div className="p-col-12 md:w-4" >
-            <div className="feature-card">
-                <img alt="components" src={project.image} />
-                <div className="feature-card-detail">
-                    <span className="feature-name">{project.title}</span>
-                    <p>{project.description}</p>
-                </div>
-            </div>
-        </div>
-    )
-
     return (
         <div className="home">
             {/* hero */}
-            <div className="col-12">
-                <div className="card hero">
+            <div className="col-12 px-0 sm:px-2">
+                <div className="card hero border-noround md:border-round">
                     <div className="intro-title">{app_brand.hero_title_a}</div>
                     <div className="intro-subtitle">{app_brand.hero_title_b}</div>
                     <Link to={app_brand.action_now_route} className="action-button">
@@ -63,7 +62,11 @@ const HomePage = () => {
                 { projects.length > 0 && (
                     <div className="grid">
                         { projects.map((project, i) => (
-                            <ProjectCard key={i} project={project} />
+                            <ProjectCard 
+                                key={i} 
+                                project={project} 
+                                handleRouteChange={handleRouteChange}
+                            />
                         ))}
                     </div>
                 )}
