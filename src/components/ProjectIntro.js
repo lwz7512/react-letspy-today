@@ -24,7 +24,7 @@ const ProjectIntro = () => {
           </p>
         </div>
         <div className="right-part pr-4 pt-4 ">
-          <img src="assets/layout/images/alienBlue_sm.png" width="50" />
+          <img src="assets/layout/images/alienBlue_sm.png" width="50" alt="alien" />
         </div>
       </div>
     </div>

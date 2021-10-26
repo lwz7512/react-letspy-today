@@ -18,3 +18,11 @@
     margin: 0 auto;
 }
 
+.p-steps .p-steps-item .p-menuitem-link {
+    background: none;
+}
+
+.p-steps .p-steps-item.p-highlight .p-steps-number {
+    background-color: var(--teal-500);
+    color: white;
+}
