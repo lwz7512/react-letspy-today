@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { BiRun } from "react-icons/bi"
 import projectStore from '../state/ProjectState'
 
 const MiniGamePanel = () => {
@@ -9,18 +10,15 @@ const MiniGamePanel = () => {
   return (
     <div className="flex-space-between full-height">
       {/* mini adventure game */}
-      <div className="left-part">
+      <div className="left-part bg-white">
 
       </div>
-      <div className="right-part center-child bg-gray-800">
+      <div className="right-part center-child bg-blue-500">
         <button 
           type="button" 
           className="go-btn" 
           onClick={switchMode}>
-          <span className="pb-0 pl-0">
-            <i className="pi pi-angle-double-left"></i>
-          </span>
-          <span className="ml-0">Back</span>
+          <BiRun size="48" />
         </button>
       </div>
     </div>

@@ -9,7 +9,7 @@ import create from 'zustand'
 
 const projectStore = create(
   set => ({
-    introMode: false,
+    introMode: true,
     switchMode: () => set(state => ({introMode: !state.introMode}))
   })
 )

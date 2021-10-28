@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory, } from 'react-router-dom';
 
-import { app_brand } from '../constants'
+import { app_brand } from '../config/constants'
 import { getProjects } from '../service/ProjectService'
 import ProjectCard from '../components/ProjectCard';
 
