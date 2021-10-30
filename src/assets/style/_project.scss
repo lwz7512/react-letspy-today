@@ -119,17 +119,20 @@
     display: flex;
     align-items: center;
 
-    background-color: var(--blue-600);
+    background-color: white;
     border: 2px solid var(--blue-100);
-    color: white;
+    color: var(--blue-600);
     
     width: 70px;
     height: 70px;
     border-radius: 50%;
 
-    transition-duration: 0.4s;    
-    &:hover {
-      background-color: var(--blue-800);
+    transition-duration: 0.4s;
+
+    &:hover:not([disabled]) {
+      background-color: var(--blue-600);
+      color: white;
+      cursor: pointer;
     }
 
     span {
@@ -145,6 +148,12 @@
 
   .full-height {
     height: 100%;
+  }
+
+  button:disabled,
+  button[disabled]{
+    border: 1px solid #999999;
+    background-color: #333333;
   }
 
 }

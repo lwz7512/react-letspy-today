@@ -23,7 +23,7 @@ const MissionPanel = () => {
           </p>
         </div>
       </div>
-      <div className="right-part center-child bg-gray-800">
+      <div className="right-part center-child bg-blue-500">
         <button 
           type="button" 
           className="go-btn" 

@@ -2,6 +2,7 @@
   "name": "react-letspy-today",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "@fullcalendar/core": "^5.7.2",
     "@fullcalendar/daygrid": "^5.7.2",
@@ -28,6 +29,7 @@
     "react-player": "^2.9.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-spinners": "^0.11.0",
     "react-transition-group": "^4.4.1",
     "react-typist": "^2.0.5",
     "sass": "^1.32.8",
