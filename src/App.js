@@ -4,8 +4,8 @@ import EmptyPage from './pages/EmptyPage';
 import HomePage from './pages/HomePage';
 import ProjectPage from './pages/ProjectPage';
 
-import { AppTopbar } from './AppTopbar';
-import { AppFooter } from './AppFooter';
+import { AppTopbar } from './structure/AppTopbar';
+import { AppFooter } from './structure/AppFooter';
 
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
