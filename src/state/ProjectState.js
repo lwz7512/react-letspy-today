@@ -1,10 +1,18 @@
 import create from 'zustand'
 
-import { getGameCodeRunningResult } from '../service/ProjectService'
+import {
+  getGameCodeRunningResult as runPY
+} from '../service/ProjectService'
 
+
+const getCurrentGameSnippet = getHandler => ({
+  id:   getHandler()['projectID'],
+  name: getHandler()['projectName'],
+  code: getHandler()['codeValue']
+})
 
 const projectStore = create(
-  set => ({
+  (set, get) => ({
     introMode: true,
     switchMode: () => set(
       state => ({introMode: !state['introMode']})
@@ -13,13 +21,27 @@ const projectStore = create(
     toggleRunning: () => set(
       state => ({runningMode: !state['runningMode']})
     ),
+    // project id
+    projectID: '1',
+    setProjectID: id => set({projectID: id}),
+    // project name
+    projectName: 'demo project',
+    setProjectName: name => set({projectName: name}),
+    // editor code
+    codeValue: '',
+    codeValueChanged: code => set({codeValue: code}),
     // code running state
     codeExecResult: {},
+    // code running error
+    codeExecError: null,
     // code running request
-    sendGameCode: async (gameSnippet) => {
-      const result = await getGameCodeRunningResult(gameSnippet)
+    execute: async () => {
+      const gameSnippet = getCurrentGameSnippet(get)
+      const result = await runPY(gameSnippet)
       if (result['status'] === 200) {
         set({codeExecResult: result['data']})
+      } else {
+        set({codeExecError: result})
       }
     },
     // more state and action ...

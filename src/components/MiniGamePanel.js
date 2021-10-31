@@ -3,6 +3,7 @@ import React from 'react'
 import { Button } from 'primereact/button'
 import { BiRun } from "react-icons/bi"
 import { DotLoader } from 'react-spinners';
+
 import { dotLoaderStyle } from '../config/project'
 import projectStore from '../state/ProjectState'
 
@@ -11,10 +12,12 @@ const MiniGamePanel = () => {
   const switchMode = projectStore(state => state.switchMode)
   const runningMode = projectStore(state => state.runningMode)
   const toggleRunning = projectStore(state => state.toggleRunning)
+  const execute = projectStore(state => state.execute)
 
-  const mockRunningHandlelr = () => {
+  const mockRunningHandlelr = async () => {
     toggleRunning()
-    setTimeout(() => toggleRunning(), 3000)
+    await execute()
+    setTimeout(() => toggleRunning(), 500)
   }
 
   return (
@@ -27,7 +30,7 @@ const MiniGamePanel = () => {
           onClick={switchMode}
           />
       </div>
-      {/* mini adventure game */}
+      {/* TODO: mini adventure game */}
       <div className="flex-grow-1 flex bg-white">
 
       </div>

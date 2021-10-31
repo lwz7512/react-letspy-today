@@ -7,7 +7,7 @@ export const dotLoaderStyle = css`
 `
 
 export const codeEditorOptions = {
-  fontSize: 16,
+  fontSize: 14,
   minimap: {
     enabled: false
   }

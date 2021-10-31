@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import MonacoEditor from '@monaco-editor/react'
 import { Button } from 'primereact/button'
 import {
@@ -6,25 +6,29 @@ import {
 } from "react-icons/bi"
 
 import projectStore from '../state/ProjectState'
-import { firstProjectHintCode } from '../config/ProjectDefaultCode'
+import { projectsBoilerplateCode } from '../config/ProjectDefaultCode'
 import { codeEditorOptions } from '../config/project'
 
 const PYCodeEditor = () => {
 
+  const editorRef = useRef(null);
+
   const runningMode = projectStore(state => state.runningMode)
   const toggleRunning = projectStore(state => state.toggleRunning)
-  const sendGameCode = projectStore(state => state.sendGameCode)
-  const codeExecResult = projectStore(state => state.codeExecResult)
+  const projectID = projectStore(state => state.projectID)
+  const codeValueChanged = projectStore(state => state.codeValueChanged)
+  const execute = projectStore(state => state.execute)
+  const defaultProjectCode = projectsBoilerplateCode[projectID]
 
   const mockRunningHandlelr = async () => {
     toggleRunning()
-    await sendGameCode({
-      id: '1',
-      name: 'test FB talk!',
-      code: `print('hello!')`
-    })
-    console.log(codeExecResult)
+    await execute()
     setTimeout(() => toggleRunning(), 500)
+  }
+
+  const handleEditorDidMount = (editor, _) => {
+    editorRef.current = editor;
+    codeValueChanged(editor.getValue())
   }
 
   return (
@@ -33,10 +37,11 @@ const PYCodeEditor = () => {
         height="358px"
         width="710px"
         defaultLanguage="python"
-        defaultValue={firstProjectHintCode}
+        defaultValue={defaultProjectCode}
         loading="Loading Code Editor..."
         options={codeEditorOptions}
-        onChange={value => false}
+        onMount={handleEditorDidMount}
+        onChange={value => codeValueChanged(value)}
       />
       {/* tools */}
       <div className="tools w-4rem border-left-1 border-blue-500 flex flex-column align-items-center">
