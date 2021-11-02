@@ -23,19 +23,19 @@ export const firstProjectHintCode = rTabs(`
 const projectCode_1 = rTabs(`
     foo = 100  # DO NOT TOUCH THIS LINE!
     # Mission Brief:
-    # Write an expression or a formular to 'return' the double 'foo' above.
+    # Write an expression or a formular to double the 'foo' value above.
     # Note: 
     # A formular using 'foo' expected
-    return foo * 2
+    foo = foo * 2
 `)
 
 const projectCode_2 = rTabs(`
     foo = 100  # DO NOT TOUCH THIS LINE!
     # Mission Brief:
-    # Write an expression or a formular to 'return' the double 'foo' above.
+    # Write an expression or a formular to double the 'foo' value above.
     # Note: 
     # A formular using 'foo' expected
-    return foo * 2
+    foo = foo * 2
 `)
 
 const projectCode_3 = rTabs(`
@@ -43,7 +43,13 @@ const projectCode_3 = rTabs(`
 `)
 
 export const projectsBoilerplateCode = {
-   1: projectCode_1,
-   2: projectCode_2,
-   3: projectCode_3,
+    1: projectCode_1,
+    2: projectCode_2,
+    3: projectCode_3,
+}
+
+export const projectsCodeTarget = {
+    1: { funcName: '', params: 'foo'},
+    2: { },
+    3: { },
 }

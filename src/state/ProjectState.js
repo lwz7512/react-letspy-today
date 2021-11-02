@@ -35,9 +35,9 @@ const projectStore = create(
     // code running error
     codeExecError: null,
     // code running request
-    execute: async () => {
+    execute: async (target) => {
       const gameSnippet = getCurrentGameSnippet(get)
-      const result = await runPY(gameSnippet)
+      const result = await runPY({...gameSnippet, ...target})
       if (result['status'] === 200) {
         set({codeExecResult: result['data']})
       } else {
