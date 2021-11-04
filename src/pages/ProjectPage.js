@@ -19,7 +19,6 @@ const ProjectPage = () => {
   
   useEffect(() => {
     setProjectID(pid)
-    console.log('>>> opending project: ' + pid)
   })
 
   return (

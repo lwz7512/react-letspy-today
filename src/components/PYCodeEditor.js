@@ -6,7 +6,7 @@ import {
 } from "react-icons/bi"
 
 import projectStore from '../state/ProjectState'
-import { projectsBoilerplateCode, projectsCodeTarget } from '../config/ProjectDefaultCode'
+import { projectsBoilerplateCode, } from '../config/ProjectDefaultCode'
 import { codeEditorOptions } from '../config/project'
 
 const PYCodeEditor = () => {
@@ -14,18 +14,11 @@ const PYCodeEditor = () => {
   const editorRef = useRef(null);
 
   const runningMode = projectStore(state => state.runningMode)
-  const toggleRunning = projectStore(state => state.toggleRunning)
   const projectID = projectStore(state => state.projectID)
   const codeValueChanged = projectStore(state => state.codeValueChanged)
-  const execute = projectStore(state => state.execute)
+  const startRunning = projectStore(state => state.startRunning)
   const currentProjectCode = projectsBoilerplateCode[projectID]
-  const currentProjectTarget = projectsCodeTarget[projectID]
 
-  const mockRunningHandlelr = async () => {
-    toggleRunning()
-    await execute(currentProjectTarget)
-    setTimeout(() => toggleRunning(), 500)
-  }
 
   const handleEditorDidMount = (editor, _) => {
     editorRef.current = editor;
@@ -50,7 +43,7 @@ const PYCodeEditor = () => {
         <Button
           className="p-button-rounded p-button-danger p-button-icon-only mx-2 mt-3"
           loading={runningMode}
-          onClick={mockRunningHandlelr}
+          onClick={startRunning}
           tooltip="Run Code"
           tooltipOptions={{disabled:runningMode}}
           >

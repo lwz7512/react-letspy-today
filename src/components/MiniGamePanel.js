@@ -11,14 +11,7 @@ const MiniGamePanel = () => {
 
   const switchMode = projectStore(state => state.switchMode)
   const runningMode = projectStore(state => state.runningMode)
-  const toggleRunning = projectStore(state => state.toggleRunning)
-  const execute = projectStore(state => state.execute)
-
-  const mockRunningHandlelr = async () => {
-    toggleRunning()
-    await execute()
-    setTimeout(() => toggleRunning(), 500)
-  }
+  const startRunning = projectStore(state => state.startRunning)
 
   return (
     <div className="flex full-height">
@@ -39,7 +32,7 @@ const MiniGamePanel = () => {
           type="button" 
           className="go-btn"
           disabled={runningMode}
-          onClick={mockRunningHandlelr}>
+          onClick={startRunning}>
           {!runningMode && (<BiRun size="48" />)}
           <DotLoader 
             css={dotLoaderStyle} 

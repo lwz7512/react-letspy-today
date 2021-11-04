@@ -17,7 +17,7 @@ const projectStore = create(
     switchMode: () => set(
       state => ({introMode: !state['introMode']})
     ),
-    runningMode: false,
+    runningMode: false, // just for visual effect
     toggleRunning: () => set(
       state => ({runningMode: !state['runningMode']})
     ),
@@ -34,8 +34,12 @@ const projectStore = create(
     codeExecResult: {},
     // code running error
     codeExecError: null,
+    // starte running code
+    isRunning: false,
+    startRunning: () => set({isRunning: true}),
     // code running request
     execute: async (target) => {
+      set({runningMode: true})
       const gameSnippet = getCurrentGameSnippet(get)
       const result = await runPY({...gameSnippet, ...target})
       if (result['status'] === 200) {
@@ -43,6 +47,8 @@ const projectStore = create(
       } else {
         set({codeExecError: result})
       }
+      set({isRunning: false})
+      setTimeout(()=>{set({runningMode: false})}, 300)
     },
     // more state and action ...
   })

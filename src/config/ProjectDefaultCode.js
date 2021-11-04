@@ -49,7 +49,12 @@ export const projectsBoilerplateCode = {
 }
 
 export const projectsCodeTarget = {
-    1: { funcName: '', params: 'foo'},
+    1: {
+        projName: 'demo',
+        funcName: '', 
+        params: 'foo', 
+        expect: 200
+    },
     2: { },
     3: { },
 }
