@@ -4,11 +4,17 @@ import {
   getGameCodeRunningResult as runPY
 } from '../service/ProjectService'
 
-
+/**
+ * Compose GameSnippet object
+ * @param {function} getHandler 
+ * @returns gameSnippet match backend schema
+ */
 const getCurrentGameSnippet = getHandler => ({
   id:   getHandler()['projectID'],
   name: getHandler()['projectName'],
-  code: getHandler()['codeValue']
+  code: getHandler()['codeValue'],
+  params: '',
+  codeType: '',
 })
 
 const projectStore = create(

@@ -6,7 +6,13 @@ import ProjectTips from '../components/ProjectTips';
 import MiniGamePanel from '../components/MiniGamePanel';
 import projectStore from '../state/ProjectState'
 import { isEmptyObj } from '../utils/StrUtil'
-import { projectsCodeTarget, } from '../config/ProjectDefaultCode';
+import { 
+  projectsCodeTarget,
+  checkResultMatchTartet,
+  generateSuccessMessage,
+  generateFailureMessage,
+} from '../config/ProjectDefaultCode';
+
 
 const ProjectCodeMode = () => {
 
@@ -17,16 +23,16 @@ const ProjectCodeMode = () => {
   const codeExecResult = projectStore(state => state.codeExecResult)
   const codeExecError = projectStore(state => state.codeExecError)
   const projectID = projectStore(state => state.projectID)
-  const currentProject = projectsCodeTarget[projectID]
+  const currentCurrent = projectsCodeTarget[projectID]
 
 
   useEffect(() => {
     if (!isRunning) return
   
     const mockRunningHandlelr = async () => {
-      // not allowed to invoke running on running
+      // not allowed to invoke execute on running
       if (runningMode) return
-      await execute(currentProject)
+      await execute(currentCurrent)
     }
   
     mockRunningHandlelr()
@@ -35,18 +41,22 @@ const ProjectCodeMode = () => {
 
   useEffect(() => {
     if (isEmptyObj(codeExecResult)) return
-    // console.log(codeExecResult)
-    const success = codeExecResult.result === currentProject.expect
-    const severity = success ? 'success' : 'warn'
+    console.log(codeExecResult)
+    const success = checkResultMatchTartet(
+      currentCurrent.expect, 
+      codeExecResult.result
+    )
+    const hasError = !codeExecResult.success
+    const severity = success ? 'success' : (hasError ? 'error' : 'warn')
     const summary = success ? 'Success!' : 'Failed!' // title
-    const detail = success ? 
-      `Congratulations! You passed the ${currentProject.projName} project!` :
-      `expecting '${currentProject.params}' equal to ${currentProject.expect}`
+    const successMessage = generateSuccessMessage(currentCurrent)
+    const failureMessage = generateFailureMessage(currentCurrent)
+    const detail = success ? successMessage : failureMessage
     const notification = { severity, summary, detail }
     // popup toast message
     toastRef.current.show(notification);
 
-  }, [codeExecResult, currentProject])
+  }, [codeExecResult, currentCurrent])
 
   useEffect(() => {
     if (!codeExecError) return

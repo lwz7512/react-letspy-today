@@ -5,12 +5,14 @@ import ProjectDemoMode from '../components/ProjectDemoMode';
 import ProjectCodeMode from '../components/ProjectCodeMode';
 
 import projectStore from '../state/ProjectState'
+import { projectsCodeTarget } from '../config/ProjectDefaultCode';
 
 const ProjectPage = () => {
 
   const location = useLocation()
-  const setProjectID = projectStore(state => state.setProjectID)
   const { pid } = useParams()
+  const setProjectID = projectStore(state => state.setProjectID)
+  const setProjectName = projectStore(state => state.setProjectName)
 
   const params = new URLSearchParams(location.search);
   const codemode = params.get('codemode')
@@ -19,6 +21,7 @@ const ProjectPage = () => {
   
   useEffect(() => {
     setProjectID(pid)
+    setProjectName(projectsCodeTarget[pid]?.projName)
   })
 
   return (
