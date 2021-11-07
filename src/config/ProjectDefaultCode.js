@@ -116,7 +116,8 @@ export const generateSuccessMessage = (target) => {
 }
 
 export const generateFailureMessage = (target, result) => {
-    if (!result) return 'Ops...something wrong with your code!'
+    // code running error in backend
+    if (!result.success) return result.message
     if (target.params) {// string type
         return `expecting '${target.params}' equal to ${target.expect}`
     }

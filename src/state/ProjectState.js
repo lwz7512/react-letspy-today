@@ -56,6 +56,11 @@ const projectStore = create(
       set({isRunning: false})
       setTimeout(()=>{set({runningMode: false})}, 300)
     },
+    reset: () => set({
+      codeExecResult: {},
+      codeExecError: null,
+      introMode: true
+    }),
     // more state and action ...
   })
 )

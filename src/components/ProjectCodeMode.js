@@ -23,7 +23,8 @@ const ProjectCodeMode = () => {
   const codeExecResult = projectStore(state => state.codeExecResult)
   const codeExecError = projectStore(state => state.codeExecError)
   const projectID = projectStore(state => state.projectID)
-  const currentCurrent = projectsCodeTarget[projectID]
+  const reset = projectStore(state => state.reset)
+  const currentTarget = projectsCodeTarget[projectID]
 
 
   useEffect(() => {
@@ -32,31 +33,30 @@ const ProjectCodeMode = () => {
     const mockRunningHandlelr = async () => {
       // not allowed to invoke execute on running
       if (runningMode) return
-      await execute(currentCurrent)
+      await execute(currentTarget)
     }
   
     mockRunningHandlelr()
   })
 
-
   useEffect(() => {
     if (isEmptyObj(codeExecResult)) return
     console.log(codeExecResult)
     const success = checkResultMatchTartet(
-      currentCurrent.expect, 
+      currentTarget.expect, 
       codeExecResult.result
     )
     const hasError = !codeExecResult.success
     const severity = success ? 'success' : (hasError ? 'error' : 'warn')
     const summary = success ? 'Success!' : 'Failed!' // title
-    const successMessage = generateSuccessMessage(currentCurrent)
-    const failureMessage = generateFailureMessage(currentCurrent)
+    const successMessage = generateSuccessMessage(currentTarget)
+    const failureMessage = generateFailureMessage(currentTarget, codeExecResult)
     const detail = success ? successMessage : failureMessage
     const notification = { severity, summary, detail }
     // popup toast message
     toastRef.current.show(notification);
 
-  }, [codeExecResult, currentCurrent])
+  }, [codeExecResult, currentTarget])
 
   useEffect(() => {
     if (!codeExecError) return
@@ -69,6 +69,11 @@ const ProjectCodeMode = () => {
     }
     toastRef.current.show(notification);
   }, [codeExecError])
+
+  useEffect(() => {
+    return reset // clear current project state after view destory
+  }, [reset])
+
 
   return (
     <>
