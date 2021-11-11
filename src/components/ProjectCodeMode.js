@@ -6,12 +6,12 @@ import ProjectTips from '../components/ProjectTips';
 import MiniGamePanel from '../components/MiniGamePanel';
 import projectStore from '../state/ProjectState'
 import { isEmptyObj } from '../utils/StrUtil'
-import { 
-  projectsCodeTarget,
-  checkResultMatchTartet,
+import { projectsCodeTarget } from '../config/ProjectDefaultCode';
+import {
+  checkResultMatchTartet, 
+  generateFailureMessage, 
   generateSuccessMessage,
-  generateFailureMessage,
-} from '../config/ProjectDefaultCode';
+} from '../helper/ProjectHelper';
 
 
 const ProjectCodeMode = () => {

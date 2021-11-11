@@ -18,6 +18,14 @@ letspy - frontend
 
 Completed at: @2021/10/31
 
+## version 0.15 : F2B-WLDN
+
+- frontend to backend communication well implemented
+- backend code execution running robust
+- start to integrate `PixiJS` and first game...
+
+Completed at: @2012/11/10
+
 ## version 0.2 : First Project
 
 - first mini game implementation.
