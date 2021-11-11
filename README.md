@@ -22,7 +22,7 @@ Completed at: @2021/10/31
 
 - frontend to backend communication well implemented
 - backend code execution running robust
-- start to integrate `PixiJS` and first game...
+- start to integrate `Phaser` and first game...
 
 Completed at: @2012/11/10
 
