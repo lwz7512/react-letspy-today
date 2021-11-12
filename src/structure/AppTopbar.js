@@ -1,7 +1,8 @@
-import React  from 'react';
+import React, { useEffect }  from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { useHistory,  } from 'react-router-dom';
+import { addEffect, removeEffect } from '../utils/DomUtil';
 
 const logoly = 'assets/layout/images/Ly.png'
 
@@ -18,9 +19,21 @@ export const AppTopbar = (props) => {
       window.scrollTo(0, 0)
     }
 
+    useEffect(() => {
+        return history.listen((location) => { 
+            if (location.pathname.indexOf('project') > -1) {
+                addEffect('.layout-topbar', '-translate-y-100')
+                addEffect('.layout-main-container', 'pt-2')
+            } else {
+                removeEffect('.layout-topbar', '-translate-y-100')
+                removeEffect('.layout-main-container', 'pt-2')
+            }
+        }) 
+     },[history]) 
+
 
     return (
-        <div className="layout-topbar">
+        <div className="layout-topbar transition-pt5 ">
             <Link to="/" className="layout-topbar-logo">
                 <img src={props.layoutColorMode === 'light' ? logoly : 'assets/layout/images/logo-white.svg'} alt="logo"/>
                 <span>LetsPY</span>

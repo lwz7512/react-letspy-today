@@ -82,7 +82,7 @@ const ProjectCodeMode = () => {
       <div className="content-area blue-round-panel light">
         <PYCodeEditor />
       </div>
-      <div className="result-area border-solid h-12rem blue-round-panel p-0">
+      <div className="result-area border-solid h-15rem blue-round-panel p-0">
         <MiniGamePanel />
       </div>
     </>

@@ -7,6 +7,9 @@ import { DotLoader } from 'react-spinners';
 import { dotLoaderStyle } from '../config/project'
 import projectStore from '../state/ProjectState'
 
+import PhaserGameBox from './PhaserGameBox'
+
+
 const MiniGamePanel = () => {
 
   const switchMode = projectStore(state => state.switchMode)
@@ -23,9 +26,9 @@ const MiniGamePanel = () => {
           onClick={switchMode}
           />
       </div>
-      {/* TODO: mini adventure game */}
+      {/* mini adventure game */}
       <div className="flex-grow-1 flex bg-white">
-
+        <PhaserGameBox />
       </div>
       <div className="right-part center-child bg-blue-500 border-left-3 border-blue-500">
         <button 
