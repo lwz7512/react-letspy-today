@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import EmptyPage from './pages/EmptyPage';
 import HomePage from './pages/HomePage';
 import ProjectPage from './pages/ProjectPage';
+import GamePage from './pages/GamePage';
 
 import { AppTopbar } from './structure/AppTopbar';
 import { AppFooter } from './structure/AppFooter';
@@ -26,6 +27,7 @@ function App() {
       <div className="layout-main-container">
         <div className="layout-main">
             <Route path="/project/:pid" component={ProjectPage}/>
+            <Route path="/game" component={GamePage}/>
             <Route path="/empty" component={EmptyPage}/>
             <Route path="/" exact component={HomePage}/>
         </div>

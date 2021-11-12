@@ -18,10 +18,12 @@ const PhaserGameBox = () => {
 
   useEffect(() => {
     // NOTE: parent to find dom element must be here
+    const currentGame = gamesForProject[projectID]
+    const safeScene = currentGame ? currentGame : gamesForProject['1']
     const withParentAndScene = {
       ...BaseConfig,
-      parent: document.querySelector('.phaser-game-container'),
-      scene: gamesForProject[projectID]
+      parent: document.querySelector('.phaser-game-box'),
+      scene: safeScene
     }
 
     const game = new Phaser.Game(withParentAndScene);
@@ -33,7 +35,7 @@ const PhaserGameBox = () => {
   })
 
   return (
-    <div className="phaser-game-container" />
+    <div className="phaser-game-box" />
   )
 }
 

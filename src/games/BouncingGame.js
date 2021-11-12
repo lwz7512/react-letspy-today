@@ -12,6 +12,7 @@ class BouncingGame extends Phaser.Scene {
     
   create(){
       const logo = this.add.image(300, 20, 'logo');
+    //   logo.setScale(0.5, 0.5)
       this.tweens.add({
           targets: logo,
           y: 180,
