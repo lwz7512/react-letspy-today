@@ -3,7 +3,9 @@ import Phaser from 'phaser';
 
 import { PlatformerConfig } from '../config/phaser';
 // import CollectStarsPlatformer from '../games/CollectStarsPlatformer';
-import ParticlesGame from '../games/ParticlesGame';
+// import ParticlesGame from '../games/ParticlesGame';
+// import MultiTileset from '../games/MultiTileset';
+import MakeYourPath from '../games/MakeYourPath';
 
 
 const GamePage = () => {
@@ -11,9 +13,7 @@ const GamePage = () => {
   useEffect(() => {
     const withParentAndScene = {
       ...PlatformerConfig,
-      parent: document.querySelector('.phaser-game-box'),
-      // scene: new CollectStarsPlatformer()
-      scene: new ParticlesGame()
+      scene: [MakeYourPath]
     }
 
     const game = new Phaser.Game(withParentAndScene);
@@ -26,7 +26,7 @@ const GamePage = () => {
   return (
       <div className="grid">
           <div className="col-6">
-              <div className="phaser-game-box"/>
+              <div id="phaser-game-box"/>
           </div>
       </div>
   );

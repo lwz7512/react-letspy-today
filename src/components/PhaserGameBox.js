@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react'
 import Phaser from 'phaser';
-import {
-  BaseConfig,
-} from '../config/phaser';
+import { PlatformerConfig, } from '../config/phaser';
 import projectStore from '../state/ProjectState'
 
-import BouncingGame from "../games/BouncingGame";
+// import BouncingGame from "../games/BouncingGame";
+import MakeYourPath from '../games/MakeYourPath';
 
 const PhaserGameBox = () => {
 
@@ -13,7 +12,8 @@ const PhaserGameBox = () => {
 
   // NOTE: scene must coexist with game in same place!
   const gamesForProject = {
-    1 : new BouncingGame('assets/sprites/phaser3-logo-small.png'),
+    // 1 : new BouncingGame('assets/sprites/phaser3-logo-small.png'),
+    1 : MakeYourPath,
   }
 
   useEffect(() => {
@@ -21,9 +21,8 @@ const PhaserGameBox = () => {
     const currentGame = gamesForProject[projectID]
     const safeScene = currentGame ? currentGame : gamesForProject['1']
     const withParentAndScene = {
-      ...BaseConfig,
-      parent: document.querySelector('.phaser-game-box'),
-      scene: safeScene
+      ...PlatformerConfig,
+      scene: [safeScene, ]
     }
 
     const game = new Phaser.Game(withParentAndScene);
@@ -35,7 +34,7 @@ const PhaserGameBox = () => {
   })
 
   return (
-    <div className="phaser-game-box" />
+    <div id="phaser-game-box" />
   )
 }
 
