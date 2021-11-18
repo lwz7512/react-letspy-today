@@ -1,6 +1,13 @@
 // save phaser game configs/games
 import Phaser from 'phaser';
 
+import MakeYourPath from '../games/MakeYourPath';
+
+export const gamesForProject = {
+    1 : MakeYourPath,
+}
+
+
 export const BaseConfig = {
     type: Phaser.AUTO,
     width: 600,

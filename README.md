@@ -24,13 +24,15 @@ Completed at: @2021/10/31
 - backend code execution running robust
 - start to integrate `Phaser` and first game...
 
-Completed at: @2012/11/10
+Completed at: @2021/11/10
 
 ## version 0.2 : First Project
 
 - first mini game implementation.
 - first project completion.
 - overall architeture setup.
+
+Completed at: @2021/11/17
 
 ## version 0.3 : All Possible Projects
 

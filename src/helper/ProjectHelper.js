@@ -12,7 +12,7 @@ export const checkResultMatchTartet = (expect, result) => {
 }
 
 export const generateSuccessMessage = (target) => {
-  return `Congratulations! You passed the ${target.projName} project!`
+  return `Congratulations! You completed the ${target.projName} program!`
 }
 
 export const generateFailureMessage = (target, result) => {

@@ -61,6 +61,7 @@ const projectStore = create(
       codeExecError: null,
       introMode: true
     }),
+    GAME_DEGUG: true,
     // more state and action ...
   })
 )

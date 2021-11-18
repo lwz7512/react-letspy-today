@@ -28,6 +28,8 @@ class MakeYourPath extends Phaser.Scene {
     this.guideTxt = null
     // debug flag
     this.debug = false
+    // expose bingo function
+    this.bingo = this.bingo.bind(this)
   }
 
   preload() {
@@ -79,6 +81,7 @@ class MakeYourPath extends Phaser.Scene {
     this.player.setBounce(0.2);
     this.player.setScale(0.8, 0.8)
     this.player.setCollideWorldBounds(true);
+    this.player.setDepth(1) // put front
   }
 
   _createGuideText(message) {
@@ -89,22 +92,19 @@ class MakeYourPath extends Phaser.Scene {
   }
 
   create() {
-    // create first layer of ground first
+    // create ground layer first
     var groundLayer = this._createGroundLayer(this.level0)
+
     // then, create player
     this._createPlayer()
     this._createPlayerAnimation();
     this._createGuideText('Watch out!')
-
+    
     // set layer collision
     this.physics.add.collider(groundLayer, this.player);
 
     this.cursors = this.input.keyboard.createCursorKeys();
 
-    if (!this.debug) return
-    // FIXME: ...just for test
-    var bridgeLayer = this._createGroundLayer(this.level1)
-    this.physics.add.collider(bridgeLayer, this.player);
   }
 
   update() {
@@ -131,9 +131,13 @@ class MakeYourPath extends Phaser.Scene {
   _hitExit() {
     if (this.succeed) return
 
-    // TODO: ...change scene to congratulation!
-    // var congratulations = this.scene.get('congratulations')
-    this.scene.start('congratulations', { msg: 'You completed the Make Your Path chapter!' })
+    // lazy change scene to congratulation!
+    setTimeout(() => {
+      this.scene.start(
+        'congratulations', 
+        { msg: 'You completed the [Make Your Path] chapter!' }
+      )
+    }, 500)
 
     this.succeed = true
   }
@@ -145,11 +149,12 @@ class MakeYourPath extends Phaser.Scene {
   bingo() {
     if (this.complete) return
 
-    var bridgeLayer = this._createGroundLayer(this.level1, this.player)
+    var bridgeLayer = this._createGroundLayer(this.level1)
     this.physics.add.collider(bridgeLayer, this.player);
-    this._createGuideText('Walk player toward Exit using right arrow key!')
+    this._createGuideText('Now, Walk player toward Exit using right arrow key!')
     
     this.complete = true
+    return this.complete
   }
 
 }

@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Button } from 'primereact/button'
-import { BiRun } from "react-icons/bi"
+import { BiRun, BiArrowToRight } from "react-icons/bi"
 import { DotLoader } from 'react-spinners';
 
 import { dotLoaderStyle } from '../config/project'
@@ -16,6 +16,12 @@ const MiniGamePanel = () => {
   const runningMode = projectStore(state => state.runningMode)
   const startRunning = projectStore(state => state.startRunning)
 
+  const [isSucceed, setIsSucceed] = useState(false)
+
+  const buttonIcon = !runningMode && (
+    isSucceed ? <BiArrowToRight size="54" /> : <BiRun size="54" />
+  )
+
   return (
     <div className="flex full-height">
       {/* back button zone */}
@@ -28,15 +34,19 @@ const MiniGamePanel = () => {
       </div>
       {/* mini adventure game */}
       <div className="flex-grow-1 flex bg-white">
-        <PhaserGameBox />
+        <PhaserGameBox 
+          codeResultCallback={
+            result => setIsSucceed(result)
+          }
+        />
       </div>
       <div className="right-part center-child bg-blue-500 border-left-3 border-blue-500">
         <button 
           type="button" 
           className="go-btn"
-          disabled={runningMode}
+          disabled={runningMode || isSucceed}
           onClick={startRunning}>
-          {!runningMode && (<BiRun size="48" />)}
+          {buttonIcon}
           <DotLoader 
             css={dotLoaderStyle} 
             color="#fbc02d"
