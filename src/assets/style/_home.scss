@@ -9,17 +9,16 @@
 
 
 .hero {
-  height: 300px;
-  background-image: url('../images/home/react-intro-bg.jpg');
+  height: 360px;
+  background-image: url('../images/home/arduino_hack.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 147px 30px 167px 50px;
-  color: #ffffff;
+  padding: 80px 30px 60px 50px;
   position: relative;
 
   .intro-title {
       font-weight: 400;
-      margin-bottom: 5px;
+      margin-bottom: 12px;
       font-size: 24px;
   }
 
@@ -35,6 +34,29 @@
   }
 
 }
+
+.action-button {
+  font-size: 18px;
+  font-weight: normal;
+  text-align: center;
+  color: #ffffff !important;
+  background-color: #fe8702;
+  padding: 12px 24px 12px 24px;
+  border-radius: 6px;
+  transition: background-color .2s;
+
+  &:hover {
+      background-color: #c56a05;
+      color: #ffffff;
+  }
+}
+
+.action-button.in-card {
+  font-size: 16px;
+  padding: 8px 18px 8px 18px;
+  border-radius: 3px;
+}
+
 
 .features {
   // background-color: var(--surface-b);

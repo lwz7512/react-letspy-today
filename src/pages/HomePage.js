@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory, } from 'react-router-dom';
+import { Link, } from 'react-router-dom';
 
 import { app_brand } from '../config/constants'
 import { getProjects } from '../service/ProjectService'
@@ -7,17 +7,17 @@ import ProjectCard from '../components/ProjectCard';
 
 const HomePage = () => {
 
-    const history = useHistory()
     const [projects, setProjects] = useState([]);
-
-    const handleRouteChange = (target, queryParams = '', data = null) => {
-        history.push({
-            pathname: target,
-            search: `?${queryParams}`,
-            state: data
-        })
-        window.scrollTo(0, 0)
-    }
+    
+    // const history = useHistory()
+    // const handleRouteChange = (target, queryParams = '', data = null) => {
+    //     history.push({
+    //         pathname: target,
+    //         search: `?${queryParams}`,
+    //         state: data
+    //     })
+    //     window.scrollTo(0, 0)
+    // }
 
     useEffect(() => {
         setTimeout(() => {
@@ -36,8 +36,8 @@ const HomePage = () => {
             {/* hero */}
             <div className="col-12 px-0 sm:px-2">
                 <div className="card hero border-noround md:border-round">
-                    <div className="intro-title">{app_brand.hero_title_a}</div>
-                    <div className="intro-subtitle">{app_brand.hero_title_b}</div>
+                    <h1 className="intro-title">{app_brand.hero_title_a}</h1>
+                    <h2 className="intro-subtitle">{app_brand.hero_title_b}</h2>
                     <Link to={app_brand.action_now_route} className="action-button">
                         {app_brand.action_now_label}
                     </Link>
@@ -64,8 +64,7 @@ const HomePage = () => {
                         { projects.map((project, i) => (
                             <ProjectCard 
                                 key={i} 
-                                project={project} 
-                                handleRouteChange={handleRouteChange}
+                                project={project}
                             />
                         ))}
                     </div>

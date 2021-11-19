@@ -3,7 +3,7 @@ import axios from 'axios'
 const API_ROOT_PATH = '/api'
 
 export const getProjects = () =>
-  axios.get('assets/demo/data/projects.json')
+  axios.get('data/projects.json')
     .then(res => res.data.data);
 
 export const getGameCodeRunningResult = gameSnippet => 

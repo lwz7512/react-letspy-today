@@ -1,6 +1,6 @@
-import { Button } from 'primereact/button';
+import { Link, } from 'react-router-dom';
 
-const ProjectCard = ({ project, handleRouteChange }) => (
+const ProjectCard = ({ project }) => (
   <div className="p-col-12 w-full sm:w-6 lg:w-4" >
       <div className="feature-card">
           <img alt="components" src={project.image} />
@@ -9,11 +9,10 @@ const ProjectCard = ({ project, handleRouteChange }) => (
               <p>{project.description}</p>
           </div>
           <div className="footer p-5">
-              <Button 
-                  className="p-button-rounded py-2 px-4 text-xl"
-                  onClick={() => handleRouteChange(`/project/${project.id}`)}>
-                  Explore
-              </Button>
+            <Link to={`/project/${project.id}`} 
+                className="action-button in-card">
+                Explore
+            </Link>
           </div>
       </div>
   </div>
