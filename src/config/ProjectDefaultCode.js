@@ -1,34 +1,5 @@
 import { rTabs } from '../utils/StrUtil'
 
-export const firstProjectHintCode = rTabs(`
-    # Python program to check if the number provided
-    # by the user is an Armstrong number or not
-    # take input from the user
-    num = int(input("Enter a number: "))
-    # initialize sum
-    sum = 0
-    # find the sum of the cube of each digit
-    temp = num
-    while temp > 0:
-       digit = temp % 10
-       sum += digit ** 3
-       temp //= 10
-    # display the result
-    if num == sum:
-       print(num,"is an Armstrong number")
-    else:
-       print(num,"is not an Armstrong number")
-`)
-
-const dummyProjectCode = rTabs(`
-    # Mission Brief:
-    # ...
-    # Tips:
-    # ...
-    # lets get started with:
-    # say('hi!')
-`)
-
 const projectCode_1 = rTabs(`
     foo = 100  # DO NOT TOUCH THIS LINE!
     # Mission Brief:
@@ -56,24 +27,100 @@ const projectCode_2 = rTabs(`
 `)
 
 const projectCode_3 = rTabs(`
+    bridge = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
     # Mission Brief:
-    # ...
+    # Ola needs to reach the door across the broken bridge, help him repair the bridge!
+    #
     # Tips:
-    # ...
-    # lets get started with:
-    # say('hi!')
+    # in bridge stone list, 1 repesents existing conrnerstone, 0 repesents blank space,
+    # 
+    # lets get started with repairing first space by:
+    bridge[1] = 1
 `)
+
+const projectCode_4 = rTabs(`
+    bridge = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    # Mission Brief:
+    # Ola needs to reach the door across the broken bridge, help him repair the bridge!
+    #
+    # Tips:
+    # in bridge stone list, 1 repesents existing conrnerstone, 0 repesents blank space,
+    # 
+    # lets get started with repairing first space by:
+    bridge[1] = 1
+`)
+
+const projectCode_5 = rTabs(`
+    bridge = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    # Mission Brief:
+    # Ola needs to reach the door across the broken bridge, help him repair the bridge!
+    #
+    # Tips:
+    # in bridge stone list, 1 repesents existing conrnerstone, 0 repesents blank space,
+    # 
+    # lets get started with repairing first space by:
+    bridge[1] = 1
+`)
+
+const projectCode_6 = rTabs(`
+    bridge = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    # Mission Brief:
+    # Ola needs to reach the door across the broken bridge, help him repair the bridge!
+    #
+    # Tips:
+    # in bridge stone list, 1 repesents existing conrnerstone, 0 repesents blank space,
+    # 
+    # lets get started with repairing first space by:
+    bridge[1] = 1
+`)
+
+const projectCode_7 = rTabs(`
+    bridge = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    # Mission Brief:
+    # Ola needs to reach the door across the broken bridge, help him repair the bridge!
+    #
+    # Tips:
+    # in bridge stone list, 1 repesents existing conrnerstone, 0 repesents blank space,
+    # 
+    # lets get started with repairing first space by:
+    bridge[1] = 1
+`)
+
+const projectCode_8 = rTabs(`
+    bridge = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    # Mission Brief:
+    # Ola needs to reach the door across the broken bridge, help him repair the bridge!
+    #
+    # Tips:
+    # in bridge stone list, 1 repesents existing conrnerstone, 0 repesents blank space,
+    # 
+    # lets get started with repairing first space by:
+    bridge[1] = 1
+`)
+
+const projectCode_9 = rTabs(`
+    bridge = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    # Mission Brief:
+    # Ola needs to reach the door across the broken bridge, help him repair the bridge!
+    #
+    # Tips:
+    # in bridge stone list, 1 repesents existing conrnerstone, 0 repesents blank space,
+    # 
+    # lets get started with repairing first space by:
+    bridge[1] = 1
+`)
+
 
 export const projectsBoilerplateCode = {
     1: projectCode_1,
     2: projectCode_2,
     3: projectCode_3,
-    4: dummyProjectCode,
-    5: dummyProjectCode,
-    6: dummyProjectCode,
-    7: dummyProjectCode,
-    8: dummyProjectCode,
-    9: dummyProjectCode,
+    4: projectCode_4,
+    5: projectCode_5,
+    6: projectCode_6,
+    7: projectCode_7,
+    8: projectCode_8,
+    9: projectCode_9,
 }
 
 export const projectsCodeTarget = {

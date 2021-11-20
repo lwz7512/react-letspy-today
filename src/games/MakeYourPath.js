@@ -84,6 +84,17 @@ class MakeYourPath extends Phaser.Scene {
     this.player.setDepth(1) // put front
   }
 
+  _createPlayerBouncing() {
+    this.tweens.add({
+      targets: this.player,
+      y: 50,
+      duration: 500,
+      repeat: 2,
+      paused: false,
+      yoyo: true
+    });
+  }
+
   _createGuideText(message) {
     if (this.guideTxt) {
       this.guideTxt.removeFromDisplayList()
@@ -154,6 +165,9 @@ class MakeYourPath extends Phaser.Scene {
     this._createGuideText('Now, Walk player toward Exit using right arrow key!')
     
     this.complete = true
+
+    this._createPlayerBouncing()
+
     return this.complete
   }
 
