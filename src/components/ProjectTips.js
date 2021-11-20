@@ -10,25 +10,25 @@ const ProjectTips = () => {
 
   const items = [
       {
-        label: 'Start',
+        label: 'Mission',
         command: (event) => {
           toastRef.current.show({ severity: 'info', detail: 'First Step', summary: event.item.label, life:1000 });
         }
       },
       {
-        label: 'Walk',
+        label: 'Tips',
         command: (event) => {
           toastRef.current.show({ severity: 'info', detail: 'Seat Selection', summary: event.item.label, life:1000 });
         }
       },
       {
-        label: 'Jump',
+        label: 'Coding',
         command: (event) => {
           toastRef.current.show({ severity: 'info', detail: 'Pay with CC', summary: event.item.label, life:1000 });
         }
       },
       {
-        label: 'Pivot',
+        label: 'Walk',
         command: (event) => {
           toastRef.current.show({ severity: 'info', detail: 'Almost done', summary: event.item.label, life:1000 });
         }

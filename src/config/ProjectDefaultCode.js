@@ -27,15 +27,19 @@ const projectCode_2 = rTabs(`
 `)
 
 const projectCode_3 = rTabs(`
-    bridge = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    bridge = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
     # Mission Brief:
-    # Ola needs to reach the door across the broken bridge, help him repair the bridge!
+    # Ola needs to reach the door across the broken bridge, 
+    # help him repair the bridge!
     #
     # Tips:
-    # in bridge stone list, 1 repesents existing conrnerstone, 0 repesents blank space,
+    # in bridge stone list, 1 repesents existing conrnerstone, 
+    # 0 repesents blank space. So, when all the 0 change to 1,
+    # you would pass!
     # 
     # lets get started with repairing first space by:
     bridge[1] = 1
+    # now your turn to fill other spaces:
 `)
 
 const projectCode_4 = rTabs(`
@@ -136,7 +140,12 @@ export const projectsCodeTarget = {
         params: '',
         expect: [{}, {}, {}]
     },
-    3: { },
+    3: {
+        projName: 'Missing bricks',
+        codeType: 'statements',
+        params: 'bridge',
+        expect: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    },
     4: { },
     5: { },
     6: { },

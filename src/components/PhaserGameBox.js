@@ -12,25 +12,24 @@ import { projectsCodeTarget } from '../config/ProjectDefaultCode';
 const PhaserGameBox = ({ codeResultCallback }) => {
 
   const gameRef = useRef(null)
+
   const projectID = projectStore(state => state.projectID)
   const codeExecResult = projectStore(state => state.codeExecResult)
   const currentTarget = projectsCodeTarget[projectID]
 
   useEffect(() => {
+    if (!gameRef.current) return
     if (isEmptyObj(codeExecResult)) return
-
+    
     const success = checkResultMatchTartet(
       currentTarget.expect, 
       codeExecResult.result
     )
-
     codeResultCallback(success)
-
-    if (!success) return
     
     // call game bingo() function if success is true
     const currentScene = gameRef.current.scene.getAt(0)
-    currentScene.bingo()
+    currentScene.bingo(codeExecResult.result)
     
   }, [codeExecResult, currentTarget, codeResultCallback])
 

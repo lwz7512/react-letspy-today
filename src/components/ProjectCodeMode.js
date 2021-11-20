@@ -41,7 +41,6 @@ const ProjectCodeMode = () => {
 
   useEffect(() => {
     if (isEmptyObj(codeExecResult)) return
-    console.log(codeExecResult)
     const success = checkResultMatchTartet(
       currentTarget.expect, 
       codeExecResult.result

@@ -115,7 +115,7 @@ class MakeYourPath extends Phaser.Scene {
     this.physics.add.collider(groundLayer, this.player);
 
     this.cursors = this.input.keyboard.createCursorKeys();
-
+    this.input.keyboard.removeCapture(32) // disable space key presss, conflict with monaco editor
   }
 
   update() {
@@ -157,16 +157,29 @@ class MakeYourPath extends Phaser.Scene {
    * exposure to outeside of game
    * @returns nothing
    */
-  bingo() {
+  bingo(bridge) {
     if (this.complete) return
+    // reset player
+    this.player.setPosition(0, 80)
 
-    var bridgeLayer = this._createGroundLayer(this.level1)
+    const bricks = []
+    if (Array.isArray(bridge)) {
+      bridge.forEach((brick, index) => {
+        if (index % 2 === 0) bricks.push(107)
+        if (index % 2 === 1 && brick === 1) bricks.push(122)
+      })
+    }
+    const withBlankLines = [...this.blankRows, bricks]
+    const bridgeLayer = this._createGroundLayer(withBlankLines, 1)
     this.physics.add.collider(bridgeLayer, this.player);
+
+    const expectSum = bricks.reduce((a, b) => a + b, 0)
+    if (expectSum !== 18) return // not successful
+    
     this._createGuideText('Now, Walk player toward Exit using right arrow key!')
+    this._createPlayerBouncing()
     
     this.complete = true
-
-    this._createPlayerBouncing()
 
     return this.complete
   }

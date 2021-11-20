@@ -1,13 +1,21 @@
+/**
+ * compare code execution result with expectation
+ * @param {*} expect 
+ * @param {*} result 
+ * @returns true or false
+ */
 export const checkResultMatchTartet = (expect, result) => {
   if (!result) return false // 0, something wrong in backend
-  if (expect === result) return true
-
+  if (expect === result) return true // number comparison
+  // start array compare
   if (Array.isArray(expect) && Array.isArray(result)) {
       if (expect.length !== result.length) return false
+      // TODO: compare the sum of array
+      const expectSum = expect.reduce((a, b) => a + b, 0)
+      const resultSum = result.reduce((a, b) => a + b, 0)
+      return expectSum === resultSum
       // TODO: compare each action
-      return true
   }
-
   return false
 }
 
