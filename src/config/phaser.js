@@ -3,6 +3,7 @@ import Phaser from 'phaser';
 
 import MakeYourPath from '../games/MakeYourPath';
 
+// TODO: add more games...
 export const gamesForProject = {
     1 : MakeYourPath,
 }

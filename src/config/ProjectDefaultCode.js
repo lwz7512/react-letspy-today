@@ -19,16 +19,7 @@ const projectCode_2 = rTabs(`
 
 const projectCode_3 = rTabs(`
     bridge = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
-    # Mission Brief:
-    # Ola needs to reach the door across the broken bridge, 
-    # help him repair the bridge!
-    #
-    # Tips:
-    # in bridge stone list, 1 repesents existing conrnerstone, 
-    # 0 repesents blank space. So, when all the 0 change to 1,
-    # you would pass!
-    # 
-    # lets get started with repairing first space by:
+    # lets get started with repairing first space:
     bridge[1] = 1
     # now your turn to fill other spaces:
 `)
@@ -147,6 +138,10 @@ export const projectsCodeTarget = {
 
 export const projectsTips = {
     1: {
+        name: `Clone Army`,
+        challenge: `Change yourself could be tough, but this is not True for python variables. 
+            In this project, you are expected to use 'variables' to enlarge your army.
+        `,
         mission: `
             Your are a scientist in charge of producing clone army to defense your world. 
             Your enemy is overwhelming, you need to double your army!
@@ -154,9 +149,12 @@ export const projectsTips = {
         tips: 'No support yet.',
         coding: `Write an expression or a formular to double the 'troops_amount' value above.`,
         walk: 'Fire Now!',
-        pass: 'Bingo!'
+        pass: 'Bingo!',
+        tags: ['Easy', 'Adventure', 'Statement']
     },
     2: {
+        name: `Lava Adventure`,
+        challenge: `The goal in this mission is learning how to organize different actions to get through the lava valley.`,
         mission: `
             Ola is being trapped in the lava valley! Your mission is to help him out of there!
         `,
@@ -166,13 +164,22 @@ export const projectsTips = {
         `,
         coding: '',
         walk: '',
-        pass: ''
+        pass: '',
+        tags: []
     },
     3: {
-        mission: '',
-        tips: '',
-        coding: '',
-        walk: '',
-        pass: ''
+        name: `Missing bricks`,
+        challenge: ``,
+        mission: `
+            Ola needs to reach the door across the broken bridge, help him repair the bridge!
+        `,
+        tips: `
+            in bridge stone list, 1 repesents existing conrnerstone, 0 repesents blank space.
+            So, when all the 0 change to 1, you would pass!
+        `,
+        coding: 'Change odd elements of the list to 1',
+        walk: 'Now, press right arrow key to move player',
+        pass: 'Congratulations!',
+        tags: []
     },
 }
