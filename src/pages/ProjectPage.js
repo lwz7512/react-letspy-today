@@ -6,6 +6,7 @@ import ProjectCodeMode from '../components/ProjectCodeMode';
 
 import projectStore from '../state/ProjectState'
 import { projectsCodeTarget } from '../config/ProjectDefaultCode';
+import { addEffect, } from '../utils/DomUtil';
 
 const ProjectPage = () => {
 
@@ -23,6 +24,11 @@ const ProjectPage = () => {
     setProjectID(pid)
     setProjectName(projectsCodeTarget[pid]?.projName)
   })
+
+  useEffect(() =>{
+    addEffect('.layout-topbar', '-translate-y-100')
+    addEffect('.layout-main-container', 'pt-2')
+  }, [])
 
   return (
     <div className="project">

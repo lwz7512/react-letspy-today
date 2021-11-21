@@ -127,6 +127,10 @@ pre[class*="language-"] {
 
 .p-toast.p-toast-top-right,
 .p-toast.p-toast-top-left {
-    top: 100px;
+    top: 10px;
     z-index: 999999 !important;
+}
+
+.p-toast {
+    width: 30rem;
 }

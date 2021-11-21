@@ -1,42 +1,70 @@
 import React, { useRef, useState } from 'react'
 import {Steps} from 'primereact/steps';
 import { Toast } from 'primereact/toast';
-
+import projectStore from '../state/ProjectState'
+import { projectsTips } from '../config/ProjectDefaultCode';
 
 const ProjectTips = () => {
 
   const toastRef = useRef(null)
   const [activeIndex, setActiveIndex] = useState(0);
+  const projectID = projectStore(state => state.projectID)
+  const projectInfo = projectsTips[projectID]
 
   const items = [
       {
         label: 'Mission',
         command: (event) => {
-          toastRef.current.show({ severity: 'info', detail: 'First Step', summary: event.item.label, life:1000 });
+          toastRef.current.show({
+            sticky: true,
+            severity: 'info',
+            summary: 'Mission Brief',
+            detail: projectInfo.mission,
+          });
         }
       },
       {
         label: 'Tips',
         command: (event) => {
-          toastRef.current.show({ severity: 'info', detail: 'Seat Selection', summary: event.item.label, life:1000 });
+          toastRef.current.show({
+            severity: 'info', 
+            summary: 'Tips', 
+            detail: projectInfo.tips, 
+            life: 3000 
+          });
         }
       },
       {
         label: 'Coding',
         command: (event) => {
-          toastRef.current.show({ severity: 'info', detail: 'Pay with CC', summary: event.item.label, life:1000 });
+          toastRef.current.show({
+            severity: 'info', 
+            summary: 'Coding task', 
+            detail: projectInfo.coding, 
+            life: 3000 
+          });
         }
       },
       {
-        label: 'Walk',
+        label: 'Proceed',
         command: (event) => {
-          toastRef.current.show({ severity: 'info', detail: 'Almost done', summary: event.item.label, life:1000 });
+          toastRef.current.show({
+            severity: 'info', 
+            summary: 'Last step', 
+            detail: projectInfo.walk, 
+            life: 3000 
+          });
         }
       },
       {
         label: 'Pass',
         command: (event) => {
-          toastRef.current.show({ severity: 'info', detail: 'Last Step', summary: event.item.label, life:1000 });
+          toastRef.current.show({
+            severity: 'info', 
+            summary: 'Congratulations', 
+            detail: projectInfo.pass, 
+            life: 3000 
+          });
         }
       }
   ];

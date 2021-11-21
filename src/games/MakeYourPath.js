@@ -170,7 +170,7 @@ class MakeYourPath extends Phaser.Scene {
       })
     }
     const withBlankLines = [...this.blankRows, bricks]
-    const bridgeLayer = this._createGroundLayer(withBlankLines, 1)
+    const bridgeLayer = this._createGroundLayer(withBlankLines)
     this.physics.add.collider(bridgeLayer, this.player);
 
     const expectSum = bricks.reduce((a, b) => a + b, 0)

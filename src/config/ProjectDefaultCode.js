@@ -1,23 +1,14 @@
 import { rTabs } from '../utils/StrUtil'
 
 const projectCode_1 = rTabs(`
-    foo = 100  # DO NOT TOUCH THIS LINE!
-    # Mission Brief:
-    # Write an expression or a formular to double the 'foo' value above.
-    #
+    troops_amount = 100  # DO NOT TOUCH THIS LINE!
     # Note: 
     # A formular using 'foo' expected
-    foo = foo * 2
+    troops_amount = troops_amount * 2
 `)
 
 const projectCode_2 = rTabs(`
-    # Mission Brief:
-    # Ola is being trapped in the lava valley! 
-    # Your mission is to help him out of there!
-    #
     # Tips: 
-    # Compose a group of actions to instruct Ola walking through it.
-    # ONE line ONE action only, available actions including:
     # walk(1)
     # jump(1)
     # pivot()
@@ -129,9 +120,9 @@ export const projectsBoilerplateCode = {
 
 export const projectsCodeTarget = {
     1: {
-        projName: 'demo',
+        projName: 'Clone Army',
         codeType: 'statements', 
-        params: 'foo', 
+        params: 'troops_amount', 
         expect: 200
     },
     2: {
@@ -152,4 +143,36 @@ export const projectsCodeTarget = {
     7: { },
     8: { },
     9: { },
+}
+
+export const projectsTips = {
+    1: {
+        mission: `
+            Your are a scientist in charge of producing clone army to defense your world. 
+            Your enemy is overwhelming, you need to double your army!
+        `,
+        tips: 'No support yet.',
+        coding: `Write an expression or a formular to double the 'troops_amount' value above.`,
+        walk: 'Fire Now!',
+        pass: 'Bingo!'
+    },
+    2: {
+        mission: `
+            Ola is being trapped in the lava valley! Your mission is to help him out of there!
+        `,
+        tips: `
+            Compose a group of actions to instruct Ola walking through it.
+            ONE line ONE action only, available actions including:
+        `,
+        coding: '',
+        walk: '',
+        pass: ''
+    },
+    3: {
+        mission: '',
+        tips: '',
+        coding: '',
+        walk: '',
+        pass: ''
+    },
 }
