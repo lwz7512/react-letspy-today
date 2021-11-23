@@ -2,10 +2,20 @@
 import Phaser from 'phaser';
 
 import MakeYourPath from '../games/MakeYourPath';
+import BouncingGame from '../games/BouncingGame';
+import TemplateGame from '../games/TemplateGame';
 
 // TODO: add more games...
 export const gamesForProject = {
-    1 : MakeYourPath,
+    1 : BouncingGame,
+    2 : MakeYourPath,
+    3 : TemplateGame,
+    4 : TemplateGame,
+    5 : TemplateGame,
+    6 : TemplateGame,
+    7 : TemplateGame,
+    8 : TemplateGame,
+    9 : TemplateGame,
 }
 
 

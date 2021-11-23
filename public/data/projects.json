@@ -2,57 +2,111 @@
   "data": [
     {
       "id": 1,
-      "title": "80+ COMPONENTS",
-      "description": "The most complete set of native widgets featuring 80+ easy to use components for all your UI requirements.",
-      "image": "assets/project/puzzle-800x400.jpeg"
+      "title": "Clone Army",
+      "description": "Change yourself could be tough, but this is not True for python variables. In this project, you are expected to use 'variables' to enlarge your army.",
+      "mission": "Your are a scientist in charge of producing clone army to defense your world. Your enemy is overwhelming, you need to double your army!",
+      "tips": "No support yet.",
+      "coding": "Write an expression or a formular to double the 'troops_amount' value above.",
+      "walk": "Fire Now!",
+      "pass": "Bingo!",
+      "tags": "['Easy', 'Variable', 'Statement']",
+      "image": "assets/project/books_md.jpeg"
     },
     {
       "id": 2,
-      "title": "OPEN SOURCE",
-      "description": "Hosted at GitHub, all widgets are open source and free to use under MIT license. Feel the power of open source.",
-      "image": "assets/project/puzzle-800x400.jpeg"
+      "title": "Lava Adventure",
+      "description": "The goal in this mission is learning how to organize different actions to get through the lava valley.",
+      "mission": "Ola is being trapped in the lava valley! Your mission is to help him out of there!",
+      "tips": "Compose a group of actions to instruct Ola walking through it. ONE line ONE action only, available actions including:",
+      "coding": "",
+      "walk": "",
+      "pass": "",
+      "tags": "['Easy', 'Action', 'Function']",
+      "image": "assets/project/books_md.jpeg"
     },
     {
       "id": 3,
-      "title": "THEMES",
-      "description": "Don’t get tied up in just one look&feel. Choose from a variety of options including material and bootstrap design.",
-      "image": "assets/project/puzzle-800x400.jpeg"
+      "title": "Missing Bricks",
+      "description": "List is a very common used data type, in this project you will learn how to change list item value using an intuitive way!",
+      "mission": "Ola needs to reach the door across the broken bridge, help him repair the bridge!",
+      "tips": "in bridge stone list, 1 repesents existing conrnerstone, 0 repesents blank space. So, when all the 0 change to 1, you would pass!",
+      "coding": "Change odd elements of the list to 1",
+      "walk": "Now, press right arrow key to move player",
+      "pass": "Congratulations!",
+      "tags": "['Easy', 'Adventure', 'Statement']",
+      "image": "assets/project/books_md.jpeg"
     },
     {
       "id": 4,
       "title": "TEMPLATES",
       "description": "Professionally designed highly customizable PrimeReact application templates to get started in no time.",
-      "image": "assets/project/puzzle-800x400.jpeg"
+      "mission": "",
+      "tips": "",
+      "coding": "",
+      "walk": "",
+      "pass": "",
+      "tags": "",
+      "image": "assets/project/books_md.jpeg"
     },
     {
       "id": 5,
       "title": "ACCESSIBILITY",
       "description": "Fully accessible and in compliance with Section 508 standards.",
-      "image": "assets/project/puzzle-800x400.jpeg"
+      "mission": "",
+      "tips": "",
+      "coding": "",
+      "walk": "",
+      "pass": "",
+      "tags": "",
+      "image": "assets/project/books_md.jpeg"
     },
     {
       "id": 6,
       "title": "PRO SUPPORT",
       "description": "With the exclusive services of Pro account, you no longer need to post your questions in the community forum and your issues to community issue tracker.",
-      "image": "assets/project/puzzle-800x400.jpeg"
+      "mission": "",
+      "tips": "",
+      "coding": "",
+      "walk": "",
+      "pass": "",
+      "tags": "",
+      "image": "assets/project/books_md.jpeg"
     },
     {
       "id": 7,
       "title": "PRODUCTIVITY",
       "description": "Allocate your valuable time on business logic rather than dealing with the complex user interface requirements.",
-      "image": "assets/project/puzzle-800x400.jpeg"
+      "mission": "",
+      "tips": "",
+      "coding": "",
+      "walk": "",
+      "pass": "",
+      "tags": "",
+      "image": "assets/project/books_md.jpeg"
     },
     {
       "id": 8,
       "title": "COMMUNITY",
       "description": "Join PrimeReact community to become a part of an active, vibrant and growing open source foundation.",
-      "image": "assets/project/puzzle-800x400.jpeg"
+      "mission": "",
+      "tips": "",
+      "coding": "",
+      "walk": "",
+      "pass": "",
+      "tags": "",
+      "image": "assets/project/books_md.jpeg"
     },
     {
       "id": 9,
       "title": "MOBILE",
       "description": "Enhanced mobile user experience with touch optimized responsive design elements.",
-      "image": "assets/project/puzzle-800x400.jpeg"
+      "mission": "",
+      "tips": "",
+      "coding": "",
+      "walk": "",
+      "pass": "",
+      "tags": "",
+      "image": "assets/project/books_md.jpeg"
     }
   ]
 }

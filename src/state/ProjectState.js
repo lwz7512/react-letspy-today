@@ -19,6 +19,10 @@ const getCurrentGameSnippet = getHandler => ({
 
 const projectStore = create(
   (set, get) => ({
+    // for home page
+    projects: [],
+    setProjects: items => set({ projects : items }),
+    // for project page
     introMode: true,
     switchMode: () => set(
       state => ({introMode: !state['introMode']})
@@ -67,12 +71,3 @@ const projectStore = create(
 )
 
 export default projectStore
-
-
-
-// templete store:
-// const useStore = create(set => ({
-//   bears: 0,
-//   increasePopulation: () => set(state => ({ bears: state.bears + 1 })),
-//   removeAllBears: () => set({ bears: 0 })
-// }))

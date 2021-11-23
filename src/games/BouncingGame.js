@@ -1,13 +1,12 @@
 import Phaser from 'phaser';
 
 class BouncingGame extends Phaser.Scene {
-  constructor(image){
-      super();
-      this.image = image
-  }
+  // constructor(){
+  //     super();
+  // }
 
   preload(){
-      this.load.image('logo', this.image);
+      this.load.image('logo', 'assets/sprites/phaser3-logo-small.png');
   }
     
   create(){

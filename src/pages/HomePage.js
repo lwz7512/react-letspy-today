@@ -1,23 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link, } from 'react-router-dom';
 
 import { app_brand } from '../config/constants'
 import { getProjects } from '../service/ProjectService'
 import ProjectCard from '../components/ProjectCard';
+import projectStore from '../state/ProjectState'
 
 const HomePage = () => {
 
-    const [projects, setProjects] = useState([]);
-    
-    // const history = useHistory()
-    // const handleRouteChange = (target, queryParams = '', data = null) => {
-    //     history.push({
-    //         pathname: target,
-    //         search: `?${queryParams}`,
-    //         state: data
-    //     })
-    //     window.scrollTo(0, 0)
-    // }
+    const projects = projectStore(state => state.projects)
+    const setProjects = projectStore(state => state.setProjects)
 
     useEffect(() => {
         setTimeout(() => {
@@ -25,7 +17,7 @@ const HomePage = () => {
                 setProjects(data)
             })
         }, 500) // lazy loading...
-    }, [])
+    })
 
     const Spinner = () => (
         <i className="pi pi-spin pi-spinner" style={{'fontSize': '2em'}}></i>

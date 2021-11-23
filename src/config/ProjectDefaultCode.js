@@ -150,7 +150,7 @@ export const projectsTips = {
         coding: `Write an expression or a formular to double the 'troops_amount' value above.`,
         walk: 'Fire Now!',
         pass: 'Bingo!',
-        tags: ['Easy', 'Adventure', 'Statement']
+        tags: ['Easy', 'Variable', 'Statement']
     },
     2: {
         name: `Lava Adventure`,
@@ -165,10 +165,10 @@ export const projectsTips = {
         coding: '',
         walk: '',
         pass: '',
-        tags: []
+        tags: ['Easy', 'Action', 'Function']
     },
     3: {
-        name: `Missing bricks`,
+        name: `Missing Bricks`,
         challenge: ``,
         mission: `
             Ola needs to reach the door across the broken bridge, help him repair the bridge!
@@ -180,6 +180,6 @@ export const projectsTips = {
         coding: 'Change odd elements of the list to 1',
         walk: 'Now, press right arrow key to move player',
         pass: 'Congratulations!',
-        tags: []
+        tags: ['Easy', 'Adventure', 'Statement']
     },
 }
