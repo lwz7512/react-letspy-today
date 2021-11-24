@@ -17,7 +17,7 @@ const HomePage = () => {
                 setProjects(data)
             })
         }, 500) // lazy loading...
-    })
+    }, [setProjects])
 
     const Spinner = () => (
         <i className="pi pi-spin pi-spinner" style={{'fontSize': '2em'}}></i>
