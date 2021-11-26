@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
 
 import EmptyPage from './pages/EmptyPage';
@@ -16,8 +17,22 @@ import './layout/flags/flags.css';
 import './layout/layout.scss';
 import './assets/style/App.scss';
 
+import { getProjects } from './service/ProjectService'
+import projectStore from './state/ProjectState'
+
 
 function App() {
+
+  const setProjects = projectStore(state => state.setProjects)
+
+  useEffect(() => {
+    setTimeout(() => {
+      getProjects().then(data => {
+        setProjects(data)
+      })
+    }, 500) // lazy loading...
+  }, [setProjects])
+
   return (
     <div className="app layout-wrapper layout-theme-light">
       <AppTopbar 

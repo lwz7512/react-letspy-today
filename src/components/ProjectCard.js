@@ -5,8 +5,8 @@ const ProjectCard = ({ project }) => (
       <div className="feature-card">
           <img alt="components" src={project.image} />
           <div className="feature-card-detail">
-              <span className="feature-name">{project.title}</span>
-              <p>{project.description}</p>
+              <h2 className="feature-name text-2xl">{project.title}</h2>
+              <p className="text-xl h-8rem">{project.description}</p>
           </div>
           <div className="footer p-5">
             <Link to={`/project/${project.id}`} 

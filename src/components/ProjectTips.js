@@ -2,14 +2,15 @@ import React, { useRef, useState } from 'react'
 import {Steps} from 'primereact/steps';
 import { Toast } from 'primereact/toast';
 import projectStore from '../state/ProjectState'
-import { projectsTips } from '../config/ProjectDefaultCode';
 
 const ProjectTips = () => {
 
   const toastRef = useRef(null)
   const [activeIndex, setActiveIndex] = useState(0);
   const projectID = projectStore(state => state.projectID)
-  const projectInfo = projectsTips[projectID]
+  const projects = projectStore(state => state.projects)
+  const [ projectInfo ] = projects.filter(project => project.id === Number(projectID))
+
 
   const items = [
       {

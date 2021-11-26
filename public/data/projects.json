@@ -9,7 +9,7 @@
       "coding": "Write an expression or a formular to double the 'troops_amount' value above.",
       "walk": "Fire Now!",
       "pass": "Bingo!",
-      "tags": "['Easy', 'Variable', 'Statement']",
+      "tags": ["Easy", "Variable", "Statement"],
       "image": "assets/project/books_md.jpeg"
     },
     {
@@ -21,7 +21,7 @@
       "coding": "",
       "walk": "",
       "pass": "",
-      "tags": "['Easy', 'Action', 'Function']",
+      "tags": ["Easy", "Action", "Function"],
       "image": "assets/project/books_md.jpeg"
     },
     {
@@ -33,7 +33,7 @@
       "coding": "Change odd elements of the list to 1",
       "walk": "Now, press right arrow key to move player",
       "pass": "Congratulations!",
-      "tags": "['Easy', 'Adventure', 'Statement']",
+      "tags": ["Easy", "Adventure", "Statement"],
       "image": "assets/project/books_md.jpeg"
     },
     {
@@ -45,7 +45,7 @@
       "coding": "",
       "walk": "",
       "pass": "",
-      "tags": "",
+      "tags": [],
       "image": "assets/project/books_md.jpeg"
     },
     {
@@ -57,7 +57,7 @@
       "coding": "",
       "walk": "",
       "pass": "",
-      "tags": "",
+      "tags": [],
       "image": "assets/project/books_md.jpeg"
     },
     {
@@ -69,7 +69,7 @@
       "coding": "",
       "walk": "",
       "pass": "",
-      "tags": "",
+      "tags": [],
       "image": "assets/project/books_md.jpeg"
     },
     {
@@ -81,7 +81,7 @@
       "coding": "",
       "walk": "",
       "pass": "",
-      "tags": "",
+      "tags": [],
       "image": "assets/project/books_md.jpeg"
     },
     {
@@ -93,7 +93,7 @@
       "coding": "",
       "walk": "",
       "pass": "",
-      "tags": "",
+      "tags": [],
       "image": "assets/project/books_md.jpeg"
     },
     {
@@ -105,7 +105,7 @@
       "coding": "",
       "walk": "",
       "pass": "",
-      "tags": "",
+      "tags": [],
       "image": "assets/project/books_md.jpeg"
     }
   ]

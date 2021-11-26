@@ -1,13 +1,14 @@
 import React from 'react'
 
 import projectStore from '../state/ProjectState'
-import { projectsTips } from '../config/ProjectDefaultCode';
 
 const MissionPanel = () => {
 
   const switchMode = projectStore(state => state.switchMode)
   const projectID = projectStore(state => state.projectID)
-  const tip = projectsTips[projectID]
+  const projects = projectStore(state => state.projects)
+  const [ tip ] = projects.filter(project => project.id === Number(projectID))
+
 
   return (
     <div className="flex-space-between full-height">

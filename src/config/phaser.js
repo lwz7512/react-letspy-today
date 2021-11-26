@@ -8,8 +8,8 @@ import TemplateGame from '../games/TemplateGame';
 // TODO: add more games...
 export const gamesForProject = {
     1 : BouncingGame,
-    2 : MakeYourPath,
-    3 : TemplateGame,
+    2 : TemplateGame,
+    3 : MakeYourPath,
     4 : TemplateGame,
     5 : TemplateGame,
     6 : TemplateGame,

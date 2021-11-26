@@ -1,23 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, } from 'react-router-dom';
 
 import { app_brand } from '../config/constants'
-import { getProjects } from '../service/ProjectService'
 import ProjectCard from '../components/ProjectCard';
 import projectStore from '../state/ProjectState'
 
 const HomePage = () => {
 
     const projects = projectStore(state => state.projects)
-    const setProjects = projectStore(state => state.setProjects)
-
-    useEffect(() => {
-        setTimeout(() => {
-            getProjects().then(data => {
-                setProjects(data)
-            })
-        }, 500) // lazy loading...
-    }, [setProjects])
 
     const Spinner = () => (
         <i className="pi pi-spin pi-spinner" style={{'fontSize': '2em'}}></i>
