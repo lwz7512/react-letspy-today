@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const AppFooter = (props) => {
-    const logoly = 'assets/layout/images/Ly.png'
+    const logoly = 'assets/layout/images/letspy_arcade_sm.png'
     return (
         <div className="layout-footer">
             <img 

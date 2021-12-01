@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { useHistory,  } from 'react-router-dom';
 import { addEffect, removeEffect } from '../utils/DomUtil';
 
-const logoly = 'assets/layout/images/Ly.png'
+const logoly = 'assets/layout/images/letspy_arcade_sm.png'
 
 export const AppTopbar = (props) => {
 

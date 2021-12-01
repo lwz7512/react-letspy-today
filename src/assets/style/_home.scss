@@ -9,24 +9,26 @@
 
 
 .hero {
-  height: 360px;
-  background-image: url('../images/home/arduino_hack.jpeg');
+  height: 400px;
+  background-image: url('../images/home/gra_crt2.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 80px 30px 60px 50px;
+  padding: 180px 30px 0px 50px;
   position: relative;
 
   .intro-title {
-      font-weight: 400;
-      margin-bottom: 12px;
-      font-size: 24px;
+    color: white;
+    font-weight: 400;
+    margin-bottom: 12px;
+    font-size: 24px;
   }
 
   .intro-subtitle {
-      font-weight: 700;
-      margin-bottom: 40px;
-      margin-top: 0;
-      font-size: 24px;
+    color: white;
+    font-weight: 700;
+    margin-bottom: 40px;
+    margin-top: 0;
+    font-size: 24px;
   }
 
   @media (max-width: 576px) {
@@ -104,7 +106,8 @@
         height: 40px;
         width: 100%;
         padding: 4px;
-        background: rgba(35,86,121,.9);
+        background: rgba(98, 152, 211, .9);
+        // background: rgba(35,86,121,.9);
         color: white;
 
         h3 {
