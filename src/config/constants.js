@@ -8,5 +8,5 @@ export const app_brand = {
   action_now_route: '/project/1',
   feature_title_a: 'Coding with fun?',
   feature_title_b: '🐱',
-  feature_title_c: 'Here are well designed projects with different levels to guide your growing skills.',
+  feature_title_c: 'Here are well designed projects with different levels to guide your growing hands-on skills.',
 }

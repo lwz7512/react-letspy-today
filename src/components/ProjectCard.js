@@ -5,15 +5,13 @@ const ProjectCard = ({ project }) => (
       <div className="feature-card zoom">
           <img className="" alt="components" src={project.image} />
           <div className="top-row">
-            <span className="px-1">
-              <img src="assets/icon/favourite.png" className="star-icon" alt="star" />
-            </span>
-            <span className="px-1">
-              <img src="assets/icon/favourite.png" className="star-icon" alt="star" />
-            </span>
-            <span className="px-1">
-              <img src="assets/icon/favourite.png" className="star-icon" alt="star" />
-            </span>
+            { Array(project.level).fill(0).map(
+              (_, i) => (
+                <span className="px-1" key={i}>
+                  <img src="assets/icon/favourite.png" className="star-icon" alt="star" />
+                </span>
+              )
+            )}
             <img src="assets/icon/medal.png" className="complete-badge-icon" alt="badge" />
           </div>
           <div className="footer-row">

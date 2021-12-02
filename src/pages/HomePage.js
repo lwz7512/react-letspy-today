@@ -27,7 +27,9 @@ const HomePage = () => {
             </div>
             {/* projects title */}
             <div className="col-12 features">
-                <h1>Projects</h1>
+                <h1 className="mb-6">
+                    <span className="header-title ">PROJECTS</span>
+                </h1>
                 <p className="text-2xl">
                     {app_brand.feature_title_a}
                     <span role="img" aria-label="celebrate" className="px-2">

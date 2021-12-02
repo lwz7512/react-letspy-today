@@ -65,6 +65,12 @@
   text-align: center;
   padding-top: 2rem;
 
+  .header-title {
+    border-bottom: solid 4px rgb(209, 49, 93);
+    width: 150px;
+    padding: 0 40px 10px;
+  }
+
   .p-col-12 {
       padding: 2rem;
   }
@@ -106,7 +112,7 @@
         height: 40px;
         width: 100%;
         padding: 4px;
-        background: rgba(98, 152, 211, .9);
+        background: rgba(46, 87, 156, .9);
         // background: rgba(35,86,121,.9);
         color: white;
 
