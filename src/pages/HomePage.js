@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, } from 'react-router-dom';
+import useLocalStorageState from 'use-local-storage-state'
 
 import { app_brand } from '../config/constants'
 import ProjectCard from '../components/ProjectCard';
@@ -8,6 +9,7 @@ import projectStore from '../state/ProjectState'
 const HomePage = () => {
 
     const projects = projectStore(state => state.projects)
+    const [completed, ] = useLocalStorageState('projects_status', {})
 
     const Spinner = () => (
         <i className="pi pi-spin pi-spinner" style={{'fontSize': '2em'}}></i>
@@ -49,6 +51,7 @@ const HomePage = () => {
                             <ProjectCard 
                                 key={i} 
                                 project={project}
+                                completed={completed}
                             />
                         ))}
                     </div>

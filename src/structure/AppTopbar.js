@@ -58,8 +58,8 @@ export const AppTopbar = (props) => {
                         <button 
                             className="p-link layout-topbar-button" 
                             onClick={props.onMobileSubTopbarMenuClick}>
-                            <i className="pi pi-cog"/>
-                            <span>Settings</span>
+                            <i className="pi pi-heart"/>
+                            <span>Donation</span>
                         </button>
                     </li>
                     <li>

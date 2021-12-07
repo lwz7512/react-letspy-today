@@ -9,7 +9,8 @@
   }
 
   .description {
-    margin-bottom: 10px;
+    margin: 8px;
+    height: 50px;
   }
 
   .tags {
@@ -91,22 +92,34 @@
     border-left-style: solid;
   }
 
-  .action-fun.orange {
+  .action-fun.orange, .action-fun.var-0 {
     background-color: var(--orange-200);
     border-left-color: var(--orange-600);
     color: var(--orange-900);
   }
 
-  .action-fun.pink {
+  .action-fun.pink, .action-fun.var-1 {
     background-color: var(--pink-200);
     border-left-color: var(--pink-600);
     color: var(--pink-900);
   }
 
-  .action-fun.green {
+  .action-fun.green, .action-fun.var-2 {
     background-color: var(--green-200);
     border-left-color: var(--green-600);
     color: var(--green-900);
+  }
+
+  .action-fun.blue, .action-fun.var-3 {
+    background-color: var(--blue-200);
+    border-left-color: var(--blue-600);
+    color: var(--bule-900);
+  }
+
+  .action-fun.cyan, .action-fun.var-4 {
+    background-color: var(--cyan-200);
+    border-left-color: var(--cyan-600);
+    color: var(--cyan-900);
   }
 
   .center-child {

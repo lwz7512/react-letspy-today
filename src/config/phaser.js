@@ -24,6 +24,7 @@ export const BaseConfig = {
     width: 600,
     height: 204,
     parent: 'phaser-game-box', // div id
+    banner: false,
 };
 
 export const LargerBase = {

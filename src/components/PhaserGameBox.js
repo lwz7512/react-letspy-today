@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import Phaser from 'phaser';
+// import useLocalStorageState from 'use-local-storage-state'
+
 import projectStore from '../state/ProjectState'
 
 import { PlatformerConfig, gamesForProject } from '../config/phaser';
@@ -16,6 +18,8 @@ const PhaserGameBox = ({ codeResultCallback }) => {
   const projectID = projectStore(state => state.projectID)
   const codeExecResult = projectStore(state => state.codeExecResult)
   const currentTarget = projectsCodeTarget[projectID]
+
+  // const [projects, updateProjectStatus] = useLocalStorageState('projects_status', {})
 
   useEffect(() => {
     if (!gameRef.current) return
