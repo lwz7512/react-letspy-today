@@ -41,10 +41,10 @@ const PhaserGameBox = ({ codeResultCallback }) => {
   useEffect(() => {
     // NOTE: parent to find dom element must be here
     const currentGame = gamesForProject[projectID]
-    const safeScene = currentGame ? currentGame : gamesForProject['1']
+    // const safeScene = currentGame ? currentGame : gamesForProject['1']
     const withParentAndScene = {
       ...PlatformerConfig,
-      scene: [safeScene, Congratulations, ]
+      scene: [currentGame, Congratulations, ]
     }
 
     const game = new Phaser.Game(withParentAndScene);

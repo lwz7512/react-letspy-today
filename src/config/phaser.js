@@ -1,13 +1,14 @@
 // save phaser game configs/games
 import Phaser from 'phaser';
 
+import CloneArmy from '../games/CloneArmy';
 import MakeYourPath from '../games/MakeYourPath';
-import BouncingGame from '../games/BouncingGame';
 import TemplateGame from '../games/TemplateGame';
+
 
 // TODO: add more games...
 export const gamesForProject = {
-    1 : BouncingGame,
+    1 : CloneArmy,
     2 : TemplateGame,
     3 : MakeYourPath,
     4 : TemplateGame,

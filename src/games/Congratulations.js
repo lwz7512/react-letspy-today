@@ -11,7 +11,10 @@ class Congratulations extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('spark', 'assets/particles/red.png');
+    this.load.image('sparkBlue', 'assets/particles/blue.png');
+    this.load.image('sparkGreen', 'assets/particles/green.png');
+    this.load.image('sparkRed', 'assets/particles/red.png');
+    this.load.image('sparkYellow', 'assets/particles/yellow.png');
   }
 
   _createGuideText(message = 'Congratulations') {
@@ -30,7 +33,8 @@ class Congratulations extends Phaser.Scene {
     //  First create a particle manager
     //  A single manager can be responsible for multiple emitters
     //  The manager also controls which particle texture is used by _all_ emitter
-    var particles = this.add.particles('spark');
+    var texture = Phaser.Utils.Array.GetRandom(['sparkBlue', 'sparkGreen', 'sparkRed', 'sparkYellow'])
+    var particles = this.add.particles(texture);
 
     particles.createEmitter({
       x: 300,

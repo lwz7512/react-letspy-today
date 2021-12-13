@@ -3,8 +3,8 @@ import { rTabs } from '../utils/StrUtil'
 const projectCode_1 = rTabs(`
     troops_amount = 100  # DO NOT TOUCH THIS LINE!
     # Note: 
-    # A formular using 'foo' expected
-    troops_amount = troops_amount * 2
+    # make an expression to double the troops_amount variable value:
+    # troops_amount = troops_amount * 2
 `)
 
 const projectCode_2 = rTabs(`
