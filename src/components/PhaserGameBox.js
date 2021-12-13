@@ -30,7 +30,8 @@ const PhaserGameBox = ({ codeResultCallback }) => {
       codeExecResult.result
     )
     codeResultCallback(success)
-    
+
+    if (!success) return
     // call game bingo() function if success is true
     const currentScene = gameRef.current.scene.getAt(0)
     currentScene.bingo(codeExecResult.result)
@@ -47,14 +48,20 @@ const PhaserGameBox = ({ codeResultCallback }) => {
       scene: [currentGame, Congratulations, ]
     }
 
-    const game = new Phaser.Game(withParentAndScene);
+    const game = new Phaser.Game(withParentAndScene)
+    // TODO: ...to save my record
+    const gamePassHandler = () => {
+      console.log(`>>> Project: ${projectID} completed!`)
+    }
+    game.events.addListener('gamePass', gamePassHandler)
     gameRef.current = game // cache game for later check
 
     return () => {
+      game.events.removeListener('gamePass')
       game.destroy(true)
     }
 
-  }, [projectID, ])
+  }, [projectID])
 
   return (
     <div id="phaser-game-box" />

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 
 import { Button } from 'primereact/button'
-import { BiRun, BiArrowToRight } from "react-icons/bi"
+import { BiRun } from 'react-icons/bi'
+import { FiThumbsUp } from 'react-icons/fi'
 import { DotLoader } from 'react-spinners';
 
 import { dotLoaderStyle } from '../config/project'
@@ -19,7 +20,7 @@ const MiniGamePanel = () => {
   const [isSucceed, setIsSucceed] = useState(false)
 
   const buttonIcon = !runningMode && (
-    isSucceed ? <BiArrowToRight size="54" /> : <BiRun size="54" />
+    isSucceed ? <FiThumbsUp size="52" /> : <BiRun size="54" />
   )
 
   return (

@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import { Link, } from 'react-router-dom';
 import {Steps} from 'primereact/steps';
 import { Toast } from 'primereact/toast';
 import projectStore from '../state/ProjectState'
@@ -77,7 +78,9 @@ const ProjectTips = () => {
       <div className="flex justify-content-between">
         <h3 className="text-900">Instructions</h3>
         <h3>
-          <span className="px-1">🙋</span>
+          <Link to="/">
+            <span className="px-1">🏠</span>
+          </Link>
         </h3>
       </div>
       {/* body row */}

@@ -37,8 +37,8 @@ class Soldier extends Phaser.GameObjects.Sprite {
     this.shootTimer = this.scene.time.addEvent({
       delay: 200,
       callback() {
-        this.setFrame(2) // Kneeling
-        this.setData('fired', true)
+        this.setFrame(2) // lazy Kneeling
+        this.setData('fired', true) // lazy set fired
       },
       callbackScope: this,
       loop: false,
@@ -50,7 +50,7 @@ class Soldier extends Phaser.GameObjects.Sprite {
   update() {
     if (this.shootTimer === undefined) return
     if (this.shootTimer === null) return
-    // clear timer
+    // lazy clear timer
     if (this.getData('fired')) {
       this.shootTimer.remove();
       this.shootTimer = null
@@ -72,15 +72,13 @@ class Enemy extends Phaser.GameObjects.Sprite {
 
     const colors = [ 0xef658c, 0xff9a52, 0xffdf00, 0x31ef8c, 0x21dfff, 0x31aade, 0x5275de, 0x9c55ad, 0xbd208c ];
     this.setTint(Phaser.Utils.Array.GetRandom(colors));
-
-    
   }
 
   update(time, delta) {
     if (!this.getData('isDead')) {
       this.body.velocity.y = -5 // stand still
     } else {
-      this.body.velocity.y = 200 // drop down...
+      this.body.velocity.y = 100 // drop down...
     }
   }
 
@@ -100,8 +98,8 @@ class CloneArmy extends Phaser.Scene {
     this.bingo = this.bingo.bind(this)
     // soldiers column
     this.columnIndex = 0
-    // exploding...
-    // this.exploding = false
+    // shooting interval
+    this.shootingInterval = 0
   }
 
   preload(){
@@ -145,16 +143,12 @@ class CloneArmy extends Phaser.Scene {
     // soldiers squad ...
     const rows = 4
     for (var i=0; i<5; i++) {
-      // save current positioon
-      this.columnIndex = i
-
       for (var j=0; j<rows; j++) {
         var soldier = new Soldier(this, 20+i*20, 90+j*32, 'soldier', i*rows+j)
         this.soldiers.add(soldier);
       }
     }
 
-    // const colors = [ 0xef658c, 0xff9a52, 0xffdf00, 0x31ef8c, 0x21dfff, 0x31aade, 0x5275de, 0x9c55ad, 0xbd208c ];
     for (var m=0; m<10; m++) {
       for (var n=0; n<rows; n++) {
         var alien = new Enemy(this, 310+m*30, 90+n*32, 'invader', m*rows+n)
@@ -165,20 +159,31 @@ class CloneArmy extends Phaser.Scene {
     // fire by a column of soldiers
     this.input.keyboard.on('keydown-SPACE', function() {
       // if (!this.complete) return
-      if (this.columnIndex < 0) return
-      // if (this.exploding) return
 
-      this.fireSound.play()
+      // control shooting inveral
+      if (this.shootingInterval < 40) return
 
-      this.soldiers.getChildren().forEach(soldier => {
-        if (Math.floor(soldier.getData('id')/rows) === this.columnIndex) {
-          const bullet = soldier.fire()
-          if (bullet) {
-            this.playerLasers.add(bullet)
-          }
+      // reset interval
+      this.shootingInterval = 0
+
+      const reversedSoilder = [...this.soldiers.getChildren()].reverse()
+      const oneColumn = []
+      reversedSoilder.forEach(soldier => {
+        if (oneColumn.length === 4) return
+        if (!soldier.getData('fired')) {
+          oneColumn.push(soldier)
         }
       })
-      this.columnIndex -= 1
+
+      if (oneColumn.length) {
+        this.fireSound.play()
+      }
+      oneColumn.forEach(soldier => {
+        const bullet = soldier.fire()
+        if (bullet) {
+          this.playerLasers.add(bullet)
+        }
+      })
     }, this);
     
     // collision detection
@@ -199,39 +204,68 @@ class CloneArmy extends Phaser.Scene {
 
   } // end of create
 
-  _createGuideText(message) {
+  _createTextBouncing() {
+    this.tweens.add({
+      targets: this.guideTxt,
+      y: 30,
+      duration: 500,
+      repeat: 4,
+      paused: false,
+      yoyo: true
+    });
+  }
+
+  _createGuideText(message, x=10, y=10) {
     if (this.guideTxt) {
       this.guideTxt.removeFromDisplayList()
     }
-    this.guideTxt = this.add.text(10, 10, message, { fill: '#ffff00' });
+    this.guideTxt = this.add.text(x, y, message, { fill: '#ffff00' });
+  }
+
+  update(time, delta){
+    if (this.succeed) return
+    // update interval
+    this.shootingInterval += 1
+
+    const completed = this.enemies.getChildren().length === 0
+    if (!completed) return
+    
+    this.succeed = true
+    // lazy change scene to congratulation!
+    setTimeout(() => {
+      this.onGameSuccess()
+      this.scene.start(
+        'congratulations', 
+        { msg: 'You completed the [Clone Army] project!'}
+      )
+    }, 300)
   }
 
   /**
    * exposure to outeside of game
    * @returns nothing
    */
-  bingo(bridge) {
-    // TODO: ...ADD more soliders...
-    this._createGuideText('Bingo!')
+   bingo(bridge) {
+    if (this.complete) return
+
+    this._createGuideText('Bingo! press SPACE BAR to shoot those aliens.', 70, 20)
+    this._createTextBouncing()
+    // add more soliders...
+    const rows = 4
+    for (var i=5; i<10; i++) {
+      for (var j=0; j<rows; j++) {
+        var soldier = new Soldier(this, 20+i*20, 90+j*32, 'soldier', i*rows+j)
+        this.soldiers.add(soldier);
+      }
+    }
     this.complete = true
     return this.complete
   }
 
-  update(time, delta){
-    if (this.succeed) return
-
-    const completed = this.enemies.getChildren().length === 0
-    if (completed) {
-      this.succeed = true
-      // lazy change scene to congratulation!
-      setTimeout(() => {
-        this.scene.start(
-          'congratulations', 
-          { msg: 'You completed the [Clone Army] chapter!' }
-        )
-      }, 500)
-    }
+  onGameSuccess() {
+    this.game.events.emit('gamePass')
   }
+
 
 }
 

@@ -1,7 +1,7 @@
 import { rTabs } from '../utils/StrUtil'
 
 const projectCode_1 = rTabs(`
-    troops_amount = 100  # DO NOT TOUCH THIS LINE!
+    troops_amount = 20  # DO NOT TOUCH THIS LINE!
     # Note: 
     # make an expression to double the troops_amount variable value:
     # troops_amount = troops_amount * 2
@@ -114,7 +114,7 @@ export const projectsCodeTarget = {
         projName: 'Clone Army',
         codeType: 'statements', 
         params: 'troops_amount', 
-        expect: 200
+        expect: 40
     },
     2: {
         projName: 'Lava Adventure',

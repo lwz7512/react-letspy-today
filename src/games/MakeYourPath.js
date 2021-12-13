@@ -144,11 +144,12 @@ class MakeYourPath extends Phaser.Scene {
 
     // lazy change scene to congratulation!
     setTimeout(() => {
+      this.onGameSuccess()
       this.scene.start(
         'congratulations', 
         { msg: 'You completed the [Make Your Path] chapter!' }
       )
-    }, 500)
+    }, 300)
 
     this.succeed = true
   }
@@ -176,12 +177,16 @@ class MakeYourPath extends Phaser.Scene {
     const expectSum = bricks.reduce((a, b) => a + b, 0)
     if (expectSum !== 18) return // not successful
     
-    this._createGuideText('Now, Walk player toward Exit using right arrow key!')
+    this._createGuideText('Bingo! Walk player toward Exit using RIGHT ARROW key now!')
     this._createPlayerBouncing()
     
     this.complete = true
 
     return this.complete
+  }
+
+  onGameSuccess() {
+    this.game.events.emit('gamePass')
   }
 
 }
