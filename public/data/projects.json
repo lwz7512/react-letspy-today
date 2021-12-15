@@ -20,7 +20,7 @@
       "description": "The goal in this mission is learning how to organize different actions to get through the lava valley.",
       "mission": "Ola is being trapped in the lava valley! Your mission is to help him out of there!",
       "tips": "Compose a group of actions to instruct Ola walking through it. ONE line ONE action only, available actions including:",
-      "coding": "",
+      "coding": "walk(1) jump(1) pivot()",
       "walk": "",
       "pass": "",
       "tags": ["Easy", "Action", "Function"],

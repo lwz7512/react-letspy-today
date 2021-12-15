@@ -3,7 +3,7 @@ import Phaser from 'phaser';
 class TemplateGame extends Phaser.Scene {
   constructor(){
     super('TemplateGame');
-    // build the missing part of game
+    // got the missing part of game from pthon code
     this.complete = false
     // pass the game!
     this.succeed = false

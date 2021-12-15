@@ -88,7 +88,7 @@ class Enemy extends Phaser.GameObjects.Sprite {
 class CloneArmy extends Phaser.Scene {
   constructor(){
     super('CloneArmy');
-    // build the missing part of game
+    // got the missing part of game from pthon code
     this.complete = false
     // pass the game!
     this.succeed = false

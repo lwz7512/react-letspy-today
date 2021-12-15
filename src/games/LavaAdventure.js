@@ -3,7 +3,7 @@ import Phaser from 'phaser';
 class LavaAdventure extends Phaser.Scene {
   constructor(){
     super('LavaAdventure');
-    // build the missing part of game
+    // got the missing part of game from pthon code
     this.complete = false
     // pass the game!
     this.succeed = false
@@ -16,18 +16,41 @@ class LavaAdventure extends Phaser.Scene {
     this.docker = null
     // motion counter
     this.moveCounter = 0
-
+    // failed after player y > 180
+    this.failed = false
+    // steps to go
+    this.steps = []
     // actions
-    this.actionWalk = [10, 20, 30, 40, 50, 90, 100, 110, 120, 130, 170, 180, 190, 200, 210]
+    this.actionWalk = [
+      10, 20, 30, 40, 50, 90, 100, 110, 120, 130, 170, 180, 190, 200, 
+      610, 620, 630, 640, 650, 660, 670, 680, 
+    ]
     this.actionJump = [60, 70, 80, 140, 150, 160, ]
     this.actionGrow = [220, ]
+    this.actionHold = [230, 240, 250, ]
+    this.actionPivot= [260, 270, ]
+    this.actionTrans= [
+      280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 
+      430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570,
+      580, 590,
+    ]
+    this.actionReach= [600, ]
+    this.actionExit = [700, ]
+  }
+
+  init() {
+    this.failed = false
   }
 
   preload(){
     this.load.image('sky', 'assets/skies/sunset.png');
     this.load.image('tiles', 'assets/tilemaps/tiles/kenney_redux_64x64.png');
     this.load.tilemapTiledJSON('map', 'assets/tilemaps/maps/lavaAdventure.json')
-    this.load.spritesheet('player', 'assets/sprites/player_tilesheet.png', { frameWidth: 80, frameHeight: 110 });
+    this.load.spritesheet(
+      'player', 
+      'assets/sprites/player_tilesheet.png', 
+      { frameWidth: 80, frameHeight: 110 }
+    );
   }
   
   create(){
@@ -37,17 +60,22 @@ class LavaAdventure extends Phaser.Scene {
     var tiles = map.addTilesetImage('adventure', 'tiles');
 
     this.background = map.createLayer('background', tiles, -40, -40);
-    this.background.setCollision([2, 13, 96]) // 2: wall, 13: grass block, 96: exit
+    this.background.setCollision([2, 13,]) // 2: wall, 13: grass block, 96: exit
     
     this.docker = map.createLayer('docker', tiles, -40, -40)
     this.docker.setCollision([42, 54, 178]) // 178: pivot
 
     this.pivoted = map.createLayer('pivoted', tiles, -40, -40)
     this.pivoted.setVisible(false)
-    this.pivoted.setCollision([42, 54, 166]) // 166: pivoted
+    this.pivoted.setCollision([42, 54]) // 166: pivoted
+
+    this.reached = map.createLayer('reached', tiles, -40, -40)
+    this.reached.setVisible(false)
+    this.reached.setCollision([42, 54])
 
     this._createPlayer()
     this._createPlayerAnimation()
+    this._creatActionsMap()
 
     // set layer collision
     this.physics.add.collider(this.background, this.player);
@@ -55,11 +83,42 @@ class LavaAdventure extends Phaser.Scene {
     this.physics.add.collider(this.pivoted, this.player);
 
     this.cursors = this.input.keyboard.createCursorKeys();
-    this.input.keyboard.removeCapture(32) // disable space key presss, conflict with monaco editor
+    // disable space key presss, conflict with monaco editor
+    this.input.keyboard.removeCapture(32);
 
     this.input.keyboard.on('keydown-SPACE', function() {
       this.complete = true
-    }, this)
+    }, this);
+  }
+
+  _creatActionsMap() {
+    // make a frame:action map
+    this.completePassActions = {}
+    this.actionWalk.forEach(frame => this.completePassActions[frame] = 'w')
+    this.actionJump.forEach(frame => this.completePassActions[frame] = 'j')
+    this.actionGrow.forEach(frame => this.completePassActions[frame] = 'g')
+    this.actionHold.forEach(frame => this.completePassActions[frame] = 'h')
+    this.actionPivot.forEach(frame => this.completePassActions[frame] = 'p')
+    this.actionTrans.forEach(frame => this.completePassActions[frame] = 't')
+    this.actionReach.forEach(frame => this.completePassActions[frame] = 'r')
+    this.actionExit.forEach(frame => this.completePassActions[frame] = 'e')
+  }
+
+  _checkIn(frame) {
+    const actionAbbr = this.completePassActions[frame]
+    if (!actionAbbr) return this._goIdle.bind(this)
+    
+    const actionToFunction = {
+      w : this._goRight.bind(this),
+      j : this._goJump.bind(this),
+      g : this._goBigger.bind(this),
+      h : this._goHold.bind(this),
+      p : this._goPivot.bind(this),
+      t : this._goTransport.bind(this),
+      r : this._goReached.bind(this),
+      e : this._goExit.bind(this),
+    }
+    return actionToFunction[actionAbbr]
   }
 
   _createPlayer() {
@@ -67,7 +126,6 @@ class LavaAdventure extends Phaser.Scene {
     this.player.setBounce(0.2);
     this.player.setScale(0.4, 0.4)
     this.player.setCollideWorldBounds(true);
-    // this.player.setDepth(1) // put front
   }
 
   _createPlayerAnimation() {
@@ -103,17 +161,23 @@ class LavaAdventure extends Phaser.Scene {
       frameRate: 6
     });
 
+    this.anims.create({
+      key: 'pivot',
+      frames: [ { key: 'player', frame: 14 } ],
+      frameRate: 6
+    });
+
   }
 
   _createGuideText(message) {
     if (this.guideTxt) {
       this.guideTxt.removeFromDisplayList()
     }
-    this.guideTxt = this.add.text(10, 10, message, { fill: '#ffff00' });
+    this.guideTxt = this.add.text(200, 20, message, { fill: '#ffff00', fontSize: 18 });
   }
 
   _goRight() {
-    this.player.setVelocityX(90);
+    this.player.setVelocityX(92);
     this.player.anims.play('right', true);
   }
 
@@ -137,45 +201,80 @@ class LavaAdventure extends Phaser.Scene {
     this.player.y -= 30
   }
 
+  _goPivot() {
+    this.player.anims.play('pivot');
+    this.player.setScale(0.4, 0.4)
+    this.docker.setVisible(false)
+    this.pivoted.setVisible(true)
+  }
+
+  _goTransport() {
+    this.player.anims.play('turn');
+    this.player.x += 4
+    this.pivoted.x += 4
+  }
+
+  _goReached() {
+    this.pivoted.setVisible(false)
+    this.reached.setVisible(true)
+  }
+
+  _goExit() {
+    this.succeed = true
+    // lazy change scene to congratulation!
+    setTimeout(() => {
+      this.onGameSuccess()
+      this.scene.start(
+        'congratulations', 
+        { msg: 'You completed the [Lava Adventure] project!'}
+      )
+    }, 300)
+  }
+
+  _gameFailed() {
+    this.failed = true
+    setTimeout(() => {
+      this.scene.start(
+        'gamefailed', 
+        { scene: 'LavaAdventure'}
+      )
+    }, 200)
+  }
+
+  _manualControl() {
+    if (this.cursors.left.isDown) {
+      this.player.setVelocityX(-160);
+      return this.player.anims.play('left', true);
+    } else if (this.cursors.right.isDown) { // walk right
+      this.player.setVelocityX(80);
+      return this.player.anims.play('right', true);
+    }
+    if (this.cursors.up.isDown && this.player.body.blocked.down){
+      this.player.anims.play('jump');
+      return this.player.setVelocityY(-160);
+    }
+    this.player.setVelocityX(0);
+    this.player.anims.play('turn');
+  }
+
   update(){
-    if (!this.complete) return
+    if (this.failed || this.succeed) return
+
+    if (this.player.y > 180) {
+      return this._gameFailed()
+    }
+
+    if (!this.complete) {
+      return this._manualControl()
+    }
 
     this.moveCounter += 1
 
     if (this.moveCounter % 10 !== 0) return
 
-    // console.log(this.moveCounter)
+    // Successful action
+    this._checkIn(this.moveCounter)()
 
-    if (this.actionWalk.includes(this.moveCounter)) {
-      return this._goRight()
-    }
-
-    if (this.actionJump.includes(this.moveCounter)) {
-      return this._goJump()
-    }
-
-    if (this.actionGrow.includes(this.moveCounter)) {
-      return this._goBigger()
-    }
-
-    this._goHold()
-
-
-    // if (this.cursors.left.isDown) {
-    //   this.player.setVelocityX(-160);
-    //   this.player.anims.play('left', true);
-    // } else if (this.cursors.right.isDown) { // walk right
-    //   this.player.setVelocityX(80);
-    //   this.player.anims.play('right', true);
-    // } else if(!this.cursors.up.isDown) {
-    //   this.player.setVelocityX(0);
-    //   this.player.anims.play('turn');
-    // }
-
-    // if (this.cursors.up.isDown && this.player.body.blocked.down){
-    //   this.player.anims.play('jump');
-    //   this.player.setVelocityY(-160);
-    // }
   }
 
   /**
@@ -183,11 +282,19 @@ class LavaAdventure extends Phaser.Scene {
    * @returns nothing
    */
   bingo(bridge) {
+    if (this.complete) return
+
     this._createGuideText('Bingo!')
+    this.player.setPosition(0, 0)
+
     this.complete = true
     return this.complete
   }
   
+  onGameSuccess() {
+    this.game.events.emit('gamePass')
+  }
+
 
 }
 

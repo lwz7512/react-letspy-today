@@ -20,7 +20,7 @@ class MakeYourPath extends Phaser.Scene {
       [ 107, 122, 107, 122, 107, 122, 107, 122, 107, 122, 107, 122, 107, 122, 107, 122, 107, 122, 107, ], // - ** path row **
     ]
     this.pickups = []
-    // build the missing part of game
+    // got the missing part of game from pthon code
     this.complete = false
     // pass the game!
     this.succeed = false
@@ -165,6 +165,7 @@ class MakeYourPath extends Phaser.Scene {
 
     const bricks = []
     if (Array.isArray(bridge)) {
+      // add the missing bricks
       bridge.forEach((brick, index) => {
         if (index % 2 === 0) bricks.push(107)
         if (index % 2 === 1 && brick === 1) bricks.push(122)

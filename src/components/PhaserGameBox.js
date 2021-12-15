@@ -6,6 +6,7 @@ import projectStore from '../state/ProjectState'
 
 import { PlatformerConfig, gamesForProject } from '../config/phaser';
 import Congratulations from '../games/Congratulations';
+import GameFailed from '../games/GameFailed';
 
 import { checkResultMatchTartet } from '../helper/ProjectHelper';
 import { isEmptyObj } from '../utils/StrUtil'
@@ -42,7 +43,7 @@ const PhaserGameBox = ({ codeResultCallback }) => {
     const currentGame = gamesForProject[projectID]
     const withParentAndScene = {
       ...PlatformerConfig,
-      scene: [currentGame, Congratulations, ]
+      scene: [currentGame, Congratulations, GameFailed]
     }
     const game = new Phaser.Game(withParentAndScene)
     // TODO: to save my record if logged in ...
@@ -57,8 +58,8 @@ const PhaserGameBox = ({ codeResultCallback }) => {
       game.events.removeListener('gamePass')
       game.destroy(true)
     }
-
-  }, [projectID, projects, updateProjectStatus])
+  // eslint-disable-next-line
+  }, [projectID, ])
 
   return (
     <div id="phaser-game-box" />
