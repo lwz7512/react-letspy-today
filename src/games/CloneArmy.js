@@ -158,7 +158,7 @@ class CloneArmy extends Phaser.Scene {
 
     // fire by a column of soldiers
     this.input.keyboard.on('keydown-SPACE', function() {
-      // if (!this.complete) return
+      if (!this.complete) return
 
       // control shooting inveral
       if (this.shootingInterval < 40) return
@@ -227,7 +227,7 @@ class CloneArmy extends Phaser.Scene {
     // update interval
     this.shootingInterval += 1
 
-    const completed = this.enemies.getChildren().length === 0
+    const completed = this.enemies.getLength() === 0
     if (!completed) return
     
     this.succeed = true

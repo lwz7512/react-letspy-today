@@ -14,7 +14,7 @@ const ProjectCard = ({ project, completed }) => {
                   </span>
                 )
               )}
-              { completed[project.id] === 'done' && (
+              { completed[project.id] && (
                 <img 
                   src="assets/icon/medal.png" 
                   className="complete-badge-icon" 

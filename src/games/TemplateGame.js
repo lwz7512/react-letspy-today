@@ -37,6 +37,10 @@ class TemplateGame extends Phaser.Scene {
     this.guideTxt = this.add.text(10, 10, message, { fill: '#ffff00' });
   }
 
+  update(){
+
+  }
+
   /**
    * exposure to outeside of game
    * @returns nothing
@@ -46,10 +50,7 @@ class TemplateGame extends Phaser.Scene {
     this.complete = true
     return this.complete
   }
-
-  update(){
-
-  }
+  
 
 }
 

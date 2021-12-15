@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import Phaser from 'phaser';
-// import useLocalStorageState from 'use-local-storage-state'
+import useLocalStorageState from 'use-local-storage-state'
 
 import projectStore from '../state/ProjectState'
 
@@ -19,7 +19,7 @@ const PhaserGameBox = ({ codeResultCallback }) => {
   const codeExecResult = projectStore(state => state.codeExecResult)
   const currentTarget = projectsCodeTarget[projectID]
 
-  // const [projects, updateProjectStatus] = useLocalStorageState('projects_status', {})
+  const [projects, updateProjectStatus] = useLocalStorageState('projects_status', {})
 
   useEffect(() => {
     if (!gameRef.current) return
@@ -38,20 +38,17 @@ const PhaserGameBox = ({ codeResultCallback }) => {
     
   }, [codeExecResult, currentTarget, codeResultCallback])
 
-
   useEffect(() => {
-    // NOTE: parent to find dom element must be here
     const currentGame = gamesForProject[projectID]
-    // const safeScene = currentGame ? currentGame : gamesForProject['1']
     const withParentAndScene = {
       ...PlatformerConfig,
       scene: [currentGame, Congratulations, ]
     }
-
     const game = new Phaser.Game(withParentAndScene)
-    // TODO: ...to save my record
+    // TODO: to save my record if logged in ...
     const gamePassHandler = () => {
-      console.log(`>>> Project: ${projectID} completed!`)
+      // console.log(`>>> Project: ${projectID} completed!`)
+      updateProjectStatus({...projects, [projectID]:'done'})
     }
     game.events.addListener('gamePass', gamePassHandler)
     gameRef.current = game // cache game for later check
@@ -61,7 +58,7 @@ const PhaserGameBox = ({ codeResultCallback }) => {
       game.destroy(true)
     }
 
-  }, [projectID])
+  }, [projectID, projects, updateProjectStatus])
 
   return (
     <div id="phaser-game-box" />

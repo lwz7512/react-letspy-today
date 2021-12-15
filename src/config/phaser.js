@@ -2,6 +2,7 @@
 import Phaser from 'phaser';
 
 import CloneArmy from '../games/CloneArmy';
+import LavaAdventure from '../games/LavaAdventure';
 import MakeYourPath from '../games/MakeYourPath';
 import TemplateGame from '../games/TemplateGame';
 
@@ -9,7 +10,7 @@ import TemplateGame from '../games/TemplateGame';
 // TODO: add more games...
 export const gamesForProject = {
     1 : CloneArmy,
-    2 : TemplateGame,
+    2 : LavaAdventure,
     3 : MakeYourPath,
     4 : TemplateGame,
     5 : TemplateGame,
