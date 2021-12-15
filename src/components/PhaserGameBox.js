@@ -31,11 +31,9 @@ const PhaserGameBox = ({ codeResultCallback }) => {
       codeExecResult.result
     )
     codeResultCallback(success)
-
-    if (!success) return
-    // call game bingo() function if success is true
+    // allowing reach to bingo without success
     const currentScene = gameRef.current.scene.getAt(0)
-    currentScene.bingo(codeExecResult.result)
+    currentScene.bingo(codeExecResult.result, success)
     
   }, [codeExecResult, currentTarget, codeResultCallback])
 

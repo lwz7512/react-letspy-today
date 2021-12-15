@@ -86,9 +86,9 @@ class LavaAdventure extends Phaser.Scene {
     // disable space key presss, conflict with monaco editor
     this.input.keyboard.removeCapture(32);
 
-    this.input.keyboard.on('keydown-SPACE', function() {
-      this.complete = true
-    }, this);
+    // this.input.keyboard.on('keydown-SPACE', function() {
+    //   this.complete = true
+    // }, this);
   }
 
   _creatActionsMap() {
@@ -281,8 +281,10 @@ class LavaAdventure extends Phaser.Scene {
    * exposure to outeside of game
    * @returns nothing
    */
-  bingo(bridge) {
+  bingo(_, success) {
     if (this.complete) return
+
+    if (!success) return // success is a must
 
     this._createGuideText('Bingo!')
     this.player.setPosition(0, 0)

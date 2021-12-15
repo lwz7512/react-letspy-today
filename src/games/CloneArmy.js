@@ -245,8 +245,10 @@ class CloneArmy extends Phaser.Scene {
    * exposure to outeside of game
    * @returns nothing
    */
-   bingo(bridge) {
+   bingo(_, success) {
     if (this.complete) return
+
+    if (!success) return // success is a must
 
     this._createGuideText('Bingo! press SPACE BAR to shoot those aliens.', 70, 20)
     this._createTextBouncing()
