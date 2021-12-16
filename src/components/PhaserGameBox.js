@@ -7,7 +7,7 @@ import { PlatformerConfig, gamesForProject } from '../config/phaser';
 import Congratulations from '../games/Congratulations';
 import GameFailed from '../games/GameFailed';
 
-import { checkResultMatchTartet } from '../helper/ProjectHelper';
+import { checkResultMatchTarget } from '../helper/ProjectHelper';
 import { isEmptyObj } from '../utils/StrUtil'
 import { projectsCodeTarget } from '../config/ProjectDefaultCode';
 
@@ -30,7 +30,7 @@ const PhaserGameBox = ({ codeResultCallback }) => {
     if (!gameRef.current) return
     if (isEmptyObj(codeExecResult)) return
     
-    const success = checkResultMatchTartet(
+    const success = checkResultMatchTarget(
       currentTarget.expect, 
       codeExecResult.result
     )

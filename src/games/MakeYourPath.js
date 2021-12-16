@@ -95,6 +95,17 @@ class MakeYourPath extends Phaser.Scene {
     });
   }
 
+  _createTextBouncing() {
+    this.tweens.add({
+      targets: this.guideTxt,
+      y: 20,
+      duration: 500,
+      repeat: 3,
+      paused: false,
+      yoyo: true
+    });
+  }
+
   _createGuideText(message) {
     if (this.guideTxt) {
       this.guideTxt.removeFromDisplayList()
@@ -171,15 +182,18 @@ class MakeYourPath extends Phaser.Scene {
         if (index % 2 === 1 && brick === 1) bricks.push(122)
       })
     }
-    const withBlankLines = [...this.blankRows, bricks]
+    // FIXME: restrict bricks to 18 blocks @2021/12/16
+    const withBlankLines = [...this.blankRows, bricks.slice(0, 18)]
     const bridgeLayer = this._createGroundLayer(withBlankLines)
     this.physics.add.collider(bridgeLayer, this.player);
 
-    const expectSum = bricks.reduce((a, b) => a + b, 0)
+    const expectSum = bridge.reduce((a, b) => a + b, 0)
+    console.log(expectSum)
     if (expectSum !== 18) return // not successful
     
-    this._createGuideText('Bingo! Walk player toward Exit using RIGHT ARROW key now!')
+    this._createGuideText('Bingo! Move player toward Exit with RIGHT ARROW key!')
     this._createPlayerBouncing()
+    this._createTextBouncing()
     
     this.complete = true
 

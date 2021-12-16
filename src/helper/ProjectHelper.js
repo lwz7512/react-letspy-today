@@ -4,13 +4,21 @@
  * @param {*} result 
  * @returns true or false
  */
-export const checkResultMatchTartet = (expect, result) => {
+export const checkResultMatchTarget = (expect, result) => {
   if (!result) return false // 0, something wrong in backend
   if (expect === result) return true // number comparison
 
   // start array compare
   if (Array.isArray(expect) && Array.isArray(result)) {
       if (expect.length !== result.length) return false
+      // compare each value
+      let equal = true
+      expect.forEach((value, index) => {
+        if (value !== result[index]) {
+          equal = false
+        }
+      })
+      if (equal) return true
       // compare each action
       let matched = true
       expect.forEach((action, index) => {

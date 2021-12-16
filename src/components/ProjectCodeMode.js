@@ -8,7 +8,7 @@ import projectStore from '../state/ProjectState'
 import { isEmptyObj } from '../utils/StrUtil'
 import { projectsCodeTarget } from '../config/ProjectDefaultCode';
 import {
-  checkResultMatchTartet, 
+  checkResultMatchTarget, 
   generateFailureMessage, 
   generateSuccessMessage,
 } from '../helper/ProjectHelper';
@@ -41,7 +41,7 @@ const ProjectCodeMode = () => {
 
   useEffect(() => {
     if (isEmptyObj(codeExecResult)) return
-    const success = checkResultMatchTartet(
+    const success = checkResultMatchTarget(
       currentTarget.expect, 
       codeExecResult.result
     )
