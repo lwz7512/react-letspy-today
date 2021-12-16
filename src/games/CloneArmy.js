@@ -158,9 +158,9 @@ class CloneArmy extends Phaser.Scene {
 
     // fire by a column of soldiers
     this.input.keyboard.on('keydown-SPACE', function() {
-      if (!this.complete) return
+      // if (!this.complete) return
 
-      // control shooting inveral
+      // control shooting interal
       if (this.shootingInterval < 40) return
 
       // reset interval

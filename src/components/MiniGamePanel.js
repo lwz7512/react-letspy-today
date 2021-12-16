@@ -16,12 +16,13 @@ const MiniGamePanel = () => {
   const switchMode = projectStore(state => state.switchMode)
   const runningMode = projectStore(state => state.runningMode)
   const startRunning = projectStore(state => state.startRunning)
-
   const [isSucceed, setIsSucceed] = useState(false)
 
   const buttonIcon = !runningMode && (
     isSucceed ? <FiThumbsUp size="52" /> : <BiRun size="54" />
   )
+
+  const codeResultHandler = result => setIsSucceed(result)
 
   return (
     <div className="flex full-height">
@@ -36,9 +37,7 @@ const MiniGamePanel = () => {
       {/* mini adventure game */}
       <div className="flex-grow-1 flex bg-white">
         <PhaserGameBox 
-          codeResultCallback={
-            result => setIsSucceed(result)
-          }
+          codeResultCallback={codeResultHandler}
         />
       </div>
       <div className="right-part center-child bg-blue-500 border-left-3 border-blue-500">

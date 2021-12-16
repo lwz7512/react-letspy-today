@@ -10,10 +10,11 @@ class GameFailed extends Phaser.Scene {
   }
 
   preload(){
-    // this.load.image('logo', 'assets/sprites/phaser3-logo-small.png');
+    this.load.audio('gameover', 'assets/audio/arcade_resources_sounds_gameover2.mp3');
   }
     
   create(){
+    console.log('create...')
     const message = 'Oops...you failed!'
     const guideTxt = this.add.text(180, 50, message, { fill: '#ffff00', fontSize: 24 });
     this.tweens.add({
@@ -31,6 +32,9 @@ class GameFailed extends Phaser.Scene {
     this.input.keyboard.on('keydown-SPACE', function() {
       this._restart()
     }, this)
+
+    this.gameoverSound = this.sound.add('gameover')
+    this.gameoverSound.play()
   }
 
   update(){

@@ -51,6 +51,8 @@ class LavaAdventure extends Phaser.Scene {
       'assets/sprites/player_tilesheet.png', 
       { frameWidth: 80, frameHeight: 110 }
     );
+    
+    this.load.audio('lose', 'assets/audio/arcade_resources_sounds_lose4.mp3');
   }
   
   create(){
@@ -89,6 +91,8 @@ class LavaAdventure extends Phaser.Scene {
     // this.input.keyboard.on('keydown-SPACE', function() {
     //   this.complete = true
     // }, this);
+
+    this.loseSound = this.sound.add('lose')
   }
 
   _creatActionsMap() {
@@ -124,8 +128,9 @@ class LavaAdventure extends Phaser.Scene {
   _createPlayer() {
     this.player = this.physics.add.sprite(0, 0, 'player', 0);
     this.player.setBounce(0.2);
-    this.player.setScale(0.4, 0.4)
+    this.player.setScale(0.4, 0.4);
     this.player.setCollideWorldBounds(true);
+    this.player.setDepth(1)
   }
 
   _createPlayerAnimation() {
@@ -137,7 +142,7 @@ class LavaAdventure extends Phaser.Scene {
 
     this.anims.create({
         key: 'left',
-        frames: this.anims.generateFrameNumbers('player', { start: 10, end: 11 }),
+        frames: this.anims.generateFrameNumbers('player', { start: 10, end: 9 }),
         frameRate: 6,
         repeat: -1
     });
@@ -167,13 +172,19 @@ class LavaAdventure extends Phaser.Scene {
       frameRate: 6
     });
 
+    this.anims.create({
+      key: 'fall',
+      frames: [ { key: 'player', frame: 4 } ],
+      frameRate: 6
+    });
+
   }
 
   _createGuideText(message) {
     if (this.guideTxt) {
       this.guideTxt.removeFromDisplayList()
     }
-    this.guideTxt = this.add.text(200, 20, message, { fill: '#ffff00', fontSize: 18 });
+    this.guideTxt = this.add.text(250, 20, message, { fill: '#ffff00', fontSize: 18 });
   }
 
   _goRight() {
@@ -231,6 +242,13 @@ class LavaAdventure extends Phaser.Scene {
     }, 300)
   }
 
+  _goDrop() {
+    this.player.anims.play('fall');
+
+    if (this.loseSound.isPlaying) return
+    this.loseSound.play()
+  }
+
   _gameFailed() {
     this.failed = true
     setTimeout(() => {
@@ -264,6 +282,10 @@ class LavaAdventure extends Phaser.Scene {
       return this._gameFailed()
     }
 
+    if (this.player.y > 76) {
+      return this._goDrop()
+    }
+
     if (!this.complete) {
       return this._manualControl()
     }
@@ -287,7 +309,6 @@ class LavaAdventure extends Phaser.Scene {
     if (!success) return // success is a must
 
     this._createGuideText('Bingo!')
-    this.player.setPosition(0, 0)
 
     this.complete = true
     return this.complete
