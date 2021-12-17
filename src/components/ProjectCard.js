@@ -22,6 +22,14 @@ const ProjectCard = ({ project, completed }) => {
                 />
               )}
             </div>
+            <div className="center-row" >
+              <div className="avatar-img">
+                <img
+                  src={project.player}
+                  alt="game player" 
+                />
+              </div>
+            </div>
             <div className="footer-row">
               <h3>{project.title}</h3>
             </div>

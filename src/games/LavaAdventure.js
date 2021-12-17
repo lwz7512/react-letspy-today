@@ -267,7 +267,7 @@ class LavaAdventure extends Phaser.Scene {
       this.player.setVelocityX(80);
       return this.player.anims.play('right', true);
     }
-    if (this.cursors.up.isDown && this.player.body.blocked.down){
+    if (this.cursors.up.isDown){
       this.player.anims.play('jump');
       return this.player.setVelocityY(-160);
     }

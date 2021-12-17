@@ -11,7 +11,8 @@
       "walk": "Fire Now!",
       "pass": "Bingo!",
       "tags": ["Easy", "Variable", "Statement"],
-      "image": "assets/project/books_md.jpeg"
+      "image": "assets/project/matrix_md.png",
+      "player": "assets/project/darthvida_sm.png"
     },
     {
       "id": 2,
@@ -24,7 +25,8 @@
       "walk": "",
       "pass": "",
       "tags": ["Easy", "Action", "Function"],
-      "image": "assets/project/books_md.jpeg"
+      "image": "assets/project/matrix_md.png",
+      "player": "assets/project/player_idle.png"
     },
     {
       "id": 3,
@@ -37,7 +39,8 @@
       "walk": "Now, press right arrow key to move player",
       "pass": "Congratulations!",
       "tags": ["Easy", "Adventure", "Statement"],
-      "image": "assets/project/books_md.jpeg"
+      "image": "assets/project/matrix_md.png",
+      "player": "assets/project/dude.png"
     },
     {
       "id": 4,
@@ -50,7 +53,8 @@
       "walk": "",
       "pass": "",
       "tags": ["Medium", "Puzzle", "String", "Slice"],
-      "image": "assets/project/books_md.jpeg"
+      "image": "assets/project/matrix_md.png",
+      "player": "assets/project/ninja_sm.png"
     },
     {
       "id": 5,
@@ -63,7 +67,8 @@
       "walk": "",
       "pass": "",
       "tags": ["Medium", "Puzzle", "Condition", "Boolean"],
-      "image": "assets/project/books_md.jpeg"
+      "image": "assets/project/matrix_md.png",
+      "player": "assets/project/ninja_sm.png"
     },
     {
       "id": 6,
@@ -76,7 +81,8 @@
       "walk": "",
       "pass": "",
       "tags": ["Medium", "Puzzle", "Condition"],
-      "image": "assets/project/books_md.jpeg"
+      "image": "assets/project/matrix_md.png",
+      "player": "assets/project/ninja_sm.png"
     },
     {
       "id": 7,
@@ -89,7 +95,8 @@
       "walk": "",
       "pass": "",
       "tags": ["Medium", "Loop", "Iteration"],
-      "image": "assets/project/books_md.jpeg"
+      "image": "assets/project/matrix_md.png",
+      "player": "assets/project/ninja_sm.png"
     },
     {
       "id": 8,
@@ -102,7 +109,8 @@
       "walk": "",
       "pass": "",
       "tags": ["Medium", "List", "Sort"],
-      "image": "assets/project/books_md.jpeg"
+      "image": "assets/project/matrix_md.png",
+      "player": "assets/project/ninja_sm.png"
     },
     {
       "id": 9,
@@ -115,7 +123,8 @@
       "walk": "",
       "pass": "",
       "tags": ["Medium", "time", "Function"],
-      "image": "assets/project/books_md.jpeg"
+      "image": "assets/project/matrix_md.png",
+      "player": "assets/project/ninja_sm.png"
     }
   ]
 }

@@ -14,7 +14,6 @@ class GameFailed extends Phaser.Scene {
   }
     
   create(){
-    console.log('create...')
     const message = 'Oops...you failed!'
     const guideTxt = this.add.text(180, 50, message, { fill: '#ffff00', fontSize: 24 });
     this.tweens.add({
