@@ -34,12 +34,21 @@ Completed at: @2021/11/10
 
 Completed at: @2021/11/17
 
-## version 0.3 : All Possible Projects
+## version 0.3 : Complete 3 Projects
 
-- design possible projects.
-- list all materials
+- design possible projects topics.
+- complete `Clone Army`, `Lava Adventure`, `Make Your Path`
+- revise `Lava Adventure` with a better code structure
 
-## version 0.4 : Prepare to launch
+@2021/12/19
+
+## version 0.4 
+
+todo...
+
+...
+
+## version 1.0 : Prepare to launch
 
 - beautify.
 - assets before launch
