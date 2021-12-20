@@ -188,7 +188,6 @@ class MakeYourPath extends Phaser.Scene {
     this.physics.add.collider(bridgeLayer, this.player);
 
     const expectSum = bridge.reduce((a, b) => a + b, 0)
-    console.log(expectSum)
     if (expectSum !== 18) return // not successful
     
     this._createGuideText('Bingo! Move player toward Exit with RIGHT ARROW key!')

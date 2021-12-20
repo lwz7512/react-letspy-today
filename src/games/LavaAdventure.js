@@ -1,5 +1,156 @@
 import Phaser from 'phaser';
 
+class Action {
+
+  constructor(player, step, updateCallback=null) {
+    this.player = player
+    this.step = step
+    this.frameCounter = 0
+    this.frameTotal = 40
+    this._parse(step)
+    this.onUpdate = updateCallback
+  }
+
+  _parse(step) {
+    this.name = Object.keys(step)[0]
+    this.length = step[this.name]
+    if (this.length) {
+      this.frameTotal *= this.length
+    } else {
+      this.frameTotal = 12 // for pivot
+    }
+  }
+
+  toString() {
+    return '>>> action: ' + this.name
+  }
+
+  _goRight() {
+    this.player.setVelocityX(90);
+    this.player.play('right', true);
+  }
+
+  _goJump() {
+    this.player.play('jump');
+    this.player.setVelocityX(100);
+    this.player.setVelocityY(-140);
+  }
+
+  _goPivot() {
+    this.player.setVelocityX(0);
+    this.player.play('pivot', true);
+    this.player.setScale(0.6, 0.6)
+  }
+
+  _goTransport() {
+    this.player.play('turn');
+    this.player.setScale(0.4, 0.4)
+    this.player.x += 1
+  }
+
+  _goIdle() {
+    this.player.setVelocityX(0);
+    this.player.play('turn');
+  }
+
+  update() {
+    if (this.frameCounter > this.frameTotal) return
+    
+    const actionToFunction = {
+      walk : this._goRight.bind(this),
+      jump : this._goJump.bind(this),
+      pivot: this._goPivot.bind(this),
+      transport: this._goTransport.bind(this),
+      idle: this._goIdle.bind(this),
+    }
+    // safety check
+    if (!actionToFunction[this.name]) return
+    
+    // execute the action
+    actionToFunction[this.name]()
+
+    if (this.onUpdate) this.onUpdate()
+
+    this.frameCounter += 1
+  }
+
+  isEnd() {
+    return this.frameCounter >= this.frameTotal
+  }
+
+}
+
+
+class ActionManager {
+
+  constructor(
+    actions = [], 
+    context = { player: null, dockerLayer: null, pivotLayer: null }, 
+    exitCallback = null
+  ) {
+    this.actions = actions
+    this.state = {}
+    this.moveCounter = 0
+    this.context = context
+    this.onExit = exitCallback
+  }
+
+  update(state = {pivotHit: false, exitHit: false}) {
+    this.state = state
+    // game complete!
+    if (!this.actions.length) return
+
+    this.moveCounter += 1 // lazy action execution counter
+    // waiting for bingo calling repetition until last update
+    if (this.moveCounter < 24) return
+
+    const action = this.actions[0]
+    // action running...
+    action.update()
+
+    if (!action.isEnd()) return // still need update current action
+
+    // remove first action after it completion
+    this.actions.shift()
+
+    // pivot action, and hit the pivot trigger
+    if (action.name === 'pivot' && this.state.pivotHit) {
+      this.context.dockerLayer.setVisible(false)
+      this.context.pivotLayer.setVisible(true)
+      // insert next action: transport
+      this.actions.unshift(new Action(
+        this.context.player, 
+        {transport: 2}, // move steps
+        () => this.context.pivotLayer.x += 1
+      ))
+    }
+
+    // reach the exit trigger
+    if (action.name === 'jump' && this.state.exitHit) {
+      this.actions.unshift(new Action(
+        this.context.player,
+        {walk: 0},
+      ))
+      this.actions.unshift(new Action(
+        this.context.player,
+        {idle: 1},
+      ))
+    }
+
+    // end of all actions
+    if (this.actions.length === 0 && this.state.exitHit) {
+      if (this.onExit) this.onExit()
+    }
+
+  }
+
+  isEnd() {
+    return this.actions.length === 0
+  }
+
+}
+
+
 class LavaAdventure extends Phaser.Scene {
   constructor(){
     super('LavaAdventure');
@@ -9,8 +160,6 @@ class LavaAdventure extends Phaser.Scene {
     this.succeed = false
     // dyna text
     this.guideTxt = null
-    // expose bingo function
-    this.bingo = this.bingo.bind(this)
     // tile layers
     this.background = null
     this.docker = null
@@ -18,24 +167,14 @@ class LavaAdventure extends Phaser.Scene {
     this.moveCounter = 0
     // failed after player y > 180
     this.failed = false
-    // steps to go
-    this.steps = []
-    // actions
-    this.actionWalk = [
-      10, 20, 30, 40, 50, 90, 100, 110, 120, 130, 170, 180, 190, 200, 
-      610, 620, 630, 640, 650, 660, 670, 680, 
-    ]
-    this.actionJump = [60, 70, 80, 140, 150, 160, ]
-    this.actionGrow = [220, ]
-    this.actionHold = [230, 240, 250, ]
-    this.actionPivot= [260, 270, ]
-    this.actionTrans= [
-      280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 
-      430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570,
-      580, 590,
-    ]
-    this.actionReach= [600, ]
-    this.actionExit = [700, ]
+    // actions to go
+    this.actions = []
+    // hit the pivot
+    this.pivotHolded = false
+    // hit the exit
+    this.exitHitted = false
+    // manager
+    this.actionManager = null
   }
 
   init() {
@@ -63,21 +202,18 @@ class LavaAdventure extends Phaser.Scene {
 
     this.background = map.createLayer('background', tiles, -40, -40);
     this.background.setCollision([2, 13,]) // 2: wall, 13: grass block, 96: exit
+    this.exits = this.background.filterTiles(tile => tile.index === 96)
     
     this.docker = map.createLayer('docker', tiles, -40, -40)
-    this.docker.setCollision([42, 54, 178]) // 178: pivot
+    this.docker.setCollision([42, 54]) // road tiles
+    this.pickups = this.docker.filterTiles(tile => tile.index === 190);
 
     this.pivoted = map.createLayer('pivoted', tiles, -40, -40)
-    this.pivoted.setVisible(false)
-    this.pivoted.setCollision([42, 54]) // 166: pivoted
-
-    this.reached = map.createLayer('reached', tiles, -40, -40)
-    this.reached.setVisible(false)
-    this.reached.setCollision([42, 54])
+    this.pivoted.setVisible(false) // hide first
+    this.pivoted.setCollision([42, 54]) // road tiles
 
     this._createPlayer()
     this._createPlayerAnimation()
-    this._creatActionsMap()
 
     // set layer collision
     this.physics.add.collider(this.background, this.player);
@@ -87,46 +223,11 @@ class LavaAdventure extends Phaser.Scene {
     this.cursors = this.input.keyboard.createCursorKeys();
     // disable space key presss, conflict with monaco editor
     this.input.keyboard.removeCapture(32);
-
-    // this.input.keyboard.on('keydown-SPACE', function() {
-    //   this.complete = true
-    // }, this);
-
     this.loseSound = this.sound.add('lose')
   }
 
-  _creatActionsMap() {
-    // make a frame:action map
-    this.completePassActions = {}
-    this.actionWalk.forEach(frame => this.completePassActions[frame] = 'w')
-    this.actionJump.forEach(frame => this.completePassActions[frame] = 'j')
-    this.actionGrow.forEach(frame => this.completePassActions[frame] = 'g')
-    this.actionHold.forEach(frame => this.completePassActions[frame] = 'h')
-    this.actionPivot.forEach(frame => this.completePassActions[frame] = 'p')
-    this.actionTrans.forEach(frame => this.completePassActions[frame] = 't')
-    this.actionReach.forEach(frame => this.completePassActions[frame] = 'r')
-    this.actionExit.forEach(frame => this.completePassActions[frame] = 'e')
-  }
-
-  _checkIn(frame) {
-    const actionAbbr = this.completePassActions[frame]
-    if (!actionAbbr) return this._goIdle.bind(this)
-    
-    const actionToFunction = {
-      w : this._goRight.bind(this),
-      j : this._goJump.bind(this),
-      g : this._goBigger.bind(this),
-      h : this._goHold.bind(this),
-      p : this._goPivot.bind(this),
-      t : this._goTransport.bind(this),
-      r : this._goReached.bind(this),
-      e : this._goExit.bind(this),
-    }
-    return actionToFunction[actionAbbr]
-  }
-
   _createPlayer() {
-    this.player = this.physics.add.sprite(0, 0, 'player', 0);
+    this.player = this.physics.add.sprite(20, 0, 'player', 0);
     this.player.setBounce(0.2);
     this.player.setScale(0.4, 0.4);
     this.player.setCollideWorldBounds(true);
@@ -168,8 +269,9 @@ class LavaAdventure extends Phaser.Scene {
 
     this.anims.create({
       key: 'pivot',
-      frames: [ { key: 'player', frame: 14 } ],
-      frameRate: 6
+      frames: this.anims.generateFrameNumbers('player', { start: 13, end: 14 }),
+      frameRate: 6,
+      repeat: 1
     });
 
     this.anims.create({
@@ -184,66 +286,16 @@ class LavaAdventure extends Phaser.Scene {
     if (this.guideTxt) {
       this.guideTxt.removeFromDisplayList()
     }
-    this.guideTxt = this.add.text(250, 20, message, { fill: '#ffff00', fontSize: 18 });
-  }
-
-  _goRight() {
-    this.player.setVelocityX(92);
-    this.player.anims.play('right', true);
-  }
-
-  _goJump() {
-    this.player.anims.play('jump');
-    this.player.setVelocityY(-160);
+    this.guideTxt = this.add.text(50, 20, message, { fill: '#ffff00', fontSize: 18 });
   }
 
   _goIdle() {
     this.player.setVelocityX(0);
-    this.player.anims.play('turn');
-  }
-
-  _goHold() {
-    this.player.setVelocityX(0);
-    this.player.anims.play('hold');
-  }
-
-  _goBigger() {
-    this.player.setScale(0.8, 0.8)
-    this.player.y -= 30
-  }
-
-  _goPivot() {
-    this.player.anims.play('pivot');
-    this.player.setScale(0.4, 0.4)
-    this.docker.setVisible(false)
-    this.pivoted.setVisible(true)
-  }
-
-  _goTransport() {
-    this.player.anims.play('turn');
-    this.player.x += 4
-    this.pivoted.x += 4
-  }
-
-  _goReached() {
-    this.pivoted.setVisible(false)
-    this.reached.setVisible(true)
-  }
-
-  _goExit() {
-    this.succeed = true
-    // lazy change scene to congratulation!
-    setTimeout(() => {
-      this.onGameSuccess()
-      this.scene.start(
-        'congratulations', 
-        { msg: 'You completed the [Lava Adventure] project!'}
-      )
-    }, 300)
+    this.player.play('turn');
   }
 
   _goDrop() {
-    this.player.anims.play('fall');
+    this.player.play('fall');
 
     if (this.loseSound.isPlaying) return
     this.loseSound.play()
@@ -259,22 +311,46 @@ class LavaAdventure extends Phaser.Scene {
     }, 200)
   }
 
+  _hitPivot() {
+    this.pivotHolded = true
+  }
+
+  _hitExit() {
+    this.exitHitted = true
+  }
+
   _manualControl() {
     if (this.cursors.left.isDown) {
       this.player.setVelocityX(-160);
-      return this.player.anims.play('left', true);
+      return this.player.play('left', true);
     } else if (this.cursors.right.isDown) { // walk right
-      this.player.setVelocityX(80);
-      return this.player.anims.play('right', true);
+      this.player.setVelocityX(90);
+      return this.player.play('right', true);
     }
     if (this.cursors.up.isDown){
-      this.player.anims.play('jump');
+      this.player.play('jump');
       return this.player.setVelocityY(-160);
     }
     this.player.setVelocityX(0);
-    this.player.anims.play('turn');
+    this.player.play('turn');
+
+    if (this.exitHitted) {
+      this._successHandler()
+    }
   }
 
+  /**
+   * check collision before mannual and auto mode
+   */
+  _collisionCheck() {
+    this.physics.world.overlapTiles(this.player, this.pickups, this._hitPivot, null, this);
+    this.physics.world.overlapTiles(this.player, this.exits, this._hitExit, null, this);
+  }
+
+  /**
+   * **********  GAME UPDATE CALLBACK  *************
+   * @returns 
+   */
   update(){
     if (this.failed || this.succeed) return
 
@@ -286,38 +362,74 @@ class LavaAdventure extends Phaser.Scene {
       return this._goDrop()
     }
 
-    if (!this.complete) {
+    this._collisionCheck()
+
+    // manual mode
+    if (!this.actionManager || this.actionManager.isEnd()) {
       return this._manualControl()
     }
 
-    this.moveCounter += 1
+    // auto mode
+    const state = {
+      pivotHit: this.pivotHolded, 
+      exitHit: this.exitHitted
+    }
+    this.actionManager.update(state)
+  }
 
-    if (this.moveCounter % 10 !== 0) return
+  _goStart() {
+    // back to start
+    this.player.setPosition(20, 60)
+    this.pivotHolded = false
+    this.docker.setVisible(true)
+    this.pivoted.setVisible(false)
+    this.pivoted.x = -40
+    this._goIdle()
+  }
 
-    // Successful action
-    this._checkIn(this.moveCounter)()
-
+  _successHandler() {
+    this.succeed = true
+    this.onGameSuccess()
+    this.scene.start(
+      'congratulations', 
+      { msg: 'You completed the [Lava Adventure] project!'}
+    )
   }
 
   /**
    * exposure to outeside of game
    * @returns nothing
    */
-  bingo(_, success) {
-    if (this.complete) return
+  bingo(steps = [], success) {
+    // reset counter
+    this.moveCounter = 0
 
-    if (!success) return // success is a must
+    this._goStart()
 
-    this._createGuideText('Bingo!')
+    const actions = steps.map(
+      step => new Action(this.player, step)
+    )
 
-    this.complete = true
+    this.actionManager = new ActionManager(
+      actions,
+      {
+        player: this.player,
+        dockerLayer: this.docker,
+        pivotLayer: this.pivoted,
+      },
+      this._successHandler.bind(this)
+    )
+
+    if (success) {
+      this._createGuideText('Bingo! Move player with SPACE KEY to exit!')
+    }
+
     return this.complete
   }
   
   onGameSuccess() {
     this.game.events.emit('gamePass')
   }
-
 
 }
 

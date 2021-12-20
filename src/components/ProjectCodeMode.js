@@ -24,6 +24,8 @@ const ProjectCodeMode = () => {
   const codeExecError = projectStore(state => state.codeExecError)
   const projectID = projectStore(state => state.projectID)
   const reset = projectStore(state => state.reset)
+  const isSucceed = projectStore(state => state.isSucceed)
+
   const currentTarget = projectsCodeTarget[projectID]
 
 
@@ -57,6 +59,7 @@ const ProjectCodeMode = () => {
 
   }, [codeExecResult, currentTarget])
 
+
   useEffect(() => {
     if (!codeExecError) return
     console.warn(codeExecError)
@@ -68,6 +71,17 @@ const ProjectCodeMode = () => {
     }
     toastRef.current.show(notification);
   }, [codeExecError])
+
+
+  useEffect(() => {
+    if (!isSucceed) return
+
+    const successMessage = generateSuccessMessage(currentTarget)
+    const notification = { severity: 'success', summary: 'You Won!', detail: successMessage }
+    // popup toast message
+    toastRef.current.show(notification);
+
+  }, [isSucceed, currentTarget])
 
   useEffect(() => {
     return reset // clear current project state after view destory

@@ -9,7 +9,6 @@ const ProjectIntro = () => {
   const projects = projectStore(state => state.projects)
   const [ project ] = projects.filter(project => project.id === Number(projectID))
 
-
   return (
     <div className="intro-area border-double h-10rem blue-round-panel pb-0">
       {/* title row */}
@@ -45,8 +44,8 @@ const ProjectIntro = () => {
             )}
           </p>
         </div>
-        <div className="right-part pr-4 pt-4 ">
-          <img src="assets/layout/images/alienBlue_sm.png" width="50" alt="alien" />
+        <div className="right-part">
+          <img src={project.player} width="50" alt="alien" />
         </div>
       </div>
     </div>

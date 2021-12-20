@@ -46,6 +46,11 @@ const projectStore = create(
     codeExecError: null,
     // starte running code
     isRunning: false,
+    // game status
+    isSucceed: false,
+    // update game status
+    gameSucceed: result => set({isSucceed: result}),
+    // call backend
     startRunning: () => set({isRunning: true}),
     // code running request
     execute: async (target) => {
@@ -63,7 +68,8 @@ const projectStore = create(
     reset: () => set({
       codeExecResult: {},
       codeExecError: null,
-      introMode: true
+      introMode: true,
+      isSucceed: false,
     }),
     GAME_DEGUG: true,
     // more state and action ...

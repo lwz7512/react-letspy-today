@@ -34,16 +34,15 @@ const PhaserGameBox = ({ codeResultCallback }) => {
       currentTarget.expect, 
       codeExecResult.result
     )
-    codeResultCallback(success)
     // allowing reach to bingo without success
     const currentScene = gameRef.current.scene.getAt(0)
     currentScene.bingo(codeExecResult.result, success)
 
     if (success) {
-      audioRef.current.play()
+      setTimeout(()=>audioRef.current.play(), 600)
     }
     
-  }, [codeExecResult, currentTarget, codeResultCallback])
+  }, [codeExecResult, currentTarget])
 
 
   useEffect(() => {
@@ -68,6 +67,7 @@ const PhaserGameBox = ({ codeResultCallback }) => {
     // use callback hook to reuse the gamePassHandler function
     const gamePassHandler = () => {
       updateProjectStatus({...projects, [projectID]:'done'})
+      codeResultCallback(true)
     }
     const { events } = gameRef.current
     events.addListener('gamePass', gamePassHandler)

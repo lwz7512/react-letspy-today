@@ -16,6 +16,9 @@ const projectCode_2 = rTabs(`
     # lets get started with:
     walk(1)
     jump(1)
+    walk(1)
+    jump(1)
+    walk(1)
     pivot()
 `)
 
@@ -122,7 +125,7 @@ export const projectsCodeTarget = {
         projName: 'Lava Adventure',
         codeType: 'actions',
         params: '',
-        expect: [{walk: 1}, {jump: 1}, {pivot: 0}]
+        expect: [{walk: 1}, {jump: 1}, {walk: 1}, {jump: 1}, {walk: 1}, {pivot: 0}]
     },
     3: {
         projName: 'Missing bricks',

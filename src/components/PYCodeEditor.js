@@ -2,8 +2,10 @@ import React, { useRef } from 'react'
 import MonacoEditor from '@monaco-editor/react'
 import { Button } from 'primereact/button'
 import {
-  BiRun, BiTerminal, BiBookAlt, BiKey, BiReset, BiHelpCircle
+  BiRun, BiTerminal, BiBookAlt, BiKey, BiReset, BiHelpCircle,
 } from "react-icons/bi"
+
+import { FiThumbsUp } from 'react-icons/fi'
 
 import projectStore from '../state/ProjectState'
 import { projectsBoilerplateCode, } from '../config/ProjectDefaultCode'
@@ -17,6 +19,8 @@ const PYCodeEditor = () => {
   const projectID = projectStore(state => state.projectID)
   const codeValueChanged = projectStore(state => state.codeValueChanged)
   const startRunning = projectStore(state => state.startRunning)
+  const isSucceed = projectStore(state => state.isSucceed)
+
   const currentProjectCode = projectsBoilerplateCode[projectID]
 
 
@@ -45,9 +49,11 @@ const PYCodeEditor = () => {
           loading={runningMode}
           onClick={startRunning}
           tooltip="Run Code"
+          disabled={isSucceed}
           tooltipOptions={{disabled:runningMode}}
           >
-          {!runningMode && (<BiRun size="22" />)}
+          {!runningMode && !isSucceed && (<BiRun size="22" />)}
+          {isSucceed && (<FiThumbsUp size="22" />)}
         </Button>
         <Button 
           className="p-button-rounded p-button-help p-button-icon-only mx-3 mt-3"
