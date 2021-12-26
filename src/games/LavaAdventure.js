@@ -163,8 +163,6 @@ class LavaAdventure extends Phaser.Scene {
     // tile layers
     this.background = null
     this.docker = null
-    // motion counter
-    this.moveCounter = 0
     // failed after player y > 180
     this.failed = false
     // actions to go
@@ -401,9 +399,6 @@ class LavaAdventure extends Phaser.Scene {
    * @returns nothing
    */
   bingo(steps = [], success) {
-    // reset counter
-    this.moveCounter = 0
-
     this._goStart()
 
     const actions = steps.map(

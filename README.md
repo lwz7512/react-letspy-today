@@ -44,9 +44,37 @@ Completed at: @2021/11/17
 
 ## version 0.4 
 
-todo...
+TODO: ...next 3 projects
 
-...
+## version 0.5
+
+TODO: ...last 3 project of v1.0
+
+## version 0.6
+
+TODO: ...add project text reference
+
+## version 0.7
+
+TODO: ...add video content
+
+## version 0.8
+
+TODO: ...contact and suscription form, donate page
+
+## version 0.9
+
+TODO: ...
+
+- code editor disable paste, 
+- length control,
+- illegal python code detection
+
+## version 1.0
+
+TODO: ...prepare to deploy and release
+
+
 
 ## version 1.0 : Prepare to launch
 

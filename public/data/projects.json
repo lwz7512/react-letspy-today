@@ -46,7 +46,7 @@
       "id": 4,
       "title": "Guess My First Name",
       "level": 2,
-      "description": "Gate keeper need someone to answer his question to let him go, so what is his first name?",
+      "description": "A cute robot can not remember his name, help him to figure out the first letter of his name to get out of there!",
       "mission": "The first three letter of his name covered, using string index method to extract it.",
       "tips": "",
       "coding": "",
@@ -54,7 +54,7 @@
       "pass": "",
       "tags": ["Medium", "Puzzle", "String", "Slice"],
       "image": "assets/project/matrix_md.png",
-      "player": "assets/project/ninja_sm.png"
+      "player": "assets/project/platformChar_idle.png"
     },
     {
       "id": 5,
@@ -68,13 +68,13 @@
       "pass": "",
       "tags": ["Medium", "Puzzle", "Condition", "Boolean"],
       "image": "assets/project/matrix_md.png",
-      "player": "assets/project/ninja_sm.png"
+      "player": "assets/project/adventurer_idle.png"
     },
     {
       "id": 6,
       "title": "Which way to go",
       "level": 2,
-      "description": "Make a path including dividing forks which need to check which way to go!",
+      "description": "Make a maze-like path including branches that need a basic logic to decide which way to go!",
       "mission": "check color, check direction, check target...to reach the exit.",
       "tips": "",
       "coding": "",
@@ -82,7 +82,7 @@
       "pass": "",
       "tags": ["Medium", "Puzzle", "Condition"],
       "image": "assets/project/matrix_md.png",
-      "player": "assets/project/ninja_sm.png"
+      "player": "assets/project/slimeBlock.png"
     },
     {
       "id": 7,
@@ -96,7 +96,7 @@
       "pass": "",
       "tags": ["Medium", "Loop", "Iteration"],
       "image": "assets/project/matrix_md.png",
-      "player": "assets/project/ninja_sm.png"
+      "player": "assets/project/soldier_idle.png"
     },
     {
       "id": 8,
@@ -110,7 +110,7 @@
       "pass": "",
       "tags": ["Medium", "List", "Sort"],
       "image": "assets/project/matrix_md.png",
-      "player": "assets/project/ninja_sm.png"
+      "player": "assets/project/p1_stand.png"
     },
     {
       "id": 9,
@@ -124,7 +124,7 @@
       "pass": "",
       "tags": ["Medium", "time", "Function"],
       "image": "assets/project/matrix_md.png",
-      "player": "assets/project/ninja_sm.png"
+      "player": "assets/project/p3_stand.png"
     }
   ]
 }

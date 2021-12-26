@@ -1,23 +1,28 @@
 // save phaser game configs/games
 import Phaser from 'phaser';
 
+// import TemplateGame from '../games/TemplateGame';
 import CloneArmy from '../games/CloneArmy';
 import LavaAdventure from '../games/LavaAdventure';
 import MakeYourPath from '../games/MakeYourPath';
-import TemplateGame from '../games/TemplateGame';
+import GuessMyName from '../games/GuessMyName'
+import SphinxRiddle from '../games/SphinxRiddle'
+import WhichWayToGo from '../games/WhichWayToGo'
+import FlyThemUp from '../games/FlyThemUp'
+import AcrossLiveBridge from '../games/AcrossLiveBridge'
+import FixTheClock from '../games/FixTheClock'
 
 
-// TODO: add more games...
 export const gamesForProject = {
     1 : CloneArmy,
     2 : LavaAdventure,
     3 : MakeYourPath,
-    4 : TemplateGame,
-    5 : TemplateGame,
-    6 : TemplateGame,
-    7 : TemplateGame,
-    8 : TemplateGame,
-    9 : TemplateGame,
+    4 : GuessMyName,
+    5 : SphinxRiddle,
+    6 : WhichWayToGo,
+    7 : FlyThemUp,
+    8 : AcrossLiveBridge,
+    9 : FixTheClock,
 }
 
 
