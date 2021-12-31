@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="10" height="1" tilewidth="48" tileheight="48" infinite="0" nextlayerid="2" nextobjectid="1">
+ <tileset firstgid="1" name="bb" tilewidth="47" tileheight="47" spacing="1" margin="1" tilecount="10" columns="10">
+  <image source="items_magic.png" width="480" height="48"/>
+ </tileset>
+ <layer id="1" name="Tile Layer 1" width="10" height="1">
+  <data encoding="csv">
+1,2,3,4,5,6,7,8,9,10
+</data>
+ </layer>
+</map>

@@ -44,10 +44,10 @@
     },
     {
       "id": 4,
-      "title": "Guess My First Name",
+      "title": "Guess My Name",
       "level": 2,
       "description": "A cute robot can not remember his name, help him to figure out the first letter of his name to get out of there!",
-      "mission": "The first three letter of his name covered, using string index method to extract it.",
+      "mission": "The first two letter of his name covered, using string index method to extract it.",
       "tips": "",
       "coding": "",
       "walk": "",
@@ -96,11 +96,11 @@
       "pass": "",
       "tags": ["Medium", "Loop", "Iteration"],
       "image": "assets/project/matrix_md.png",
-      "player": "assets/project/soldier_idle.png"
+      "player": "assets/project/commander.png"
     },
     {
       "id": 8,
-      "title": "Across live bridge",
+      "title": "Pass live bridge",
       "level": 3,
       "description": "You are running into a weird bridge with disorderd pillars, you need to reorder them with correct order to get across!",
       "mission": "The bridge is alive because its pillars constantly changing, until you reorder it acscendingly then descendingly you would make it stable.",
@@ -115,7 +115,7 @@
     {
       "id": 9,
       "title": "Fix the clock",
-      "level": 3,
+      "level": 4,
       "description": "To pass the first checkpoint of this adventure, you need to fix the clock to enter next chapter of this game. ",
       "mission": "Use time function to return the current time, you will make it works! not tough right?",
       "tips": "",
@@ -124,7 +124,7 @@
       "pass": "",
       "tags": ["Medium", "time", "Function"],
       "image": "assets/project/matrix_md.png",
-      "player": "assets/project/p3_stand.png"
+      "player": "assets/project/female_idle.png"
     }
   ]
 }

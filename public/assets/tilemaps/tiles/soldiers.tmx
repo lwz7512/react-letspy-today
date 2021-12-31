@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="10" height="1" tilewidth="32" tileheight="38" infinite="0" nextlayerid="2" nextobjectid="1">
+ <tileset firstgid="1" name="soldiers_1" tilewidth="27" tileheight="35" spacing="1" tilecount="9" columns="9">
+  <image source="../../sprites/soldiers_1.png" trans="ffffff" width="262" height="35"/>
+ </tileset>
+ <tileset firstgid="10" name="soldiers_2" tilewidth="28" tileheight="38" spacing="2" tilecount="8" columns="8">
+  <image source="../../sprites/soldiers_2.png" trans="ffffff" width="260" height="38"/>
+ </tileset>
+ <layer id="1" name="Tile Layer 1" width="10" height="1">
+  <data encoding="csv">
+1,2,3,4,5,11,12,13,14,15
+</data>
+ </layer>
+</map>
