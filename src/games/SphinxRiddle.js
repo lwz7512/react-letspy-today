@@ -37,8 +37,8 @@ class SphinxRiddle extends Phaser.Scene {
     this.floor.setCollision(4)
     this.boxes = map.createLayer('boxes', tiles, -40, 0);
   
+    this._createAnimation()
     this._createPlayer()
-    this._createPlayerAnimation()
 
     this.physics.add.collider(this.floor, this.player);
 
@@ -63,7 +63,7 @@ class SphinxRiddle extends Phaser.Scene {
     this.player.setDepth(1)
   }
 
-  _createPlayerAnimation() {
+  _createAnimation() {
     this.anims.create({
         key: 'turn',
         frames: [ { key: 'player', frame: 0 } ],
@@ -134,6 +134,9 @@ class SphinxRiddle extends Phaser.Scene {
     return this.complete
   }
   
+  onGameSuccess() {
+    this.game.events.emit('gamePass')
+  }
 
 }
 

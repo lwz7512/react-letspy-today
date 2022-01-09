@@ -12,6 +12,8 @@ class GuessMyName extends Phaser.Scene {
     this.guideTxt = null
     // expose bingo function
     this.bingo = this.bingo.bind(this)
+    this.pickups = []
+    this.layerHoriOffset = -40
   }
 
   preload(){
@@ -35,34 +37,50 @@ class GuessMyName extends Phaser.Scene {
     var tiles = map.addTilesetImage('platform', 'tiles');
     var tiles2 = map.addTilesetImage('letters512', 'letters')
 
-    this.background = map.createLayer('background', tiles, -40, 0);
-    this.background.setCollision([60, 18])
+    this.background = map.createLayer('background', tiles, this.layerHoriOffset, 0);
+    this.background.setCollision([18, 60])
 
-    this.locker = map.createLayer('lock', tiles, -40, 0);
-    this.key = map.createLayer('key', tiles, -40, 0);
-    this.letters = map.createLayer('letters', tiles2, -40, 0);
-    this.caillou = map.createLayer('caillou', tiles2, -40, 0);
-    this.caillou.setVisible(false)
-    this.ladder = map.createLayer('ladder', tiles, -40, 0);
-    this.ladder.setVisible(false)
+    this.lockerLayer = map.createLayer('lock', tiles, this.layerHoriOffset, 0);
+    this.keyLayer = map.createLayer('key', tiles, this.layerHoriOffset, 0);
+    this.lettersLayer = map.createLayer('letters', tiles2, this.layerHoriOffset, 0);
+    this.caillouLayer = map.createLayer('caillou', tiles2, this.layerHoriOffset, 0);
+    this.caillouLayer.setVisible(false)
+
+    this.ladderLayer = map.createLayer('ladder', tiles, this.layerHoriOffset, 0);
+    this.ladderLayer.setVisible(false)
     
-    this._createPlayer()
+    this._collisionTiles(this.background, this.ladderLayer, this.keyLayer)
     this._createPlayerAnimation()
+    this._createPlayer()
 
-    this.physics.add.collider(this.background, this.player);
+    this.collider = this.physics.add.collider(this.background, this.player);
 
     this.cursors = this.input.keyboard.createCursorKeys();
     // disable space key presss, conflict with monaco editor
     this.input.keyboard.removeCapture(32);
   }
 
+  _collisionTiles(bgLayer, ladderLayer, keyLayer) {
+    if (this.pickups.length) return
+    // get door
+    var doors = bgLayer.filterTiles(tile => tile.index === 76)
+    this.pickups = this.pickups.concat(doors)
+    // get ladder
+    var ladders = ladderLayer.filterTiles(tile => tile.index === 58)
+    this.pickups = this.pickups.concat(ladders)
+    // get keys
+    var keys = keyLayer.filterTiles(tile => tile.index === 65)
+    this.pickups = this.pickups.concat(keys)
+  }
+
   _createPlayer() {
-    // TODO: player.x = 250, in the middle of brick....
-    this.player = this.physics.add.sprite(0, 60, 'player', 0);
+    // y position below 30 to invoke jump!
+    this.player = this.physics.add.sprite(100, 30, 'player', 0);
     this.player.setBounce(0.2);
     this.player.setScale(0.6, 0.6);
     this.player.setCollideWorldBounds(true);
     this.player.setDepth(1)
+    this.player.play('jump')
   }
 
   _createPlayerAnimation() {
@@ -109,16 +127,35 @@ class GuessMyName extends Phaser.Scene {
 
   _manualControl() {
     if (this.cursors.left.isDown) {
+      // FIXME: prevent player falling down to the ground from 2nd floor
+      if (this.player.y < 40 && this.player.x < 300) {
+        return this.player.setVelocityX(0);
+      }
       this.player.setVelocityX(-160);
       return this.player.play('left', true);
     } else if (this.cursors.right.isDown) { // walk right
       this.player.setVelocityX(90);
       return this.player.play('right', true);
     }
-    if (this.cursors.up.isDown){
-        this.player.play('jump');
-      if (this.player.body.blocked.down)
-        return this.player.setVelocityY(-160);
+
+    // to the end of ladder, jump to the ground
+    if (this.hitLadder && this.player.y < 40) {
+      this.player.setVelocityY(0)
+      this.player.setPosition(320, 0)
+      this.background.setCollision(60, true) // enable landing to the 2nd floor ground!
+      return
+    }
+
+    // climbing the ladder...
+    if (this.cursors.up.isDown && this.hitLadder) {
+      this.player.setVelocityY(-90);
+      return this.player.play('climb', true);
+    }
+    
+    // hold the ladder...
+    if (this.hitLadder) {
+      this.player.setVelocityX(0)
+      return this.player.play('climb');
     }
 
     var ySpeed = this.player.body.velocity.y
@@ -127,29 +164,70 @@ class GuessMyName extends Phaser.Scene {
     this.player.setVelocityX(0);
 
     if (isStatic) this.player.play('turn');
-
-    // if (this.exitHitted) {
-    //   this._successHandler()
-    // }
   }
 
+  _hitTile(player, tile) {
+    var tileCenterX = tile.x * 64 + 32 + this.layerHoriOffset
+    var playerCenterX = player.body.center.x
+    var distance = Math.round(Math.abs(tileCenterX - playerCenterX))
+    if (distance > 20) return // touch enough to consider a real hit
 
-  update(){
+    if (tile.index === 65) {// hit the key, unlock the proceeding items
+      this.hitKey = true
+      this.lockerLayer.setVisible(false)
+      this.ladderLayer.setVisible(true)
+      this.keyLayer.setVisible(false)
+    }
+    if (tile.index === 76) {// hit the door
+      this.succeed = true // end of  game!
+    }
 
+    if (!this.hitKey) return // pickup key first!
+    if (tile.index === 58) {// after picked key to allow hit ladder
+      this.hitLadder = true
+    }
+  }
+
+  update() {
+    if (this.succeed) return
+
+    // 1. reset hit flag
+    this.hitLadder = false
+
+    // 2. detect hit the key, and show the ladder...
+    this.physics.world.overlapTiles(this.player, this.pickups, this._hitTile, null, this);
+
+    // 3. check hit flag, and set anction
     this._manualControl()
 
+    // 4. hit the exit
+    if (this.succeed) {
+      this.scene.start(
+        'congratulations', 
+        { msg: 'You completed the [Guess My Name] chapter!' }
+      );
+      this.onGameSuccess()
+    }
   }
 
   /**
-   * exposure to outeside of game
+   * exposure to outside of game
    * @returns nothing
    */
-  bingo(bridge) {
-    this._createGuideText('Bingo!')
+  bingo(answer, success) {
+    if (answer !== 'CA') return
+
+    this._createGuideText('Bingo! Walk right to pickup the key using RIGHT KEY!')
+    this.background.setCollision(60, false) // remove the block collision
+    this.caillouLayer.setVisible(true)
+
     this.complete = true
     return this.complete
   }
   
+  onGameSuccess() {
+    this.game.events.emit('gamePass')
+  }
 
 }
 

@@ -14,16 +14,19 @@ import { projectsCodeTarget } from '../config/ProjectDefaultCode';
 const PhaserGameBox = ({ codeResultCallback }) => {
 
   const gameRef = useRef(null)
-  const audioRef = useRef(null)
+  const audioSuccessRef = useRef(null)
+  const audioFailureRef = useRef(null)
 
   const projectID = projectStore(state => state.projectID)
   const codeExecResult = projectStore(state => state.codeExecResult)
   const currentTarget = projectsCodeTarget[projectID]
   const [projects, updateProjectStatus] = useLocalStorageState('projects_status', {})
 
+  // console.log(codeExecResult)
 
   useEffect(() => {
-    audioRef.current = new Audio('assets/audio/match5.mp3');
+    audioSuccessRef.current = new Audio('assets/audio/p-ping.mp3');
+    audioFailureRef.current = new Audio('assets/audio/error_006.ogg');
   }, [])
 
   useEffect(() => {
@@ -37,10 +40,9 @@ const PhaserGameBox = ({ codeResultCallback }) => {
     // allowing reach to bingo without success
     const currentScene = gameRef.current.scene.getAt(0)
     currentScene.bingo(codeExecResult.result, success)
-
-    if (success) {
-      setTimeout(()=>audioRef.current.play(), 600)
-    }
+    
+    const music = success ? audioSuccessRef : audioFailureRef
+    setTimeout(() => music.current.play(), 300)
     
   }, [codeExecResult, currentTarget])
 

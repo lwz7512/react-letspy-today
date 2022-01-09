@@ -54,7 +54,10 @@
       "pass": "",
       "tags": ["Medium", "Puzzle", "String", "Slice"],
       "image": "assets/project/matrix_md.png",
-      "player": "assets/project/platformChar_idle.png"
+      "player": "assets/project/platformChar_idle.png",
+      "reference": [
+        "https://realpython.com/lessons/string-slicing/"
+      ]
     },
     {
       "id": 5,

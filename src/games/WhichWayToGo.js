@@ -34,8 +34,8 @@ class WhichWayToGo extends Phaser.Scene {
     var tiles2 = map.addTilesetImage('tools', 'platform');
     this.tools = map.createLayer('tools', tiles2, -40, 0)
 
+    this._createAnimation()
     this._createPlayer()
-    this._createPlayerAnimation()
   }
 
   _createGuideText(message) {
@@ -45,7 +45,7 @@ class WhichWayToGo extends Phaser.Scene {
     this.guideTxt = this.add.text(10, 10, message, { fill: '#ffff00' });
   }
 
-  _createPlayerAnimation() {
+  _createAnimation() {
     this.anims.create({
         key: 'idle',
         frames: this.anims.generateFrameNumbers('player', { frames: [41, 49, 57 ] }),
@@ -69,12 +69,13 @@ class WhichWayToGo extends Phaser.Scene {
     this.player.setScale(0.3, 0.3);
     this.player.setCollideWorldBounds(true);
     this.player.setDepth(1)
+    this.player.body.setAllowGravity(false)
+    this.player.play('idle', true)
   }
 
 
   update(){
-    this.player.body.setVelocityY(-5) // static yaxis stay
-    this.player.play('idle', true)
+    
   }
 
   /**
@@ -87,6 +88,9 @@ class WhichWayToGo extends Phaser.Scene {
     return this.complete
   }
   
+  onGameSuccess() {
+    this.game.events.emit('gamePass')
+  }
 
 }
 

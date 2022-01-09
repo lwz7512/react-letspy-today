@@ -1,9 +1,9 @@
 import Phaser from 'phaser';
 
-class AcrossLiveBridge extends Phaser.Scene {
+class PassLiveBridge extends Phaser.Scene {
 
   constructor(){
-    super('AcrossLiveBridge');
+    super('PassLiveBridge');
     // got the missing part of game from pthon code
     this.complete = false
     // pass the game!
@@ -114,4 +114,4 @@ class AcrossLiveBridge extends Phaser.Scene {
 
 }
 
-export default AcrossLiveBridge
+export default PassLiveBridge

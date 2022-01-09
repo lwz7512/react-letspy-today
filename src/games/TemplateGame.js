@@ -42,7 +42,7 @@ class TemplateGame extends Phaser.Scene {
   }
 
   /**
-   * exposure to outeside of game
+   * exposure to outside of game
    * @returns nothing
    */
   bingo(bridge) {
@@ -51,6 +51,9 @@ class TemplateGame extends Phaser.Scene {
     return this.complete
   }
   
+  onGameSuccess() {
+    this.game.events.emit('gamePass')
+  }
 
 }
 

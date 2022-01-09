@@ -5,7 +5,7 @@
  * @returns true or false
  */
 export const checkResultMatchTarget = (expect, result) => {
-  if (!result) return false // 0, something wrong in backend
+  if (result === 0) return false // 0, something wrong in backend
   if (expect === result) return true // number comparison
 
   // start array compare
@@ -40,9 +40,9 @@ export const generateSuccessMessage = (target) => {
 export const generateFailureMessage = (target, result) => {
   // code running error in backend
   if (!result.success) return result.message
-  if (target.params) {// string type
-      return `expecting '${target.params}' equal to ${target.expect}`
-  }
+  // if (target.params) {// string type
+  //     return `expecting '${target.params}' equal to ${target.expect}`
+  // }
   // actions
-  return 'ohoh...almost there, try again!'
+  return 'OhOh...check the code, try again!'
 }

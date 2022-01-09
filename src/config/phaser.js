@@ -9,7 +9,7 @@ import GuessMyName from '../games/GuessMyName'
 import SphinxRiddle from '../games/SphinxRiddle'
 import WhichWayToGo from '../games/WhichWayToGo'
 import FlyThemUp from '../games/FlyThemUp'
-import AcrossLiveBridge from '../games/AcrossLiveBridge'
+import PassLiveBridge from '../games/PassLiveBridge'
 import FixTheClock from '../games/FixTheClock'
 
 
@@ -21,7 +21,7 @@ export const gamesForProject = {
     5 : SphinxRiddle,
     6 : WhichWayToGo,
     7 : FlyThemUp,
-    8 : AcrossLiveBridge,
+    8 : PassLiveBridge,
     9 : FixTheClock,
 }
 

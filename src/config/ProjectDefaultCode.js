@@ -30,15 +30,17 @@ const projectCode_3 = rTabs(`
 `)
 
 const projectCode_4 = rTabs(`
-    bridge = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    # myName = "??ILLOU"
     # Mission Brief:
-    # Ola needs to reach the door across the broken bridge, help him repair the bridge!
-    #
-    # Tips:
-    # in bridge stone list, 1 repesents existing conrnerstone, 0 repesents blank space,
+    # The robot could not recall his name recorded in a variable <myName> above, 
+    # help him to figure it out the first two letters.
     # 
-    # lets get started with repairing first space by:
-    bridge[1] = 1
+    # Tips:
+    # First two letter of his name is missing, you are expected to use
+    # string slice method to extract the real value of '??' from <myName>!
+    # 
+    # Now, write you solution to replace the 'None' below:
+    firstTwoChars = None
 `)
 
 const projectCode_5 = rTabs(`
@@ -119,21 +121,30 @@ export const projectsCodeTarget = {
         projName: 'Clone Army',
         codeType: 'statements', 
         params: 'troops_amount', 
-        expect: 40
+        expect: 40,
+        codeAnwser: '',
     },
     2: {
         projName: 'Lava Adventure',
         codeType: 'actions',
         params: '',
-        expect: [{walk: 1}, {jump: 1}, {walk: 1}, {jump: 1}, {walk: 1}, {pivot: 0}]
+        expect: [{walk: 1}, {jump: 1}, {walk: 1}, {jump: 1}, {walk: 1}, {pivot: 0}],
+        codeAnwser: '',
     },
     3: {
         projName: 'Missing bricks',
         codeType: 'statements',
         params: 'bridge',
-        expect: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        expect: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        codeAnwser: '',
     },
-    4: { },
+    4: {
+        projName: 'Guess My Name',
+        codeType: 'statements', 
+        params: 'firstTwoChars', 
+        expect: 'CA',
+        codeAnwser: 'myName[:2]'
+    },
     5: { },
     6: { },
     7: { },

@@ -45,7 +45,7 @@ class FlyThemUp extends Phaser.Scene {
     this.ground.setCollision([2, 50, 51])
 
     this._createBatteries();
-    this._createPlayerAnimation();
+    this._createAnimation();
     this._createPlayer();
     this._createSoldiers();
 
@@ -82,7 +82,7 @@ class FlyThemUp extends Phaser.Scene {
     }
   }
 
-  _createPlayerAnimation() {
+  _createAnimation() {
     this.anims.create({
       key: 'greenIdle', 
       frames: this.anims.generateFrameNames('elves', { prefix: 'green_idle_', start: 0, end: 4 }), 
@@ -157,6 +157,9 @@ class FlyThemUp extends Phaser.Scene {
     return this.complete
   }
   
+  onGameSuccess() {
+    this.game.events.emit('gamePass')
+  }
 
 }
 

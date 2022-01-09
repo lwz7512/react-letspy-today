@@ -41,9 +41,9 @@ class FixTheClock extends Phaser.Scene {
     this.decorations = map.createLayer('decorations', tiles, -40, -20);
     this.decorations.setScale(0.6, 0.6);
 
+    this._createAnimation();
     this._createPlayer();
     this._createHunchbackMan();
-    this._createPlayerAnimation();
 
     this.physics.add.collider(this.ground, this.player);
     this.physics.add.collider(this.ground, this.lord);
@@ -74,7 +74,7 @@ class FixTheClock extends Phaser.Scene {
     this.guideTxt = this.add.text(10, 10, message, { fill: '#ffff00' });
   }
 
-  _createPlayerAnimation() {
+  _createAnimation() {
     this.anims.create({
         key: 'turn',
         frames: [ { key: 'player', frame: 0 } ],
@@ -145,6 +145,9 @@ class FixTheClock extends Phaser.Scene {
     return this.complete
   }
   
+  onGameSuccess() {
+    this.game.events.emit('gamePass')
+  }
 
 }
 
