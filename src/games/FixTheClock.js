@@ -12,6 +12,7 @@ class FixTheClock extends Phaser.Scene {
     this.guideTxt = null
     // expose bingo function
     this.bingo = this.bingo.bind(this)
+    this.layerHoriOffset = -40
   }
 
   preload(){
@@ -124,9 +125,20 @@ class FixTheClock extends Phaser.Scene {
 
     if (isStatic) this.player.play('turn');
 
-    // if (this.exitHitted) {
-    //   this._successHandler()
-    // }
+  }
+
+  /**
+   * touch enough to consider a real hit
+   * @param {Sprite} player 
+   * @param {Tile} tile 
+   * @param {Number} distance 
+   * @returns true or false
+   */
+   _closeEnough(player, tile, distance) {
+    var tileCenterX = tile.x * 64 + 32 + this.layerHoriOffset
+    var playerCenterX = player.body.center.x
+    var horiDifference = Math.round(Math.abs(tileCenterX - playerCenterX))
+    return distance > horiDifference
   }
 
   update(){

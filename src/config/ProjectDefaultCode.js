@@ -44,15 +44,22 @@ const projectCode_4 = rTabs(`
 `)
 
 const projectCode_5 = rTabs(`
-    bridge = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    # There are two box holding the answer of the Sphinx famous question:
+    # green_box = "********"
+    # red_box = "########"
     # Mission Brief:
-    # Ola needs to reach the door across the broken bridge, help him repair the bridge!
-    #
+    # first, you need to know the right anwser, 
+    # then you need to know how to check the two box with "if" statement,
+    # if the two box contain the key word of right anwser, return the box!
     # Tips:
-    # in bridge stone list, 1 repesents existing conrnerstone, 0 repesents blank space,
-    # 
-    # lets get started with repairing first space by:
-    bridge[1] = 1
+    # key word may use 'person', :)
+    # lets first create a placeholder for your anwser,
+    # check two box variables, asign the right one to the 'the_right_box':
+    the_right_box = None
+    if "person" in green_box:
+        the_right_box = green_box
+    if "person" in red_box:
+        the_right_box = red_box
 `)
 
 const projectCode_6 = rTabs(`
@@ -145,7 +152,12 @@ export const projectsCodeTarget = {
         expect: 'CA',
         codeAnwser: 'myName[:2]'
     },
-    5: { },
+    5: {
+        projName: 'Riddle of Sphinx',
+        codeType: 'statements',
+        params: 'the_right_box',
+        expect: 'a person'
+    },
     6: { },
     7: { },
     8: { },

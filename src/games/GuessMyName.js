@@ -166,11 +166,22 @@ class GuessMyName extends Phaser.Scene {
     if (isStatic) this.player.play('turn');
   }
 
-  _hitTile(player, tile) {
+  /**
+   * touch enough to consider a real hit
+   * @param {Sprite} player 
+   * @param {Tile} tile 
+   * @param {Number} distance 
+   * @returns true or false
+   */
+   _closeEnough(player, tile, distance) {
     var tileCenterX = tile.x * 64 + 32 + this.layerHoriOffset
     var playerCenterX = player.body.center.x
-    var distance = Math.round(Math.abs(tileCenterX - playerCenterX))
-    if (distance > 20) return // touch enough to consider a real hit
+    var horiDifference = Math.round(Math.abs(tileCenterX - playerCenterX))
+    return distance > horiDifference
+  }
+
+  _hitTile(player, tile) {
+    if (!this._closeEnough(player, tile, 20)) return
 
     if (tile.index === 65) {// hit the key, unlock the proceeding items
       this.hitKey = true

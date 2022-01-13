@@ -12,6 +12,8 @@ class SphinxRiddle extends Phaser.Scene {
     this.guideTxt = null
     // expose bingo function
     this.bingo = this.bingo.bind(this)
+    this.pickups = []
+    this.layerHoriOffset = -40
   }
 
   preload(){
@@ -29,22 +31,59 @@ class SphinxRiddle extends Phaser.Scene {
     
   create(){
     this.egypt = this.add.image(300, 80, 'egypt');
-    this.sphinx = this.add.image(450, 100, 'sphinx');
+    this.sphinx = this.add.image(500, 100, 'sphinx');
 
     var map = this.make.tilemap({ key: 'map' });
     var tiles = map.addTilesetImage('platform', 'tiles');
-    this.floor = map.createLayer('background', tiles, -40, 0);
-    this.floor.setCollision(4)
-    this.boxes = map.createLayer('boxes', tiles, -40, 0);
+    this.floorLayer = map.createLayer('background', tiles, -40, 0);
+    this.floorLayer.setCollision(4)
+    this.boxesLayer = map.createLayer('boxes', tiles, -60, 0);
+    this.doorLayer = map.createLayer('door', tiles, -40, 0);
+    this.doorLayer.setVisible(false);
   
     this._createAnimation()
     this._createPlayer()
 
-    this.physics.add.collider(this.floor, this.player);
-
+    this.physics.add.collider(this.floorLayer, this.player);
     this.cursors = this.input.keyboard.createCursorKeys();
     // disable space key presss, conflict with monaco editor
     this.input.keyboard.removeCapture(32);
+
+    // get door
+    var doors = this.doorLayer.filterTiles(tile => tile.index === 76)
+    this.pickups = this.pickups.concat(doors)
+
+    var popup = this._createDialog.bind(this)
+    setTimeout(popup, 1000)
+  }
+
+  _createDialog() {
+    var dialogX = 140
+    var dialogY = 30
+    var dialogW = 300
+    var dialogH = 100
+    var dialogR = 6
+
+    var graphics = this.add.graphics();
+    graphics.lineStyle(2, 0xff0000, 1);
+    graphics.strokeRoundedRect(dialogX, dialogY, dialogW, dialogH, dialogR);
+    graphics.fillStyle(0xffff00, 0.6);
+    graphics.fillRoundedRect(dialogX, dialogY, dialogW, dialogH, dialogR);
+    // What goes on four feet in the morning, two feet at noon, and three feet in the evening? 
+    var content = [
+        "What goes on four feet in the morning, ",
+        "two feet at noon, and three feet in the",
+        "evening? Anwser is hidden in the two",
+        "boxes, which box hold the right anwser!",
+    ];
+
+    this.dialog = this.add.text(
+      dialogX+8, 
+      dialogY+8, 
+      content, 
+      { fontFamily: 'Arial', color: '#000000'}
+    );
+    this.dialog.setLineSpacing(6);
   }
 
   _createGuideText(message) {
@@ -55,10 +94,9 @@ class SphinxRiddle extends Phaser.Scene {
   }
 
   _createPlayer() {
-    // TODO: player.x = 250, in the middle of brick....
     this.player = this.physics.add.sprite(100, 60, 'player', 0);
     this.player.setBounce(0.2);
-    this.player.setScale(0.6, 0.6);
+    this.player.setScale(0.5, 0.5);
     this.player.setCollideWorldBounds(true);
     this.player.setDepth(1)
   }
@@ -118,18 +156,58 @@ class SphinxRiddle extends Phaser.Scene {
     // }
   }
 
+  /**
+   * touch enough to consider a real hit
+   * @param {Sprite} player 
+   * @param {Tile} tile 
+   * @param {Number} distance 
+   * @returns true or false
+   */
+   _closeEnough(player, tile, distance) {
+    var tileCenterX = tile.x * 64 + 32 + this.layerHoriOffset
+    var playerCenterX = player.body.center.x
+    var horiDifference = Math.round(Math.abs(tileCenterX - playerCenterX))
+    return distance > horiDifference
+  }
+
+  _hitTile(player, tile) {
+    if (!this.complete) return
+    if (!this._closeEnough(player, tile, 10)) return
+
+    this.succeed = true // end of  game!
+  }
+
   update(){
+    if (this.succeed) return
+
+    // detect hit the key, and show the ladder...
+    this.physics.world.overlapTiles(this.player, this.pickups, this._hitTile, null, this);
     
     this._manualControl()
 
+    if (this.succeed) {
+      this.scene.start(
+        'congratulations', 
+        { msg: 'You completed the [Riddle of Sphinx] chapter!' }
+      );
+      this.onGameSuccess()
+    }
   }
 
   /**
    * exposure to outeside of game
    * @returns nothing
    */
-  bingo(bridge) {
-    this._createGuideText('Bingo!')
+  bingo(_, done) {
+    if (!done) return
+
+    this.dialog.setText([
+      "Bingo!",
+      "press RIGHT ARROW KEY",
+      "toward door to complete this game!"
+    ])
+
+    this.doorLayer.setVisible(true)
     this.complete = true
     return this.complete
   }
