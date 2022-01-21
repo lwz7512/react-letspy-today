@@ -198,15 +198,15 @@ class LavaAdventure extends Phaser.Scene {
     var map = this.make.tilemap({ key: 'map' });
     var tiles = map.addTilesetImage('adventure', 'tiles');
 
-    this.background = map.createLayer('background', tiles, -40, -40);
+    this.background = map.createLayer('background', tiles, -40, 0);
     this.background.setCollision([2, 13,]) // 2: wall, 13: grass block, 96: exit
     this.exits = this.background.filterTiles(tile => tile.index === 96)
     
-    this.docker = map.createLayer('docker', tiles, -40, -40)
+    this.docker = map.createLayer('docker', tiles, -40, 0)
     this.docker.setCollision([42, 54]) // road tiles
     this.pickups = this.docker.filterTiles(tile => tile.index === 190);
 
-    this.pivoted = map.createLayer('pivoted', tiles, -40, -40)
+    this.pivoted = map.createLayer('pivoted', tiles, -40, 0)
     this.pivoted.setVisible(false) // hide first
     this.pivoted.setCollision([42, 54]) // road tiles
 
@@ -356,7 +356,7 @@ class LavaAdventure extends Phaser.Scene {
       return this._gameFailed()
     }
 
-    if (this.player.y > 76) {
+    if (this.player.y > 120) {
       return this._goDrop()
     }
 

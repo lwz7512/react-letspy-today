@@ -72,6 +72,10 @@ const projectStore = create(
       isSucceed: false,
     }),
     GAME_DEGUG: true,
+    tipsPanelExpanded: true,
+    toggleTipsPanel: () => set(
+      state => ({tipsPanelExpanded: !state['tipsPanelExpanded']})
+    ),
     // more state and action ...
   })
 )

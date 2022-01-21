@@ -25,6 +25,7 @@ const ProjectCodeMode = () => {
   const projectID = projectStore(state => state.projectID)
   const reset = projectStore(state => state.reset)
   const isSucceed = projectStore(state => state.isSucceed)
+  const tipsPanelExpanded = projectStore(state => state.tipsPanelExpanded)
 
   const currentTarget = projectsCodeTarget[projectID]
 
@@ -91,11 +92,13 @@ const ProjectCodeMode = () => {
   return (
     <>
       <Toast ref={toastRef} />
-      <ProjectTips />
+      {tipsPanelExpanded && (
+        <ProjectTips />
+      )}
       <div className="content-area blue-round-panel light">
         <PYCodeEditor />
       </div>
-      <div className="result-area border-solid h-15rem blue-round-panel p-0">
+      <div className="result-area border-solid blue-round-panel p-0">
         <MiniGamePanel />
       </div>
     </>

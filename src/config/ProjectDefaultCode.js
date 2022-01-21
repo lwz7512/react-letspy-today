@@ -63,15 +63,25 @@ const projectCode_5 = rTabs(`
 `)
 
 const projectCode_6 = rTabs(`
-    bridge = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
-    # Mission Brief:
-    # Ola needs to reach the door across the broken bridge, help him repair the bridge!
+    # Mission Brief: 
+    # In this game, you are going to loop 'all_paths' list:
+    # all_paths = [path_object, path_object, path_object, ...]
+    # Check each path object, which one includes the right obstacle to 
+    # reach the exit point!
     #
     # Tips:
-    # in bridge stone list, 1 repesents existing conrnerstone, 0 repesents blank space,
+    # Every path_object has a function: includeItem(type) to return 
+    # True or False. type parameter in the function might be one of 
+    # 'leaf', 'bridge', 'diamond', 'key', 'heart', 'cone'.
+    # You may have noticed the right way out includes a 'key'!
     # 
-    # lets get started with repairing first space by:
-    bridge[1] = 1
+    # lets first create a placeholder used to save your finding:
+    right_path = None
+    for path_object in all_paths:
+        # check the 'path_object' above using its api 'includeItem',
+        # then assign your finding to 'right_path'
+        if path_object.includeItem('key'):
+            right_path = path_object
 `)
 
 const projectCode_7 = rTabs(`
@@ -158,7 +168,12 @@ export const projectsCodeTarget = {
         params: 'the_right_box',
         expect: 'a person'
     },
-    6: { },
+    6: {
+        projName: 'Which way to go',
+        codeType: 'statements',
+        params: 'right_path',
+        expect: {id: 4}
+    },
     7: { },
     8: { },
     9: { },

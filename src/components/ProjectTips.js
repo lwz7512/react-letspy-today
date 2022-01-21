@@ -41,7 +41,7 @@ const ProjectTips = () => {
         command: (event) => {
           toastRef.current.show({
             severity: 'info', 
-            summary: 'Coding task', 
+            summary: 'Coding target', 
             detail: projectInfo.coding, 
             life: 3000 
           });

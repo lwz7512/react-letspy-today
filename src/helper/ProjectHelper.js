@@ -30,6 +30,12 @@ export const checkResultMatchTarget = (expect, result) => {
       })
       return matched
   }
+
+  // compare Object id only
+  if (typeof expect === 'object' && typeof result === 'object') {
+    return expect.id === result.id
+  }
+
   return false
 }
 

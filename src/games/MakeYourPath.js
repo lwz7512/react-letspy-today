@@ -41,7 +41,7 @@ class MakeYourPath extends Phaser.Scene {
     // When loading from an array, make sure to specify the tileWidth and tileHeight
     var map = this.make.tilemap({ data: tilesArray, tileWidth: 64, tileHeight: 64 });
     var tiles = map.addTilesetImage('tileskenney');
-    var groundLayer = map.createLayer(0, tiles, 0, 12);
+    var groundLayer = map.createLayer(0, tiles, 0, 42);
     groundLayer.setScale(0.5, 0.5);
     groundLayer.setCollision([12, 122]) // 12, 122 is the tile id of path row
 

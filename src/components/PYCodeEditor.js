@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import MonacoEditor from '@monaco-editor/react'
 import { Button } from 'primereact/button'
 import {
-  BiRun, BiTerminal, BiBookAlt, BiKey, BiReset, BiHelpCircle,
+  BiRun, BiTerminal, BiBookAlt, BiKey, BiReset, BiHelpCircle, BiWindowClose,
 } from "react-icons/bi"
 
 import { FiThumbsUp } from 'react-icons/fi'
@@ -20,6 +20,7 @@ const PYCodeEditor = () => {
   const codeValueChanged = projectStore(state => state.codeValueChanged)
   const startRunning = projectStore(state => state.startRunning)
   const isSucceed = projectStore(state => state.isSucceed)
+  const toggleTipsPanel = projectStore(state => state.toggleTipsPanel)
 
   const currentProjectCode = projectsBoilerplateCode[projectID]
 
@@ -32,7 +33,7 @@ const PYCodeEditor = () => {
   return (
     <div className="h-full w-full flex justify-content-between">
       <MonacoEditor
-        height="358px"
+        height="420px"
         width="710px"
         defaultLanguage="python"
         defaultValue={currentProjectCode}
@@ -78,6 +79,13 @@ const PYCodeEditor = () => {
           tooltip="Reset Code to Initial"
           >
           <BiReset size="20" />
+        </Button>
+        <Button 
+          className="p-button-rounded p-button-info p-button-icon-only mx-3 mt-3"
+          tooltip="Close Panel"
+          onClick={toggleTipsPanel}
+          >
+          <BiWindowClose size="20" />
         </Button>
         <Button 
           className="p-button-rounded p-button-success p-button-icon-only mx-3 mt-3"
