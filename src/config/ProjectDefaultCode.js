@@ -85,15 +85,25 @@ const projectCode_6 = rTabs(`
 `)
 
 const projectCode_7 = rTabs(`
-    bridge = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    # You have Soldier definition like this:
+    # class Soldier:
+    #    def addPower(self, ability):
+    #        self.ability = ability
+    # also a 'troops' including numerous soldiers under your control:
+    # troops = [soldier, soldier, soldier, ...soldier]
+    #
     # Mission Brief:
-    # Ola needs to reach the door across the broken bridge, help him repair the bridge!
+    # Your troops are being trapped in toxic valley, you need to dispatch
+    # flying armor for each of them to get out of there!
     #
     # Tips:
-    # in bridge stone list, 1 repesents existing conrnerstone, 0 repesents blank space,
+    # Every soldier in your 'troops' need 'flying' ability to escapge
+    # valley, loop the 'troops' list, get each soldier and call its 
+    # 'addPower' function.
     # 
-    # lets get started with repairing first space by:
-    bridge[1] = 1
+    # lets check out our 'troops' list by a loop processing:
+    for soldier in troops:
+        soldier.addPower('flying')
 `)
 
 const projectCode_8 = rTabs(`

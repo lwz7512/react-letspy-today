@@ -42,7 +42,7 @@ class FlyThemUp extends Phaser.Scene {
     var map = this.make.tilemap({ key: 'map' });
     var tiles = map.addTilesetImage('platform', 'tiles');
 
-    this.ground = map.createLayer('ground', tiles, -10, -30);
+    this.ground = map.createLayer('ground', tiles, -10, -20);
     this.ground.setCollision([2, 50, 51])
 
     this._createBatteries();

@@ -44,7 +44,12 @@ Completed at: @2021/11/17
 
 ## version 0.4 
 
-TODO: ...next 3 projects
+completed next 3 projects
+
+- completed all the game design
+- completed 3th~6th game: `Guess My Name`, `Riddle of Sphinx`, `Which way to go`
+
+@2022/01/21
 
 ## version 0.5
 
