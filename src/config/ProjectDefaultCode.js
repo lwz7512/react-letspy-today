@@ -184,7 +184,17 @@ export const projectsCodeTarget = {
         params: 'right_path',
         expect: {id: 4}
     },
-    7: { },
+    7: {
+        projName: 'Free Your Troops',
+        codeType: 'statements',
+        params: 'troops',
+        expect: [
+            {ability: 'flying'}, {ability: 'flying'}, {ability: 'flying'},
+            {ability: 'flying'}, {ability: 'flying'}, {ability: 'flying'},
+            {ability: 'flying'}, {ability: 'flying'}, {ability: 'flying'},
+            {ability: 'flying'}, {ability: 'flying'}, {ability: 'flying'},
+        ]
+    },
     8: { },
     9: { },
 }

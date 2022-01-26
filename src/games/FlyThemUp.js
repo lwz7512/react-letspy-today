@@ -1,5 +1,80 @@
 import Phaser from 'phaser';
 
+
+class SuperSoldier {
+
+  constructor(soldier, lazyLaunch){
+    this.soldier = soldier
+    this.launchTime = lazyLaunch
+    this.frameCounter = 0
+    this.accelerator = 0
+    this.outOfValley = false
+  }
+
+  update(){
+    this.frameCounter += 1
+    // waiting...
+    if (this.frameCounter < this.launchTime) 
+      return
+    // out of top stage
+    if (this.soldier.y < -30) {
+      this.soldier.setVelocityY(0)
+      this.outOfValley = true
+      return
+    }
+    this.accelerator += 10
+    this.soldier.setVelocityY(-90 - this.accelerator)
+  }
+
+  isFree(){
+    return this.outOfValley
+  }
+}
+
+
+class TroopsOnMyControl {
+
+  constructor(successCallback){
+    this.superSoldiers = null
+    this.moveCounter = 0
+    this.successHandler = successCallback
+  }
+
+  launch(soldiersInTrap){
+    this.superSoldiers = []
+    soldiersInTrap.forEach((soldier, index) => {
+      this.superSoldiers.push(
+        new SuperSoldier(soldier, index * 10)
+      )
+    })
+  }
+
+  update(){
+    this.moveCounter += 1 // lazy action execution counter
+    // waiting for bingo calling repetition until last update
+    if (this.moveCounter < 24) return
+
+    // fly all up
+    let allset = true
+    this.superSoldiers.forEach(soldier => {
+      soldier.update()
+      if (!soldier.isFree()) allset = false
+    })
+
+    if (allset) {
+      this.successHandler()
+    }
+  }
+
+  isEnd(){
+    // let allset = true
+    // this.superSoldiers.forEach(soldier => {
+    //   if (!soldier.isFree()) allset = false
+    // })
+    // return allset
+  }
+}
+
 class FlyThemUp extends Phaser.Scene {
 
   constructor(){
@@ -54,9 +129,11 @@ class FlyThemUp extends Phaser.Scene {
   }
 
   _createBatteries() {
+    this.batteries = this.add.group();
     for (let i=2; i<=4; i++) {
       let btr = this.add.sprite(36+i*12, 20, 'battery', i)
       btr.setScale(0.4, 0.4)
+      this.batteries.add(btr)
     }
   }
 
@@ -76,8 +153,6 @@ class FlyThemUp extends Phaser.Scene {
       let soldier = this.physics.add.sprite(144+24*i, 22, 'soldiers', 0)
       soldier.setBounce(0.2);
       soldier.play('soldierIdle')
-      soldier.setCollideWorldBounds(true);
-
       this.soldiers.add(soldier);
       this.physics.add.collider(this.ground, soldier);
     }
@@ -158,17 +233,39 @@ class FlyThemUp extends Phaser.Scene {
     return distance > horiDifference
   }
 
+  _successHandler() {
+    this.succeed = true
+    this.onGameSuccess()
+    this.scene.start(
+      'congratulations', 
+      { msg: 'You completed the [Free Your Troops] project!'}
+    )
+  }
 
   update(){
+    if (!this.troops) return
 
+    this.troops.update()
+    this.player.play('blueAttack', true)
   }
 
   /**
    * exposure to outeside of game
    * @returns nothing
    */
-  bingo(bridge) {
+  bingo(troops, success) {
+    if (!success) return
+    // console.log(troops)
+
     this._createGuideText('Bingo!')
+
+    // troops ready
+    this.troops = new TroopsOnMyControl(
+      this._successHandler.bind(this)
+    )
+    this.troops.launch(this.soldiers.getChildren())
+    this.batteries.destroy(true, true)
+
     this.complete = true
     return this.complete
   }

@@ -75,8 +75,22 @@
     },
     {
       "id": 6,
-      "title": "Which way to go",
+      "title": "Free Your Troops",
       "level": 2,
+      "description": "Your troops are being trapped in toxic valley, you need to dispatch flying armor for each of them to get out of there!",
+      "mission": "You are a smart commander & scientist, you need to use `for` loop to equip `flying` ability with each soldier",
+      "tips": "Every soldier in your 'troops' need 'flying' ability to escapge valley, loop the 'troops' list, get each soldier and call its 'addPower' function.",
+      "coding": "troops",
+      "walk": "",
+      "pass": "",
+      "tags": ["Medium", "Loop", "Iteration"],
+      "image": "assets/project/matrix_md.png",
+      "player": "assets/project/commander.png"
+    },
+    {
+      "id": 7,
+      "title": "Which way to go",
+      "level": 3,
       "description": "Theare 6 possible paths in a maze, check the right path to go!",
       "mission": "Check each path if it includes diamond(with color) or bridge...to get the right path.",
       "tips": "Every path_object has a function: includeItem(type) to return a boolean value. You may have noticed the right way out includes a 'key'!",
@@ -86,20 +100,6 @@
       "tags": ["Medium", "Puzzle", "Condition", "Loop"],
       "image": "assets/project/matrix_md.png",
       "player": "assets/project/slimeBlock.png"
-    },
-    {
-      "id": 7,
-      "title": "Fly them up",
-      "level": 3,
-      "description": "Your troops are being trapped in toxic valley, you need to dispatch flying armor for each of them to get out of there!",
-      "mission": "You are a smart commander & scientist, you need to use `for` loop to equip armor with each soldier",
-      "tips": "Every soldier in your 'troops' need 'flying' ability to escapge valley, loop the 'troops' list, get each soldier and call its 'addPower' function.",
-      "coding": "troops",
-      "walk": "",
-      "pass": "",
-      "tags": ["Medium", "Loop", "Iteration"],
-      "image": "assets/project/matrix_md.png",
-      "player": "assets/project/commander.png"
     },
     {
       "id": 8,

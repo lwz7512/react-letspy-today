@@ -39,7 +39,7 @@ class Congratulations extends Phaser.Scene {
 
     particles.createEmitter({
       x: 300,
-      y: 200,
+      y: 230,
       scale: { start: 0.3, end: 0 },
       speed: { min: 200, max: 300 },
       lifespan: 2000,
