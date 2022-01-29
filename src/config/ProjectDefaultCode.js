@@ -85,7 +85,7 @@ const projectCode_6 = rTabs(`
 `)
 
 const projectCode_7 = rTabs(`
-    # You have Soldier definition like this:
+    # Assume you have Soldier definition like this:
     # class Soldier:
     #    def addPower(self, ability):
     #        self.ability = ability
@@ -107,15 +107,23 @@ const projectCode_7 = rTabs(`
 `)
 
 const projectCode_8 = rTabs(`
-    bridge = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
-    # Mission Brief:
-    # Ola needs to reach the door across the broken bridge, help him repair the bridge!
+    # Assume you have two groups of stones which are flying constantly:
+    # yellow_stones = [*, *, *, *]
+    # red_stones = [*, *, *, *]
+    # Each 'stone' in that group actually is one of the alphabet
     #
+    # Mission Brief:
+    # To reach the exit, you need to
+    # 1. have 'yellow_stones' sorted in ascending order,
+    # 2. have 'red_stones' sorted in descending order,
+    # 3. add two group stones into one list 'bridge_stones' below
     # Tips:
-    # in bridge stone list, 1 repesents existing conrnerstone, 0 repesents blank space,
-    # 
-    # lets get started with repairing first space by:
-    bridge[1] = 1
+    # Remember to jump and hit the key to unlock the door.
+    bridge_stones = []
+    # lets first hack two groups of stones:
+    yellow_stones.sort()
+    red_stones.sort(reverse=True)
+    bridge_stones = yellow_stones + red_stones
 `)
 
 const projectCode_9 = rTabs(`
@@ -195,6 +203,11 @@ export const projectsCodeTarget = {
             {ability: 'flying'}, {ability: 'flying'}, {ability: 'flying'},
         ]
     },
-    8: { },
+    8: {
+        projName: 'Pass live bridge',
+        codeType: 'statements',
+        params: 'bridge_stones',
+        expect: ['a', 'b', 'c', 'd', 'h', 'g', 'f', 'e']
+    },
     9: { },
 }

@@ -105,15 +105,19 @@
       "id": 8,
       "title": "Pass live bridge",
       "level": 3,
-      "description": "You are running into a weird bridge with disorderd pillars, you need to reorder them with correct order to get across!",
-      "mission": "The bridge is alive because its pillars constantly changing, until you reorder it acscendingly then descendingly you would make it stable.",
-      "tips": "",
-      "coding": "",
-      "walk": "",
+      "description": "You are running into a weird bridge with disorderd pillars, you need to reorder them with correct order to get through!",
+      "mission": "The bridge is alive because its pillars constantly changing, until you reorder it acscendingly then descendingly you would be safe to pass.",
+      "tips": "Using sort function, remember to jump and hit the key to unlock door.",
+      "coding": "bridge_stones",
+      "walk": "using RIGT/UP ARROW KEY to walk/jump",
       "pass": "",
       "tags": ["Medium", "List", "Sort"],
       "image": "assets/project/matrix_md.png",
-      "player": "assets/project/p1_stand.png"
+      "player": "assets/project/p1_stand.png",
+      "reference": [
+        "https://www.programiz.com/python-programming/methods/list/sort",
+        "https://www.w3schools.com/python/gloss_python_join_lists.asp"
+      ]
     },
     {
       "id": 9,

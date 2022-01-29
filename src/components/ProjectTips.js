@@ -32,7 +32,7 @@ const ProjectTips = () => {
             severity: 'info', 
             summary: 'Tips', 
             detail: projectInfo.tips, 
-            life: 3000 
+            life: 4000 
           });
         }
       },

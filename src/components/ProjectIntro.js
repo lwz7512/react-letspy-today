@@ -10,7 +10,7 @@ const ProjectIntro = () => {
   const [ project ] = projects.filter(project => project.id === Number(projectID))
 
   return (
-    <div className="intro-area border-double h-10rem blue-round-panel pb-0">
+    <div className="intro-area border-solid h-10rem blue-round-panel pb-0">
       {/* title row */}
       <div className="flex justify-content-between">
         <h3 className="text-900">

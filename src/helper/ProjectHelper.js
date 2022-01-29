@@ -19,7 +19,7 @@ export const checkResultMatchTarget = (expect, result) => {
         }
       })
       if (equal) return true
-      // compare each action
+      // compare each action object
       let matched = true
       expect.forEach((action, index) => {
         const expKey = Object.keys(action).length ? Object.keys(action)[0] : ''

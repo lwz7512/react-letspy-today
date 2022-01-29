@@ -118,7 +118,7 @@ class CollectStarsPlatformer extends Phaser.Scene {
       this.player.anims.play('turn');
     }
 
-    if (this.cursors.up.isDown && this.player.body.touching.down){
+    if (this.cursors.up.isDown && this.player.body.blocked.down){
       this.player.setVelocityY(-330);
     }
   }
