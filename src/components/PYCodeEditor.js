@@ -19,7 +19,8 @@ const PYCodeEditor = () => {
   const projectID = projectStore(state => state.projectID)
   const codeValueChanged = projectStore(state => state.codeValueChanged)
   const startRunning = projectStore(state => state.startRunning)
-  const isSucceed = projectStore(state => state.isSucceed)
+  // const isSucceed = projectStore(state => state.isSucceed)
+  const isSucceed = projectStore(state => true)
   const toggleTipsPanel = projectStore(state => state.toggleTipsPanel)
 
   const currentProjectCode = projectsBoilerplateCode[projectID]

@@ -42,10 +42,11 @@ const MiniGamePanel = () => {
         />
       </div>
       <div className="right-part center-child bg-blue-500 border-left-3 border-blue-500">
+        {/* TODO: replace true with isSucceed */}
         <button 
           type="button" 
           className="go-btn"
-          disabled={runningMode || isSucceed}
+          disabled={runningMode || true}
           onClick={startRunning}>
           {buttonIcon}
           <DotLoader 
