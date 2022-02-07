@@ -123,15 +123,19 @@
       "id": 9,
       "title": "Fix the clock",
       "level": 4,
-      "description": "To pass the first checkpoint of this adventure, you need to fix the clock to enter next chapter of this game. ",
+      "description": "To pass the first season of this Python Coding Adventure, you need to fix the clock to enter the unlock the door of church. ",
       "mission": "Use time function to return the current time, you will make it works! not tough right?",
-      "tips": "",
-      "coding": "",
+      "tips": "checkout 'datetime' module api doc to find what does now() return.",
+      "coding": "now",
       "walk": "",
       "pass": "",
       "tags": ["Medium", "time", "Function"],
       "image": "assets/project/matrix_md.png",
-      "player": "assets/project/female_idle.png"
+      "player": "assets/project/female_idle.png",
+      "reference": [
+        "https://docs.python.org/3/library/datetime.html#datetime-objects",
+        "https://www.geeksforgeeks.org/python-datetime-datetime-class/"
+      ]
     }
   ]
 }

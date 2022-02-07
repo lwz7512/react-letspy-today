@@ -127,15 +127,22 @@ const projectCode_8 = rTabs(`
 `)
 
 const projectCode_9 = rTabs(`
-    bridge = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+    # To fix the clock, here is a starting point to figure out current time:
+    import datetime
+    now = datetime.datetime.now()
     # Mission Brief:
-    # Ola needs to reach the door across the broken bridge, help him repair the bridge!
+    # You have a 'now' object to use, 
+    # get the 'hour', 'minute', 'second' value from it!
     #
     # Tips:
-    # in bridge stone list, 1 repesents existing conrnerstone, 0 repesents blank space,
+    # visit this tutorial to find the clue:
+    # https://www.geeksforgeeks.org/python-datetime-datetime-class/
+    # Search: Example 2: Accessing the attributes of date and time object
     # 
-    # lets get started with repairing first space by:
-    bridge[1] = 1
+    # lets define empty variables to be replaced with your solutions:
+    hour = now.hour
+    minute = now.minute
+    second = now.second
 `)
 
 
@@ -157,28 +164,24 @@ export const projectsCodeTarget = {
         codeType: 'statements', 
         params: 'troops_amount', 
         expect: 40,
-        codeAnwser: '',
     },
     2: {
         projName: 'Lava Adventure',
         codeType: 'actions',
         params: '',
         expect: [{walk: 1}, {jump: 1}, {walk: 1}, {jump: 1}, {walk: 1}, {pivot: 0}],
-        codeAnwser: '',
     },
     3: {
         projName: 'Missing bricks',
         codeType: 'statements',
         params: 'bridge',
         expect: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        codeAnwser: '',
     },
     4: {
         projName: 'Guess My Name',
         codeType: 'statements', 
         params: 'firstTwoChars', 
         expect: 'CA',
-        codeAnwser: 'myName[:2]'
     },
     5: {
         projName: 'Riddle of Sphinx',
@@ -209,5 +212,10 @@ export const projectsCodeTarget = {
         params: 'bridge_stones',
         expect: ['a', 'b', 'c', 'd', 'h', 'g', 'f', 'e']
     },
-    9: { },
+    9: {
+        projName: 'Fix the clock',
+        codeType: 'solutions_clock',
+        params: 'hour,minute,second',
+        expect: [true, true, true]
+    },
 }

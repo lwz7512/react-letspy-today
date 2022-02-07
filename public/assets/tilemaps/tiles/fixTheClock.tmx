@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="16" height="6" tilewidth="70" tileheight="70" infinite="0" nextlayerid="4" nextobjectid="1">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="16" height="6" tilewidth="70" tileheight="70" infinite="0" nextlayerid="6" nextobjectid="1">
  <editorsettings>
   <export target="../maps/fixTheClock.json" format="json"/>
  </editorsettings>
@@ -19,7 +19,7 @@
  <layer id="2" name="decorations" width="16" height="6">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,86,0,0,0,92,0,0,0,91,0,0,
+0,0,0,0,0,86,0,0,0,92,0,0,0,0,0,0,
 0,0,0,54,54,54,0,0,62,0,0,0,0,0,0,0,
 0,0,75,72,72,72,72,72,0,42,42,42,0,11,0,0,
 0,0,0,0,0,0,28,0,0,0,0,0,0,25,0,0,
@@ -33,6 +33,16 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,69,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,83,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="4" name="clock" width="16" height="6">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,91,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>

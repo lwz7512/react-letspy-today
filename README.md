@@ -53,7 +53,10 @@ completed next 3 projects
 
 ## version 0.5
 
-TODO: ...last 3 project of v1.0
+complted the last 3 game projects of first season:
+`Free Your Troops`, `Pass live bridge`, `Fix the clock`
+
+@2022/02/06
 
 ## version 0.6
 
