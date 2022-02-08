@@ -1,8 +1,11 @@
 letspy - frontend
 --------------------
 
-@2021/10/16
+LetsPY frontend based on [PrimeReact](https://www.primefaces.org/primereact/) & [Zustand](https://github.com/pmndrs/zustand)
 
+Started @2021/10/16
+
+> Minimal Python Coding Playground
 
 ## Dev log:
 
@@ -81,7 +84,6 @@ TODO: ...
 ## version 1.0
 
 TODO: ...prepare to deploy and release
-
 
 
 ## version 1.0 : Prepare to launch
