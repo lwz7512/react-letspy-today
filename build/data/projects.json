@@ -1,0 +1,141 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Clone Army",
+      "level": 1,
+      "description": "Want to be a commander of clone army? double your troops, to beat the enemies!",
+      "mission": "Your are a scientist in charge of producing clone army to defense your world. Your enemy is overwhelming, you need to double your army!",
+      "tips": "No support yet.",
+      "coding": "troops_amount",
+      "walk": "Fire Now!",
+      "pass": "Bingo!",
+      "tags": ["Easy", "Variable", "Statement"],
+      "image": "assets/project/matrix_md.png",
+      "player": "assets/project/darthvida_sm.png"
+    },
+    {
+      "id": 2,
+      "title": "Lava Adventure",
+      "level": 1,
+      "description": "The goal in this mission is learning how to organize different actions to get through the lava valley.",
+      "mission": "Ola is being trapped in the lava valley! Your mission is to help him out of there!",
+      "tips": "Compose a group of actions to instruct Ola walking through it. ONE line ONE action only, available actions including:",
+      "coding": "No",
+      "walk": "Move player with RIGHT ARROW KEY to exit!",
+      "pass": "",
+      "tags": ["Easy", "Action", "Function"],
+      "image": "assets/project/matrix_md.png",
+      "player": "assets/project/player_idle.png"
+    },
+    {
+      "id": 3,
+      "title": "Make your Bridge",
+      "level": 1,
+      "description": "A bridge in air missing odd number blocks, make up for it to pass safely!",
+      "mission": "Ola needs to reach the door across the broken bridge, help him repair the bridge!",
+      "tips": "in bridge stone list, 1 repesents existing conrnerstone, 0 repesents blank space. So, when all the 0 change to 1, you would pass!",
+      "coding": "bridge",
+      "walk": "Now, press RIGHT ARROW KEY to move player",
+      "pass": "Congratulations!",
+      "tags": ["Easy", "Adventure", "Statement"],
+      "image": "assets/project/matrix_md.png",
+      "player": "assets/project/dude.png"
+    },
+    {
+      "id": 4,
+      "title": "Guess My Name",
+      "level": 2,
+      "description": "A cute robot can not remember his name, help him to figure out the first letter of his name to get out of there!",
+      "mission": "The first two letter of his name covered, using string index method to extract it.",
+      "tips": "use string slice",
+      "coding": "myName",
+      "walk": "",
+      "pass": "",
+      "tags": ["Medium", "Puzzle", "String", "Slice"],
+      "image": "assets/project/matrix_md.png",
+      "player": "assets/project/platformChar_idle.png",
+      "reference": [
+        "https://realpython.com/lessons/string-slicing/"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Riddle of Sphinx",
+      "level": 2,
+      "description": "Then anwser to the riddle of Sphinx is hidden in one of box, use your skills to check it out!",
+      "mission": "two box holding the right and wrong anser, using if statement to check key word(a person)!",
+      "tips": "key word may use 'person', :)",
+      "coding": "green_box, red_box",
+      "walk": "",
+      "pass": "",
+      "tags": ["Medium", "Puzzle", "Condition", "Boolean"],
+      "image": "assets/project/matrix_md.png",
+      "player": "assets/project/adventurer_idle.png"
+    },
+    {
+      "id": 6,
+      "title": "Free Your Troops",
+      "level": 2,
+      "description": "Your troops are being trapped in toxic valley, you need to dispatch flying armor for each of them to get out of there!",
+      "mission": "You are a smart commander & scientist, you need to use `for` loop to equip `flying` ability with each soldier",
+      "tips": "Every soldier in your 'troops' need 'flying' ability to escapge valley, loop the 'troops' list, get each soldier and call its 'addPower' function.",
+      "coding": "troops",
+      "walk": "",
+      "pass": "",
+      "tags": ["Medium", "Loop", "Iteration"],
+      "image": "assets/project/matrix_md.png",
+      "player": "assets/project/commander.png"
+    },
+    {
+      "id": 7,
+      "title": "Which way to go",
+      "level": 3,
+      "description": "Theare 6 possible paths in a maze, check the right path to go!",
+      "mission": "Check each path if it includes diamond(with color) or bridge...to get the right path.",
+      "tips": "Every path_object has a function: includeItem(type) to return a boolean value. You may have noticed the right way out includes a 'key'!",
+      "coding": "all_paths",
+      "walk": "",
+      "pass": "",
+      "tags": ["Medium", "Puzzle", "Condition", "Loop"],
+      "image": "assets/project/matrix_md.png",
+      "player": "assets/project/slimeBlock.png"
+    },
+    {
+      "id": 8,
+      "title": "Pass live bridge",
+      "level": 3,
+      "description": "You are running into a weird bridge with disorderd pillars, you need to reorder them with correct order to get through!",
+      "mission": "The bridge is alive because its pillars constantly changing, until you reorder it acscendingly then descendingly you would be safe to pass.",
+      "tips": "Using sort function, remember to jump and hit the key to unlock door.",
+      "coding": "bridge_stones",
+      "walk": "using RIGT/UP ARROW KEY to walk/jump",
+      "pass": "",
+      "tags": ["Medium", "List", "Sort"],
+      "image": "assets/project/matrix_md.png",
+      "player": "assets/project/p1_stand.png",
+      "reference": [
+        "https://www.programiz.com/python-programming/methods/list/sort",
+        "https://www.w3schools.com/python/gloss_python_join_lists.asp"
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Fix the clock",
+      "level": 4,
+      "description": "To pass the first season of this Python Coding Adventure, you need to fix the clock to enter the unlock the door of church. ",
+      "mission": "Use time function to return the current time, you will make it works! not tough right?",
+      "tips": "checkout 'datetime' module api doc to find what does now() return.",
+      "coding": "now",
+      "walk": "",
+      "pass": "",
+      "tags": ["Medium", "time", "Function"],
+      "image": "assets/project/matrix_md.png",
+      "player": "assets/project/female_idle.png",
+      "reference": [
+        "https://docs.python.org/3/library/datetime.html#datetime-objects",
+        "https://www.geeksforgeeks.org/python-datetime-datetime-class/"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="10" height="4" tilewidth="64" tileheight="64" infinite="0" nextlayerid="4" nextobjectid="1">
+ <editorsettings>
+  <export target="../maps/flyThemUp.json" format="json"/>
+ </editorsettings>
+ <tileset firstgid="1" name="platform" tilewidth="64" tileheight="64" tilecount="264" columns="22">
+  <image source="tilesheet_complete.png" width="1408" height="768"/>
+ </tileset>
+ <layer id="1" name="ground" width="10" height="4">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,24,25,
+2,25,0,0,0,0,0,24,46,47,
+258,47,50,51,51,51,51,46,1,1
+</data>
+ </layer>
+ <layer id="3" name="decoration" width="10" height="4" visible="0">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>
