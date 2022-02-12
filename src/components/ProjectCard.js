@@ -3,7 +3,7 @@ import { Link, } from 'react-router-dom';
 const ProjectCard = ({ project, completed }) => {
 
   return (
-    <div className="p-col-12 w-full sm:w-6 lg:w-4" >
+    <div className="w-full sm:w-6 lg:w-4 p-3 sm:p-5" >
         <div className="feature-card zoom">
             <img className="" alt="components" src={project.image} />
             <div className="top-row">

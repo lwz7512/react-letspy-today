@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 
-import EmptyPage from './pages/EmptyPage';
 import HomePage from './pages/HomePage';
 import ProjectPage from './pages/ProjectPage';
-import GamePage from './pages/GamePage';
+import DonationPage from './pages/DonationPage';
+import ProfilePage from './pages/ProfilePage';
 
 import { AppTopbar } from './structure/AppTopbar';
 import { AppFooter } from './structure/AppFooter';
@@ -23,7 +23,18 @@ import projectStore from './state/ProjectState'
 
 function App() {
 
+  const [mobileTopbarMenuActive, setMobileTopbarMenuActive] = useState(false);
   const setProjects = projectStore(state => state.setProjects)
+
+  const onMobileTopbarMenuClick = (event) => {
+    setMobileTopbarMenuActive(!mobileTopbarMenuActive);
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  const onWrapperClick = () => {
+    setMobileTopbarMenuActive(false)
+  }
 
   useEffect(() => {
     setTimeout(() => {
@@ -34,16 +45,17 @@ function App() {
   }, [setProjects])
 
   return (
-    <div className="app layout-wrapper layout-theme-light">
+    <div className="app layout-wrapper layout-theme-light" onClick={onWrapperClick}>
       <AppTopbar 
         layoutColorMode="light" 
-        onMobileTopbarMenuClick={()=>console.log(">>> popup menu")} 
+        mobileTopbarMenuActive={mobileTopbarMenuActive}
+        onMobileTopbarMenuClick={onMobileTopbarMenuClick} 
         />
       <div className="layout-main-container">
         <div className="layout-main">
             <Route path="/project/:pid" component={ProjectPage}/>
-            <Route path="/game" component={GamePage}/>
-            <Route path="/empty" component={EmptyPage}/>
+            <Route path="/donation" component={DonationPage}/>
+            <Route path="/profile" component={ProfilePage}/>
             <Route path="/" exact component={HomePage}/>
         </div>
         <AppFooter layoutColorMode="light"/>

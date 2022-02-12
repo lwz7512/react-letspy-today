@@ -30,11 +30,6 @@
     margin-top: 0;
     font-size: 24px;
   }
-
-  @media (max-width: 576px) {
-    padding-top: 100px;
-  }
-
 }
 
 .action-button {
@@ -69,10 +64,6 @@
     border-bottom: solid 4px rgb(209, 49, 93);
     width: 150px;
     padding: 0 40px 10px;
-  }
-
-  .p-col-12 {
-      padding: 2rem;
   }
 
   .feature-card {
@@ -147,7 +138,6 @@
           line-height: 1.4;
         }
 
-        
       }
 
       .feature-card-detail {

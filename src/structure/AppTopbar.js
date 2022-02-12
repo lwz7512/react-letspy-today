@@ -6,7 +6,11 @@ import { addEffect, removeEffect } from '../utils/DomUtil';
 
 const logoly = 'assets/layout/images/letspy_arcade_sm.png'
 
-export const AppTopbar = (props) => {
+export const AppTopbar = ({
+    layoutColorMode,
+    onMobileTopbarMenuClick,
+    mobileTopbarMenuActive
+}) => {
 
     const history = useHistory()
 
@@ -33,19 +37,22 @@ export const AppTopbar = (props) => {
 
 
     return (
-        <div className="layout-topbar transition-pt5 ">
+        <div className="layout-topbar transition-pt5 px-3 md:px-5">
             <Link to="/" className="layout-topbar-logo">
-                <img src={props.layoutColorMode === 'light' ? logoly : 'assets/layout/images/logo-white.svg'} alt="logo"/>
+                <img src={layoutColorMode === 'light' ? logoly : 'assets/layout/images/logo-white.svg'} alt="logo"/>
                 <span>LetsPY</span>
             </Link>
             {/* menu button on mobile */}
             <button 
                 type="button" 
                 className="p-link layout-topbar-menu-button layout-topbar-button" 
-                onClick={props.onMobileTopbarMenuClick}>
+                onClick={onMobileTopbarMenuClick}>
                 <i className="pi pi-ellipsis-v" />
             </button>
-                <ul className={classNames("layout-topbar-menu lg:flex origin-top", {'layout-topbar-menu-mobile-active': props.mobileTopbarMenuActive })}>
+                <ul className={classNames(
+                    "layout-topbar-menu lg:flex origin-top", 
+                    {'layout-topbar-menu-mobile-active': mobileTopbarMenuActive }
+                )}>
                     <li>
                         <button 
                             className="p-link layout-topbar-button" 
@@ -57,7 +64,7 @@ export const AppTopbar = (props) => {
                     <li>
                         <button 
                             className="p-link layout-topbar-button" 
-                            onClick={props.onMobileSubTopbarMenuClick}>
+                            onClick={()=>handleRouteChange('/donation')}>
                             <i className="pi pi-heart"/>
                             <span>Donation</span>
                         </button>
@@ -65,7 +72,7 @@ export const AppTopbar = (props) => {
                     <li>
                         <button 
                             className="p-link layout-topbar-button" 
-                            onClick={props.onMobileSubTopbarMenuClick}>
+                            onClick={()=>handleRouteChange('/profile')}>
                             <i className="pi pi-user"/>
                             <span>Profile</span>
                         </button>
