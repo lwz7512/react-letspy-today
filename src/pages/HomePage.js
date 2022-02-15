@@ -1,12 +1,14 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-import { Button } from 'primereact/button';
 import useLocalStorageState from 'use-local-storage-state'
 
 import { app_brand } from '../config/constants'
 import ProjectCard from '../components/ProjectCard';
 import projectStore from '../state/ProjectState'
+
+import HeroCard from "../components/HeroCard";
+import ContactCard from "../components/ContactCard";
 
 const HomePage = () => {
 
@@ -31,13 +33,12 @@ const HomePage = () => {
         <div className="home md:pt-0">
             {/* hero */}
             <div className="col-12 px-0 sm:px-2">
-                <div className="card hero border-noround md:border-round">
-                    <h1 className="intro-title">{app_brand.hero_title_a}</h1>
-                    <h2 className="intro-subtitle">{app_brand.hero_title_b}</h2>
-                    <Link to={app_brand.action_now_route} className="action-button">
-                        {app_brand.action_now_label}
-                    </Link>
-                </div>
+                <HeroCard 
+                    tileA={app_brand.hero_title_a}
+                    titleB={app_brand.hero_title_b}
+                    route={app_brand.action_now_route}
+                    actionNow={app_brand.action_now_label}
+                />
             </div>
             {/* projects title */}
             <div className="col-12 features">
@@ -69,27 +70,11 @@ const HomePage = () => {
                     </div>
                 )}
             </div>
-            {/* more features... */}
+            {/* work with me */}
             <div className="col-12 my-0 md:my-5 cta-section">
-                <div className="card m-2 md:m-3 p-5 xl:p-7 border-round surface-50">
-                    <div className="grid">
-                        <div className="section-content cell w-12 md:w-6">
-                            <h2 className="text-2xl xl:text-5xl">Let’s Work Together!</h2>
-                            <div className="text-block mt-5">
-                                <p className="text-xl x:text-2xl text-600">
-                                    Say hello at <a href="mailto:lwz7512@gmail.com">lwz7512@gmail.com </a>
-                                    or tell me more about your ideas by getting this better.
-                                </p>
-                            </div>
-                            <div className="button-group mt-5 flex justify-content-center md:justify-content-start">
-                                <Button label="Let’s start" onClick={()=>handleRouteChange('/contact')} />
-                            </div>
-                        </div>
-                        <div className="section-image cell mt-5 lg:mt-0 w-12 w-12 md:w-6">
-                            <img src="assets/layout/images/130.png" alt="cta" />
-                        </div>
-                    </div>
-                </div>
+                <ContactCard 
+                    handleRoute={()=>handleRouteChange('/contact')} 
+                />
             </div>
         </div>
     );
