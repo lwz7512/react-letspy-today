@@ -63,15 +63,16 @@ complted the last 3 game projects of first season:
 
 ## version 0.6
 
-TODO: ...add project text reference
+TODO: add contact form at homepage, send guest message to my email
 
 ## version 0.7
 
+TODO: ...add project text reference
 TODO: ...add video content
 
 ## version 0.8
 
-TODO: ...contact and suscription form, donate page
+TODO: ...add profile donate page content
 
 ## version 0.9
 

@@ -38,7 +38,7 @@ export const AppTopbar = ({
 
     return (
         <div className="layout-topbar transition-pt5 px-3 md:px-5">
-            <Link to="/" className="layout-topbar-logo">
+            <Link to="/" className="layout-topbar-logo text-white">
                 <img src={layoutColorMode === 'light' ? logoly : 'assets/layout/images/logo-white.svg'} alt="logo"/>
                 <span>LetsPY</span>
             </Link>
@@ -59,6 +59,14 @@ export const AppTopbar = ({
                             onClick={()=>handleRouteChange('/')}>
                             <i className="pi pi-home"/>
                             <span>Home</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button 
+                            className="p-link layout-topbar-button" 
+                            onClick={()=>handleRouteChange('/contact')}>
+                            <i className="pi pi-comments"/>
+                            <span>Contact</span>
                         </button>
                     </li>
                     <li>

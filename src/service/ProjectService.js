@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_ROOT_PATH = '/api'
+const API_ROOT_PATH = '/api/v1'
 
 export const getProjects = () =>
   axios.get('data/projects.json')

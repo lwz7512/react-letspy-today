@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import ProjectPage from './pages/ProjectPage';
 import DonationPage from './pages/DonationPage';
 import ProfilePage from './pages/ProfilePage';
+import ContactPage from './pages/ContactPage';
 
 import { AppTopbar } from './structure/AppTopbar';
 import { AppFooter } from './structure/AppFooter';
@@ -54,6 +55,7 @@ function App() {
       <div className="layout-main-container">
         <div className="layout-main">
             <Route path="/project/:pid" component={ProjectPage}/>
+            <Route path="/contact" component={ContactPage}/>
             <Route path="/donation" component={DonationPage}/>
             <Route path="/profile" component={ProfilePage}/>
             <Route path="/" exact component={HomePage}/>

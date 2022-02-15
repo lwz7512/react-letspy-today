@@ -1,6 +1,42 @@
-.prfile {
+.profile {
 
-  
+  height: 970px;
+
+  &.social-bg {
+    background-image: url('../images/home/undraw_Update_re_swkp_trim.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+
+  .header-title {
+    border-left: solid 4px rgb(209, 49, 93);
+    width: 200px;
+    padding: 4px 10px 4px;
+  }
+
+
+  .social-signin {
+    margin: 0 auto;
+    max-width: 400px;
+
+    .template {
+      display: flex;
+      .p-component {
+        flex: 1;
+      }
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+
+    height: 600px;
+
+    .social-signin {
+      margin: 0 2rem;
+    }
+
+  }
 
 
 }

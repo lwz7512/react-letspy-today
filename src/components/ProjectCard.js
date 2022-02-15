@@ -34,7 +34,7 @@ const ProjectCard = ({ project, completed }) => {
               <h3>{project.title}</h3>
             </div>
             <div className="feature-card-detail">
-                <p className="text-2xl h-8rem">{project.description}</p>
+                <p className="text-xl  h-8rem">{project.description}</p>
             </div>
             <div className="footer p-5">
               <Link to={`/project/${project.id}`} 
