@@ -1,0 +1,43 @@
+.contact {
+
+  .form-card {
+    max-width: 450px;
+    min-width: 320px;
+  }
+
+  hr {
+    margin: 2rem 0;
+  }
+
+  .welcome-text {
+    line-height: 1.8;
+  }
+
+  .line-top::before {
+    border-left: 60px solid rgb(209, 49, 93);
+    content: "";
+    display: block;
+    height: 4px;
+    margin-bottom: 1rem;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  .form-checkbox label {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.4;
+  }
+
+  @media screen and (max-width: 480px) {
+
+    .map-container {
+      max-width: 400px;
+      overflow-x: hidden;
+    }
+
+  }
+
+}

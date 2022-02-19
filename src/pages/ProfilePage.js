@@ -6,7 +6,7 @@ const ProfilePage = () => {
 
     return (
         <div className="profile button-social social-bg mt-8 sm:mt-4">
-            <h2 className="header-title">My Profile</h2>
+            <h1 className="header-title text-gray-900">My Profile</h1>
             <div className="card social-signin p-5 my-8 border-solid border-500 ">
                 <h4 className="text-center">Sign in with</h4>
                 <div className="template py-5">

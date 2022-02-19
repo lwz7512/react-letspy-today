@@ -65,7 +65,7 @@ export const AppTopbar = ({
                         <button 
                             className="p-link layout-topbar-button" 
                             onClick={()=>handleRouteChange('/contact')}>
-                            <i className="pi pi-comments"/>
+                            <i className="pi pi-envelope"/>
                             <span>Contact</span>
                         </button>
                     </li>

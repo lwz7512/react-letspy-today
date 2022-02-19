@@ -1,3 +1,14 @@
-@import "./_variables";
-@import "./sass/_layout";
-@import "./_overrides";
+@import "./variables";
+@import "./sass/mixins";
+@import "./sass/splash";
+@import "./sass/main";
+@import "./sass/topbar";
+@import "./sass/menu";
+@import "./sass/config";
+@import "./sass/content";
+@import "./sass/footer";
+@import "./sass/responsive";
+@import "./sass/utils";
+@import "./sass/typography";
+@import "./sass/forms";
+@import "./overrides";

@@ -6,6 +6,7 @@
 @import './project';
 @import './profile';
 @import './donation';
+@import './contact';
 
 .app {
     min-height: 100vh;
@@ -36,4 +37,18 @@
 
 .transition-pt5 {
     transition: 0.4s ease-in;
+}
+
+.button-group {
+    .p-button {
+        font-size: 1.5rem;
+        padding: .75rem 1.5rem;
+        background-color: #6366F1;
+        border: 1px solid #6366F1;
+    }
+
+    .p-button:hover {
+        background-color: #4C4CDC;
+        border: 1px solid #4C4CDC;
+    }
 }
