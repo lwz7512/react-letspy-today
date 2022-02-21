@@ -4,7 +4,7 @@ import { Button } from 'primereact/button';
 const ContactPage = () => {
 
     return (
-        <div className="contact mt-8 px-2 ">
+        <div className="contact mt-8 md:mt-4 px-2 ">
             <div className="container my-5 px-2 md:pl-0">
                 <h1 className="section-title line-top text-gray-900">Contact</h1>
             </div>

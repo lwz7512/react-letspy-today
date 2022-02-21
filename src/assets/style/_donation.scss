@@ -1,5 +1,107 @@
 .donation {
 
+  .col {
+    padding: 0;
+  }
 
+  .second-row {
+    height: 400px;
+    background-color: white;
+  }
+
+  .donation-bg {
+    width: 100%;
+    height: 400px;
+    background-image: url('../images/home/undraw_Gardening_green.png');
+    background-repeat: no-repeat;
+    background-size:cover;
+  }
+
+  .header-title {
+    border-left: solid 4px rgb(209, 49, 93);
+    width: 300px;
+    padding: 4px 10px 4px;
+  }
+
+  .text-slogan {
+    max-width: 500px;
+  }
+
+  .donation-desc {
+    margin-top: 80px;
+  }
+
+  .button {
+    background-color: #333;
+    color: white;
+    border-radius: 4px;
+    padding: 0.75rem 1.5rem;
+    font-size: 18px;
+    cursor: pointer;
+
+    svg {
+      vertical-align: middle;
+    }
+
+    span {
+      line-height: 24px;
+    }
+
+    &.red {
+      background-color: #EC5354;
+    }
+
+    &.orange {
+      background-color: #F8BE53;
+    }
+  }
+
+  ul.no-bullets {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    // margin: 0; /* Remove margins */
+  }
+
+  ul {
+    margin-left: 20px;
+    margin-right: 40px;
+
+    li {
+      padding: 10px 20px;
+      font-size: 16px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    p.txt {
+      line-height: 30px;
+      font-size: 16px;
+    }
+  }
+
+  .panel {
+    min-width: 500px;
+  }
+
+
+  @media screen and (max-width: 480px) {
+
+    .panel {
+      min-width: 360px;
+    }
+  
+    .donation-bg {
+      display: none;
+    }
+
+    ul {
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+
+    .donation-desc {
+      margin-top: 40px;
+    }
+
+  }
   
 }
