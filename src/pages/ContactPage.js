@@ -17,15 +17,18 @@ const ContactPage = () => {
     const [checked, setChecked] = useState(false)
     const [sending, setSending] = useState(false)
 
+    // check email format
+    const EMAIL_REGX = /^\S+@\S+\.\S+$/
+    const emailValidity = !!contact.email && EMAIL_REGX.test(contact.email)
+    const buttonEnabled = contact.name && emailValidity && contact.subject
+         && contact.message && checked && !sending
+
     const inputChangeHandler = field => event => {
         setContact({...contact, [field]: event.target.value})
     }
     const checkboxChangeHandler = evt => {
         setChecked(evt.target.checked)
     }
-
-    const buttonEnabled = contact.name && contact.email &&
-        contact.subject && contact.message && checked && !sending
 
     const submitContact = async (event) => {
         setSending(true)
@@ -113,7 +116,7 @@ const ContactPage = () => {
                                 <input 
                                     id="email" 
                                     name="email" 
-                                    type="text" 
+                                    type="email" 
                                     placeholder="Your Email address" 
                                     required
                                     value={contact.email}

@@ -65,6 +65,13 @@ complted the last 3 game projects of first season:
 
 TODO: add contact form at homepage, send guest message to my email
 
+- Can send contact to GraphCMS 
+- Pending send email(through GraphCMS web hooks)...
+- Backend detect repeatedly submit contact info in 1 minute and return 406
+- Backend support running environment check through environment variable in .sh file
+
+@2022/02/23
+
 ## version 0.7
 
 TODO: ...add project text reference
@@ -74,12 +81,16 @@ TODO: ...add video content
 
 TODO: ...add profile donate page content
 
+Completed static page implementation
+
+@2022/02/23
+
 ## version 0.9
 
 TODO: ...
 
 - code editor disable paste, 
-- length control,
+- code length control,
 - illegal python code detection
 
 ## version 1.0
