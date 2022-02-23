@@ -38,7 +38,7 @@ export const AppTopbar = ({
 
     return (
         <div className="layout-topbar transition-pt5 px-3 md:px-5">
-            <Link to="/" className="layout-topbar-logo text-white">
+            <Link to="/" className="layout-topbar-logo">
                 <img src={layoutColorMode === 'light' ? logoly : 'assets/layout/images/logo-white.svg'} alt="logo"/>
                 <span>LetsPY</span>
             </Link>

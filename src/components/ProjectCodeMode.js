@@ -63,7 +63,7 @@ const ProjectCodeMode = () => {
 
   useEffect(() => {
     if (!codeExecError) return
-    console.warn(codeExecError)
+    // console.warn(codeExecError)
     const notification = {
       severity: 'warn', 
       summary: 'Try again!', // title

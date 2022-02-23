@@ -1,10 +1,70 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { Button } from 'primereact/button';
+import { Toast } from 'primereact/toast';
+import { postContactMessage } from "../service/ProjectService";
 
 const ContactPage = () => {
 
+    const toastRef = useRef(null)
+
+    const initContact = {
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    }
+    const [contact, setContact] = useState(initContact)
+    const [checked, setChecked] = useState(false)
+    const [sending, setSending] = useState(false)
+
+    const inputChangeHandler = field => event => {
+        setContact({...contact, [field]: event.target.value})
+    }
+    const checkboxChangeHandler = evt => {
+        setChecked(evt.target.checked)
+    }
+
+    const buttonEnabled = contact.name && contact.email &&
+        contact.subject && contact.message && checked && !sending
+
+    const submitContact = async (event) => {
+        setSending(true)
+        const resp = await postContactMessage(contact)
+        if (resp.status === 200) {
+            setContact(initContact)
+            setChecked(false)
+            showPopup()
+        } else {
+            showError()
+        }
+        setSending(false)
+        event.preventDefault()
+        event.stopPropagation()
+    }
+
+    const showError = () => {
+        const notification = {
+            severity: 'error', 
+            summary: 'Hmmm', // title
+            detail: "hold on...", 
+            life: 2000
+          }
+        toastRef.current.show(notification);
+    }
+
+    const showPopup = () => {
+        const notification = {
+            severity: 'success', 
+            summary: 'Thanks', // title
+            detail: "Thanks for your great feedback!", 
+            life: 2000
+          }
+        toastRef.current.show(notification);
+    }
+
     return (
         <div className="contact mt-8 md:mt-4 px-2 ">
+            <Toast ref={toastRef} />
             <div className="container my-5 px-2 md:pl-0">
                 <h1 className="section-title line-top text-gray-900">Contact</h1>
             </div>
@@ -37,38 +97,78 @@ const ContactPage = () => {
                         <form action="#" id="contactForm" method="POST">
                             <div className="form-group">
                                 <label htmlFor="name">Name</label>
-                                <input type="text" name="name" id="name" placeholder="Your name" required="" />
+                                <input 
+                                    id="name" 
+                                    name="name" 
+                                    type="text" 
+                                    placeholder="Your name" 
+                                    required
+                                    value={contact.name}
+                                    onChange={inputChangeHandler('name')}
+                                />
                                 <span className="animate-border" aria-hidden="true"></span>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="email">Name</label>
-                                <input type="text" name="email" id="email" placeholder="Your Email address" required="" />
+                                <label htmlFor="email">E-mail</label>
+                                <input 
+                                    id="email" 
+                                    name="email" 
+                                    type="text" 
+                                    placeholder="Your Email address" 
+                                    required
+                                    value={contact.email}
+                                    onChange={inputChangeHandler('email')}
+                                />
                                 <span className="animate-border" aria-hidden="true"></span>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="subject">What type of message you are going to leave?</label>
                                 <div className="form-select-wrap">
-                                    <select id="subject" name="subject">
+                                    <select 
+                                        id="subject" 
+                                        name="subject" 
+                                        value={contact.subject}
+                                        onChange={inputChangeHandler('subject')}
+                                    >
                                         <option value="">Please select</option>
                                         <option value="Suggestion">Suggestion</option>
                                         <option value="Design">Design</option>
                                         <option value="Bug">Bug</option>
                                         <option value="GameIdea">Game Idea</option>
-                                        <option value="Contribute">Contribute</option>
+                                        <option value="Contribution">Contribution</option>
                                     </select>
                                 </div>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="message">Message</label>
-                                <textarea name="message" id="message" rows="5" placeholder="Your message"></textarea>
+                                <textarea 
+                                    id="message" 
+                                    name="message"
+                                    rows="5" 
+                                    placeholder="Your message"
+                                    value={contact.message}
+                                    onChange={inputChangeHandler('message')}
+                                ></textarea>
                                 <span className="animate-border" aria-hidden="true"></span>
                             </div>
                             <div className="form-group form-checkbox">
-                                <input type="checkbox" id="consent" name="consent" />
+                                <input 
+                                    id="consent" 
+                                    name="consent" 
+                                    type="checkbox" 
+                                    checked={checked} 
+                                    onChange={checkboxChangeHandler}
+                                />
                                 <label htmlFor="consent">I understand that this form is storing my submitted information so I can be contacted.</label>
                             </div>
                             <div className="form-submit button-group">
-                                <Button label="Send Message" onClick={()=>false} />
+                                <Button 
+                                    type="button" 
+                                    label="Send Message"
+                                    disabled={!buttonEnabled}
+                                    loading={sending}
+                                    onClick={submitContact}
+                                />
                             </div>
                         </form>
                     </div>

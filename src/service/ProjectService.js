@@ -1,4 +1,5 @@
 import axios from 'axios'
+// import axios from "./axios";
 
 const API_ROOT_PATH = '/api/v1'
 
@@ -13,4 +14,15 @@ export const getGameCodeRunningResult = gameSnippet =>
   })
   .catch(function (error) {
     console.log(error);
+    return error
+  });
+
+export const postContactMessage = messageObj =>
+  axios.post(`${API_ROOT_PATH}/contact`, messageObj)
+  .then(function (response) {
+    return response;
+  })
+  .catch(function (error) {
+    console.log(error);
+    return error
   });
