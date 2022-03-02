@@ -11,7 +11,7 @@
       "walk": "Fire Now!",
       "pass": "Bingo!",
       "tags": ["Easy", "Variable", "Statement"],
-      "image": "assets/project/matrix_md.png",
+      "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/darthvida_sm.png"
     },
     {
@@ -25,7 +25,7 @@
       "walk": "Move player with RIGHT ARROW KEY to exit!",
       "pass": "",
       "tags": ["Easy", "Action", "Function"],
-      "image": "assets/project/matrix_md.png",
+      "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/player_idle.png"
     },
     {
@@ -39,7 +39,7 @@
       "walk": "Now, press RIGHT ARROW KEY to move player",
       "pass": "Congratulations!",
       "tags": ["Easy", "Adventure", "Statement"],
-      "image": "assets/project/matrix_md.png",
+      "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/dude.png"
     },
     {
@@ -53,7 +53,7 @@
       "walk": "",
       "pass": "",
       "tags": ["Medium", "Puzzle", "String", "Slice"],
-      "image": "assets/project/matrix_md.png",
+      "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/platformChar_idle.png",
       "reference": [
         "https://realpython.com/lessons/string-slicing/"
@@ -70,7 +70,7 @@
       "walk": "",
       "pass": "",
       "tags": ["Medium", "Puzzle", "Condition", "Boolean"],
-      "image": "assets/project/matrix_md.png",
+      "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/adventurer_idle.png"
     },
     {
@@ -84,7 +84,7 @@
       "walk": "",
       "pass": "",
       "tags": ["Medium", "Loop", "Iteration"],
-      "image": "assets/project/matrix_md.png",
+      "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/commander.png"
     },
     {
@@ -98,7 +98,7 @@
       "walk": "",
       "pass": "",
       "tags": ["Medium", "Puzzle", "Condition", "Loop"],
-      "image": "assets/project/matrix_md.png",
+      "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/slimeBlock.png"
     },
     {
@@ -112,7 +112,7 @@
       "walk": "using RIGT/UP ARROW KEY to walk/jump",
       "pass": "",
       "tags": ["Medium", "List", "Sort"],
-      "image": "assets/project/matrix_md.png",
+      "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/p1_stand.png",
       "reference": [
         "https://www.programiz.com/python-programming/methods/list/sort",
@@ -130,7 +130,7 @@
       "walk": "",
       "pass": "",
       "tags": ["Medium", "time", "Function"],
-      "image": "assets/project/matrix_md.png",
+      "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/female_idle.png",
       "reference": [
         "https://docs.python.org/3/library/datetime.html#datetime-objects",
