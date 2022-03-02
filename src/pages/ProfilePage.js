@@ -20,9 +20,9 @@ const ProfilePage = () => {
                     </Button>
                 </div>
                 <p className="text-lg"> <b>Note:</b> this is not necessary, 
-                    the biggest benefit to signin is you could get a <b>`cheatsheet`</b> bonus 
+                    the benefit to do this is you could get a <b>`cheatsheet`</b> bonus 
                     after you sucessfully completed one season projects(at least 9), 
-                    for me is I could know whom this project have brought achievement to!
+                    also I could know whom this project have brought achievement to!
                 </p>
             </div>
             {/* <div className="col-12"></div> */}

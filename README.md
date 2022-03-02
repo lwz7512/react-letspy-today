@@ -65,7 +65,8 @@ complted the last 3 game projects of first season:
 
 TODO: add contact form at homepage, send guest message to my email
 
-- Can send contact to GraphCMS 
+- Completed 4 static pages layou: `Donation`, `Social login`, `Contact`, `Profile`
+- Can send contact to backend and then forward to GraphCMS 
 - Pending send email(through GraphCMS web hooks)...
 - Backend detect repeatedly submit contact info in 1 minute and return 406
 - Backend support running environment check through environment variable in .sh file
@@ -74,16 +75,17 @@ TODO: add contact form at homepage, send guest message to my email
 
 ## version 0.7
 
+TODO: ...introduction video at home page hero banner? -- completed @2022/03/02
 TODO: ...add project text reference
+TODO: ...add video content subtitles
+TODO: ...add typist coding hint
 TODO: ...add video content
+TODO: ...add cheetsheet content
 
 ## version 0.8
 
-TODO: ...add profile donate page content
-
-Completed static page implementation
-
-@2022/02/23
+TODO: to implement Github & Google login, so that to get bonus!
+TODO: to implement bonus download from profile page after donation
 
 ## version 0.9
 

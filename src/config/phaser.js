@@ -29,7 +29,7 @@ export const gamesForProject = {
 export const BaseConfig = {
     type: Phaser.AUTO,
     width: 600,
-    height: 234,
+    height: 237,
     parent: 'phaser-game-box', // div id
     banner: false,
 };

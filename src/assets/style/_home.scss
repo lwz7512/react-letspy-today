@@ -8,13 +8,46 @@
 }
 
 
-.hero {
-  height: 400px;
-  background-image: url('../images/home/gra_crt2.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 180px 30px 0px 50px;
+.hero-container {
+  height: 360px;
   position: relative;
+
+  .absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-image {
+    object-fit: cover;
+  }
+
+  .video-container {
+    z-index: 6;
+    background-color: #000;
+    display: none;
+  }
+
+  .video {
+    width: 640px;
+    height: 360px;
+    margin: 0px auto;
+  }
+
+  .black-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 7;
+    pointer-events: none;
+  }
+
+  .content-container {
+    z-index: 10;
+    padding: 150px 30px 0px 50px;
+  }
 
   .intro-title {
     color: white;
@@ -30,6 +63,22 @@
     margin-top: 0;
     font-size: 24px;
   }
+
+  @media screen and (max-width: 480px) {
+
+    height: 240px;
+
+    .content-container {
+      padding: 30px 30px 0px 30px;
+    }
+
+    .video {
+      height: 240px;
+      width: 360px;
+    }
+
+  }
+
 }
 
 .action-button {
@@ -39,12 +88,23 @@
   color: #ffffff !important;
   background-color: #fe8702;
   padding: 12px 24px 12px 24px;
-  border-radius: 6px;
+  margin: 4px 8px;
+  border-radius: 3px;
   transition: background-color .2s;
 
   &:hover {
-      background-color: #c56a05;
-      color: #ffffff;
+    background-color: #c56a05;
+    color: #ffffff;
+  }
+
+  &.now {
+    border: none;
+    background-color: #67AC5B;
+    cursor: pointer;
+  }
+
+  &.now:hover {
+    background-color: #58924E;
   }
 }
 
@@ -193,5 +253,9 @@
       text-decoration: underline;
     }
   }
+
+}
+
+@media screen and (max-width: 480px) {
 
 }
