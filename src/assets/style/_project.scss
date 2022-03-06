@@ -3,6 +3,15 @@
   max-width: 768px;
   margin: 0 auto;
 
+  .editor-grid {
+    display: grid;
+    grid-template-columns: auto 60px;
+  }
+
+  .tools {
+    min-width: 56px;
+  }
+
   h3 {
     margin-top: 0;
     margin-bottom: 0.5rem;

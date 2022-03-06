@@ -75,7 +75,8 @@ TODO: add contact form at homepage, send guest message to my email
 
 ## version 0.7
 
-TODO: ...introduction video at home page hero banner? -- completed @2022/03/02
+- introduction video at home page hero banner? -- completed @2022/03/02
+
 TODO: ...add project text reference
 TODO: ...add video content subtitles
 TODO: ...add typist coding hint
@@ -84,8 +85,8 @@ TODO: ...add cheetsheet content
 
 ## version 0.8
 
-TODO: to implement Github & Google login, so that to get bonus!
-TODO: to implement bonus download from profile page after donation
+TODO: ...implement Github & Google login, so that to get bonus!
+TODO: ...implement bonus download with user's will and role(student free to download)
 
 ## version 0.9
 
@@ -100,7 +101,11 @@ TODO: ...
 TODO: ...prepare to deploy and release
 
 
-## version 1.0 : Prepare to launch
+## version 1.0 : Prepare to launch at PH
+
+...approximately at 04/16
 
 - beautify.
 - assets before launch
+
+and, stop to evolve after first release

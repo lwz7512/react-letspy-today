@@ -1,6 +1,35 @@
+// for editor tool buttons
+.p-button.p-button-warning.selected {
+    // box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #D32F2F, 0 1px 2px 0 black;
+    box-shadow: 0 0 0 0.2rem #fde6ab;
+}
+.p-button.p-button-help.selected {
+    // box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #D32F2F, 0 1px 2px 0 black;
+    box-shadow: 0 0 0 0.2rem #df9eea;
+}
+.p-button.p-button-danger.selected {
+    // box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #D32F2F, 0 1px 2px 0 black;
+    box-shadow: 0 0 0 0.2rem #edacac;
+}
+.p-button.p-button-info.selected {
+    // box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #D32F2F, 0 1px 2px 0 black;
+    box-shadow: 0 0 0 0.2rem #89d4fe;
+}
+.p-button.p-button-success.selected {
+    // box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #D32F2F, 0 1px 2px 0 black;
+    box-shadow: 0 0 0 0.2rem #c2e0a8;
+}
+.p-button.p-button-primary.selected {
+    // box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #D32F2F, 0 1px 2px 0 black;
+    box-shadow: 0 0 0 0.2rem #AFD5F6;
+}
+.p-button.p-button-secondary.selected {
+    // box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #D32F2F, 0 1px 2px 0 black;
+    box-shadow: 0 0 0 0.2rem #beccd2;
+}
 
 
-
+// for profile page login buttons
 .button-social {
 
   .p-button {

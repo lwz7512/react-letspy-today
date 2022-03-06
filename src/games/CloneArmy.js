@@ -142,16 +142,17 @@ class CloneArmy extends Phaser.Scene {
 
     // soldiers squad ...
     const rows = 4
+    const yPositionStart = 110
     for (var i=0; i<5; i++) {
       for (var j=0; j<rows; j++) {
-        var soldier = new Soldier(this, 20+i*20, 90+j*32, 'soldier', i*rows+j)
+        var soldier = new Soldier(this, 20+i*20, yPositionStart+j*32, 'soldier', i*rows+j)
         this.soldiers.add(soldier);
       }
     }
 
     for (var m=0; m<10; m++) {
       for (var n=0; n<rows; n++) {
-        var alien = new Enemy(this, 310+m*30, 90+n*32, 'invader', m*rows+n)
+        var alien = new Enemy(this, 310+m*30, yPositionStart+n*32, 'invader', m*rows+n)
         this.enemies.add(alien)
       }
     }
@@ -202,6 +203,9 @@ class CloneArmy extends Phaser.Scene {
 
     }, null, this)
 
+    // guide text
+    this._createGuideText('press SPACE BAR to shoot those aliens.', 90, 20)
+
   } // end of create
 
   _createTextBouncing() {
@@ -250,13 +254,14 @@ class CloneArmy extends Phaser.Scene {
 
     if (!success) return // success is a must
 
-    this._createGuideText('Bingo! press SPACE BAR to shoot those aliens.', 70, 20)
+    this._createGuideText('Bingo! continue shooting those aliens!', 70, 20)
     this._createTextBouncing()
     // add more soliders...
     const rows = 4
+    const yPositionStart = 110
     for (var i=5; i<10; i++) {
       for (var j=0; j<rows; j++) {
-        var soldier = new Soldier(this, 20+i*20, 90+j*32, 'soldier', i*rows+j)
+        var soldier = new Soldier(this, 20+i*20, yPositionStart+j*32, 'soldier', i*rows+j)
         this.soldiers.add(soldier);
       }
     }

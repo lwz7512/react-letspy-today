@@ -10,3 +10,13 @@ export const app_brand = {
   feature_title_b: '🐱',
   feature_title_c: 'let\'s start with some well designed projects to guide your through very basic Python.',
 }
+
+export const EditorMode = {
+  EDIT: 'edit',
+  LIVE: 'live_code',
+  REFE: 'reference_subtitle',
+  TIPS: 'tips',
+  RESET: 'reset_editor',
+  HELP: 'help_contact',
+  HIDE: 'hide_header'
+}

@@ -12,7 +12,8 @@
       "pass": "Bingo!",
       "tags": ["Easy", "Variable", "Statement"],
       "image": "assets/project/matrix_md_mini.png",
-      "player": "assets/project/darthvida_sm.png"
+      "player": "assets/project/darthvida_sm.png",
+      "typist": []
     },
     {
       "id": 2,
@@ -26,7 +27,8 @@
       "pass": "",
       "tags": ["Easy", "Action", "Function"],
       "image": "assets/project/matrix_md_mini.png",
-      "player": "assets/project/player_idle.png"
+      "player": "assets/project/player_idle.png",
+      "typist": []
     },
     {
       "id": 3,
@@ -40,7 +42,8 @@
       "pass": "Congratulations!",
       "tags": ["Easy", "Adventure", "Statement"],
       "image": "assets/project/matrix_md_mini.png",
-      "player": "assets/project/dude.png"
+      "player": "assets/project/dude.png",
+      "typist": []
     },
     {
       "id": 4,
@@ -55,6 +58,7 @@
       "tags": ["Medium", "Puzzle", "String", "Slice"],
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/platformChar_idle.png",
+      "typist": [],
       "reference": [
         "https://realpython.com/lessons/string-slicing/"
       ]
@@ -71,7 +75,8 @@
       "pass": "",
       "tags": ["Medium", "Puzzle", "Condition", "Boolean"],
       "image": "assets/project/matrix_md_mini.png",
-      "player": "assets/project/adventurer_idle.png"
+      "player": "assets/project/adventurer_idle.png",
+      "typist": []
     },
     {
       "id": 6,
@@ -85,7 +90,8 @@
       "pass": "",
       "tags": ["Medium", "Loop", "Iteration"],
       "image": "assets/project/matrix_md_mini.png",
-      "player": "assets/project/commander.png"
+      "player": "assets/project/commander.png",
+      "typist": []
     },
     {
       "id": 7,
@@ -99,7 +105,8 @@
       "pass": "",
       "tags": ["Medium", "Puzzle", "Condition", "Loop"],
       "image": "assets/project/matrix_md_mini.png",
-      "player": "assets/project/slimeBlock.png"
+      "player": "assets/project/slimeBlock.png",
+      "typist": []
     },
     {
       "id": 8,
@@ -114,6 +121,7 @@
       "tags": ["Medium", "List", "Sort"],
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/p1_stand.png",
+      "typist": [],
       "reference": [
         "https://www.programiz.com/python-programming/methods/list/sort",
         "https://www.w3schools.com/python/gloss_python_join_lists.asp"
@@ -132,6 +140,7 @@
       "tags": ["Medium", "time", "Function"],
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/female_idle.png",
+      "typist": [],
       "reference": [
         "https://docs.python.org/3/library/datetime.html#datetime-objects",
         "https://www.geeksforgeeks.org/python-datetime-datetime-class/"

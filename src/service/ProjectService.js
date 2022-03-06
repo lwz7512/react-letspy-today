@@ -26,3 +26,6 @@ export const postContactMessage = messageObj =>
     console.log(error);
     return error
   });
+
+export const getProjectContent = id => 
+  axios.get(`content/${id}.md`).then(res => res.data)
