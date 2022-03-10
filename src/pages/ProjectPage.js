@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { ProgressSpinner } from 'primereact/progressspinner';
- 
+
 import ProjectDemoMode from '../components/ProjectDemoMode';
 import ProjectCodeMode from '../components/ProjectCodeMode';
 
 import projectStore from '../state/ProjectState'
 import { projectsCodeTarget } from '../config/ProjectDefaultCode';
 import { addEffect, } from '../utils/DomUtil';
+import { getProjectContent } from '../service/ProjectService';
+
 
 const ProjectPage = () => {
 
@@ -15,6 +17,7 @@ const ProjectPage = () => {
   const { pid } = useParams()
   const setProjectID = projectStore(state => state.setProjectID)
   const setProjectName = projectStore(state => state.setProjectName)
+  const setProjectReference = projectStore(state => state.setProjectReference)
 
   const params = new URLSearchParams(location.search);
   const codemode = params.get('codemode')
@@ -28,10 +31,16 @@ const ProjectPage = () => {
     setProjectName(projectsCodeTarget[pid]?.projName)
   })
 
-  useEffect(() =>{
+  useEffect(() => {
     addEffect('.layout-topbar', '-translate-y-100')
     addEffect('.layout-main-container', 'pt-2')
   }, [])
+
+  useEffect(() => {
+    getProjectContent(pid).then(
+      result => setProjectReference(result)
+    )
+  }, [pid, setProjectReference])
 
 
   if (!projects.length) {

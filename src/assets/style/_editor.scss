@@ -1,0 +1,41 @@
+.code-editor {
+
+  .tools {
+    min-width: 56px;
+  }
+
+  .terminal-panel {
+    padding: 20px;
+    background-color: #0d3c61;
+
+    .typist-header {
+      color: #C2F4FF;
+      font-size: 18px;
+    }
+
+    .typist-line {
+      display: inline-block;
+      padding: 0px 0px;
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+  }
+
+  .Typist .Cursor {
+    padding: 0 4px;
+    color: #FF4500;
+  }
+
+  .reference-panel {
+
+    h1 {
+      text-decoration: underline;
+    }
+
+    p {
+      color: #333;
+      font-size: 16px;
+    }
+  }
+
+}

@@ -31,12 +31,17 @@ const projectStore = create(
     toggleRunning: () => set(
       state => ({runningMode: !state['runningMode']})
     ),
+
     // project id
     projectID: '1',
     setProjectID: id => set({projectID: id}),
     // project name
     projectName: 'demo project',
     setProjectName: name => set({projectName: name}),
+    projectReference: '', // markdown content
+    setProjectReference: content => set({projectReference: content}),
+
+    // *** RUNTIME STATE ***
     // editor code
     codeValue: '',
     codeValueChanged: code => set({codeValue: code}),

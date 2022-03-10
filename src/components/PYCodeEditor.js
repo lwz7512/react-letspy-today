@@ -2,8 +2,12 @@ import React, { useRef, useState } from 'react'
 import MonacoEditor from '@monaco-editor/react'
 import { Button } from 'primereact/button'
 import {
-  BiRun, BiTerminal, BiBookAlt, BiKey, BiReset, BiHelpCircle, BiWindowClose,
+  BiRun, BiTerminal, BiBookAlt, BiReset, BiHelpCircle, BiWindowClose,
+  // BiKey, 
 } from 'react-icons/bi'
+import Typist from 'react-typist'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 import { EditorMode } from '../config/constants'
 import projectStore from '../state/ProjectState'
@@ -20,8 +24,14 @@ const PYCodeEditor = () => {
   const [mode, setMode] = useState(EditorMode.EDIT)
 
   const projectID = projectStore(state => state.projectID)
+  const projectContent = projectStore(state => state.projectReference)
+
   const codeValueChanged = projectStore(state => state.codeValueChanged)
   const toggleTipsPanel = projectStore(state => state.toggleTipsPanel)
+  const projects = projectStore(state => state.projects)
+  const [ { typist } ] = projects.filter(
+    project => project.id === Number(projectID)
+  )
 
   const currentProjectCode = projectsBoilerplateCode[projectID]
   const btnCmnstl = 'p-button-rounded p-button-icon-only mx-2 mt-3'
@@ -43,8 +53,12 @@ const PYCodeEditor = () => {
     editorRef.current.setValue(currentProjectCode)
   }
 
+  const typeDoneHandler = () => {
+    console.log('type animation done! to replay...')
+  }
+
   return (
-    <div className="h-full w-full flex justify-content-between">
+    <div className="code-editor h-full w-full flex justify-content-between">
       {mode === EditorMode.EDIT && (
         <MonacoEditor
           height="420px"
@@ -59,22 +73,41 @@ const PYCodeEditor = () => {
       )}
       {mode === EditorMode.LIVE && (
         <div className="terminal-panel w-full">
-          <p>Terminal Panel</p>
+          <Typist
+            className="typist-header"
+            cursor={{
+              blink: true,
+              element: '|',
+            }}
+            onTypingDone={typeDoneHandler}
+            >
+              {typist.map((line, index) => (line? 
+                (<span className="typist-line" key={index}> {line} </span>) :
+                (<br key={index}/>)
+              ))
+              }
+          </Typist>
         </div>
       )}
       {mode === EditorMode.REFE && (
-        <div className="reference-panel w-full">
-          <p>Reference Panel</p>
+        <div className="reference-panel w-full p-3 bg-blue-50">
+          <ReactMarkdown 
+            remarkPlugins={[remarkGfm]}
+            children={projectContent}
+          />
         </div>
       )}
-      {mode === EditorMode.TIPS && (
+      {/* {mode === EditorMode.TIPS && (
         <div className="tips-panel w-full">
           <p>Tips Panel</p>
         </div>
-      )}
+      )} */}
       {mode === EditorMode.HELP && (
-        <div className="help-panel w-full">
-          <p>Help Panel</p>
+        <div className="help-panel w-full p-3 bg-indigo-50">
+          <h4>Email Me: lwz7512@gmail.com</h4>
+          <h4>FollowMe: 
+            <a href="https://twitter.com/lwz75121" target="_blank" rel="noreferrer">@lwz75121</a>
+          </h4>
         </div>
       )}
       {/* tools */}
@@ -88,15 +121,13 @@ const PYCodeEditor = () => {
             <BiRun size="22" />
         </Button>
         {/* reset */}
-        {mode === EditorMode.EDIT && (
-          <Button 
-            className={`p-button-warning ${btnCmnstl} ${mode===EditorMode.RESET?'selected':''}`}
+        <Button 
+            className="p-button-warning p-button-rounded p-button-icon-only mx-2 mt-3"
             tooltip="Reset Code to Initial"
             onClick={resetEditorCode}
             >
             <BiReset size="20" />
           </Button>
-        )}
         {/* live */}
         <Button 
           className={`p-button-help ${btnCmnstl} ${mode===EditorMode.LIVE?'selected':''}`}
@@ -114,13 +145,13 @@ const PYCodeEditor = () => {
           <BiBookAlt size="20" />
         </Button>
         {/* tips */}
-        <Button 
+        {/* <Button 
           className={`p-button-secondary ${btnCmnstl} ${mode===EditorMode.TIPS?'selected':''}`}
           tooltip="Tips"
           onClick={switchEditorMode(EditorMode.TIPS)}
           >
           <BiKey size="20" />
-        </Button>
+        </Button> */}
         {/* help */}
         <Button 
           className={`p-button-success ${btnCmnstl} ${mode===EditorMode.HELP?'selected':''}`}
