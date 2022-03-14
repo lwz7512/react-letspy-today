@@ -12,7 +12,7 @@ const MissionPanel = () => {
 
   return (
     <div className="flex-space-between full-height">
-      <div className="left-part">
+      <div className="left-part bg-indigo-50">
         <h3 className="text-900 ">
           <span className="border-bottom-3 ">Mission</span>
         </h3>

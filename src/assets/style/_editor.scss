@@ -27,6 +27,7 @@
   }
 
   .reference-panel {
+    overflow-y: scroll;
 
     h1 {
       text-decoration: underline;
@@ -35,6 +36,30 @@
     p {
       color: #333;
       font-size: 16px;
+    }
+
+    blockquote {
+      margin: 20px 12px;
+      padding: 8px;
+      border-radius: 4px;
+      background-color: #F5F5DC;
+      border-left: 4px solid #d06900;
+      // border-right: 4px solid #d06900;
+    }
+
+    pre {
+      margin: 12px;
+      padding: 10px;
+      background-color: #F5F5F5;
+      border-radius: 10px;
+    }
+
+    ul {
+      li {
+        font-size: 15px;
+        padding-bottom: 8px;
+        color: #008074;
+      }
     }
   }
 

@@ -39,15 +39,24 @@
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/player_idle.png",
       "typist": [
-        "coming soon...",
-        ""
+        "walk(1)",
+        "",
+        "jump(1)",
+        "",
+        "walk(1)",
+        "",
+        "jump(1)",
+        "",
+        "walk(1)",
+        "",
+        "pivot()"
       ]
     },
     {
       "id": 3,
       "title": "Make your Bridge",
       "level": 1,
-      "description": "A bridge in air missing odd number blocks, make up for it to pass safely!",
+      "description": "A bridge is missing some bricks which are represented by '1', make up for it to pass safely!",
       "mission": "Ola needs to reach the door across the broken bridge, help him repair the bridge!",
       "tips": "in bridge stone list, 1 repesents existing conrnerstone, 0 repesents blank space. So, when all the 0 change to 1, you would pass!",
       "coding": "bridge",
@@ -57,7 +66,23 @@
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/dude.png",
       "typist": [
-        "coming soon...",
+        "bridge[1] = 1",
+        "",
+        "bridge[1] = 3",
+        "",
+        "bridge[1] = 5",
+        "",
+        "bridge[1] = 7",
+        "",
+        "bridge[1] = 9",
+        "",
+        "bridge[1] = 11",
+        "",
+        "bridge[1] = 13",
+        "",
+        "bridge[1] = 15",
+        "",
+        "bridge[1] = 17",
         ""
       ]
     },
@@ -66,7 +91,7 @@
       "title": "Guess My Name",
       "level": 2,
       "description": "A cute robot can not remember his name, help him to figure out the first letter of his name to get out of there!",
-      "mission": "The first two letter of his name covered, using string index method to extract it.",
+      "mission": "The first two letter of his name covered, using string slice method to extract it.",
       "tips": "use string slice",
       "coding": "myName",
       "walk": "",
@@ -75,11 +100,8 @@
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/platformChar_idle.png",
       "typist": [
-        "coming soon...",
+        "firstTwoChars = myName[:2]",
         ""
-      ],
-      "reference": [
-        "https://realpython.com/lessons/string-slicing/"
       ]
     },
     {

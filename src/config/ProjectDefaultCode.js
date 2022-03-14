@@ -8,6 +8,10 @@ const projectCode_1 = rTabs(`
 `)
 
 const projectCode_2 = rTabs(`
+    # Mission Brief:
+    # Ola is being trapped in the lava valley! 
+    # Your mission is to help him out of there!
+    #
     # Tips: 
     # walk(1)
     # jump(1)
@@ -15,14 +19,12 @@ const projectCode_2 = rTabs(`
     #
     # lets get started with:
     walk(1)
-    jump(1)
-    walk(1)
-    jump(1)
-    walk(1)
-    pivot()
 `)
 
 const projectCode_3 = rTabs(`
+    # Mission Brief:
+    # A bridge is missing some bricks which are represented by '1', make up for it to pass safely!
+    # 
     bridge = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
     # lets get started with repairing first space:
     bridge[1] = 1
@@ -30,7 +32,9 @@ const projectCode_3 = rTabs(`
 `)
 
 const projectCode_4 = rTabs(`
-    # myName = "??ILLOU"
+    # The robot's name is saved in variable 'myName':
+    # myName = "**ILLOU"
+    #
     # Mission Brief:
     # The robot could not recall his name recorded in a variable <myName> above, 
     # help him to figure it out the first two letters.

@@ -58,6 +58,8 @@ class GuessMyName extends Phaser.Scene {
     this.cursors = this.input.keyboard.createCursorKeys();
     // disable space key presss, conflict with monaco editor
     this.input.keyboard.removeCapture(32);
+
+    this._createGuideText('Move the robot by pressing RIGHT KEY!')
   }
 
   _collisionTiles(bgLayer, ladderLayer, keyLayer) {

@@ -1,9 +1,8 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import MonacoEditor from '@monaco-editor/react'
 import { Button } from 'primereact/button'
 import {
-  BiRun, BiTerminal, BiBookAlt, BiReset, BiHelpCircle, BiWindowClose,
-  // BiKey, 
+  BiTerminal, BiBookAlt, BiReset, BiHelpCircle, BiWindowClose, BiCodeAlt, 
 } from 'react-icons/bi'
 import Typist from 'react-typist'
 import ReactMarkdown from 'react-markdown'
@@ -57,6 +56,18 @@ const PYCodeEditor = () => {
     console.log('type animation done! to replay...')
   }
 
+
+  useEffect(() => {
+    if (mode !== EditorMode.REFE) return
+
+    const selector = '.reference-panel p > a'
+    const links = document.querySelectorAll(selector)
+    links.forEach(
+      node => node.setAttribute('target', '_blank')
+    )
+
+  }, [mode])
+
   return (
     <div className="code-editor h-full w-full flex justify-content-between">
       {mode === EditorMode.EDIT && (
@@ -75,6 +86,7 @@ const PYCodeEditor = () => {
         <div className="terminal-panel w-full">
           <Typist
             className="typist-header"
+            avgTypingDelay={120}
             cursor={{
               blink: true,
               element: '|',
@@ -90,18 +102,13 @@ const PYCodeEditor = () => {
         </div>
       )}
       {mode === EditorMode.REFE && (
-        <div className="reference-panel w-full p-3 bg-blue-50">
+        <div className="reference-panel w-full p-4 bg-blue-50">
           <ReactMarkdown 
             remarkPlugins={[remarkGfm]}
             children={projectContent}
           />
         </div>
       )}
-      {/* {mode === EditorMode.TIPS && (
-        <div className="tips-panel w-full">
-          <p>Tips Panel</p>
-        </div>
-      )} */}
       {mode === EditorMode.HELP && (
         <div className="help-panel w-full p-3 bg-indigo-50">
           <h4>Email Me: lwz7512@gmail.com</h4>
@@ -118,7 +125,7 @@ const PYCodeEditor = () => {
           tooltip="Edit Code"
           onClick={switchEditorMode(EditorMode.EDIT)}
           >
-            <BiRun size="22" />
+            <BiCodeAlt size="22" />
         </Button>
         {/* reset */}
         <Button 
@@ -131,7 +138,7 @@ const PYCodeEditor = () => {
         {/* live */}
         <Button 
           className={`p-button-help ${btnCmnstl} ${mode===EditorMode.LIVE?'selected':''}`}
-          tooltip="Live Coding Demo"
+          tooltip="Tips"
           onClick={switchEditorMode(EditorMode.LIVE)}
           >
           <BiTerminal size="20" />
@@ -139,19 +146,11 @@ const PYCodeEditor = () => {
         {/* subtitle */}
         <Button 
           className={`p-button-primary ${btnCmnstl} ${mode===EditorMode.REFE?'selected':''}`}
-          tooltip="Subtitle &#38; Reference"
+          tooltip="Game through Bible"
           onClick={switchEditorMode(EditorMode.REFE)}
           >
           <BiBookAlt size="20" />
         </Button>
-        {/* tips */}
-        {/* <Button 
-          className={`p-button-secondary ${btnCmnstl} ${mode===EditorMode.TIPS?'selected':''}`}
-          tooltip="Tips"
-          onClick={switchEditorMode(EditorMode.TIPS)}
-          >
-          <BiKey size="20" />
-        </Button> */}
         {/* help */}
         <Button 
           className={`p-button-success ${btnCmnstl} ${mode===EditorMode.HELP?'selected':''}`}
