@@ -34,8 +34,12 @@
     }
 
     p {
-      color: #333;
+      color: #444;
       font-size: 16px;
+    }
+
+    p > a {
+      text-decoration: underline;
     }
 
     blockquote {
@@ -52,6 +56,11 @@
       padding: 10px;
       background-color: #F5F5F5;
       border-radius: 10px;
+    }
+
+    code {
+      background-color: #F5F5F0;
+      color: #000;
     }
 
     ul {

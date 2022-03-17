@@ -118,8 +118,17 @@
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/adventurer_idle.png",
       "typist": [
-        "coming soon...",
-        ""
+        "# Note: belowing code line may prefix with four period '....', ",
+        "",
+        "# that stands for four space in Python code!",
+        "",
+        "if 'person' in green_box:",
+        "",
+        "....the_right_box = green_box",
+        "",
+        "if 'person' in red_box:",
+        "",
+        "....the_right_box = red_box"
       ]
     },
     {
@@ -136,7 +145,9 @@
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/commander.png",
       "typist": [
-        "coming soon...",
+        "for soldier in troops:",
+        "",
+        "....soldier.addPower('flying')",
         ""
       ]
     },
@@ -154,7 +165,11 @@
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/slimeBlock.png",
       "typist": [
-        "coming soon...",
+        "for path_object in all_paths:",
+        "",
+        "....if path_object.includeItem('key'):",
+        "",
+        "........right_path = path_object",
         ""
       ]
     },
@@ -172,12 +187,12 @@
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/p1_stand.png",
       "typist": [
-        "coming soon...",
+        "yellow_stones.sort()",
+        "",
+        "red_stones.sort(reverse=True)",
+        "",
+        "bridge_stones = yellow_stones + red_stones",
         ""
-      ],
-      "reference": [
-        "https://www.programiz.com/python-programming/methods/list/sort",
-        "https://www.w3schools.com/python/gloss_python_join_lists.asp"
       ]
     },
     {

@@ -19,8 +19,8 @@ export const gamesForProject = {
     3 : MakeYourPath,
     4 : GuessMyName,
     5 : SphinxRiddle,
-    6 : WhichWayToGo,
-    7 : FlyThemUp,
+    6 : FlyThemUp,
+    7 : WhichWayToGo,
     8 : PassLiveBridge,
     9 : FixTheClock,
 }

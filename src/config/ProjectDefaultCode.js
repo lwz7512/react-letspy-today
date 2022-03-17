@@ -66,7 +66,30 @@ const projectCode_5 = rTabs(`
         the_right_box = red_box
 `)
 
+
 const projectCode_6 = rTabs(`
+    # Assume you have Soldier definition like this:
+    # class Soldier:
+    #    def addPower(self, ability):
+    #        self.ability = ability
+    #
+    # also a squad of uncertain number soldiers under your control:
+    # troops = [soldier, soldier, soldier, ...soldier]
+    #
+    # Mission Brief:
+    # Your troops are being trapped in toxic valley, you need to dispatch
+    # flying armor for each of them to get out of there!
+    #
+    # Tips:
+    # Every soldier in your 'troops' need 'flying' ability to escapge
+    # valley, loop the 'troops' list, get each soldier and call its 
+    # 'addPower' function.
+    # 
+    # lets check out our 'troops' list by a loop processing:
+    
+`)
+
+const projectCode_7 = rTabs(`
     # Mission Brief: 
     # In this game, you are going to loop 'all_paths' list:
     # all_paths = [path_object, path_object, path_object, ...]
@@ -81,33 +104,7 @@ const projectCode_6 = rTabs(`
     # 
     # lets first create a placeholder used to save your finding:
     right_path = None
-    for path_object in all_paths:
-        # check the 'path_object' above using its api 'includeItem',
-        # then assign your finding to 'right_path'
-        if path_object.includeItem('key'):
-            right_path = path_object
-`)
 
-const projectCode_7 = rTabs(`
-    # Assume you have Soldier definition like this:
-    # class Soldier:
-    #    def addPower(self, ability):
-    #        self.ability = ability
-    # also a 'troops' including numerous soldiers under your control:
-    # troops = [soldier, soldier, soldier, ...soldier]
-    #
-    # Mission Brief:
-    # Your troops are being trapped in toxic valley, you need to dispatch
-    # flying armor for each of them to get out of there!
-    #
-    # Tips:
-    # Every soldier in your 'troops' need 'flying' ability to escapge
-    # valley, loop the 'troops' list, get each soldier and call its 
-    # 'addPower' function.
-    # 
-    # lets check out our 'troops' list by a loop processing:
-    for soldier in troops:
-        soldier.addPower('flying')
 `)
 
 const projectCode_8 = rTabs(`
@@ -121,13 +118,11 @@ const projectCode_8 = rTabs(`
     # 1. have 'yellow_stones' sorted in ascending order,
     # 2. have 'red_stones' sorted in descending order,
     # 3. add two group stones into one list 'bridge_stones' below
+    #
     # Tips:
     # Remember to jump and hit the key to unlock the door.
     bridge_stones = []
     # lets first hack two groups of stones:
-    yellow_stones.sort()
-    red_stones.sort(reverse=True)
-    bridge_stones = yellow_stones + red_stones
 `)
 
 const projectCode_9 = rTabs(`

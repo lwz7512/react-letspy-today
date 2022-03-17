@@ -146,7 +146,7 @@ const PYCodeEditor = () => {
         {/* subtitle */}
         <Button 
           className={`p-button-primary ${btnCmnstl} ${mode===EditorMode.REFE?'selected':''}`}
-          tooltip="Game through Bible"
+          tooltip="Game through Guide"
           onClick={switchEditorMode(EditorMode.REFE)}
           >
           <BiBookAlt size="20" />
