@@ -12,7 +12,18 @@
       "pass": "Bingo!",
       "tags": ["Easy", "Variable", "Statement"],
       "image": "assets/project/matrix_md_mini.png",
-      "player": "assets/project/darthvida_sm.png"
+      "player": "assets/project/darthvida_sm.png",
+      "typist": [
+        "In this project, you dont need to write code",
+        "",
+        "you just need to know how to make comment for code line,",
+        "",
+        "and how to uncomment the specific code line.",
+        "",
+        "Back to editor, remove the pound sign # at the head of last row,",
+        "",
+        "then hit the run button beside the game!"
+      ]
     },
     {
       "id": 2,
@@ -26,13 +37,26 @@
       "pass": "",
       "tags": ["Easy", "Action", "Function"],
       "image": "assets/project/matrix_md_mini.png",
-      "player": "assets/project/player_idle.png"
+      "player": "assets/project/player_idle.png",
+      "typist": [
+        "walk(1)",
+        "",
+        "jump(1)",
+        "",
+        "walk(1)",
+        "",
+        "jump(1)",
+        "",
+        "walk(1)",
+        "",
+        "pivot()"
+      ]
     },
     {
       "id": 3,
       "title": "Make your Bridge",
       "level": 1,
-      "description": "A bridge in air missing odd number blocks, make up for it to pass safely!",
+      "description": "A bridge is missing some bricks which are represented by '1', make up for it to pass safely!",
       "mission": "Ola needs to reach the door across the broken bridge, help him repair the bridge!",
       "tips": "in bridge stone list, 1 repesents existing conrnerstone, 0 repesents blank space. So, when all the 0 change to 1, you would pass!",
       "coding": "bridge",
@@ -40,14 +64,34 @@
       "pass": "Congratulations!",
       "tags": ["Easy", "Adventure", "Statement"],
       "image": "assets/project/matrix_md_mini.png",
-      "player": "assets/project/dude.png"
+      "player": "assets/project/dude.png",
+      "typist": [
+        "bridge[1] = 1",
+        "",
+        "bridge[1] = 3",
+        "",
+        "bridge[1] = 5",
+        "",
+        "bridge[1] = 7",
+        "",
+        "bridge[1] = 9",
+        "",
+        "bridge[1] = 11",
+        "",
+        "bridge[1] = 13",
+        "",
+        "bridge[1] = 15",
+        "",
+        "bridge[1] = 17",
+        ""
+      ]
     },
     {
       "id": 4,
       "title": "Guess My Name",
       "level": 2,
       "description": "A cute robot can not remember his name, help him to figure out the first letter of his name to get out of there!",
-      "mission": "The first two letter of his name covered, using string index method to extract it.",
+      "mission": "The first two letter of his name covered, using string slice method to extract it.",
       "tips": "use string slice",
       "coding": "myName",
       "walk": "",
@@ -55,8 +99,9 @@
       "tags": ["Medium", "Puzzle", "String", "Slice"],
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/platformChar_idle.png",
-      "reference": [
-        "https://realpython.com/lessons/string-slicing/"
+      "typist": [
+        "firstTwoChars = myName[:2]",
+        ""
       ]
     },
     {
@@ -71,7 +116,20 @@
       "pass": "",
       "tags": ["Medium", "Puzzle", "Condition", "Boolean"],
       "image": "assets/project/matrix_md_mini.png",
-      "player": "assets/project/adventurer_idle.png"
+      "player": "assets/project/adventurer_idle.png",
+      "typist": [
+        "# Note: belowing code line may prefix with four period '....', ",
+        "",
+        "# that stands for four space in Python code!",
+        "",
+        "if 'person' in green_box:",
+        "",
+        "....the_right_box = green_box",
+        "",
+        "if 'person' in red_box:",
+        "",
+        "....the_right_box = red_box"
+      ]
     },
     {
       "id": 6,
@@ -85,7 +143,13 @@
       "pass": "",
       "tags": ["Medium", "Loop", "Iteration"],
       "image": "assets/project/matrix_md_mini.png",
-      "player": "assets/project/commander.png"
+      "player": "assets/project/commander.png",
+      "typist": [
+        "for soldier in troops:",
+        "",
+        "....soldier.addPower('flying')",
+        ""
+      ]
     },
     {
       "id": 7,
@@ -99,7 +163,15 @@
       "pass": "",
       "tags": ["Medium", "Puzzle", "Condition", "Loop"],
       "image": "assets/project/matrix_md_mini.png",
-      "player": "assets/project/slimeBlock.png"
+      "player": "assets/project/slimeBlock.png",
+      "typist": [
+        "for path_object in all_paths:",
+        "",
+        "....if path_object.includeItem('key'):",
+        "",
+        "........right_path = path_object",
+        ""
+      ]
     },
     {
       "id": 8,
@@ -114,9 +186,13 @@
       "tags": ["Medium", "List", "Sort"],
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/p1_stand.png",
-      "reference": [
-        "https://www.programiz.com/python-programming/methods/list/sort",
-        "https://www.w3schools.com/python/gloss_python_join_lists.asp"
+      "typist": [
+        "yellow_stones.sort()",
+        "",
+        "red_stones.sort(reverse=True)",
+        "",
+        "bridge_stones = yellow_stones + red_stones",
+        ""
       ]
     },
     {
@@ -132,6 +208,10 @@
       "tags": ["Medium", "time", "Function"],
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/female_idle.png",
+      "typist": [
+        "no live coding support at this project...",
+        ""
+      ],
       "reference": [
         "https://docs.python.org/3/library/datetime.html#datetime-objects",
         "https://www.geeksforgeeks.org/python-datetime-datetime-class/"

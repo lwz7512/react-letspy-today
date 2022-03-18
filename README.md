@@ -75,11 +75,11 @@ TODO: add contact form at homepage, send guest message to my email
 
 ## version 0.7
 
-- introduction video at home page hero banner? -- completed @2022/03/02
+- introduction video at home page hero banner? -- done @2022/03/02
+- complete project text text reference in .md file -- done @2020/03/18
+- complete project typist coding hint -- done @2020/03/18
 
-TODO: ...add project text reference
 TODO: ...add video content subtitles
-TODO: ...add typist coding hint
 TODO: ...add video content
 TODO: ...add cheetsheet content
 
