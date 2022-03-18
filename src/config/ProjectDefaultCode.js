@@ -139,9 +139,9 @@ const projectCode_9 = rTabs(`
     # Search: Example 2: Accessing the attributes of date and time object
     # 
     # lets define empty variables to be replaced with your solutions:
-    hour = now.hour
-    minute = now.minute
-    second = now.second
+    hour = None
+    minute = None
+    second = None
 `)
 
 

@@ -86,7 +86,7 @@ const PYCodeEditor = () => {
         <div className="terminal-panel w-full">
           <Typist
             className="typist-header"
-            avgTypingDelay={120}
+            avgTypingDelay={90}
             cursor={{
               blink: true,
               element: '|',
