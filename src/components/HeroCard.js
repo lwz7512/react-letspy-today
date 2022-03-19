@@ -8,7 +8,7 @@ const HeroCard = ({tileA, titleB, route, actionNow}) => {
 
   const thumbnailImgSrc = 'assets/backgrounds/home_hero_thumbnail.jpg'
   const rawImgSrc = 'assets/backgrounds/home_hero.jpg'
-  const demoVideoSrc = 'assets/video/letspy_intro.mp4'
+  const demoVideoSrc = 'assets/video/LETPY.today_20220319_640x360.mp4'
 
   const [imageLoaded, setImageLoaded] = useState(false)
   const [imgRawWidth, setImgRawWidth] = useState(0)
