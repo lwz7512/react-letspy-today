@@ -5,13 +5,14 @@ import ProjectIntro from './ProjectIntro';
 import MissionPanel from './MissionPanel';
 
 const ProjectDemoMode = () => {
+  // TODO: get video address...
 
   return (
     <>
       <ProjectIntro />
       <div className="content-area blue-round-panel dark">
         <ReactPlayer
-            url='https://www.youtube.com/watch?v=oUFJJNQGwhk'
+            url="assets/video/logo_reveal_640x360.mp4"
             controls={true}
           />
       </div>

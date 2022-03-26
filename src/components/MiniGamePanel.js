@@ -46,7 +46,7 @@ const MiniGamePanel = () => {
         <button 
           type="button" 
           className="go-btn"
-          disabled={runningMode || true}
+          disabled={runningMode}
           onClick={startRunning}>
           {buttonIcon}
           <DotLoader 
