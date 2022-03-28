@@ -12,10 +12,14 @@ const projectCode_2 = rTabs(`
     # Ola is being trapped in the lava valley! 
     # Your mission is to help him out of there!
     #
-    # Tips: 
+    # actions available: 
     # walk(1)
     # jump(1)
     # pivot()
+    # 
+    # How to control player:
+    # walk: RIGHT ARROW KEY
+    # jump: UP ARROW KEY
     #
     # lets get started with:
     walk(1)

@@ -94,7 +94,7 @@ TODO: ...
 
 - code editor disable paste, 
 - code length control,
-- illegal python code detection
+- illegal python code detection  -- done @2020/03/24
 
 ## version 1.0
 

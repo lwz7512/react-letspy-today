@@ -35,12 +35,10 @@
       "coding": "No",
       "walk": "Move player with RIGHT ARROW KEY to exit!",
       "pass": "",
-      "tags": ["Action", "Function"],
+      "tags": ["Action", "Function", "List"],
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/player_idle.png",
       "typist": [
-        "walk(1)",
-        "",
         "jump(1)",
         "",
         "walk(1)",

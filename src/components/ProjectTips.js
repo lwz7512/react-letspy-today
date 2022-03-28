@@ -16,18 +16,18 @@ const ProjectTips = () => {
   const items = [
       {
         label: 'Mission',
-        command: (event) => {
+        command: () => {
           toastRef.current.show({
-            sticky: true,
             severity: 'info',
             summary: 'Mission Brief',
             detail: projectInfo.mission,
+            life: 4000
           });
         }
       },
       {
         label: 'Tips',
-        command: (event) => {
+        command: () => {
           toastRef.current.show({
             severity: 'info', 
             summary: 'Tips', 
@@ -38,7 +38,7 @@ const ProjectTips = () => {
       },
       {
         label: 'Coding',
-        command: (event) => {
+        command: () => {
           toastRef.current.show({
             severity: 'info', 
             summary: 'Coding target', 
@@ -49,7 +49,7 @@ const ProjectTips = () => {
       },
       {
         label: 'Proceed',
-        command: (event) => {
+        command: () => {
           toastRef.current.show({
             severity: 'info', 
             summary: 'Last step', 
@@ -60,7 +60,7 @@ const ProjectTips = () => {
       },
       {
         label: 'Pass',
-        command: (event) => {
+        command: () => {
           toastRef.current.show({
             severity: 'info', 
             summary: 'Congratulations', 

@@ -56,6 +56,12 @@ const PYCodeEditor = () => {
     console.log('type animation done! to replay...')
   }
 
+  const switchToTypistAndCopy = () => {
+    switchEditorMode(EditorMode.LIVE)
+    const lines = typist.map(line => line?line:"\n")
+    navigator.clipboard.writeText(lines.join(''));
+  }
+
 
   useEffect(() => {
     if (mode !== EditorMode.REFE) return
@@ -139,14 +145,14 @@ const PYCodeEditor = () => {
         <Button 
           className={`p-button-help ${btnCmnstl} ${mode===EditorMode.LIVE?'selected':''}`}
           tooltip="Tips"
-          onClick={switchEditorMode(EditorMode.LIVE)}
+          onClick={switchToTypistAndCopy}
           >
           <BiTerminal size="20" />
         </Button>
-        {/* subtitle */}
+        {/* text reference */}
         <Button 
           className={`p-button-primary ${btnCmnstl} ${mode===EditorMode.REFE?'selected':''}`}
-          tooltip="Game through Guide"
+          tooltip="Guide and Reference"
           onClick={switchEditorMode(EditorMode.REFE)}
           >
           <BiBookAlt size="20" />

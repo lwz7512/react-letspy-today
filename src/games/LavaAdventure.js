@@ -325,8 +325,8 @@ class LavaAdventure extends Phaser.Scene {
       this.player.setVelocityX(90);
       return this.player.play('right', true);
     }
-    if (this.cursors.up.isDown){
-      this.player.play('jump');
+    if (this.cursors.up.isDown && this.player.body.blocked.down){
+      // this.player.play('jump');
       return this.player.setVelocityY(-160);
     }
     this.player.setVelocityX(0);
@@ -416,7 +416,7 @@ class LavaAdventure extends Phaser.Scene {
     )
 
     if (success) {
-      this._createGuideText('Bingo! Move player with SPACE KEY to exit!')
+      this._createGuideText('Bingo! walk and jump to EXIT!')
     }
 
     return this.complete
