@@ -27,7 +27,8 @@ const projectCode_2 = rTabs(`
 
 const projectCode_3 = rTabs(`
     # Mission Brief:
-    # A bridge is missing some bricks which are represented by '1', make up for it to pass safely!
+    # A bridge is missing some bricks which are represented by '1', 
+    # make up for it to pass safely!
     # 
     bridge = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
     # lets get started with repairing first space:

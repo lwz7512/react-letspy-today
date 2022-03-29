@@ -141,9 +141,9 @@ class MakeYourPath extends Phaser.Scene {
         this.player.setVelocityX(0);
         this.player.anims.play('turn');
     }
-
+    // Disable jump
     if (this.cursors.up.isDown && this.player.body.blocked.down){
-        this.player.setVelocityY(-150);
+        // this.player.setVelocityY(-150);
     }
 
     // check collision
@@ -191,7 +191,7 @@ class MakeYourPath extends Phaser.Scene {
     if (expectSum !== 18) return // not successful
     
     this._createGuideText('Bingo! Move player toward Exit with RIGHT ARROW key!')
-    this._createPlayerBouncing()
+    // this._createPlayerBouncing()
     this._createTextBouncing()
     
     this.complete = true
