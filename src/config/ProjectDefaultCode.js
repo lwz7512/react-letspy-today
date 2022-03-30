@@ -46,7 +46,7 @@ const projectCode_4 = rTabs(`
     # 
     # Tips:
     # First two letter of his name is missing, you are expected to use
-    # string slice method to extract the real value of '??' from <myName>!
+    # string slice method to extract the real value of '**' from <myName>!
     # 
     # Now, write you solution to replace the 'None' below:
     firstTwoChars = None
