@@ -58,7 +58,12 @@ const PYCodeEditor = () => {
 
   const switchToTypistAndCopy = () => {
     setMode(EditorMode.LIVE)
-    const lines = typist.map(line => line?line:"\n")
+    const lines = typist.map(
+      line => line ? line : "\n"
+    ).map(
+      line => line.replace("....", "    ")
+    )
+    // copy to clipboard
     navigator.clipboard.writeText(lines.join(''));
   }
 

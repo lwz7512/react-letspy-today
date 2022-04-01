@@ -56,19 +56,17 @@ const projectCode_5 = rTabs(`
     # There are two box holding the answer of the Sphinx famous question:
     # green_box = "********"
     # red_box = "########"
+    #
     # Mission Brief:
     # first, you need to know the right anwser, 
     # then you need to know how to check the two box with "if" statement,
     # if the two box contain the key word of right anwser, return the box!
+    #
     # Tips:
     # key word may use 'person', :)
     # lets first create a placeholder for your anwser,
     # check two box variables, asign the right one to the 'the_right_box':
     the_right_box = None
-    if "person" in green_box:
-        the_right_box = green_box
-    if "person" in red_box:
-        the_right_box = red_box
 `)
 
 

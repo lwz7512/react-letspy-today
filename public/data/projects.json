@@ -122,7 +122,7 @@
         "",
         "....the_right_box = green_box",
         "",
-        "if 'person' in red_box:",
+        "else:",
         "",
         "....the_right_box = red_box"
       ]
