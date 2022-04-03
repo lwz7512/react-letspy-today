@@ -85,8 +85,8 @@ const projectCode_6 = rTabs(`
     #
     # Tips:
     # Every soldier in your 'troops' need 'flying' ability to escapge
-    # valley, loop the 'troops' list, get each soldier and call its 
-    # 'addPower' function.
+    # valley, loop the 'troops' list through 'for ... in' statement, 
+    # get each soldier and call its 'addPower' function.
     # 
     # lets check out our 'troops' list by a loop processing:
     
@@ -192,12 +192,6 @@ export const projectsCodeTarget = {
         expect: 'a person'
     },
     6: {
-        projName: 'Which way to go',
-        codeType: 'statements',
-        params: 'right_path',
-        expect: {id: 4}
-    },
-    7: {
         projName: 'Free Your Troops',
         codeType: 'statements',
         params: 'troops',
@@ -207,6 +201,12 @@ export const projectsCodeTarget = {
             {ability: 'flying'}, {ability: 'flying'}, {ability: 'flying'},
             {ability: 'flying'}, {ability: 'flying'}, {ability: 'flying'},
         ]
+    },
+    7: {
+        projName: 'Which way to go',
+        codeType: 'statements',
+        params: 'right_path',
+        expect: {id: 4}
     },
     8: {
         projName: 'Pass live bridge',

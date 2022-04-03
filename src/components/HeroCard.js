@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link, } from 'react-router-dom';
 import ReactPlayer from 'react-player'
+import { useTypewriter, Cursor } from 'react-simple-typewriter'
 
 import { drawHeroImageBy } from "../helper/CanvasHelper";
 
@@ -16,6 +17,11 @@ const HeroCard = ({tileA, titleB, route, actionNow}) => {
 
   const rawImgDataRef = useRef(0)
   const moveDirection = useRef(0)
+
+  const {text: typeWriterText } = useTypewriter({
+    words: titleB,
+    loop: 0, // Infinit
+  })
 
   const openDemoVideoView = (initPercent) => {
     rawImgDataRef.current += initPercent ? 0.014 : -0.014
@@ -93,7 +99,10 @@ const HeroCard = ({tileA, titleB, route, actionNow}) => {
       <canvas id="hero_canvas_black" className="black-canvas"></canvas>
       <div id="content-container" className="absolute content-container">
         <h1 className="intro-title">{tileA}</h1>
-        <h2 className="intro-subtitle">{titleB}</h2>
+        <h2 className="intro-subtitle">
+          {typeWriterText}
+          <Cursor cursorStyle="_"/>
+        </h2>
         <Link to={route} className="action-button">
             {actionNow}
         </Link>
