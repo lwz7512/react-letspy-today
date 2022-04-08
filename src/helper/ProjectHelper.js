@@ -5,7 +5,7 @@
  * @returns true or false
  */
 export const checkResultMatchTarget = (expect, result) => {
-  if (result === 0) return false // 0, something wrong in backend
+  if (result === 0 || result === null) return false // 0, something wrong in backend
   if (expect === result) return true // number comparison
 
   // start array compare

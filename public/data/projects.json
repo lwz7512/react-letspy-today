@@ -157,7 +157,7 @@
       "coding": "all_paths",
       "walk": "",
       "pass": "",
-      "tags": ["Puzzle", "Condition", "Loop"],
+      "tags": ["Condition", "Loop"],
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/slimeBlock.png",
       "typist": [
@@ -201,7 +201,7 @@
       "coding": "now",
       "walk": "",
       "pass": "",
-      "tags": ["time", "Function"],
+      "tags": ["module", "datetime", "Function"],
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/female_idle.png",
       "typist": [

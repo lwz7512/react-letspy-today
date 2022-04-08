@@ -72,7 +72,7 @@ const ProjectTips = () => {
   ];
 
   return (
-    <div className="intro-area border-double h-10rem blue-round-panel pb-0">
+    <div className="intro-area border-solid h-10rem blue-round-panel pb-0">
       <Toast ref={toastRef} />
       {/* title row */}
       <div className="flex justify-content-between">

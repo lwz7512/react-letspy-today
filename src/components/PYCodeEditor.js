@@ -17,7 +17,7 @@ import { codeEditorOptions } from '../config/project'
 /**
  * Python mini playground for each project
  */
-const PYCodeEditor = () => {
+const PYCodeEditor = ({ onCodeCopy }) => {
 
   const editorRef = useRef(null);
   const [mode, setMode] = useState(EditorMode.EDIT)
@@ -53,7 +53,7 @@ const PYCodeEditor = () => {
   }
 
   const typeDoneHandler = () => {
-    console.log('type animation done! to replay...')
+    // console.log('type animation done! to replay...')
   }
 
   const switchToTypistAndCopy = () => {
@@ -61,10 +61,12 @@ const PYCodeEditor = () => {
     const lines = typist.map(
       line => line ? line : "\n"
     ).map(
-      line => line.replace("....", "    ")
+      line => line.replaceAll(/\.\./g, "  ")
     )
     // copy to clipboard
     navigator.clipboard.writeText(lines.join(''));
+
+    if (onCodeCopy) onCodeCopy('Copied into clicpboard!')
   }
 
 

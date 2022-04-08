@@ -29,6 +29,13 @@ const ProjectCodeMode = () => {
 
   const currentTarget = projectsCodeTarget[projectID]
 
+  const copyCodeHandler = message => {
+    const notification = {
+      severity: 'success', summary: 'Got it:', detail: message
+    }
+    // popup toast message
+    toastRef.current.show(notification);
+  }
 
   useEffect(() => {
     if (!isRunning) return
@@ -96,7 +103,7 @@ const ProjectCodeMode = () => {
         <ProjectTips />
       )}
       <div className="content-area blue-round-panel light">
-        <PYCodeEditor />
+        <PYCodeEditor onCodeCopy={copyCodeHandler} />
       </div>
       <div className="result-area border-solid blue-round-panel p-0">
         <MiniGamePanel />

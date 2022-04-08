@@ -86,7 +86,8 @@ const projectCode_6 = rTabs(`
     # Tips:
     # Every soldier in your 'troops' need 'flying' ability to escapge
     # valley, loop the 'troops' list through 'for ... in' statement, 
-    # get each soldier and call its 'addPower' function.
+    # get each soldier and call its 'addPower' function by:
+    # soldier.addPower('flying').
     # 
     # lets check out our 'troops' list by a loop processing:
     
@@ -124,14 +125,17 @@ const projectCode_8 = rTabs(`
     #
     # Tips:
     # Remember to jump and hit the key to unlock the door.
-    bridge_stones = []
+    #
+    # connect ascending yellow_stones and descending red_stones into:
+    bridge_stones = None
     # lets first hack two groups of stones:
 `)
 
 const projectCode_9 = rTabs(`
     # To fix the clock, here is a starting point to figure out current time:
-    import datetime
-    now = datetime.datetime.now()
+    from datetime import datetime
+    now = datetime.now()
+    #
     # Mission Brief:
     # You have a 'now' object to use, 
     # get the 'hour', 'minute', 'second' value from it!
@@ -141,7 +145,8 @@ const projectCode_9 = rTabs(`
     # https://www.geeksforgeeks.org/python-datetime-datetime-class/
     # Search: Example 2: Accessing the attributes of date and time object
     # 
-    # lets define empty variables to be replaced with your solutions:
+    # lets define empty variables to be replaced with your solutions,
+    # utilize the 'now' object above to get these values:
     hour = None
     minute = None
     second = None

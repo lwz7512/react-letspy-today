@@ -5,7 +5,7 @@ class CellStep {
   constructor(player, tile){
     this.player = player
     this.tile = tile
-    this.speed = 60
+    this.speed = 60 // do not change this value!
     this.toTheEnd = false
   }
 
