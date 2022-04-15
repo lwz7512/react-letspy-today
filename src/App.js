@@ -1,22 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { Route } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { Route } from 'react-router-dom'
 
-import HomePage from './pages/HomePage';
-import ProjectPage from './pages/ProjectPage';
-import DonationPage from './pages/DonationPage';
-import ProfilePage from './pages/ProfilePage';
-import ContactPage from './pages/ContactPage';
+import HomePage from './pages/HomePage'
+import ProjectPage from './pages/ProjectPage'
+import DonationPage from './pages/DonationPage'
+import ProfilePage from './pages/ProfilePage'
+import ContactPage from './pages/ContactPage'
+import CheatSheetPage from './pages/CheatSheetPage'
 
-import { AppTopbar } from './structure/AppTopbar';
-import { AppFooter } from './structure/AppFooter';
+import { AppTopbar } from './structure/AppTopbar'
+import { AppFooter } from './structure/AppFooter'
 
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
-import 'primeflex/primeflex.css';
-import 'prismjs/themes/prism-coy.css';
-import './layout/flags/flags.css';
-import './layout/layout.scss';
-import './assets/style/App.scss';
+import 'primereact/resources/primereact.min.css'
+import 'primeicons/primeicons.css'
+import 'primeflex/primeflex.css'
+import 'prismjs/themes/prism-coy.css'
+import './layout/flags/flags.css'
+import './layout/layout.scss'
+import './assets/style/App.scss'
 
 import { getProjects } from './service/ProjectService'
 import projectStore from './state/ProjectState'
@@ -58,6 +59,7 @@ function App() {
             <Route path="/contact" component={ContactPage}/>
             <Route path="/donation" component={DonationPage}/>
             <Route path="/profile" component={ProfilePage}/>
+            <Route path="/cheatsheet/:name" component={CheatSheetPage}/>
             <Route path="/" exact component={HomePage}/>
         </div>
         <AppFooter layoutColorMode="light"/>

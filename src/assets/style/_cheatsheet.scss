@@ -1,0 +1,89 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 30px;
+
+  @media screen and (max-width: 992px) {
+    grid-template-columns: auto auto;
+    column-gap: 20px;
+  }
+  
+  @media screen and (max-width: 576px) {
+    grid-template-columns: auto;
+    column-gap: 0px;
+  }
+
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #666;
+  box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+  font-size: 16px;
+  padding-bottom: 12px;
+  border-radius: 4px;
+
+
+  &.zoom {
+    transition: transform .2s; /* Animation */
+  }
+
+  &.zoom:hover {
+    box-shadow: 0 4px 4px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+    transform: scale(1.04); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
+  p:nth-child(odd) {
+    background: #F5F5F5;
+  }
+
+  @media screen and (max-width: 992px) {
+    margin: 10px 0;
+  }
+  
+}
+
+.grid-item a {
+  text-decoration: underline;
+}
+
+.card-title {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  background: #09192B;
+  color: #fff;
+  font-size: 18px;
+
+  span {
+    width: 40px;
+    height: 40px;
+    background-color: blueviolet;
+    margin-right: 10px;
+    text-align: center;
+    padding: 10px;
+  }
+
+  @media screen and (max-width: 992px) {
+    font-size: 16px;
+  }
+  
+}
+
+.rst-content .note {
+  padding: 12px;
+  line-height: 24px;
+  margin-bottom: 24px;
+  background: #e7f2fa;
+}
+
+
+.rst-content .admonition-title {
+  font-weight: bold;
+  display: block;
+  color: #fff;
+  background: #6ab0de;
+  margin: -12px;
+  padding: 6px 12px;
+  margin-bottom: 12px;
+}

@@ -63,7 +63,7 @@ complted the last 3 game projects of first season:
 
 ## version 0.6
 
-TODO: add contact form at homepage, send guest message to my email
+add contact form at homepage, send guest message to my email
 
 - Completed 4 static pages layou: `Donation`, `Social login`, `Contact`, `Profile`
 - Can send contact to backend and then forward to GraphCMS 
@@ -78,10 +78,11 @@ TODO: add contact form at homepage, send guest message to my email
 - introduction video at home page hero banner? -- done @2022/03/02
 - complete project text text reference in .md file -- done @2022/03/18
 - complete project typist coding hint -- done @2022/03/18
+- complete video content subtitles  -- done @2022/04/07
 
-TODO: ...add video content subtitles  -- done @2022/04/07
+TODO: ...add cheetsheet content 
 TODO: ...add video content
-TODO: ...add cheetsheet content
+TODO: ...cheetsheet viewer by markdown
 
 ## version 0.8
 

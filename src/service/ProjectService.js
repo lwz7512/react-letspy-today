@@ -28,4 +28,7 @@ export const postContactMessage = messageObj =>
   });
 
 export const getProjectContent = id => 
-  axios.get(`content/${id}.md`).then(res => res.data)
+  axios.get(`guides/${id}.md`).then(res => res.data);
+
+export const getCheatsheetContent = name => 
+  axios.get(`cheatsheets/${name}.md`).then(res => res.data);
