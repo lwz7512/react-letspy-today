@@ -42,7 +42,7 @@ const CheatsheetViewer = ({content, metadata}) => {
       const parentSection = cards.slice(-1)[0]
       if (!parentSection) return // could be undefined
       const paragraph = element.cloneNode(true)
-      paragraph.classList.add('py-2', 'px-3', 'mb-0')
+      paragraph.classList.add('px-3', 'py-2', 'mb-0')
       const link = paragraph.querySelector('a')
       if (link) {
         link.setAttribute('target', '_blank')
@@ -50,11 +50,21 @@ const CheatsheetViewer = ({content, metadata}) => {
       parentSection.appendChild(paragraph)
     }
 
+    const createPreBlock = (element, cards) => {
+      if (element.tagName !== 'PRE') return
+
+      const parentSection = cards.slice(-1)[0]
+      if (!parentSection) return // could be undefined
+      const preBlock = element.cloneNode(true)
+      parentSection.appendChild(preBlock)
+    }
+
     const cards = []
     const processor = element => {
       const section = createSection(element)
       section && cards.push(section)
       createParagraph(element, cards)
+      createPreBlock(element, cards)
     }
 
     const main = document.querySelector('.md-wrapper')
@@ -63,18 +73,23 @@ const CheatsheetViewer = ({content, metadata}) => {
     
     if (!cards.length) return
 
-    const responsiveGrid = document.createElement('div')
-    responsiveGrid.classList.add('grid-container')
-    responsiveGrid.append(...cards)
+    const cardGrid = document.createElement('div')
+    cardGrid.classList.add('grid-container')
+    cardGrid.append(...cards)
 
-    // https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceChildren
-    // replaceChildren() provides a very convenient mechanism for emptying a node of all its children.
-    // You call it on the parent node without any argument specified:
-    // myNode.replaceChildren();
-    main.replaceChildren(responsiveGrid)
+    const targetContainer = document.querySelector('.cheat-sheet-cards')
+    targetContainer.appendChild(cardGrid)
+
+    // hide react-markdown
+    main.classList.add('hidden')
 
     return () => {
-      // main.replaceChildren() // clear all
+      // restore react-markdown
+      main.classList.remove('hidden')
+      // https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceChildren
+      // replaceChildren() provides a very convenient mechanism for emptying a node of all its children.
+      // You call it on the parent node without any argument specified:
+      targetContainer.replaceChildren() // clear all
     }
 
   }, [content, metadata])
@@ -90,7 +105,7 @@ const CheatsheetViewer = ({content, metadata}) => {
         {metadata && metadata.title}
       </h1>
       <pre className="bg-white text-xl p-4 line-height-3 border-1 border-indigo-100">
-        <code className="white-space-normal">
+        <code>
           {metadata && metadata.description}
         </code>
       </pre>
@@ -111,6 +126,7 @@ const CheatsheetViewer = ({content, metadata}) => {
           {content}
         </ReactMarkdown>
       </div>
+      <div className="cheat-sheet-cards mb-7"/>
     </>
   )
 }
