@@ -223,11 +223,20 @@ class CloneArmy extends Phaser.Scene {
     });
   }
 
+  /**
+   * create/update a text on screen
+   * @param {string} message : text display
+   * @param {int} x : horizontal position
+   * @param {int} y : vertical position
+   */
   _createGuideText(message, x=10, y=10) {
     if (this.guideTxt) {
       this.guideTxt.removeFromDisplayList()
     }
-    this.guideTxt = this.add.text(x, y, message, { fill: '#ffff00' });
+    const params = [
+      x, y, message, { fill: '#ffff00' }
+    ]
+    this.guideTxt = this.add.text(...params);
   }
 
   update(time, delta){

@@ -3,7 +3,7 @@
  */
 export const app_brand = {
   hero_title_a: 'Minimal Python Coding Playground',
-  hero_title_b: ['You Coding', 'You Playing', 'You get Reward'],
+  hero_title_b: ['You Coding', 'You Playing', 'You get Rewards'],
   action_now_label: 'Get Started',
   action_now_route: '/project/1',
   feature_title_a: 'Coding with fun?',

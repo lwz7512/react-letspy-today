@@ -1,28 +1,75 @@
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  column-gap: 30px;
+.cheat-sheet-viewer {
+
+  .pre-line {
+    white-space: pre-line;
+  }
+
+}
+
+.masonry {
+  -webkit-column-count: 3;
+  -webkit-column-gap: 10px;
+  -webkit-column-fill: auto;
+  -moz-column-count: 3;
+  -moz-column-gap: 10px;
+  -moz-column-fill: auto;
+  column-count: 3;
+  column-gap: 20px;
+  column-fill: auto;
+
+  .grid-item {
+    display: block;
+    padding: 0px;
+    // margin-top: 20px;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+  }
+  
+  .grid-item img {
+    display: block;
+    max-width: 100%;
+    min-height: 200px;
+    width: 100%;
+    height: auto;
+  }
+
+  .grid-item a {
+    text-decoration: underline;
+  }
+
+  pre {
+    font-size: 14px;
+  }
 
   @media screen and (max-width: 992px) {
-    grid-template-columns: auto auto;
+    column-count: 2;
     column-gap: 20px;
   }
   
   @media screen and (max-width: 576px) {
-    grid-template-columns: auto;
+    column-count: 1;
     column-gap: 0px;
   }
 
 }
 
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 30px;
+}
+
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid #666;
+  border: 1px solid #CCC;
   box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
   font-size: 16px;
   padding-bottom: 0px;
-  border-radius: 4px;
-  margin: 20px 0;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 
   &.zoom {
     transition: transform .2s; /* Animation */
@@ -30,7 +77,7 @@
 
   &.zoom:hover {
     box-shadow: 0 4px 4px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
-    transform: scale(1.04); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transform: translateX(-4px);
   }
 
   p:nth-child(odd) {
@@ -41,10 +88,6 @@
     margin: 10px 0;
   }
   
-}
-
-.grid-item a {
-  text-decoration: underline;
 }
 
 .card-title {
@@ -68,22 +111,4 @@
     font-size: 16px;
   }
   
-}
-
-.rst-content .note {
-  padding: 12px;
-  line-height: 24px;
-  margin-bottom: 24px;
-  background: #e7f2fa;
-}
-
-
-.rst-content .admonition-title {
-  font-weight: bold;
-  display: block;
-  color: #fff;
-  background: #6ab0de;
-  margin: -12px;
-  padding: 6px 12px;
-  margin-bottom: 12px;
 }

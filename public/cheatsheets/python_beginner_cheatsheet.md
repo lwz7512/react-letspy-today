@@ -3,11 +3,11 @@ title: Python Beginner Cheat Sheet
 cover: assets/backgrounds/dandelion-g6428efc1c_1920.jpeg
 download: pdf/cheatsheet_of_py_cheatsheets.pdf
 description: |
-  Cheat sheet for programming language is just the common and small part of those coding skills.
-  It’s helpful and could accelerate your coding process, but not the priority of your leaning process. 
-  The best practice of leaning programming is through small projects and examples. 
-  For those of cheat sheet fans, I would like to present a big picture of available python cheat sheets. 
-  You may have a clearer mind on which one suits you best.
+  📌 Cheat sheet for programming language is just the common and small part of those coding skills.
+  📌 It’s helpful and could accelerate your coding process, but not the priority of your leaning process. 
+  📌 The best practice of leaning programming is through small projects and examples. 
+  📌 For those of cheat sheet fans, I would like to present a big picture of available python cheat sheets. 
+  📌 You may have a clearer mind on which one suits you best.
 date: 2022/04/10
 ---
 
@@ -15,7 +15,7 @@ date: 2022/04/10
 # Python Beginner Cheat Sheet
 
 
-## Online site
+## 1-Usefull online sites
 
 [Python Cheat Sheet](https://www.pythoncheatsheet.org/)
 
@@ -30,7 +30,7 @@ date: 2022/04/10
 [Comprehensive Python Cheatsheet](https://github.com/gto76/python-cheatsheet)
 
 
-## Downloads
+## 2-Downloads
 
 [Python 3 Cheat Sheet - limsi](https://perso.limsi.fr/pointal/_media/python:cours:mementopython3-english.pdf)
 
@@ -39,7 +39,7 @@ date: 2022/04/10
 [Python Crash Course - Cheat Sheets](https://github.com/ehmatthes/pcc/releases/download/v1.0.0/beginners_python_cheat_sheet_pcc_all.pdf)
 
 
-## for intermediate Python developer
+## 3-for intermediate Python developer
 
 [Object-Oriented Programming in Python](https://python-textbok.readthedocs.io/en/1.0/index.html)
 

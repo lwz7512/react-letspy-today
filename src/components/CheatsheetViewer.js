@@ -42,7 +42,7 @@ const CheatsheetViewer = ({content, metadata}) => {
       const parentSection = cards.slice(-1)[0]
       if (!parentSection) return // could be undefined
       const paragraph = element.cloneNode(true)
-      paragraph.classList.add('px-3', 'py-2', 'mb-0')
+      paragraph.classList.add('p-3', 'mb-0')
       const link = paragraph.querySelector('a')
       if (link) {
         link.setAttribute('target', '_blank')
@@ -74,7 +74,8 @@ const CheatsheetViewer = ({content, metadata}) => {
     if (!cards.length) return
 
     const cardGrid = document.createElement('div')
-    cardGrid.classList.add('grid-container')
+    // cardGrid.classList.add('grid-container')
+    cardGrid.classList.add('masonry')
     cardGrid.append(...cards)
 
     const targetContainer = document.querySelector('.cheat-sheet-cards')
@@ -95,7 +96,7 @@ const CheatsheetViewer = ({content, metadata}) => {
   }, [content, metadata])
 
   return (
-    <>
+    <div className="cheat-sheet-viewer">
       <img 
         src={metadata && metadata.cover}
         alt="cover" 
@@ -105,7 +106,7 @@ const CheatsheetViewer = ({content, metadata}) => {
         {metadata && metadata.title}
       </h1>
       <pre className="bg-white text-xl p-4 line-height-3 border-1 border-indigo-100">
-        <code>
+        <code className="pre-line">
           {metadata && metadata.description}
         </code>
       </pre>
@@ -127,7 +128,7 @@ const CheatsheetViewer = ({content, metadata}) => {
         </ReactMarkdown>
       </div>
       <div className="cheat-sheet-cards mb-7"/>
-    </>
+    </div>
   )
 }
 
