@@ -14,46 +14,64 @@
 // ***** site level style definition *****
 
 .app {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 .layout-main-container {
-    padding-right: 4rem;
+  padding-right: 4rem;
 }
 
 .layout-main {
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .p-steps .p-steps-item .p-menuitem-link {
-    background: none;
+  background: none;
 }
 
 .p-steps .p-steps-item.p-highlight .p-steps-number {
-    background-color: var(--teal-500);
-    color: white;
+  background-color: var(--teal-500);
+  color: white;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .transition-pt5 {
-    transition: 0.4s ease-in;
+  transition: 0.4s ease-in;
 }
 
 .button-group {
-    .p-button {
-        font-size: 1.5rem;
-        padding: .75rem 1.5rem;
-        background-color: #6366F1;
-        border: 1px solid #6366F1;
-    }
+  .p-button {
+    font-size: 1.5rem;
+    padding: .75rem 1.5rem;
+    background-color: #6366F1;
+    border: 1px solid #6366F1;
+  }
 
-    .p-button:hover {
-        background-color: #4C4CDC;
-        border: 1px solid #4C4CDC;
-    }
+  .p-button:hover {
+    background-color: #4C4CDC;
+    border: 1px solid #4C4CDC;
+  }
 }
+
+.modal {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,.6);
+  text-align: center;
+  padding-top: 15%;
+
+  .snippet-img {
+    height: 480px;
+    width: auto;
+  }
+}
+

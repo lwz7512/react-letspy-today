@@ -1,7 +1,57 @@
 .cheat-sheet-viewer {
 
+  .cover {
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+  }
+
   .pre-line {
     white-space: pre-line;
+  }
+
+  .snackbar {
+    visibility: hidden;
+    min-width: 150px;
+    margin-left: -125px;
+    background-color:darkorange;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 8px;
+    position: fixed;
+    z-index: 10;
+    left: 50%;
+    bottom: 30px;
+    font-size: 18px;
+  }
+  
+  .snackbar.show {
+    visibility: visible;
+    // total animation length 2 seconds
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 1.5s;
+    // total animation length 2 seconds
+    animation: fadein 0.5s, fadeout 0.5s 1.5s;
+  }
+  
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
   }
 
 }
@@ -91,9 +141,10 @@
 }
 
 .card-title {
+  width: 100%;
   display: inline-flex;
   align-items: center;
-  width: 100%;
+  justify-content: space-between;
   background: #09192B;
   color: #fff;
   font-size: 18px;
@@ -101,10 +152,22 @@
   span {
     width: 40px;
     height: 40px;
-    background-color: blueviolet;
     margin-right: 10px;
     text-align: center;
     padding: 10px;
+  }
+
+  span:first-child {
+    background-color: blueviolet;
+  }
+
+  span:last-child {
+    margin-right: 0;
+  }
+
+  span.pi-copy:hover {
+    cursor: copy;
+    background-color:darkorange;
   }
 
   @media screen and (max-width: 992px) {

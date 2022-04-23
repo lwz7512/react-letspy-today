@@ -10,6 +10,7 @@ import CheatSheetPage from './pages/CheatSheetPage'
 
 import { AppTopbar } from './structure/AppTopbar'
 import { AppFooter } from './structure/AppFooter'
+import Modal from './components/Modal'
 
 import 'primereact/resources/primereact.min.css'
 import 'primeicons/primeicons.css'
@@ -64,6 +65,7 @@ function App() {
         </div>
         <AppFooter layoutColorMode="light"/>
       </div>
+      <Modal/>
     </div>
   );
 }

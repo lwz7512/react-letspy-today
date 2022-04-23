@@ -1,6 +1,6 @@
 ---
 title: Phaserjs Beginner Cheat Sheet
-cover: assets/backgrounds/dandelion-g6428efc1c_1920.jpeg
+cover: assets/backgrounds/peek_md.png
 download: pdf/cheatsheet_of_py_cheatsheets.pdf
 description: |
   📌 Why should we take a look at Phaserjs, a javascript game engine when it comes to programming learning?
@@ -8,6 +8,69 @@ description: |
   📌 Moreover, web game is easy to get started and share with your friends, if you have great interests in game development and would like delve into this field, Phaserjs is a good starting point. 
   🍭 Actually, all the mini games in this website are made of Phaserjs game engine.
 date: 2022/04/10
+snippets: 
+  template_game: |
+    export const BaseConfig = {
+      type: Phaser.AUTO,
+      width: 600,
+      height: 237,
+      parent: 'phaser-game-box',
+      banner: false,
+    };
+  game_config: |
+    export const PlatformerConfig = {
+      ...BaseConfig,
+      physics: {
+        default: 'arcade',
+        arcade: {
+          gravity: { y: 300 },
+          debug: false
+        }
+      },
+    };
+  platformer_config: |
+    class TemplateGame extends Phaser.Scene {
+      constructor(){
+        super('TemplateGame');
+      }
+      preload(){
+        // loading image assets...
+      }
+      create(){
+        // create game sprites
+      }
+      update(){
+        // rendering changes loop
+      }
+    }
+  game_object: |
+    const withParentAndScene = {
+      ...PlatformerConfig,
+      scene: [currentGame, Congratulations, GameFailed]
+    }
+    const game = new Phaser.Game(withParentAndScene)
+
+  create_text: |
+    /**
+    * create/update a text on screen
+    *
+    * @param {string} message text display
+    * @param {int} x horizontal position
+    * @param {int} y vertical position
+    */
+    _createGuideText(message, x=10, y=10) {
+      if (this.guideTxt) {
+        this.guideTxt.removeFromDisplayList()
+      }
+      const params = [
+        x, y, message, { fill: '#ffff00' }
+      ]
+      this.guideTxt = this.add.text(...params);
+    }
+  PLACEHOLDER: |
+    // ......
+  more: |
+    ...
 ---
 
 
@@ -38,69 +101,69 @@ date: 2022/04/10
 
 ## 4-Game Scene Skeleton
 
-![Phaser template Game](cheatsheets/snippets/phaser_template_game.png)
+![template_game](cheatsheets/snippets/phaser_template_game.png)
 
 ## 5-Phaser Game Base Config
 
-![Phaser Game Config](cheatsheets/snippets/phaser_base_config.png)
+![game_config](cheatsheets/snippets/phaser_base_config.png)
 
 ## 6-Phaser Game Platformer Config
 
-![Phaser Platformer Config](cheatsheets/snippets/phaser_platformer_config.png)
+![platformer_config](cheatsheets/snippets/phaser_platformer_config.png)
 
 ## 7-Create Phaser Game Object
 
-![game object](cheatsheets/snippets/phaser_game_object.png)
+![game_object](cheatsheets/snippets/phaser_game_object.png)
 
 ## 8-Create Text function
 
-![create text function](cheatsheets/snippets/phaser_create_text_function.png)
+![create_text](cheatsheets/snippets/phaser_create_text_function.png)
 
 ## 9-BLANK
 
-![BLANK PLACEHOLDER](cheatsheets/snippets/carbon.png)
+![PLACEHOLDER](cheatsheets/snippets/carbon.png)
 
 ## 10-BLANK
 
-![BLANK PLACEHOLDER](cheatsheets/snippets/carbon.png)
+![PLACEHOLDER](cheatsheets/snippets/carbon.png)
 
 ## 11-BLANK
 
-![BLANK PLACEHOLDER](cheatsheets/snippets/carbon.png)
+![PLACEHOLDER](cheatsheets/snippets/carbon.png)
 
 ## 12-BLANK
 
-![BLANK PLACEHOLDER](cheatsheets/snippets/carbon.png)
+![PLACEHOLDER](cheatsheets/snippets/carbon.png)
 
 ## 13-BLANK
 
-![BLANK PLACEHOLDER](cheatsheets/snippets/carbon.png)
+![PLACEHOLDER](cheatsheets/snippets/carbon.png)
 
 ## 14-BLANK
 
-![BLANK PLACEHOLDER](cheatsheets/snippets/carbon.png)
+![PLACEHOLDER](cheatsheets/snippets/carbon.png)
 
 ## 15-BLANK
 
-![BLANK PLACEHOLDER](cheatsheets/snippets/carbon.png)
+![PLACEHOLDER](cheatsheets/snippets/carbon.png)
 
 ## 16-BLANK
 
-![BLANK PLACEHOLDER](cheatsheets/snippets/carbon.png)
+![PLACEHOLDER](cheatsheets/snippets/carbon.png)
 
 ## 17-BLANK
 
-![BLANK PLACEHOLDER](cheatsheets/snippets/carbon.png)
+![PLACEHOLDER](cheatsheets/snippets/carbon.png)
 
 ## 18-BLANK
 
-![BLANK PLACEHOLDER](cheatsheets/snippets/carbon.png)
+![PLACEHOLDER](cheatsheets/snippets/carbon.png)
 
 ## 19-BLANK
 
-![BLANK PLACEHOLDER](cheatsheets/snippets/carbon.png)
+![PLACEHOLDER](cheatsheets/snippets/carbon.png)
 
 ## 20-BLANK
 
-![BLANK PLACEHOLDER](cheatsheets/snippets/carbon.png)
+![PLACEHOLDER](cheatsheets/snippets/carbon.png)
 
