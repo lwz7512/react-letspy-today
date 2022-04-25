@@ -95,7 +95,7 @@ const CheatsheetViewer = ({content, metadata}) => {
       const cardClickHandler = event => {
         // handle copy
         if (event.target.tagName === 'SPAN') {
-          const codeSnippet = snippets[snippetKey] || ''
+          const codeSnippet = snippets[snippetKey] || 'No Key Found'
           // copy to clipboard
           navigator.clipboard.writeText(codeSnippet)
           // show toast

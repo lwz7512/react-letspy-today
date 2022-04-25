@@ -219,20 +219,6 @@ class FlyThemUp extends Phaser.Scene {
     this.guideTxt = this.add.text(10, 10, message, { fill: '#ffff00' });
   }
 
-  /**
-   * touch enough to consider a real hit
-   * @param {Sprite} player 
-   * @param {Tile} tile 
-   * @param {Number} distance 
-   * @returns true or false
-   */
-   _closeEnough(player, tile, distance) {
-    var tileCenterX = tile.x * 64 + 32 + this.layerHoriOffset
-    var playerCenterX = player.body.center.x
-    var horiDifference = Math.round(Math.abs(tileCenterX - playerCenterX))
-    return distance > horiDifference
-  }
-
   _successHandler() {
     this.succeed = true
     this.onGameSuccess()

@@ -157,9 +157,9 @@ class CloneArmy extends Phaser.Scene {
       }
     }
 
-    this.cursors = this.input.keyboard.createCursorKeys();
-    // // disable space key presss, conflict with monaco editor
-    this.input.keyboard.removeCapture(32);
+    // this.cursors = this.input.keyboard.createCursorKeys();
+    // disable space key presss, conflict with monaco editor
+    // this.input.keyboard.removeCapture(32);
 
     // fire by a column of soldiers
     this.input.on('pointerdown', function() {
