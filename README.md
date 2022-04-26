@@ -79,6 +79,7 @@ add contact form at homepage, send guest message to my email
 - complete project text text reference in .md file -- done @2022/03/18
 - complete project typist coding hint -- done @2022/03/18
 - complete video content subtitles  -- done @2022/04/07
+- complete the Phaserjs cheatsheet -- done @2022/04/25
 
 TODO: ...add cheetsheet content 
 TODO: ...add video content

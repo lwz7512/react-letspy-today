@@ -58,7 +58,7 @@ const DonationPage = () => {
                                 <span className="text-6xl pr-3">🎖️</span>
                                 <p className="txt">
                                     <span className="px-2 border-left-3 border-green-500 surface-200">10$</span>  --  
-                                    You'll be rewarded a `Python` + `PhaserJS` + `9 Games Python Codes` combo cheatsheet + `9 Games Javascript Source code explanation!
+                                    You'll be rewarded a previous combo cheatsheet + `9 Games Making workflow and Source code explanation`!
                                 </p>
                             </li>
                         </ul>

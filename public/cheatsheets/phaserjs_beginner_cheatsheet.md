@@ -1,7 +1,7 @@
 ---
 title: Phaserjs Beginner Cheat Sheet
 cover: assets/backgrounds/peek_md.png
-download: pdf/cheatsheet_of_py_cheatsheets.pdf
+download: pdf/phaserjs_cheatsheet.pdf
 description: |
   📌 Why should we take a look at Phaserjs, a javascript game engine when it comes to programming learning?
   📌 Well, investing in a popular HMTL5 Game engine like Phaserjs could make you have a better understanding the hood under some well-known online learning platform like `Prodigy` and `Scratch`. 
@@ -10,25 +10,6 @@ description: |
 date: 2022/04/10
 snippets: 
   template_game: |
-    export const BaseConfig = {
-      type: Phaser.AUTO,
-      width: 600,
-      height: 237,
-      parent: 'phaser-game-box',
-      banner: false,
-    };
-  game_config: |
-    export const PlatformerConfig = {
-      ...BaseConfig,
-      physics: {
-        default: 'arcade',
-        arcade: {
-          gravity: { y: 300 },
-          debug: false
-        }
-      },
-    };
-  platformer_config: |
     class TemplateGame extends Phaser.Scene {
       constructor(){
         super('TemplateGame');
@@ -43,13 +24,31 @@ snippets:
         // rendering changes loop
       }
     }
+  game_config: |
+    export const BaseConfig = {
+      type: Phaser.AUTO,
+      width: 600,
+      height: 237,
+      parent: 'phaser-game-box',
+      banner: false,
+    };
+  platformer_config: |
+    export const PlatformerConfig = {
+      ...BaseConfig,
+      physics: {
+        default: 'arcade',
+        arcade: {
+          gravity: { y: 300 },
+          debug: false
+        }
+      },
+    };
   game_object: |
     const withParentAndScene = {
       ...PlatformerConfig,
       scene: [currentGame, Congratulations, GameFailed]
     }
     const game = new Phaser.Game(withParentAndScene)
-
   create_text: |
     /**
     * create/update a text on screen
@@ -297,7 +296,7 @@ snippets:
 
 ![create_animation](cheatsheets/snippets/phaser_create_animation.png)
 
-## 11-Listen Mouse and Keboard
+## 11-Listen Mouse and Keyboard
 
 ![listen_mouse_keyboard](cheatsheets/snippets/phaser_listen_mouse_keyboard.png)
 
