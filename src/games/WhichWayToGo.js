@@ -1,93 +1,6 @@
 import Phaser from 'phaser';
 
 
-class CellStep {
-  constructor(player, tile){
-    this.player = player
-    this.tile = tile
-    this.speed = 60 // do not change this value!
-    this.toTheEnd = false
-  }
-
-  update() {
-    if (this.toTheEnd) return
-
-    let threshold = 1
-    let layerXOffset = -10
-    let layerYOffset = 26
-    let xDiff = this.tile.x * 64 + layerXOffset - this.player.x
-    let yDiff = this.tile.y * 64 + layerYOffset - this.player.y
-    // stop
-    let maxDiff = Math.max(Math.abs(xDiff), Math.abs(yDiff))
-    if (maxDiff === threshold) {
-      console.log('>>> one step is end!');
-      this.toTheEnd = true
-      return this.player.setVelocity(0, 0)
-    }
-
-    if (xDiff > threshold) {
-      return this._goRight()
-    }
-    if (yDiff > threshold) {
-      return this._goDown()
-    }
-    if (yDiff < -threshold) {
-      return this._goTop()
-    }
-  }
-
-  _goRight() {
-    this.player.setVelocityX(this.speed);
-  }
-
-  _goTop() {
-    this.player.setVelocityY(-this.speed);
-  }
-
-  _goDown() {
-    this.player.setVelocityY(this.speed);
-  }
-
-  isEnd() {
-    return this.toTheEnd
-  }
-} 
-
-
-class GridWalker {
-  constructor(player, tiles, cellFinishCallback, exitCallback){
-    this.steps = tiles.map(
-      tile => new CellStep(player, tile)
-    );
-    this.moveCounter = 0;
-    this.onCellChange = cellFinishCallback;
-    this.onExit = exitCallback;
-  }
-
-  update(){
-    // game complete!
-    if (!this.steps.length) return
-
-    this.moveCounter += 1 // lazy action execution counter
-    // waiting for bingo calling repetition until last update
-    if (this.moveCounter < 24) return
-    
-    // get recent step to update
-    const headStep = this.steps[0]
-    headStep.update()
-
-    if (!headStep.isEnd()) return // still need update current action
-
-    // remove first step after it completion
-    this.steps.shift()
-    this.onCellChange(headStep.tile)
-
-    if (!this.steps.length) {
-      this.onExit()
-    }
-  }
-}
-
 class WhichWayToGo extends Phaser.Scene {
 
   constructor(){
@@ -225,5 +138,93 @@ class WhichWayToGo extends Phaser.Scene {
   }
 
 }
+
+class CellStep {
+  constructor(player, tile){
+    this.player = player
+    this.tile = tile
+    this.speed = 60 // do not change this value!
+    this.toTheEnd = false
+  }
+
+  update() {
+    if (this.toTheEnd) return
+
+    let threshold = 1
+    let layerXOffset = -10
+    let layerYOffset = 26
+    let xDiff = this.tile.x * 64 + layerXOffset - this.player.x
+    let yDiff = this.tile.y * 64 + layerYOffset - this.player.y
+    // stop
+    let maxDiff = Math.max(Math.abs(xDiff), Math.abs(yDiff))
+    if (maxDiff === threshold) {
+      console.log('>>> one step is end!');
+      this.toTheEnd = true
+      return this.player.setVelocity(0, 0)
+    }
+
+    if (xDiff > threshold) {
+      return this._goRight()
+    }
+    if (yDiff > threshold) {
+      return this._goDown()
+    }
+    if (yDiff < -threshold) {
+      return this._goTop()
+    }
+  }
+
+  _goRight() {
+    this.player.setVelocityX(this.speed);
+  }
+
+  _goTop() {
+    this.player.setVelocityY(-this.speed);
+  }
+
+  _goDown() {
+    this.player.setVelocityY(this.speed);
+  }
+
+  isEnd() {
+    return this.toTheEnd
+  }
+} 
+
+
+class GridWalker {
+  constructor(player, tiles, cellFinishCallback, exitCallback){
+    this.steps = tiles.map(
+      tile => new CellStep(player, tile)
+    );
+    this.moveCounter = 0;
+    this.onCellChange = cellFinishCallback;
+    this.onExit = exitCallback;
+  }
+
+  update(){
+    // game complete!
+    if (!this.steps.length) return
+
+    this.moveCounter += 1 // lazy action execution counter
+    // waiting for bingo calling repetition until last update
+    if (this.moveCounter < 24) return
+    
+    // get recent step to update
+    const headStep = this.steps[0]
+    headStep.update()
+
+    if (!headStep.isEnd()) return // still need update current action
+
+    // remove first step after it completion
+    this.steps.shift()
+    this.onCellChange(headStep.tile)
+
+    if (!this.steps.length) {
+      this.onExit()
+    }
+  }
+}
+
 
 export default WhichWayToGo

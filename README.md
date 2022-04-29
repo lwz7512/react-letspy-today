@@ -81,9 +81,8 @@ add contact form at homepage, send guest message to my email
 - complete video content subtitles  -- done @2022/04/07
 - complete the Phaserjs cheatsheet -- done @2022/04/25
 
-TODO: ...add cheetsheet content 
+TODO: ...add games disclosure page, load game md content
 TODO: ...add video content
-TODO: ...cheetsheet viewer by markdown
 
 ## version 0.8
 

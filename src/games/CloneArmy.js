@@ -1,89 +1,5 @@
 import Phaser from 'phaser';
 
-class Bullet extends Phaser.GameObjects.Image {
-  constructor(scene, x, y, texture){
-    super(scene, x, y, texture);
-    this.scene = scene;
-    this.scene.add.existing(this);
-    this.scene.physics.world.enableBody(this, 0); // dynamic body
-    this.setData('isDead', false);
-    this.born = 0
-    this.initY = y
-  }
-
-  // update position
-  update(time, delta) {
-    // moving...
-    this.x += delta * 0.6
-    this.y = this.initY // keep the bullet no gravity flying
-  }
-
-}
-
-class Soldier extends Phaser.GameObjects.Sprite {
-  constructor(scene, x, y, texture, id){
-    super(scene, x, y, texture, 0) // stand
-    this.scene = scene;
-    this.scene.add.existing(this);
-    this.scene.physics.world.enableBody(this, 1); // static body
-    this.setData('id', id)
-    this.setData('fired', false)
-    this.setScale(0.6, 0.6);
-  }
-
-  fire() {
-    if (this.getData('fired')) return null
-
-    this.shootTimer = this.scene.time.addEvent({
-      delay: 200,
-      callback() {
-        this.setFrame(2) // lazy Kneeling
-        this.setData('fired', true) // lazy set fired
-      },
-      callbackScope: this,
-      loop: false,
-    });
-
-    return new Bullet(this.scene, this.x, this.y, 'bullet')
-  }
-
-  update() {
-    if (this.shootTimer === undefined) return
-    if (this.shootTimer === null) return
-    // lazy clear timer
-    if (this.getData('fired')) {
-      this.shootTimer.remove();
-      this.shootTimer = null
-    }
-  }
-
-}
-
-class Enemy extends Phaser.GameObjects.Sprite {
-  constructor(scene, x, y, texture, id){
-    super(scene, x, y, texture)
-    this.scene = scene;
-    this.scene.add.existing(this);
-    this.scene.physics.world.enableBody(this, 0); // dynamic body
-    this.setData('id', id)
-    this.setData('isDead', false)
-    this.setScale(0.8, 0.8)
-    this.play('move')
-
-    const colors = [ 0xef658c, 0xff9a52, 0xffdf00, 0x31ef8c, 0x21dfff, 0x31aade, 0x5275de, 0x9c55ad, 0xbd208c ];
-    this.setTint(Phaser.Utils.Array.GetRandom(colors));
-  }
-
-  update(time, delta) {
-    if (!this.getData('isDead')) {
-      this.body.velocity.y = -5 // stand still
-    } else {
-      this.body.velocity.y = 100 // drop down...
-    }
-  }
-
-}
-
 
 class CloneArmy extends Phaser.Scene {
   constructor(){
@@ -286,6 +202,90 @@ class CloneArmy extends Phaser.Scene {
     this.game.events.emit('gamePass')
   }
 
+
+}
+
+class Bullet extends Phaser.GameObjects.Image {
+  constructor(scene, x, y, texture){
+    super(scene, x, y, texture);
+    this.scene = scene;
+    this.scene.add.existing(this);
+    this.scene.physics.world.enableBody(this, 0); // dynamic body
+    this.setData('isDead', false);
+    this.born = 0
+    this.initY = y
+  }
+
+  // update position
+  update(time, delta) {
+    // moving...
+    this.x += delta * 0.6
+    this.y = this.initY // keep the bullet no gravity flying
+  }
+
+}
+
+class Soldier extends Phaser.GameObjects.Sprite {
+  constructor(scene, x, y, texture, id){
+    super(scene, x, y, texture, 0) // stand
+    this.scene = scene;
+    this.scene.add.existing(this);
+    this.scene.physics.world.enableBody(this, 1); // static body
+    this.setData('id', id)
+    this.setData('fired', false)
+    this.setScale(0.6, 0.6);
+  }
+
+  fire() {
+    if (this.getData('fired')) return null
+
+    this.shootTimer = this.scene.time.addEvent({
+      delay: 200,
+      callback() {
+        this.setFrame(2) // lazy Kneeling
+        this.setData('fired', true) // lazy set fired
+      },
+      callbackScope: this,
+      loop: false,
+    });
+
+    return new Bullet(this.scene, this.x, this.y, 'bullet')
+  }
+
+  update() {
+    if (this.shootTimer === undefined) return
+    if (this.shootTimer === null) return
+    // lazy clear timer
+    if (this.getData('fired')) {
+      this.shootTimer.remove();
+      this.shootTimer = null
+    }
+  }
+
+}
+
+class Enemy extends Phaser.GameObjects.Sprite {
+  constructor(scene, x, y, texture, id){
+    super(scene, x, y, texture)
+    this.scene = scene;
+    this.scene.add.existing(this);
+    this.scene.physics.world.enableBody(this, 0); // dynamic body
+    this.setData('id', id)
+    this.setData('isDead', false)
+    this.setScale(0.8, 0.8)
+    this.play('move')
+
+    const colors = [ 0xef658c, 0xff9a52, 0xffdf00, 0x31ef8c, 0x21dfff, 0x31aade, 0x5275de, 0x9c55ad, 0xbd208c ];
+    this.setTint(Phaser.Utils.Array.GetRandom(colors));
+  }
+
+  update(time, delta) {
+    if (!this.getData('isDead')) {
+      this.body.velocity.y = -5 // stand still
+    } else {
+      this.body.velocity.y = 100 // drop down...
+    }
+  }
 
 }
 

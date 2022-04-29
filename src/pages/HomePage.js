@@ -4,11 +4,14 @@ import { useHistory } from 'react-router-dom';
 import useLocalStorageState from 'use-local-storage-state'
 
 import { app_brand } from '../config/constants'
-import ProjectCard from '../components/ProjectCard';
+
+import HeroCard from '../components/HeroCard'
+import ProjectCard from '../components/ProjectCard'
+import ContactCard from '../components/ContactCard'
+import Spinner from '../components/Spinner'
+
 import projectStore from '../state/ProjectState'
 
-import HeroCard from "../components/HeroCard";
-import ContactCard from "../components/ContactCard";
 
 const HomePage = () => {
 
@@ -24,10 +27,6 @@ const HomePage = () => {
         })
         window.scrollTo(0, 0)
     }
-
-    const Spinner = () => (
-        <i className="pi pi-spin pi-spinner" style={{'fontSize': '2em'}}></i>
-    )
 
     return (
         <div className="home md:pt-0">

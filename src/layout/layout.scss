@@ -1,3 +1,5 @@
+// this file imported by App.js
+// base styles
 @import "./variables";
 @import "./sass/mixins";
 @import "./sass/splash";
@@ -11,5 +13,7 @@
 @import "./sass/utils";
 @import "./sass/typography";
 @import "./sass/forms";
+@import "./sass/animation";
+// custom styles
 @import "./overrides";
 @import "./Cursor";

@@ -11,7 +11,7 @@ const DonationPage = () => {
                     <h1 className="header-title text-gray-900">Show My Love</h1>
                     <div className="text-slogan p-5 mt-0 md:mt-5">
                         <p className="text-2xl text-indigo-800">
-                            Very appreciated your love! 
+                            Very appreciated for your love! 
                             Each of donation will make this project better and beneficial to everyone!
                         </p>
                     </div>

@@ -1,148 +1,6 @@
 import Phaser from 'phaser';
 
 
-class RealClock {
-
-  constructor(scene, centerX, centerY) {
-    this.scene = scene
-    this.centerX = centerX
-    this.centerY = centerY
-    this.started = false
-    this.frameCounter = 0
-    this.visible = false
-  }
-
-  start(){
-    if (!this.visible) return
-    // if anwser right open this flag
-    this.started = true
-  }
-
-  popup(){
-    this.visible = true
-    this.addBackgroundImage(this.scene, this.centerX)
-    this.drawClock()
-  }
-
-  update(){
-    if (!this.started) return
-
-    this.frameCounter += 1
-    if (this.frameCounter % 60 === 0) {
-      this.drawClock()
-    }
-  }
-
-  drawClock(){
-    if (this.context) {
-      this.context.clear()
-    }
-    this.context = this.scene.add.graphics()
-    this.context.translateCanvas(this.centerX+90, this.centerY)
-    var theDate = new Date();
-    this.drawHourHand(theDate);
-    this.drawMinuteHand(theDate);
-    this.drawSecondHand(theDate);
-  }
-  
-  addBackgroundImage(scene, centerX){
-    if (this.clockFace) {
-      this.clockFace.removeFromDisplayList()
-    }
-    this.clockFace = scene.add.image(0, 0, 'clock');
-    this.clockFace.setOrigin(0, 0);
-    this.clockFace.setScale(0.4, 0.4);
-    this.clockFace.setX(centerX)
-  }
-
-  degreesToRadians(degrees) {
-    return (Math.PI / 180) * degrees
-  }
-
-  drawHand(size, thickness = 4){
-    this.context.beginPath()
-    this.context.moveTo(0, 0)
-    this.context.lineTo(-thickness, -10)
-    this.context.lineTo(0, -size/2)
-    this.context.lineTo(thickness, -10)
-    this.context.lineTo(0, 0)
-    this.context.fillPath()
-    this.context.strokePath()
-  }
-
-  drawHourHand(theDate){
-    var hours = theDate.getHours() + theDate.getMinutes() / 60;
-    var degrees = (hours * 360 / 12) % 360;
-    this.context.save();
-    this.context.fillStyle(0x333333);
-    this.context.lineStyle(1, 0x666666);
-    
-    var radians = this.degreesToRadians(degrees)
-    this.context.rotateCanvas(radians);
-    this.drawHand(110, 5);
-    this.context.restore();
-  }
-
-  drawMinuteHand(theDate){
-    var minutes = theDate.getMinutes() + theDate.getSeconds() / 60;
-    this.context.save();
-    this.context.fillStyle(0x333333);
-    this.context.lineStyle(1, 0x666666);
-    var radians = this.degreesToRadians(minutes * 6)
-    this.context.rotateCanvas(radians);
-    this.drawHand(130, 5);
-    this.context.restore();
-  }
-
-  drawSecondHand(theDate){
-    var seconds = theDate.getSeconds();
-    this.context.save();
-    this.context.fillStyle(0xff0000);
-    this.context.lineStyle(1, 0x8B0000);
-    var radians = this.degreesToRadians(seconds * 6)
-    this.context.rotateCanvas(radians);
-    this.drawHand(150);
-    this.context.restore();
-  }
-
-}
-
-
-class DialogManager {
-
-  constructor(dialogs, onComplete){
-    this.dialogs = dialogs
-    this.frameCounter = 0
-    this.isRunning = false
-    this.completeHandler = onComplete
-  }
-
-  start(){
-    this.isRunning = true
-    this.frameCounter = 0
-  }
-
-  update(){
-    if (!this.isRunning) return
-
-    var dialogHandler = dialog => {
-      if (dialog.delay !== this.frameCounter) return
-      var isEnd = dialog.action()
-      if (!isEnd) return
-      this.stop()
-    }
-    this.dialogs.forEach(dialogHandler)
-    this.frameCounter += 1
-  }
-
-  stop(){
-    this.isRunning = false
-    if (this.completeHandler) this.completeHandler()
-  }
-
-}
-
-
 class FixTheClock extends Phaser.Scene {
 
   constructor(){
@@ -410,6 +268,148 @@ class FixTheClock extends Phaser.Scene {
   
   onGameSuccess() {
     this.game.events.emit('gamePass')
+  }
+
+}
+
+
+class RealClock {
+
+  constructor(scene, centerX, centerY) {
+    this.scene = scene
+    this.centerX = centerX
+    this.centerY = centerY
+    this.started = false
+    this.frameCounter = 0
+    this.visible = false
+  }
+
+  start(){
+    if (!this.visible) return
+    // if anwser right open this flag
+    this.started = true
+  }
+
+  popup(){
+    this.visible = true
+    this.addBackgroundImage(this.scene, this.centerX)
+    this.drawClock()
+  }
+
+  update(){
+    if (!this.started) return
+
+    this.frameCounter += 1
+    if (this.frameCounter % 60 === 0) {
+      this.drawClock()
+    }
+  }
+
+  drawClock(){
+    if (this.context) {
+      this.context.clear()
+    }
+    this.context = this.scene.add.graphics()
+    this.context.translateCanvas(this.centerX+90, this.centerY)
+    var theDate = new Date();
+    this.drawHourHand(theDate);
+    this.drawMinuteHand(theDate);
+    this.drawSecondHand(theDate);
+  }
+  
+  addBackgroundImage(scene, centerX){
+    if (this.clockFace) {
+      this.clockFace.removeFromDisplayList()
+    }
+    this.clockFace = scene.add.image(0, 0, 'clock');
+    this.clockFace.setOrigin(0, 0);
+    this.clockFace.setScale(0.4, 0.4);
+    this.clockFace.setX(centerX)
+  }
+
+  degreesToRadians(degrees) {
+    return (Math.PI / 180) * degrees
+  }
+
+  drawHand(size, thickness = 4){
+    this.context.beginPath()
+    this.context.moveTo(0, 0)
+    this.context.lineTo(-thickness, -10)
+    this.context.lineTo(0, -size/2)
+    this.context.lineTo(thickness, -10)
+    this.context.lineTo(0, 0)
+    this.context.fillPath()
+    this.context.strokePath()
+  }
+
+  drawHourHand(theDate){
+    var hours = theDate.getHours() + theDate.getMinutes() / 60;
+    var degrees = (hours * 360 / 12) % 360;
+    this.context.save();
+    this.context.fillStyle(0x333333);
+    this.context.lineStyle(1, 0x666666);
+    
+    var radians = this.degreesToRadians(degrees)
+    this.context.rotateCanvas(radians);
+    this.drawHand(110, 5);
+    this.context.restore();
+  }
+
+  drawMinuteHand(theDate){
+    var minutes = theDate.getMinutes() + theDate.getSeconds() / 60;
+    this.context.save();
+    this.context.fillStyle(0x333333);
+    this.context.lineStyle(1, 0x666666);
+    var radians = this.degreesToRadians(minutes * 6)
+    this.context.rotateCanvas(radians);
+    this.drawHand(130, 5);
+    this.context.restore();
+  }
+
+  drawSecondHand(theDate){
+    var seconds = theDate.getSeconds();
+    this.context.save();
+    this.context.fillStyle(0xff0000);
+    this.context.lineStyle(1, 0x8B0000);
+    var radians = this.degreesToRadians(seconds * 6)
+    this.context.rotateCanvas(radians);
+    this.drawHand(150);
+    this.context.restore();
+  }
+
+}
+
+
+class DialogManager {
+
+  constructor(dialogs, onComplete){
+    this.dialogs = dialogs
+    this.frameCounter = 0
+    this.isRunning = false
+    this.completeHandler = onComplete
+  }
+
+  start(){
+    this.isRunning = true
+    this.frameCounter = 0
+  }
+
+  update(){
+    if (!this.isRunning) return
+
+    var dialogHandler = dialog => {
+      if (dialog.delay !== this.frameCounter) return
+      var isEnd = dialog.action()
+      if (!isEnd) return
+      this.stop()
+    }
+    this.dialogs.forEach(dialogHandler)
+    this.frameCounter += 1
+  }
+
+  stop(){
+    this.isRunning = false
+    if (this.completeHandler) this.completeHandler()
   }
 
 }

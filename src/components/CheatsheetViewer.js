@@ -2,7 +2,7 @@ import React, { useLayoutEffect } from 'react'
 import ReactMarkdown from 'react-markdown'
 
 /**
- * TODO: parse markdown content and render into react content
+ * parse markdown content and render into react content
  * Features:
  * - h2/## as group
  * - markdown content support `details/summary` tag

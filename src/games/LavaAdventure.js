@@ -1,155 +1,5 @@
 import Phaser from 'phaser';
 
-class Action {
-
-  constructor(player, step, updateCallback=null) {
-    this.player = player
-    this.step = step
-    this.frameCounter = 0
-    this.frameTotal = 40
-    this._parse(step)
-    this.onUpdate = updateCallback
-  }
-
-  _parse(step) {
-    this.name = Object.keys(step)[0]
-    this.length = step[this.name]
-    if (this.length) {
-      this.frameTotal *= this.length
-    } else {
-      this.frameTotal = 12 // for pivot
-    }
-  }
-
-  toString() {
-    return '>>> action: ' + this.name
-  }
-
-  _goRight() {
-    this.player.setVelocityX(90);
-    this.player.play('right', true);
-  }
-
-  _goJump() {
-    this.player.play('jump');
-    this.player.setVelocityX(100);
-    this.player.setVelocityY(-140);
-  }
-
-  _goPivot() {
-    this.player.setVelocityX(0);
-    this.player.play('pivot', true);
-    this.player.setScale(0.6, 0.6)
-  }
-
-  _goTransport() {
-    this.player.play('turn');
-    this.player.setScale(0.4, 0.4)
-    this.player.x += 1
-  }
-
-  _goIdle() {
-    this.player.setVelocityX(0);
-    this.player.play('turn');
-  }
-
-  update() {
-    if (this.frameCounter > this.frameTotal) return
-    
-    const actionToFunction = {
-      walk : this._goRight.bind(this),
-      jump : this._goJump.bind(this),
-      pivot: this._goPivot.bind(this),
-      transport: this._goTransport.bind(this),
-      idle: this._goIdle.bind(this),
-    }
-    // safety check
-    if (!actionToFunction[this.name]) return
-    
-    // execute the action
-    actionToFunction[this.name]()
-
-    if (this.onUpdate) this.onUpdate()
-
-    this.frameCounter += 1
-  }
-
-  isEnd() {
-    return this.frameCounter >= this.frameTotal
-  }
-
-}
-
-
-class ActionManager {
-
-  constructor(
-    actions = [], 
-    context = { player: null, dockerLayer: null, pivotLayer: null }, 
-    exitCallback = null
-  ) {
-    this.actions = actions
-    this.state = {}
-    this.moveCounter = 0
-    this.context = context
-    this.onExit = exitCallback
-  }
-
-  update(state = {pivotHit: false, exitHit: false}) {
-    this.state = state
-    // game complete!
-    if (!this.actions.length) return
-
-    this.moveCounter += 1 // lazy action execution counter
-    // waiting for bingo calling repetition until last update
-    if (this.moveCounter < 24) return
-
-    const action = this.actions[0]
-    // action running...
-    action.update()
-
-    if (!action.isEnd()) return // still need update current action
-
-    // remove first action after it completion
-    this.actions.shift()
-
-    // pivot action, and hit the pivot trigger
-    if (action.name === 'pivot' && this.state.pivotHit) {
-      this.context.dockerLayer.setVisible(false)
-      this.context.pivotLayer.setVisible(true)
-      // insert next action: transport
-      this.actions.unshift(new Action(
-        this.context.player, 
-        {transport: 2}, // move steps
-        () => this.context.pivotLayer.x += 1
-      ))
-    }
-
-    // reach the exit trigger
-    if (action.name === 'jump' && this.state.exitHit) {
-      this.actions.unshift(new Action(
-        this.context.player,
-        {walk: 0},
-      ))
-      this.actions.unshift(new Action(
-        this.context.player,
-        {idle: 1},
-      ))
-    }
-
-    // end of all actions
-    if (this.actions.length === 0 && this.state.exitHit) {
-      if (this.onExit) this.onExit()
-    }
-
-  }
-
-  isEnd() {
-    return this.actions.length === 0
-  }
-
-}
-
 
 class LavaAdventure extends Phaser.Scene {
   constructor(){
@@ -424,6 +274,156 @@ class LavaAdventure extends Phaser.Scene {
   
   onGameSuccess() {
     this.game.events.emit('gamePass')
+  }
+
+}
+
+class Action {
+
+  constructor(player, step, updateCallback=null) {
+    this.player = player
+    this.step = step
+    this.frameCounter = 0
+    this.frameTotal = 40
+    this._parse(step)
+    this.onUpdate = updateCallback
+  }
+
+  _parse(step) {
+    this.name = Object.keys(step)[0]
+    this.length = step[this.name]
+    if (this.length) {
+      this.frameTotal *= this.length
+    } else {
+      this.frameTotal = 12 // for pivot
+    }
+  }
+
+  toString() {
+    return '>>> action: ' + this.name
+  }
+
+  _goRight() {
+    this.player.setVelocityX(90);
+    this.player.play('right', true);
+  }
+
+  _goJump() {
+    this.player.play('jump');
+    this.player.setVelocityX(100);
+    this.player.setVelocityY(-140);
+  }
+
+  _goPivot() {
+    this.player.setVelocityX(0);
+    this.player.play('pivot', true);
+    this.player.setScale(0.6, 0.6)
+  }
+
+  _goTransport() {
+    this.player.play('turn');
+    this.player.setScale(0.4, 0.4)
+    this.player.x += 1
+  }
+
+  _goIdle() {
+    this.player.setVelocityX(0);
+    this.player.play('turn');
+  }
+
+  update() {
+    if (this.frameCounter > this.frameTotal) return
+    
+    const actionToFunction = {
+      walk : this._goRight.bind(this),
+      jump : this._goJump.bind(this),
+      pivot: this._goPivot.bind(this),
+      transport: this._goTransport.bind(this),
+      idle: this._goIdle.bind(this),
+    }
+    // safety check
+    if (!actionToFunction[this.name]) return
+    
+    // execute the action
+    actionToFunction[this.name]()
+
+    if (this.onUpdate) this.onUpdate()
+
+    this.frameCounter += 1
+  }
+
+  isEnd() {
+    return this.frameCounter >= this.frameTotal
+  }
+
+}
+
+
+class ActionManager {
+
+  constructor(
+    actions = [], 
+    context = { player: null, dockerLayer: null, pivotLayer: null }, 
+    exitCallback = null
+  ) {
+    this.actions = actions
+    this.state = {}
+    this.moveCounter = 0
+    this.context = context
+    this.onExit = exitCallback
+  }
+
+  update(state = {pivotHit: false, exitHit: false}) {
+    this.state = state
+    // game complete!
+    if (!this.actions.length) return
+
+    this.moveCounter += 1 // lazy action execution counter
+    // waiting for bingo calling repetition until last update
+    if (this.moveCounter < 24) return
+
+    const action = this.actions[0]
+    // action running...
+    action.update()
+
+    if (!action.isEnd()) return // still need update current action
+
+    // remove first action after it completion
+    this.actions.shift()
+
+    // pivot action, and hit the pivot trigger
+    if (action.name === 'pivot' && this.state.pivotHit) {
+      this.context.dockerLayer.setVisible(false)
+      this.context.pivotLayer.setVisible(true)
+      // insert next action: transport
+      this.actions.unshift(new Action(
+        this.context.player, 
+        {transport: 2}, // move steps
+        () => this.context.pivotLayer.x += 1
+      ))
+    }
+
+    // reach the exit trigger
+    if (action.name === 'jump' && this.state.exitHit) {
+      this.actions.unshift(new Action(
+        this.context.player,
+        {walk: 0},
+      ))
+      this.actions.unshift(new Action(
+        this.context.player,
+        {idle: 1},
+      ))
+    }
+
+    // end of all actions
+    if (this.actions.length === 0 && this.state.exitHit) {
+      if (this.onExit) this.onExit()
+    }
+
+  }
+
+  isEnd() {
+    return this.actions.length === 0
   }
 
 }

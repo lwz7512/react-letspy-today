@@ -1,80 +1,6 @@
 import Phaser from 'phaser';
 
 
-class SuperSoldier {
-
-  constructor(soldier, lazyLaunch){
-    this.soldier = soldier
-    this.launchTime = lazyLaunch
-    this.frameCounter = 0
-    this.accelerator = 0
-    this.outOfValley = false
-  }
-
-  update(){
-    this.frameCounter += 1
-    // waiting...
-    if (this.frameCounter < this.launchTime) 
-      return
-    // out of top stage
-    if (this.soldier.y < -30) {
-      this.soldier.setVelocityY(0)
-      this.outOfValley = true
-      return
-    }
-    this.accelerator += 10
-    this.soldier.setVelocityY(-90 - this.accelerator)
-  }
-
-  isFree(){
-    return this.outOfValley
-  }
-}
-
-
-class TroopsOnMyControl {
-
-  constructor(successCallback){
-    this.superSoldiers = null
-    this.moveCounter = 0
-    this.successHandler = successCallback
-  }
-
-  launch(soldiersInTrap){
-    this.superSoldiers = []
-    soldiersInTrap.forEach((soldier, index) => {
-      this.superSoldiers.push(
-        new SuperSoldier(soldier, index * 10)
-      )
-    })
-  }
-
-  update(){
-    this.moveCounter += 1 // lazy action execution counter
-    // waiting for bingo calling repetition until last update
-    if (this.moveCounter < 24) return
-
-    // fly all up
-    let allset = true
-    this.superSoldiers.forEach(soldier => {
-      soldier.update()
-      if (!soldier.isFree()) allset = false
-    })
-
-    if (allset) {
-      this.successHandler()
-    }
-  }
-
-  isEnd(){
-    // let allset = true
-    // this.superSoldiers.forEach(soldier => {
-    //   if (!soldier.isFree()) allset = false
-    // })
-    // return allset
-  }
-}
-
 class FlyThemUp extends Phaser.Scene {
 
   constructor(){
@@ -260,6 +186,81 @@ class FlyThemUp extends Phaser.Scene {
     this.game.events.emit('gamePass')
   }
 
+}
+
+
+class SuperSoldier {
+
+  constructor(soldier, lazyLaunch){
+    this.soldier = soldier
+    this.launchTime = lazyLaunch
+    this.frameCounter = 0
+    this.accelerator = 0
+    this.outOfValley = false
+  }
+
+  update(){
+    this.frameCounter += 1
+    // waiting...
+    if (this.frameCounter < this.launchTime) 
+      return
+    // out of top stage
+    if (this.soldier.y < -30) {
+      this.soldier.setVelocityY(0)
+      this.outOfValley = true
+      return
+    }
+    this.accelerator += 10
+    this.soldier.setVelocityY(-90 - this.accelerator)
+  }
+
+  isFree(){
+    return this.outOfValley
+  }
+}
+
+
+class TroopsOnMyControl {
+
+  constructor(successCallback){
+    this.superSoldiers = null
+    this.moveCounter = 0
+    this.successHandler = successCallback
+  }
+
+  launch(soldiersInTrap){
+    this.superSoldiers = []
+    soldiersInTrap.forEach((soldier, index) => {
+      this.superSoldiers.push(
+        new SuperSoldier(soldier, index * 10)
+      )
+    })
+  }
+
+  update(){
+    this.moveCounter += 1 // lazy action execution counter
+    // waiting for bingo calling repetition until last update
+    if (this.moveCounter < 24) return
+
+    // fly all up
+    let allset = true
+    this.superSoldiers.forEach(soldier => {
+      soldier.update()
+      if (!soldier.isFree()) allset = false
+    })
+
+    if (allset) {
+      this.successHandler()
+    }
+  }
+
+  isEnd(){
+    // let allset = true
+    // this.superSoldiers.forEach(soldier => {
+    //   if (!soldier.isFree()) allset = false
+    // })
+    // return allset
+  }
 }
 
 export default FlyThemUp

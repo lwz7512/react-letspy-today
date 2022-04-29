@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, useHistory } from 'react-router-dom'
 
 import HomePage from './pages/HomePage'
 import ProjectPage from './pages/ProjectPage'
@@ -7,17 +7,20 @@ import DonationPage from './pages/DonationPage'
 import ProfilePage from './pages/ProfilePage'
 import ContactPage from './pages/ContactPage'
 import CheatSheetPage from './pages/CheatSheetPage'
+import DisclosurePage from './pages/DisclosurePage'
 
 import { AppTopbar } from './structure/AppTopbar'
 import { AppFooter } from './structure/AppFooter'
 import Modal from './components/Modal'
-
+// prime style
 import 'primereact/resources/primereact.min.css'
 import 'primeicons/primeicons.css'
 import 'primeflex/primeflex.css'
 import 'prismjs/themes/prism-coy.css'
-import './layout/flags/flags.css'
+// base style
+// import './layout/flags/flags.css'
 import './layout/layout.scss'
+// app style
 import './assets/style/App.scss'
 
 import { getProjects } from './service/ProjectService'
@@ -26,6 +29,7 @@ import projectStore from './state/ProjectState'
 
 function App() {
 
+  const history = useHistory()
   const [mobileTopbarMenuActive, setMobileTopbarMenuActive] = useState(false);
   const setProjects = projectStore(state => state.setProjects)
 
@@ -40,6 +44,14 @@ function App() {
   }
 
   useEffect(() => {
+    // window.scrollTo(0, 0);
+    setTimeout(() => {
+      window.scroll({top: 0, left: 0, behavior: 'smooth'})
+    }, 100) // lazy scroll top
+  }, [history.location.pathname]);
+
+
+  useEffect(() => {
     setTimeout(() => {
       getProjects().then(data => {
         setProjects(data)
@@ -47,6 +59,7 @@ function App() {
     }, 500) // lazy loading...
   }, [setProjects])
 
+  
   return (
     <div className="app layout-wrapper layout-theme-light" onClick={onWrapperClick}>
       <AppTopbar 
@@ -61,6 +74,7 @@ function App() {
             <Route path="/donation" component={DonationPage}/>
             <Route path="/profile" component={ProfilePage}/>
             <Route path="/cheatsheet/:name" component={CheatSheetPage}/>
+            <Route path="/disclosure" component={DisclosurePage} />
             <Route path="/" exact component={HomePage}/>
         </div>
         <AppFooter layoutColorMode="light"/>

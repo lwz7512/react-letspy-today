@@ -1,53 +1,6 @@
 import Phaser from 'phaser';
 
 
-class MovingPlatform {
-
-  constructor(stoneGroup, tweens, player){
-    this.stoneLayers = stoneGroup.getChildren()
-    this.tweens = tweens
-    this.player = player
-
-    this.frameCounter = 0
-    this.startMoveTime = 100
-    this.endMoveTime = 300
-  }
-
-  update(){
-    this.frameCounter += 1
-
-    if (this.frameCounter === this.startMoveTime) {
-      this.start()
-    }
-    // if (this.frameCounter === this.endMoveTime) {
-    //   this.stop()
-    // }
-  }
-
-  start(){
-    this.stoneLayers.forEach((layer) => {
-      var y = -100 * Math.random() * 3 + 100
-      var tween = {
-        targets: layer,
-        y,
-        duration: 2000,
-        delay: Math.random() * 500,
-        ease: 'Sine.easeInOut',
-        yoyo: true,
-        loop: -1
-      }
-      this.tweens.add(tween)
-    })
-  }
-
-  stop(){
-    this.tweens.shutdown()
-    this.stoneLayers.forEach(layer => layer.setY(-20))
-    this.player.setY(50)
-  }
-
-}
-
 class PassLiveBridge extends Phaser.Scene {
 
   constructor(){
@@ -296,6 +249,53 @@ class PassLiveBridge extends Phaser.Scene {
     this.game.events.emit('gamePass')
   }
 
+
+}
+
+class MovingPlatform {
+
+  constructor(stoneGroup, tweens, player){
+    this.stoneLayers = stoneGroup.getChildren()
+    this.tweens = tweens
+    this.player = player
+
+    this.frameCounter = 0
+    this.startMoveTime = 100
+    this.endMoveTime = 300
+  }
+
+  update(){
+    this.frameCounter += 1
+
+    if (this.frameCounter === this.startMoveTime) {
+      this.start()
+    }
+    // if (this.frameCounter === this.endMoveTime) {
+    //   this.stop()
+    // }
+  }
+
+  start(){
+    this.stoneLayers.forEach((layer) => {
+      var y = -100 * Math.random() * 3 + 100
+      var tween = {
+        targets: layer,
+        y,
+        duration: 2000,
+        delay: Math.random() * 500,
+        ease: 'Sine.easeInOut',
+        yoyo: true,
+        loop: -1
+      }
+      this.tweens.add(tween)
+    })
+  }
+
+  stop(){
+    this.tweens.shutdown()
+    this.stoneLayers.forEach(layer => layer.setY(-20))
+    this.player.setY(50)
+  }
 
 }
 

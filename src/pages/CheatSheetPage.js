@@ -25,10 +25,6 @@ const CheatSheetPage = () => {
       const result = metadataParser(resp)
       setCheatsheet(result.content)
       setMetadata(result.metadata)
-    }).then(() => {
-      setTimeout(() => {
-        window.scroll({top: 0, left: 0, behavior: 'smooth'})
-      }, 100) // lazy scroll top
     })
 
   }, [name])
