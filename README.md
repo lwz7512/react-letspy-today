@@ -13,6 +13,12 @@ Started @2021/10/16
 - more...
 
 
+## Add new Dependency
+
+```
+% yarn add xxx
+```
+
 ## version 0.1 : POC
 
 - home page outline.
