@@ -144,7 +144,7 @@ const DisclosurePage = () => {
               <img 
                 src={selectedGame.src} 
                 alt={selectedGame.alt} 
-                className="fade-in"
+                className="fade-in border-1"
               />
               <h3 className="mt-0 px-3 absolute bottome-left">
                 {selectedGame.alt}

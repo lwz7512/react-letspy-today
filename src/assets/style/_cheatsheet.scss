@@ -1,5 +1,7 @@
 .cheat-sheet-viewer {
 
+  max-width: 100%;
+
   .cover {
     width: 100%;
     height: auto;
@@ -29,31 +31,15 @@
   .snackbar.show {
     visibility: visible;
     // total animation length 2 seconds
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 1.5s;
+    -webkit-animation: bottomFadein 0.5s, fadeoutBottom 0.5s 1.5s;
     // total animation length 2 seconds
-    animation: fadein 0.5s, fadeout 0.5s 1.5s;
-  }
-  
-  @-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;} 
-    to {bottom: 30px; opacity: 1;}
-  }
-  
-  @keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-  }
-  
-  @-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;} 
-    to {bottom: 0; opacity: 0;}
-  }
-  
-  @keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
+    animation: bottomFadein 0.5s, fadeoutBottom 0.5s 1.5s;
   }
 
+  .cheat-sheet-cards {
+    width: 100%;
+  }
+  
 }
 
 .masonry {

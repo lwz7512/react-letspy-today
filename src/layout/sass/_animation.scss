@@ -9,6 +9,7 @@
   -o-animation: fadeIn ease 0.8s;
   -ms-animation: fadeIn ease 0.8s;
 }
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -52,4 +53,26 @@
   100% {
     opacity: 1;
   }
+}
+
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes bottomFadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes bottomFadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeoutBottom {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeoutBottom {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
 }
