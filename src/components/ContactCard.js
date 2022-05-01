@@ -12,7 +12,7 @@ const ContactCard = ({handleRoute}) => (
                 </p>
             </div>
             <div className="button-group mt-5 flex justify-content-center md:justify-content-start">
-                <Button label="Let’s start" onClick={handleRoute} />
+                <Button label="Connect" onClick={handleRoute} />
             </div>
         </div>
         <div className="section-image cell mt-5 lg:mt-0 w-12 w-12 md:w-6">

@@ -40,7 +40,16 @@ const DisclosurePage = () => {
   const thumbnails = games.filter(gameFilter).filter(removeInfinity)
   const gameSelectHandler = game => () => setSelectedGame(game)
 
+  // execute first
+  useLayoutEffect(() => {
+    if (!selectedGame) return
 
+    const currentGameTitle = document.querySelector('.titlebar')
+    currentGameTitle.classList.remove('show')
+
+  }, [selectedGame])
+
+  // execute 3~4 miliseconds later
   useEffect(() => {
     if (!selectedGame) return
 
@@ -56,16 +65,11 @@ const DisclosurePage = () => {
     getRemoteSourceCode(selectedGame.code).then(
       content => setTimeout(()=>setGameSourceCode(content), 500)
     )
+    // animate up the title
+    const currentGameTitle = document.querySelector('.titlebar')
+    currentGameTitle.classList.add('show')
+
   }, [selectedGame])
-
-
-  useLayoutEffect(() => {
-    if (!gameDisclosure || !gameSourceCode) return
-    // scroll gallery up
-    document.querySelector('.gallery').scrollIntoView({
-      behavior: 'smooth'
-    })
-  }, [gameDisclosure, gameSourceCode])
 
 
   return (
@@ -115,7 +119,7 @@ const DisclosurePage = () => {
       </div>
       {/* two column games gallery */}
       <div className="gallery mt-6 mb-0 flex flex-wrap">
-        {/* default gallary */}
+        {/* default bigger image gallary */}
         {games.map((game) => (
           <div
             key={game.alt}
@@ -130,7 +134,7 @@ const DisclosurePage = () => {
                   onClick={gameSelectHandler(game)}
                 />
               ) : (
-                <div className="placeholder">
+                <div className="stay-tuned">
                   {game.alt}
                 </div>
               )
@@ -144,9 +148,9 @@ const DisclosurePage = () => {
               <img 
                 src={selectedGame.src} 
                 alt={selectedGame.alt} 
-                className="fade-in border-1"
+                className="border-1"
               />
-              <h3 className="mt-0 px-3 absolute bottome-left">
+              <h3 className="titlebar mt-0 px-3 absolute">
                 {selectedGame.alt}
               </h3>
             </div>
@@ -187,7 +191,7 @@ const DisclosurePage = () => {
         <div className="flex flex-wrap w-12 mb-5">
           {/* doc content */}
           { gameMode === 'doc' && (
-            <div className="flex-1 p-3 bg-white">
+            <div className="flex-1 p-3 bg-white game-doc-code">
               { gameDisclosure ? (
                 <ReactMarkdown>
                   {gameDisclosure}
@@ -199,7 +203,7 @@ const DisclosurePage = () => {
           )}
           {/* code content */}
           { gameMode === 'code' && (
-            <div className="flex-1 p-3">
+            <div className="flex-1 game-doc-code">
               { gameSourceCode ? (
                 <MonacoEditor
                   height="480px"
