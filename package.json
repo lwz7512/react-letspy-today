@@ -2,7 +2,7 @@
   "name": "react-letspy-today",
   "version": "0.6.0",
   "private": true,
-  "proxy": "http://localhost:8080",
+  "proxy": "http://localhost:8888",
   "dependencies": {
     "@fullcalendar/core": "^5.7.2",
     "@fullcalendar/daygrid": "^5.7.2",

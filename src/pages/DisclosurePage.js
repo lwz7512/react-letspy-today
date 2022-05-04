@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect } from 'react'
+import { useState, useEffect, useLayoutEffect, useRef } from 'react'
 import ReactMarkdown from 'react-markdown'
 import MonacoEditor from '@monaco-editor/react'
 
@@ -30,15 +30,24 @@ import {
 
 const DisclosurePage = () => {
 
+  const editorRef = useRef(null)
   const [selectedGame, setSelectedGame] = useState(null)
   const [gameMode, setGameMode] = useState('doc') // or `code`
   const [gameDisclosure, setGameDisclosure] = useState('')
   const [gameSourceCode, setGameSourceCode] = useState('')
+  const [selectCodeLine, setSelectCodeLine] = useState(1)
 
   const gameFilter = game => selectedGame ? selectedGame.id !== game.id : false
   const removeInfinity = game => game.id !== Infinity
   const thumbnails = games.filter(gameFilter).filter(removeInfinity)
   const gameSelectHandler = game => () => setSelectedGame(game)
+  
+  const onCodeEditorMounted = (editor, monaco) => {
+    editorRef.current = editor
+    editor.focus()
+    editor.revealLineNearTop(selectCodeLine, 0)
+    editor.setPosition(new monaco.Position(selectCodeLine, 1))
+  }
 
   // execute first
   useLayoutEffect(() => {
@@ -70,6 +79,35 @@ const DisclosurePage = () => {
     currentGameTitle.classList.add('show')
 
   }, [selectedGame])
+
+
+  useEffect(() => {
+    if(!gameDisclosure) return
+    if(gameMode === 'code') return
+
+    const linkClickHandler = (event) => {
+      event.preventDefault()
+
+      const href = event.target.getAttribute('href')
+      const lineNumber = +href.substr(href.indexOf('=')+1)
+      setSelectCodeLine(lineNumber)
+      setGameMode('code')
+    }
+
+    const selector = '.game-doc-code > h4 > a'
+    const headerH4Nodes = document.querySelectorAll(selector)
+    const headerH4Elements = [...headerH4Nodes]
+    headerH4Elements.forEach(header => {
+      header.addEventListener('click', linkClickHandler)
+    })
+
+    return () => {
+      headerH4Elements.forEach(header => {
+        header.removeEventListener('click', linkClickHandler)
+      })
+    }
+
+  }, [gameDisclosure, gameMode])
 
 
   return (
@@ -212,6 +250,7 @@ const DisclosurePage = () => {
                   defaultValue={gameSourceCode}
                   loading="Loading Code Editor..."
                   options={codeEditorOptions}
+                  onMount={onCodeEditorMounted}
                 />
               ) : (
                 <Spinner/>
