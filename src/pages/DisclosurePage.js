@@ -1,10 +1,10 @@
 import { useState, useEffect, useLayoutEffect, useRef } from 'react'
-import ReactMarkdown from 'react-markdown'
 import MonacoEditor from '@monaco-editor/react'
 
 import { games, gameDevWorkflow } from '../config/constants'
 import { codeEditorOptions } from '../config/project'
 import Spinner from '../components/Spinner'
+import DisclosureViewer from '../components/DisclosureViewer'
 import {
   getDisclosureContent, getRemoteSourceCode
 } from '../service/ProjectService'
@@ -79,35 +79,6 @@ const DisclosurePage = () => {
     currentGameTitle.classList.add('show')
 
   }, [selectedGame])
-
-
-  useEffect(() => {
-    if(!gameDisclosure) return
-    if(gameMode === 'code') return
-
-    const linkClickHandler = (event) => {
-      event.preventDefault()
-
-      const href = event.target.getAttribute('href')
-      const lineNumber = +href.substr(href.indexOf('=')+1)
-      setSelectCodeLine(lineNumber)
-      setGameMode('code')
-    }
-
-    const selector = '.game-doc-code > h4 > a'
-    const headerH4Nodes = document.querySelectorAll(selector)
-    const headerH4Elements = [...headerH4Nodes]
-    headerH4Elements.forEach(header => {
-      header.addEventListener('click', linkClickHandler)
-    })
-
-    return () => {
-      headerH4Elements.forEach(header => {
-        header.removeEventListener('click', linkClickHandler)
-      })
-    }
-
-  }, [gameDisclosure, gameMode])
 
 
   return (
@@ -231,9 +202,14 @@ const DisclosurePage = () => {
           { gameMode === 'doc' && (
             <div className="flex-1 p-3 bg-white game-doc-code">
               { gameDisclosure ? (
-                <ReactMarkdown>
-                  {gameDisclosure}
-                </ReactMarkdown>
+                <DisclosureViewer 
+                  content={gameDisclosure}
+                  mode={gameMode}
+                  onAnchorClick={lineNumber => {
+                    setSelectCodeLine(lineNumber)
+                    setGameMode('code')
+                  }}
+                />
               ) : (
                 <Spinner/>
               )}

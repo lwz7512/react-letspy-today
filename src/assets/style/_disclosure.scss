@@ -176,6 +176,13 @@
       max-width: 640px;
       height: auto;
     }
+
+    img.reactive {
+      cursor: pointer;
+      &:hover {
+        border: 2px solid orange;
+      }
+    }
   }
 
   @media (max-width: 768px) {
