@@ -48,7 +48,7 @@ blockquote {
     // border-left: 4px solid #1d953f;
     background-color: #F5F5FE;
     font-size: 1.25rem;
-    color: slategray;
+    color: #333;
 }
 
 hr {
@@ -79,5 +79,5 @@ code {
     line-height: 1.2;
     border-radius: 4px;
     font-weight: 400;
-    white-space: pre-line;
+    white-space: break-spaces;
 }

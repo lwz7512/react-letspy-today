@@ -8,11 +8,11 @@ const CheatSheetPage = () => {
   /**
    * available file name:
    * 
-   * python_beginner_cheatsheet
-   * phaserjs_beginner_cheatsheet
-   * python_knowledge_tree_path
-   * python_100_curated_examples
-   * letspy_games_create_n_explain
+   * python_beginner_cheatsheet - Y
+   * phaserjs_beginner_cheatsheet - Y
+   * python_knowledge_tree_path - N
+   * python_100_curated_examples - N
+   * letspy_games_create_n_explain - N
    */
   const { name } = useParams()
   const [cheatsheet, setCheatsheet] = useState('loading...')

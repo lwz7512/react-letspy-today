@@ -17,7 +17,6 @@ class GuessMyName extends Phaser.Scene {
   }
 
   preload(){
-    this.load.image('logo', 'assets/sprites/phaser3-logo-small.png');
     this.load.image('sky', 'assets/skies/sky2.png');
     this.load.image('tiles', 'assets/tilemaps/tiles/platformPack_tilesheet.png');
     this.load.image('letters', 'assets/tilemaps/tiles/yellow_spritesheet_512.png');

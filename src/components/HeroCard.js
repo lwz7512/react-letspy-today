@@ -55,6 +55,14 @@ const HeroCard = ({tileA, titleB, route, actionNow}) => {
     }, 1000)
   }
 
+  const closeVideoHandler = event => {
+    event.preventDefault()
+    const tag = event.target.tagName
+    if (tag === 'DIV') {
+      videoPlayingEndHandler()
+    }
+  }
+
   useEffect(() => {
     setImageLoaded(false)
     const img = new Image()
@@ -85,7 +93,11 @@ const HeroCard = ({tileA, titleB, route, actionNow}) => {
         src={imageLoaded ? rawImgSrc : thumbnailImgSrc} 
         alt="hero background"
       />
-      <div id="video-container" className="video-container absolute">
+      <div 
+        id="video-container" 
+        className="video-container absolute"
+        onClick={closeVideoHandler}
+        >
         <div className="video">
           <ReactPlayer
             url={demoVideoSrc}

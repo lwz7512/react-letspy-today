@@ -1,6 +1,6 @@
 import { useState, useEffect, useLayoutEffect, useRef } from 'react'
 import MonacoEditor from '@monaco-editor/react'
-
+import metadataParser from 'markdown-yaml-metadata-parser'
 import { games, gameDevWorkflow } from '../config/constants'
 import { codeEditorOptions } from '../config/project'
 import Spinner from '../components/Spinner'
@@ -35,6 +35,7 @@ const DisclosurePage = () => {
   const [gameMode, setGameMode] = useState('doc') // or `code`
   const [gameDisclosure, setGameDisclosure] = useState('')
   const [gameSourceCode, setGameSourceCode] = useState('')
+  const [gameAssets, setGameAssets] = useState(null)
   const [selectCodeLine, setSelectCodeLine] = useState(1)
 
   const gameFilter = game => selectedGame ? selectedGame.id !== game.id : false
@@ -68,7 +69,11 @@ const DisclosurePage = () => {
 
     // loading md content
     getDisclosureContent(selectedGame.id).then(
-      content => setTimeout(()=>setGameDisclosure(content), 500)
+      markdown => {
+        const {metadata, content} = metadataParser(markdown)
+        setGameAssets(metadata.assets)
+        setTimeout(()=>setGameDisclosure(content), 500)
+      }
     )
     // loading source code
     getRemoteSourceCode(selectedGame.code).then(
@@ -191,7 +196,7 @@ const DisclosurePage = () => {
             className={`tab ${gameMode==='code'?'selected':''}`}
             onClick={() => setGameMode('code')}
           >
-            Game Source Code
+            Source Code & Assets
           </h3>
         </div>
       )}
@@ -217,7 +222,7 @@ const DisclosurePage = () => {
           )}
           {/* code content */}
           { gameMode === 'code' && (
-            <div className="flex-1 game-doc-code">
+            <div className="flex flex-1 game-doc-code">
               { gameSourceCode ? (
                 <MonacoEditor
                   height="480px"
@@ -230,6 +235,22 @@ const DisclosurePage = () => {
                 />
               ) : (
                 <Spinner/>
+              )}
+              { gameAssets && (
+                <ul className="w-4 mx-auto">
+                  {
+                    gameAssets.map(asset => {
+                      const [key, path] = asset.split(':')
+                      return (
+                        <li key={key}>
+                          <a href={path} target="_blank"rel="noreferrer">
+                            {key}
+                          </a>
+                        </li>
+                      )
+                    })
+                  }
+                </ul>
               )}
             </div>
           )}
