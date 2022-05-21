@@ -1,10 +1,13 @@
 import { useState, useEffect, useLayoutEffect, useRef } from 'react'
 import MonacoEditor from '@monaco-editor/react'
 import metadataParser from 'markdown-yaml-metadata-parser'
+
 import { games, gameDevWorkflow } from '../config/constants'
 import { codeEditorOptions } from '../config/project'
+
 import Spinner from '../components/Spinner'
 import DisclosureViewer from '../components/DisclosureViewer'
+
 import {
   getDisclosureContent, getRemoteSourceCode
 } from '../service/ProjectService'

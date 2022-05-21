@@ -167,6 +167,13 @@
       border-radius: 4px;
     }
 
+    a {
+      &:hover {
+        text-decoration: underline;
+        font-weight: 600;
+      }
+    }
+
     ul {
       padding-left: 30px;
 
@@ -176,10 +183,6 @@
 
       a {
         text-transform: uppercase;
-        &:hover {
-          text-decoration: underline;
-          font-weight: 600;
-        }
       }
     }
 
