@@ -147,6 +147,17 @@
     overflow: scroll;
     font-size: 1.25rem;
 
+    a {
+      &:hover {
+        text-decoration: underline;
+        font-weight: 600;
+      }
+    }
+
+    blockquote {
+      margin-top: 2.5rem;
+    }
+
     h2 {
       padding: 4px;
       background-color: bisque;
@@ -165,13 +176,6 @@
       padding: 4px;
       background-color:cornsilk;
       border-radius: 4px;
-    }
-
-    a {
-      &:hover {
-        text-decoration: underline;
-        font-weight: 600;
-      }
     }
 
     ul {
