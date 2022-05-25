@@ -23,6 +23,10 @@ const DisclosureViewer = ({ content, mode, onAnchorClick }) => {
     headerH4Elements.forEach(header => {
       header.addEventListener('click', linkClickHandler)
     })
+    const linkInParagraph = '.game-doc-code > p > a'
+    const linksNodes = document.querySelectorAll(linkInParagraph)
+    const linkElements = [...linksNodes]
+    linkElements.forEach(link => link.setAttribute('target', '_blank'))
 
     const imageSelector = '.game-doc-code img'
     const imageNodes = document.querySelectorAll(imageSelector)
