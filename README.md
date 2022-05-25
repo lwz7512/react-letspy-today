@@ -82,12 +82,12 @@ add contact form at homepage, send guest message to my email
 ## version 0.7
 
 - introduction video at home page hero banner? -- done @2022/03/02
-- complete project text text reference in .md file -- done @2022/03/18
-- complete project typist coding hint -- done @2022/03/18
-- complete video content subtitles  -- done @2022/04/07
-- complete the Phaserjs cheatsheet -- done @2022/04/25
+- completed project text text reference in .md file -- done @2022/03/18
+- completed project typist coding hint -- done @2022/03/18
+- completed video content subtitles    -- done @2022/04/07
+- completed the Phaserjs cheatsheet    -- done @2022/04/25
+- completed the game disclosures doc   -- done @2022/05/24
 
-TODO: ...add games disclosure page, load game md content
 TODO: ...add video content
 
 ## version 0.8

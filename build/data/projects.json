@@ -2,15 +2,15 @@
   "data": [
     {
       "id": 1,
-      "title": "Clone Army",
+      "title": "The Clone Armies",
       "level": 1,
       "description": "Want to be a commander of clone army? double your troops, to beat the enemies!",
       "mission": "Your are a scientist in charge of producing clone army to defense your world. Your enemy is overwhelming, you need to double your army!",
-      "tips": "No support yet.",
+      "tips": "Remove the last line # symbol",
       "coding": "troops_amount",
-      "walk": "Fire Now!",
+      "walk": "Click on the game stage!",
       "pass": "Bingo!",
-      "tags": ["Easy", "Variable", "Statement"],
+      "tags": ["Variable", "Comment"],
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/darthvida_sm.png",
       "typist": [
@@ -35,12 +35,10 @@
       "coding": "No",
       "walk": "Move player with RIGHT ARROW KEY to exit!",
       "pass": "",
-      "tags": ["Easy", "Action", "Function"],
+      "tags": ["Action", "Function", "List"],
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/player_idle.png",
       "typist": [
-        "walk(1)",
-        "",
         "jump(1)",
         "",
         "walk(1)",
@@ -56,33 +54,31 @@
       "id": 3,
       "title": "Make your Bridge",
       "level": 1,
-      "description": "A bridge is missing some bricks which are represented by '1', make up for it to pass safely!",
-      "mission": "Ola needs to reach the door across the broken bridge, help him repair the bridge!",
+      "description": "You are coming across a broken bridge missing some bricks, make them up to pass safely!",
+      "mission": "to reach the door at the end of broken bridge, repair it first! You need to fill those gaps with bricks!",
       "tips": "in bridge stone list, 1 repesents existing conrnerstone, 0 repesents blank space. So, when all the 0 change to 1, you would pass!",
       "coding": "bridge",
       "walk": "Now, press RIGHT ARROW KEY to move player",
       "pass": "Congratulations!",
-      "tags": ["Easy", "Adventure", "Statement"],
+      "tags": ["Adventure", "Statement", "List"],
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/dude.png",
       "typist": [
-        "bridge[1] = 1",
+        "bridge[3] = 1",
         "",
-        "bridge[1] = 3",
+        "bridge[5] = 1",
         "",
-        "bridge[1] = 5",
+        "bridge[7] = 1",
         "",
-        "bridge[1] = 7",
+        "bridge[9] = 1",
         "",
-        "bridge[1] = 9",
+        "bridge[11] = 1",
         "",
-        "bridge[1] = 11",
+        "bridge[13] = 1",
         "",
-        "bridge[1] = 13",
+        "bridge[15] = 1",
         "",
-        "bridge[1] = 15",
-        "",
-        "bridge[1] = 17",
+        "bridge[17] = 1",
         ""
       ]
     },
@@ -96,7 +92,7 @@
       "coding": "myName",
       "walk": "",
       "pass": "",
-      "tags": ["Medium", "Puzzle", "String", "Slice"],
+      "tags": ["Puzzle", "String", "Slice"],
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/platformChar_idle.png",
       "typist": [
@@ -114,7 +110,7 @@
       "coding": "green_box, red_box",
       "walk": "",
       "pass": "",
-      "tags": ["Medium", "Puzzle", "Condition", "Boolean"],
+      "tags": ["Puzzle", "Condition", "Boolean"],
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/adventurer_idle.png",
       "typist": [
@@ -126,7 +122,7 @@
         "",
         "....the_right_box = green_box",
         "",
-        "if 'person' in red_box:",
+        "else:",
         "",
         "....the_right_box = red_box"
       ]
@@ -134,14 +130,14 @@
     {
       "id": 6,
       "title": "Free Your Troops",
-      "level": 2,
+      "level": 3,
       "description": "Your troops are being trapped in toxic valley, you need to dispatch flying armor for each of them to get out of there!",
       "mission": "You are a smart commander & scientist, you need to use `for` loop to equip `flying` ability with each soldier",
       "tips": "Every soldier in your 'troops' need 'flying' ability to escapge valley, loop the 'troops' list, get each soldier and call its 'addPower' function.",
       "coding": "troops",
       "walk": "",
       "pass": "",
-      "tags": ["Medium", "Loop", "Iteration"],
+      "tags": ["Class", "Object", "List", "Loop", "Iteration"],
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/commander.png",
       "typist": [
@@ -161,7 +157,7 @@
       "coding": "all_paths",
       "walk": "",
       "pass": "",
-      "tags": ["Medium", "Puzzle", "Condition", "Loop"],
+      "tags": ["Condition", "Loop"],
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/slimeBlock.png",
       "typist": [
@@ -183,7 +179,7 @@
       "coding": "bridge_stones",
       "walk": "using RIGT/UP ARROW KEY to walk/jump",
       "pass": "",
-      "tags": ["Medium", "List", "Sort"],
+      "tags": ["List", "Sort"],
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/p1_stand.png",
       "typist": [
@@ -205,16 +201,12 @@
       "coding": "now",
       "walk": "",
       "pass": "",
-      "tags": ["Medium", "time", "Function"],
+      "tags": ["module", "datetime", "Function"],
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/female_idle.png",
       "typist": [
         "no live coding support at this project...",
         ""
-      ],
-      "reference": [
-        "https://docs.python.org/3/library/datetime.html#datetime-objects",
-        "https://www.geeksforgeeks.org/python-datetime-datetime-class/"
       ]
     }
   ]
