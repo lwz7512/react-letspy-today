@@ -1,5 +1,7 @@
 import React from 'react'; 
-import { FaPatreon, FaPaypal } from 'react-icons/fa';
+import { FaPaypal } from 'react-icons/fa';
+
+import buyMeCoffeeIcon from '../assets/icon/buyme_a_coffee.svg'
 
 
 const DonationPage = () => {
@@ -15,14 +17,22 @@ const DonationPage = () => {
                             Each of donation will make this project better and beneficial to everyone!
                         </p>
                     </div>
-                    <div className="button-groups pl-8 md:pl-5 py-3 mt-0 md:mt-2">
-                        <a className="mr-3 button red" href="/">
-                            <FaPatreon size="16px" />
-                            <span className="ml-2">Patreon</span>
-                        </a>
-                        <a className="mr-3 button orange text-blue-900" href="/">
+                    <div className="pl-8 md:pl-5 py-3 mt-0 md:mt-2">
+                        <a className="mr-3 button bg-blue-600 text-blue-900" 
+                            href="https://paypal.me/rainbowcodinglab?country.x=CA&locale.x=en_US"
+                            target="_blank"
+                            rel="noreferrer">
                             <FaPaypal size="18px" />
-                            <span className="ml-2">Paypal</span>
+                            <span className="ml-2 text-white">Paypal Donation to Rainbow Coding Lab</span>
+                        </a>
+                    </div>
+                    <div className="pl-8 md:pl-5 py-3 mt-0 md:mt-2 flex">
+                        <span className="text-2xl line-height-4 pr-3">or</span>
+                        <a className="mr-3 inline-block " 
+                            href="https://www.buymeacoffee.com/lwz7512"
+                            target="_blank"
+                            rel="noreferrer">
+                            <img src={buyMeCoffeeIcon} alt="buy me coffee" className="w-11rem" />
                         </a>
                     </div>
                     <div className="col donation-bg"></div>

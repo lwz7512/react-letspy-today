@@ -78,13 +78,6 @@ const HeroCard = ({tileA, titleB, route, actionNow}) => {
   }, [])
 
 
-  useEffect(() => {
-    if (!imageLoaded) return
-
-    drawHeroImageBy(0, imgRawWidth, imgRawHeight)
-
-  }, [imageLoaded, imgRawWidth, imgRawHeight])
-
   return (
     <div className="card hero-container border-noround md:border-round">
       <img 

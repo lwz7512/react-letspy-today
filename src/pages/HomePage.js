@@ -31,7 +31,7 @@ const HomePage = () => {
     return (
         <div className="home md:pt-0">
             {/* hero */}
-            <div className="col-12 px-0 sm:px-2">
+            <div className="col-12 px-0 ">
                 <HeroCard 
                     tileA={app_brand.hero_title_a}
                     titleB={app_brand.hero_title_b}
