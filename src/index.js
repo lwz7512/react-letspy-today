@@ -2,14 +2,17 @@ import reportWebVitals from './reportWebVitals';
 import 'react-app-polyfill/ie11';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+
+import { GoogleOAuthProvider } from '@react-oauth/google'
+
 import App from './App';
-//import * as serviceWorker from './serviceWorker';
-import { BrowserRouter } from 'react-router-dom'
-// import ScrollToTop from './structure/ScrollToTop';
 
 ReactDOM.render(
     <BrowserRouter>
-        <App/>
+        <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+            <App/>
+        </GoogleOAuthProvider>
     </BrowserRouter>,
     document.getElementById('root')
 );
