@@ -12,6 +12,8 @@ import {
   getDisclosureContent, getRemoteSourceCode
 } from '../service/ProjectService'
 
+import withAuth from '../helper/withAuth'
+
 /**
  * All the games authoring process from zero to complete.
  * 
@@ -264,4 +266,4 @@ const DisclosurePage = () => {
 }
 
 
-export default DisclosurePage
+export default withAuth(DisclosurePage)
