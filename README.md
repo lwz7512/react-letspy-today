@@ -16,7 +16,7 @@ Started @2021/10/16
 ## Add new Dependency
 
 ```
-% yarn add xxx
+% npm install xxx
 ```
 
 ## version 0.1 : POC
@@ -92,8 +92,9 @@ TODO: ...add video content
 
 ## version 0.8
 
-TODO: ...implement Github & Google login, so that to get bonus!
-TODO: ...implement bonus download with user's will and role(student free to download)
+- implement Github & Google login, so that to get bonus!
+- implement bonus download with user's will and role(student free to download)
+- completed google sign in and secret links in profile  -- done @2022/06/17
 
 ## version 0.9
 

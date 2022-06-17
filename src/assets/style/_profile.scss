@@ -1,6 +1,6 @@
 .profile {
 
-  height: 970px;
+  height: 770px;
 
   &.social-bg {
     background-image: url('../images/home/undraw_Road_sign_re_3kc3.png');
@@ -11,10 +11,10 @@
 
   .header-title {
     border-left: solid 4px rgb(209, 49, 93);
-    width: 200px;
+    width: 300px;
     padding: 4px 10px 4px;
+    text-transform: uppercase;
   }
-
 
   .social-signin {
     margin: 0 auto;
@@ -30,7 +30,59 @@
 
   .rewards-table {
     margin: 0 auto;
-    max-width: 960px;
+    max-width: 400px;
+    min-height: 480px;
+  }
+
+  .downloads {
+    list-style: none;
+    padding-inline-start: 8px;
+    margin-top: 10px;
+
+    li {
+      padding: 4px 0;
+      font-size: 16px;
+      
+      span {
+        color: #888;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .p-progressbar {
+    background: #bbc7cd;
+
+    .p-progressbar-value {
+      background: #ed4981;
+    }
+
+    .p-progressbar-label {
+      color: white;
+      line-height: 1.5rem;
+    }
+  }
+
+  .pi-star {
+    position: absolute;
+    right: 24px;
+    top: 0px;
+  }
+
+  .secret-link {
+    display: inline-block;
+    width: 190px;
+    cursor: pointer;
+    color: #888;
+
+    &.active {
+      text-decoration: underline;
+      color: var(--primary-color);
+    }
+  }
+
+  .required {
+    padding-left: 10px;
   }
 
   @media screen and (max-width: 480px) {

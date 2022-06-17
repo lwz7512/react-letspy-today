@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import metadataParser from 'markdown-yaml-metadata-parser'
 import CheatsheetViewer from '../components/CheatsheetViewer'
 import { getCheatsheetContent } from '../service/ProjectService'
+import withAuth from '../helper/withAuth'
 
 const CheatSheetPage = () => {
   /**
@@ -38,4 +39,4 @@ const CheatSheetPage = () => {
   )
 }
 
-export default CheatSheetPage
+export default withAuth(CheatSheetPage)
