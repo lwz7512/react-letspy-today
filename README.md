@@ -96,6 +96,8 @@ TODO: ...add video content
 - implement bonus download with user's will and role(student free to download)
 - completed google sign in and secret links in profile  -- done @2022/06/17
 
+TODO: ... save logged in user in database
+
 ## version 0.9
 
 TODO: ...
