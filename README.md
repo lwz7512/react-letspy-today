@@ -16,7 +16,7 @@ Started @2021/10/16
 ## Add new Dependency
 
 ```
-% npm install xxx
+% yarn add xxx
 ```
 
 ## version 0.1 : POC
@@ -95,6 +95,7 @@ TODO: ...add video content
 - implement Github & Google login, so that to get bonus!
 - implement bonus download with user's will and role(student free to download)
 - completed google sign in and secret links in profile  -- done @2022/06/17
+- add stars charge page  -- done @2022/06/17
 
 TODO: ... save logged in user in database
 

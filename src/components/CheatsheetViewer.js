@@ -160,7 +160,7 @@ const CheatsheetViewer = ({content, metadata}) => {
       </pre>
       <div className="flex my-5 px-3 justify-content-between align-items-center">
         <blockquote className="text-2xl ">
-          {metadata && (
+          {metadata?.download && (
             <a href={metadata.download} target="_blank" rel="noreferrer">
               Download Here! 🧨 
             </a>

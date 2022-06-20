@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { GoogleLogin } from '@react-oauth/google'
 import { ProgressBar } from 'primereact/progressbar'
 import useLocalStorageState from 'use-local-storage-state'
+import { Toast } from 'primereact/toast'
 
 import { isAuthenticated, decodeToken } from '../helper/withAuth'
 import projectStore from '../state/ProjectState'
 
 const ProfilePage = () => {
+
+    const toastRef = useRef(null)
 
     const projects = projectStore(state => state.projects)
     const [completed, ] = useLocalStorageState('projects_status', {})
@@ -25,15 +28,30 @@ const ProfilePage = () => {
         const projectsTotal = projects.length || 100 // long term goal is to have 100 projects!
         const percent = (Number(Object.keys(completed).length/projectsTotal)*100).toFixed(0)
         const counterFunction = (prev, project) => completed[project.id] ? prev+project.level : prev
-        const starTotal = projects.reduce(counterFunction, 0)
+        const savedStar = Number(localStorage.getItem('LETSPY_STAR') ?? 0)
+        const starTotal = projects.reduce(counterFunction, 0) + savedStar
         setProgress({finished: percent, stars: starTotal})
 
     }, [isLoggedIn, projects, completed])
 
 
     const loginSuccessHandler = credentialResponse => {
+        const savedToken = localStorage.getItem('LETSPY_TOKEN')
+        const message = savedToken ? 'Welcome back!' : 'Welcome aboard to LetsPY!'
+        const notification = {
+            severity: 'success', summary: 'Hi there!', detail: message
+        }
+        // popup toast message
+        toastRef.current.show(notification);
+
+        const today = new Date()
+        const month = today.getMonth() + 1
+        const day = today.getDate()
+        const timestamp = month>9?month:('0'+month) + '/' + day
         // save first
         localStorage.setItem('LETSPY_TOKEN', credentialResponse.credential)
+        // save time
+        localStorage.setItem('LETSPY_LOGIN', timestamp)
         setIsLoggedIn(true)
         // TODO: SEND token_id to backend get user info ...
         console.log(`>>> sending email: ${email}`)
@@ -69,6 +87,7 @@ const ProfilePage = () => {
 
     return (
         <div className="profile button-social social-bg mt-8 sm:mt-4">
+            <Toast ref={toastRef} />
             <h1 className="header-title text-gray-900">
                 {isLoggedIn ? `Welcome` : `Sign in`}
             </h1>
@@ -77,6 +96,7 @@ const ProfilePage = () => {
                     <h4 className="text-center">Sign in with</h4>
                     <div className="template py-5">
                         <GoogleLogin
+                            auto_select
                             onSuccess={loginSuccessHandler}
                             onError={() => {
                                 console.log('Login Failed');
@@ -98,20 +118,20 @@ const ProfilePage = () => {
                         <h3 className="my-1">{given_name}</h3>
                     </div>
                     <div className="row pb-3">
-                        <h4 className="mt-3 border-left-3 pl-3 border-primary">Your learning progress:</h4>
+                        <h4 className="mt-3 border-left-6 pl-3 border-primary">Your learning progress:</h4>
                         <ProgressBar value={progress.finished}></ProgressBar>
                     </div>
                     <div className="row pb-1 relative">
-                        <h4 className="mt-3 border-left-3 pl-3 border-primary">
+                        <h4 className="mt-3 border-left-6 pl-3 border-primary">
                             Your got: 
-                            <span className="text-4xl ml-3 text-pink-500">
+                            <span className="text-4xl ml-3 text-pink-500 pl-4">
                                 {progress.stars}
                             </span>
                             <i className="pi pi-star ml-2 text-pink-500" style={{'fontSize': '3em'}}></i>
                         </h4>
                     </div>
                     <div className="row">
-                        <h4 className="mt-3 mb-1 border-left-3 pl-3 border-primary">Your rewards:</h4>
+                        <h4 className="mt-3 mb-1 border-left-6 pl-3 border-primary">Your rewards:</h4>
                         <ul className="text-xl downloads text-primary">
                             <li>
                                 <a 

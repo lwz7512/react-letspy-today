@@ -8,6 +8,7 @@ import ProfilePage from './pages/ProfilePage'
 import ContactPage from './pages/ContactPage'
 import CheatSheetPage from './pages/CheatSheetPage'
 import DisclosurePage from './pages/DisclosurePage'
+import ChargePage from './pages/ChargePage'
 
 import { AppTopbar } from './structure/AppTopbar'
 import { AppFooter } from './structure/AppFooter'
@@ -75,6 +76,7 @@ function App() {
             <Route path="/profile" component={ProfilePage}/>
             <Route path="/cheatsheet/:name" component={CheatSheetPage}/>
             <Route path="/disclosure" component={DisclosurePage} />
+            <Route path="/charge/:star" component={ChargePage} />
             <Route path="/" exact component={HomePage}/>
         </div>
         <AppFooter layoutColorMode="light"/>
