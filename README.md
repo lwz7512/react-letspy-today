@@ -96,6 +96,7 @@ TODO: ...add video content
 - implement bonus download with user's will and role(student free to download)
 - completed google sign in and secret links in profile  -- done @2022/06/17
 - add stars charge page  -- done @2022/06/17
+- fixed react-error-overlay in hot-reload mode
 
 TODO: ... save logged in user in database
 
