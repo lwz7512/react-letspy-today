@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-
+// GAME 6:
 class FlyThemUp extends Phaser.Scene {
 
   constructor(){
@@ -17,23 +17,23 @@ class FlyThemUp extends Phaser.Scene {
   }
 
   preload(){
-    this.load.image('sky', 'assets/skies/toxic.png');
-    this.load.image('tiles', 'assets/tilemaps/tiles/tilesheet_complete.png');
-    this.load.tilemapTiledJSON('map', 'assets/tilemaps/maps/flyThemUp.json');
+    this.load.image('sky', '/assets/skies/toxic.png');
+    this.load.image('tiles', '/assets/tilemaps/tiles/tilesheet_complete.png');
+    this.load.tilemapTiledJSON('map', '/assets/tilemaps/maps/flyThemUp.json');
     this.load.spritesheet(
       'soldiers', 
-      'assets/sprites/soldiers.png', 
+      '/assets/sprites/soldiers.png', 
       { frameWidth:32, frameHeight:38 }
     );
     this.load.spritesheet(
       'battery', 
-      'assets/sprites/battery.png', 
+      '/assets/sprites/battery.png', 
       { frameWidth:48, frameHeight:48 }
     );
     this.load.atlas(
       'elves', 
-      'assets/animations/elves-craft-pixel.png', 
-      'assets/animations/elves-craft-pixel.json'
+      '/assets/animations/elves-craft-pixel.png', 
+      '/assets/animations/elves-craft-pixel.json'
     );
   }
   

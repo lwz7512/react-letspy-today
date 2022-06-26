@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 
+// GAME 4:
 class GuessMyName extends Phaser.Scene {
 
   constructor(){
@@ -17,14 +18,14 @@ class GuessMyName extends Phaser.Scene {
   }
 
   preload(){
-    this.load.image('sky', 'assets/skies/sky2.png');
-    this.load.image('tiles', 'assets/tilemaps/tiles/platformPack_tilesheet.png');
-    this.load.image('letters', 'assets/tilemaps/tiles/yellow_spritesheet_512.png');
-    this.load.tilemapTiledJSON('map', 'assets/tilemaps/maps/guessMyName.json')
+    this.load.image('sky', '/assets/skies/sky2.png');
+    this.load.image('tiles', '/assets/tilemaps/tiles/platformPack_tilesheet.png');
+    this.load.image('letters', '/assets/tilemaps/tiles/yellow_spritesheet_512.png');
+    this.load.tilemapTiledJSON('map', '/assets/tilemaps/maps/guessMyName.json')
     // player sprite sheet
     this.load.spritesheet(
       'player', 
-      'assets/sprites/platformerPack_character.png', 
+      '/assets/sprites/platformerPack_character.png', 
       { frameWidth: 96, frameHeight: 96 }
     );
   }

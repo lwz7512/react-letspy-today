@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 
+// GAME 3:
 class MakeYourPath extends Phaser.Scene {
   
   constructor(){
@@ -33,8 +34,8 @@ class MakeYourPath extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('tileskenney', 'assets/tilemaps/tiles/kenney_redux_64x64.png');
-    this.load.spritesheet('dude', 'assets/sprites/dude.png', { frameWidth: 32, frameHeight: 48 });
+    this.load.image('tileskenney', '/assets/tilemaps/tiles/kenney_redux_64x64.png');
+    this.load.spritesheet('dude', '/assets/sprites/dude.png', { frameWidth: 32, frameHeight: 48 });
   }
 
   _createGroundLayer(tilesArray) {

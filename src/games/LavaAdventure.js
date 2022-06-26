@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-
+// GAME 2:
 class LavaAdventure extends Phaser.Scene {
   constructor(){
     super('LavaAdventure');
@@ -30,16 +30,16 @@ class LavaAdventure extends Phaser.Scene {
   }
 
   preload(){
-    this.load.image('sky', 'assets/skies/sunset.png');
-    this.load.image('tiles', 'assets/tilemaps/tiles/kenney_redux_64x64.png');
-    this.load.tilemapTiledJSON('map', 'assets/tilemaps/maps/lavaAdventure.json')
+    this.load.image('sky', '/assets/skies/sunset.png');
+    this.load.image('tiles', '/assets/tilemaps/tiles/kenney_redux_64x64.png');
+    this.load.tilemapTiledJSON('map', '/assets/tilemaps/maps/lavaAdventure.json')
     this.load.spritesheet(
       'player', 
-      'assets/sprites/player_tilesheet.png', 
+      '/assets/sprites/player_tilesheet.png', 
       { frameWidth: 80, frameHeight: 110 }
     );
     
-    this.load.audio('lose', 'assets/audio/arcade_resources_sounds_lose4.mp3');
+    this.load.audio('lose', '/assets/audio/arcade_resources_sounds_lose4.mp3');
   }
   
   create(){

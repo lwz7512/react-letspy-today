@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-
+// GAME 8:
 class PassLiveBridge extends Phaser.Scene {
 
   constructor(){
@@ -23,12 +23,12 @@ class PassLiveBridge extends Phaser.Scene {
   }
 
   preload(){
-    this.load.image('sky', 'assets/skies/space3.png');
-    this.load.image('tiles', 'assets/tilemaps/tiles/tilesheet_complete_32.png');
-    this.load.tilemapTiledJSON('map', 'assets/tilemaps/maps/passLiveBridge.json');
+    this.load.image('sky', '/assets/skies/space3.png');
+    this.load.image('tiles', '/assets/tilemaps/tiles/tilesheet_complete_32.png');
+    this.load.tilemapTiledJSON('map', '/assets/tilemaps/maps/passLiveBridge.json');
     this.load.spritesheet(
       'aliens',
-      'assets/sprites/aliens_green.png',
+      '/assets/sprites/aliens_green.png',
       {frameWidth: 64, frameHeight: 96}
     );
   }

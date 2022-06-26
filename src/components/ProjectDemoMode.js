@@ -12,11 +12,11 @@ const ProjectDemoMode = () => {
       <ProjectIntro />
       <div className="content-area blue-round-panel dark">
         <ReactPlayer
-          url="assets/video/logo_reveal_640x360.mp4"
+          url="/assets/video/logo_reveal_640x360.mp4"
           controls={true}
           config={{
             attributes: {
-              poster: "assets/video/letspy-today.png"
+              poster: "/assets/video/letspy-today.png"
             }
           }}
         />

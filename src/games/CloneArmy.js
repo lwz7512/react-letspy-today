@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-
+// GAME 1:
 class CloneArmy extends Phaser.Scene {
   constructor(){
     super('CloneArmy');
@@ -19,14 +19,14 @@ class CloneArmy extends Phaser.Scene {
   }
 
   preload(){
-    this.load.image('dude', 'assets/sprites/phaser-dude.png');
-    this.load.image('vida', 'assets/sprites/darthvida_sm.png');
-    this.load.image('bullet', 'assets/sprites/bullet5.png');
-    this.load.spritesheet('soldier', 'assets/sprites/solider_yellow.png', { frameWidth: 48, frameHeight: 48});
-    this.load.spritesheet('invader', 'assets/sprites/invader1.png', { frameWidth: 32, frameHeight: 32 });
-    this.load.spritesheet('boom', 'assets/sprites/explosion.png', { frameWidth: 64, frameHeight: 64, endFrame: 23 });
-    this.load.audio('fire', 'assets/audio/blaster.mp3');
-    this.load.audio('explosion', 'assets/audio/explosion.mp3');
+    this.load.image('dude', '/assets/sprites/phaser-dude.png');
+    this.load.image('vida', '/assets/sprites/darthvida_sm.png');
+    this.load.image('bullet', '/assets/sprites/bullet5.png');
+    this.load.spritesheet('soldier', '/assets/sprites/solider_yellow.png', { frameWidth: 48, frameHeight: 48});
+    this.load.spritesheet('invader', '/assets/sprites/invader1.png', { frameWidth: 32, frameHeight: 32 });
+    this.load.spritesheet('boom', '/assets/sprites/explosion.png', { frameWidth: 64, frameHeight: 64, endFrame: 23 });
+    this.load.audio('fire', '/assets/audio/blaster.mp3');
+    this.load.audio('explosion', '/assets/audio/explosion.mp3');
   }
     
   create(){

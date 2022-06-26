@@ -45,7 +45,7 @@ const ProjectIntro = () => {
           </p>
         </div>
         <div className="right-part">
-          <img src={project.player} width="50" alt="alien" />
+          <img src={`/${project.player}`} width="50" alt="alien" />
         </div>
       </div>
     </div>

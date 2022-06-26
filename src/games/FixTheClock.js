@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-
+// GAME 9:
 class FixTheClock extends Phaser.Scene {
 
   constructor(){
@@ -17,14 +17,14 @@ class FixTheClock extends Phaser.Scene {
   }
 
   preload(){
-    this.load.image('background', 'assets/backgrounds/backgroundDesert.png');
-    this.load.image('tiles', 'assets/tilemaps/tiles/building_spritesheet.png');
-    this.load.image('hunchback', 'assets/sprites/hunchback_man_64.png');
-    this.load.image('clock', 'assets/backgrounds/clock_yellow.png');
-    this.load.tilemapTiledJSON('map', 'assets/tilemaps/maps/fixTheClock.json');
+    this.load.image('background', '/assets/backgrounds/backgroundDesert.png');
+    this.load.image('tiles', '/assets/tilemaps/tiles/building_spritesheet.png');
+    this.load.image('hunchback', '/assets/sprites/hunchback_man_64.png');
+    this.load.image('clock', '/assets/backgrounds/clock_yellow.png');
+    this.load.tilemapTiledJSON('map', '/assets/tilemaps/maps/fixTheClock.json');
     this.load.spritesheet(
       'player',
-      'assets/sprites/female_tilesheet.png',
+      '/assets/sprites/female_tilesheet.png',
       { frameWidth: 80, frameHeight: 110}
     );
   }

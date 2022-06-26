@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 
+// GAME 5:
 class SphinxRiddle extends Phaser.Scene {
 
   constructor(){
@@ -17,14 +18,14 @@ class SphinxRiddle extends Phaser.Scene {
   }
 
   preload(){
-    this.load.image('egypt', 'assets/skies/pyramid_desert_sm.jpg');
-    this.load.image('sphinx', 'assets/sprites/sphinx_sm.png');
-    this.load.image('tiles', 'assets/tilemaps/tiles/platformPack_tilesheet.png');
-    this.load.tilemapTiledJSON('map', 'assets/tilemaps/maps/sphinxRiddle.json');
+    this.load.image('egypt', '/assets/skies/pyramid_desert_sm.jpg');
+    this.load.image('sphinx', '/assets/sprites/sphinx_sm.png');
+    this.load.image('tiles', '/assets/tilemaps/tiles/platformPack_tilesheet.png');
+    this.load.tilemapTiledJSON('map', '/assets/tilemaps/maps/sphinxRiddle.json');
     // player sprite sheet
     this.load.spritesheet(
       'player', 
-      'assets/sprites/adventurer_tilesheet.png', 
+      '/assets/sprites/adventurer_tilesheet.png', 
       { frameWidth: 80, frameHeight: 110 }
     );
   }

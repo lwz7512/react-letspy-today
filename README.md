@@ -16,7 +16,7 @@ Started @2021/10/16
 ## Add new Dependency
 
 ```
-% yarn add xxx
+% npm install xxx
 ```
 
 ## version 0.1 : POC
@@ -97,8 +97,7 @@ TODO: ...add video content
 - completed google sign in and secret links in profile  -- done @2022/06/17
 - add stars charge page  -- done @2022/06/17
 - fixed react-error-overlay in hot-reload mode
-
-TODO: ... save logged in user in database
+- save logged in user, and contact in supabase
 
 ## version 0.9
 

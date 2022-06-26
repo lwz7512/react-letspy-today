@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-
+// GAME 7:
 class WhichWayToGo extends Phaser.Scene {
 
   constructor(){
@@ -37,13 +37,13 @@ class WhichWayToGo extends Phaser.Scene {
   }
 
   preload(){
-    this.load.image('ground', 'assets/tilemaps/tiles/terrainTiles_default.png');
-    this.load.image('platform', 'assets/tilemaps/tiles/platformPack_tilesheet.png');
-    this.load.tilemapTiledJSON('map', 'assets/tilemaps/maps/whichWaytogo.json');
+    this.load.image('ground', '/assets/tilemaps/tiles/terrainTiles_default.png');
+    this.load.image('platform', '/assets/tilemaps/tiles/platformPack_tilesheet.png');
+    this.load.tilemapTiledJSON('map', '/assets/tilemaps/maps/whichWaytogo.json');
     // player sprite sheet
     this.load.spritesheet(
       'player', 
-      'assets/sprites/spritesheet_enemies.png', 
+      '/assets/sprites/spritesheet_enemies.png', 
       { frameWidth: 128, frameHeight: 130 }
     );
   }
