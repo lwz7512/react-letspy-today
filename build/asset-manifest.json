@@ -1,27 +1,28 @@
 {
   "files": {
-    "main.css": "/static/css/main.73217d45.chunk.css",
-    "main.js": "/static/js/main.95154b4f.chunk.js",
-    "main.js.map": "/static/js/main.95154b4f.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.c93b432a.js",
-    "runtime-main.js.map": "/static/js/runtime-main.c93b432a.js.map",
-    "static/css/2.bd12a299.chunk.css": "/static/css/2.bd12a299.chunk.css",
-    "static/js/2.43aa067f.chunk.js": "/static/js/2.43aa067f.chunk.js",
-    "static/js/2.43aa067f.chunk.js.map": "/static/js/2.43aa067f.chunk.js.map",
-    "static/js/3.a47e6f06.chunk.js": "/static/js/3.a47e6f06.chunk.js",
-    "static/js/3.a47e6f06.chunk.js.map": "/static/js/3.a47e6f06.chunk.js.map",
+    "main.css": "/static/css/main.e33f3b6b.chunk.css",
+    "main.js": "/static/js/main.22efc7f1.chunk.js",
+    "main.js.map": "/static/js/main.22efc7f1.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.103ca930.js",
+    "runtime-main.js.map": "/static/js/runtime-main.103ca930.js.map",
+    "static/css/2.c8e5e339.chunk.css": "/static/css/2.c8e5e339.chunk.css",
+    "static/js/2.c89fa358.chunk.js": "/static/js/2.c89fa358.chunk.js",
+    "static/js/2.c89fa358.chunk.js.map": "/static/js/2.c89fa358.chunk.js.map",
+    "static/js/3.0d6c4221.chunk.js": "/static/js/3.0d6c4221.chunk.js",
+    "static/js/3.0d6c4221.chunk.js.map": "/static/js/3.0d6c4221.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/2.bd12a299.chunk.css.map": "/static/css/2.bd12a299.chunk.css.map",
-    "static/css/main.73217d45.chunk.css.map": "/static/css/main.73217d45.chunk.css.map",
-    "static/js/2.43aa067f.chunk.js.LICENSE.txt": "/static/js/2.43aa067f.chunk.js.LICENSE.txt",
+    "static/css/2.c8e5e339.chunk.css.map": "/static/css/2.c8e5e339.chunk.css.map",
+    "static/css/main.e33f3b6b.chunk.css.map": "/static/css/main.e33f3b6b.chunk.css.map",
+    "static/js/2.c89fa358.chunk.js.LICENSE.txt": "/static/js/2.c89fa358.chunk.js.LICENSE.txt",
+    "static/media/buyme_a_coffee.7f818be3.svg": "/static/media/buyme_a_coffee.7f818be3.svg",
     "static/media/primeicons.css": "/static/media/primeicons.e61f3495.woff",
     "static/media/App.scss": "/static/media/undraw_Road_sign_re_3kc3.8d459041.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.c93b432a.js",
-    "static/css/2.bd12a299.chunk.css",
-    "static/js/2.43aa067f.chunk.js",
-    "static/css/main.73217d45.chunk.css",
-    "static/js/main.95154b4f.chunk.js"
+    "static/js/runtime-main.103ca930.js",
+    "static/css/2.c8e5e339.chunk.css",
+    "static/js/2.c89fa358.chunk.js",
+    "static/css/main.e33f3b6b.chunk.css",
+    "static/js/main.22efc7f1.chunk.js"
   ]
 }
