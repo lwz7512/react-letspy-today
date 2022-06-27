@@ -97,7 +97,8 @@ TODO: ...add video content
 - completed google sign in and secret links in profile  -- done @2022/06/17
 - add stars charge page  -- done @2022/06/17
 - fixed react-error-overlay in hot-reload mode
-- save logged in user, and contact in supabase
+- save logged in user, and contact in supabase  -- done @2022/06/26
+- add policy page, open source LICENSE file  -- done @2022/06/27
 
 ## version 0.9
 
