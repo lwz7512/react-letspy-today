@@ -9,6 +9,7 @@ import ContactPage from './pages/ContactPage'
 import CheatSheetPage from './pages/CheatSheetPage'
 import DisclosurePage from './pages/DisclosurePage'
 import ChargePage from './pages/ChargePage'
+import PrivacyPage from './pages/PrivacyPage'
 
 import { AppTopbar } from './structure/AppTopbar'
 import { AppFooter } from './structure/AppFooter'
@@ -27,17 +28,15 @@ import './assets/style/App.scss'
 import { getProjects } from './service/ProjectService'
 import projectStore from './state/ProjectState'
 
-
 function App() {
-
   const history = useHistory()
-  const [mobileTopbarMenuActive, setMobileTopbarMenuActive] = useState(false);
-  const setProjects = projectStore(state => state.setProjects)
+  const [mobileTopbarMenuActive, setMobileTopbarMenuActive] = useState(false)
+  const setProjects = projectStore((state) => state.setProjects)
 
   const onMobileTopbarMenuClick = (event) => {
-    setMobileTopbarMenuActive(!mobileTopbarMenuActive);
-    event.preventDefault();
-    event.stopPropagation();
+    setMobileTopbarMenuActive(!mobileTopbarMenuActive)
+    event.preventDefault()
+    event.stopPropagation()
   }
 
   const onWrapperClick = () => {
@@ -47,43 +46,45 @@ function App() {
   useEffect(() => {
     // window.scrollTo(0, 0);
     setTimeout(() => {
-      window.scroll({top: 0, left: 0, behavior: 'smooth'})
+      window.scroll({ top: 0, left: 0, behavior: 'smooth' })
     }, 100) // lazy scroll top
-  }, [history.location.pathname]);
-
+  }, [history.location.pathname])
 
   useEffect(() => {
     setTimeout(() => {
-      getProjects().then(data => {
+      getProjects().then((data) => {
         setProjects(data)
       })
     }, 500) // lazy loading...
   }, [setProjects])
 
-  
   return (
-    <div className="app layout-wrapper layout-theme-light" onClick={onWrapperClick}>
-      <AppTopbar 
-        layoutColorMode="light" 
+    <div
+      className="app layout-wrapper layout-theme-light"
+      onClick={onWrapperClick}
+    >
+      <AppTopbar
+        layoutColorMode="light"
         mobileTopbarMenuActive={mobileTopbarMenuActive}
-        onMobileTopbarMenuClick={onMobileTopbarMenuClick} 
-        />
+        onMobileTopbarMenuClick={onMobileTopbarMenuClick}
+      />
       <div className="layout-main-container">
         <div className="layout-main">
-            <Route path="/project/:pid" component={ProjectPage}/>
-            <Route path="/contact" component={ContactPage}/>
-            <Route path="/donation" component={DonationPage}/>
-            <Route path="/profile" component={ProfilePage}/>
-            <Route path="/cheatsheet/:name" component={CheatSheetPage}/>
-            <Route path="/disclosure" component={DisclosurePage} />
-            <Route path="/charge/:star" component={ChargePage} />
-            <Route path="/" exact component={HomePage}/>
+          <Route path="/project/:pid" component={ProjectPage} />
+          <Route path="/contact" component={ContactPage} />
+          <Route path="/donation" component={DonationPage} />
+          <Route path="/profile" component={ProfilePage} />
+          <Route path="/privacy" component={PrivacyPage} />
+          <Route path="/cheatsheet/:name" component={CheatSheetPage} />
+          <Route path="/disclosure" component={DisclosurePage} />
+          <Route path="/charge/:star" component={ChargePage} />
+          <Route path="/" exact component={HomePage} />
         </div>
-        <AppFooter layoutColorMode="light"/>
+        <AppFooter layoutColorMode="light" />
       </div>
-      <Modal/>
+      <Modal />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

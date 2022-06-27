@@ -55,35 +55,46 @@ export const AppTopbar = ({
                 )}>
                     <li>
                         <button 
+                            title="Home"
                             className="p-link layout-topbar-button" 
                             onClick={()=>handleRouteChange('/')}>
                             <i className="pi pi-home"/>
-                            <span>Home</span>
                         </button>
                     </li>
                     <li>
                         <button 
+                            title="Contact"
                             className="p-link layout-topbar-button" 
                             onClick={()=>handleRouteChange('/contact')}>
                             <i className="pi pi-envelope"/>
-                            <span>Contact</span>
                         </button>
                     </li>
                     <li>
                         <button 
+                            title="Donation"
                             className="p-link layout-topbar-button" 
                             onClick={()=>handleRouteChange('/donation')}>
                             <i className="pi pi-heart"/>
-                            <span>Donation</span>
                         </button>
                     </li>
                     <li>
                         <button 
+                            title="Profile"
                             className="p-link layout-topbar-button" 
                             onClick={()=>handleRouteChange('/profile')}>
                             <i className="pi pi-user"/>
-                            <span>Profile</span>
                         </button>
+                    </li>
+                    <li>
+                        <a 
+                            title="Github"
+                            className="p-link layout-topbar-button"
+                            href="https://github.com/lwz7512/react-letspy-today"
+                            target="_blank"
+                            rel="noreferrer"
+                            >
+                            <i className="pi pi-github"/>
+                        </a>
                     </li>
                 </ul>
         </div>

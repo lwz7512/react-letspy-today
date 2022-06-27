@@ -19,6 +19,9 @@ export const getCheatsheetContent = name =>
 export const getDisclosureContent = id =>
   axios.get(`/games/${id}.md`).then(res => res.data);
 
+export const getPrivacyContent = () =>
+  axios.get(`/privacypolicy_en.md`).then(res => res.data);
+
 // get remote js source code from github
 export const getRemoteSourceCode = file =>
   axios.get(`${GITHUB_REPO_GAMES_PATH}/${file}`).then(res => res.data);

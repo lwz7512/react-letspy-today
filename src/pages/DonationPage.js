@@ -10,13 +10,13 @@ const DonationPage = () => {
     const history = useHistory()
 
     const URLs = {
-        py_secret: '#/cheatsheet/python_beginner_cheatsheet',
+        py_secret: '/cheatsheet/python_beginner_cheatsheet',
         py_100: 'https://github.com/lwz7512/pytraining4yue',
         py_more: 'https://github.com/x4nth055/pythoncode-tutorials',
-        ph_secret: '#/cheatsheet/phaserjs_beginner_cheatsheet',
+        ph_secret: '/cheatsheet/phaserjs_beginner_cheatsheet',
         letspy_source: 'https://github.com/lwz7512/react-letspy-today/tree/master/src/games',
-        letspy_disclose: '#/disclosure',
-        letspy_pass: '#/cheatsheet/letspy_game_pass_code',
+        letspy_disclose: '/disclosure',
+        letspy_pass: '/cheatsheet/letspy_game_pass_code',
     }
 
     const checkToOpen = event => {

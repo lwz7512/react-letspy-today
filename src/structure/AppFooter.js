@@ -12,8 +12,9 @@ export const AppFooter = (props) => {
                 />
             by
             <span className="font-medium ml-2">
-                🌈CodingLab
+                🌈 Rainbow Coding Lab
             </span>
+            <a href="/privacy" className="ml-5 underline">Privacy Policy</a>
         </div>
     );
 }
