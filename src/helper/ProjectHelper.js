@@ -52,3 +52,11 @@ export const generateFailureMessage = (target, result) => {
   // actions
   return 'OhOh...check the code, try again!'
 }
+
+export const getTotalEarnedStar = (completed, projects) => {
+  const counterFunction = (prev, project) =>
+      completed[project.id] ? prev + project.level : prev
+  const savedStar = Number(localStorage.getItem('LETSPY_STAR') ?? 0)
+  const starTotal = projects.reduce(counterFunction, 0) + savedStar
+  return starTotal
+}

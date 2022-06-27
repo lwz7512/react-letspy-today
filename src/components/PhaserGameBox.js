@@ -65,7 +65,6 @@ const PhaserGameBox = ({ codeResultCallback }) => {
   useEffect(() => {
     if (!gameRef.current) return
 
-    // TODO: to save my record if logged in ...
     // use callback hook to reuse the gamePassHandler function
     const gamePassHandler = () => {
       updateProjectStatus({...projects, [projectID]:'done'})

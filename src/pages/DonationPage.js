@@ -1,13 +1,20 @@
 import React from 'react'; 
 import { FaPaypal } from 'react-icons/fa';
 import { useHistory } from 'react-router-dom'
+import useLocalStorageState from 'use-local-storage-state'
+import { confirmDialog } from 'primereact/confirmdialog'
+
+import projectStore from '../state/ProjectState'
 import { isAuthenticated } from '../helper/withAuth'
+import { getTotalEarnedStar } from '../helper/ProjectHelper'
 import buyMeCoffeeIcon from '../assets/icon/buyme_a_coffee.svg'
 
 
 const DonationPage = () => {
 
     const history = useHistory()
+    const projects = projectStore((state) => state.projects)
+    const [completed] = useLocalStorageState('projects_status', {})
 
     const URLs = {
         py_secret: '/cheatsheet/python_beginner_cheatsheet',
@@ -19,11 +26,26 @@ const DonationPage = () => {
         letspy_pass: '/cheatsheet/letspy_game_pass_code',
     }
 
-    const checkToOpen = event => {
+    const checkToOpen = star => event => {
         // login if no authenticated
         if (!isAuthenticated()) {
             event.preventDefault()
-            history.push('/profile')
+            return history.push('/profile')
+        }
+        
+        const earned = getTotalEarnedStar(completed, projects)
+        // console.log({earned})
+        if (star > earned) {
+            confirmDialog({
+                message: `${star} star required to access this page!`,
+                header: 'Oh Oh',
+                icon: 'pi pi-exclamation-triangle',
+                accept: () => history.push('/'),
+                acceptLabel: "OK",
+                reject: () => false,
+                rejectLabel: "Not now"
+            })
+            return event.preventDefault()
         }
     }
 
@@ -69,10 +91,10 @@ const DonationPage = () => {
                                 <p className="txt">
                                     <span className="px-2 border-left-3 border-green-500 surface-200">1$</span>  --  
                                     You're eligible to get 
-                                    <a href={URLs.py_secret} onClick={checkToOpen}> Python beginner cheatsheet </a> 
-                                    + <a href={URLs.py_100} onClick={checkToOpen}>
+                                    <a href={URLs.py_secret} onClick={checkToOpen(1)}> Python beginner cheatsheet </a> 
+                                    + <a href={URLs.py_100} onClick={checkToOpen(0)}>
                                         100 Python examples source code
-                                      </a> and <a href={URLs.py_more} onClick={checkToOpen}> more!</a>
+                                      </a> and <a href={URLs.py_more} onClick={checkToOpen(0)}> more!</a>
                                 </p>
                             </li>
                             <li className="flex">
@@ -80,7 +102,7 @@ const DonationPage = () => {
                                 <p className="txt">
                                     <span className="px-2 border-left-3 border-green-500 surface-200">3$</span>  --  
                                     You're eligible to get the previous rewards 
-                                    + <a href={URLs.ph_secret} onClick={checkToOpen}>PhaserJS cheatsheet</a> combo 
+                                    + <a href={URLs.ph_secret} onClick={checkToOpen(3)}>PhaserJS cheatsheet</a> combo 
                                     + 100 Python examples source code!
                                 </p>
                             </li>
@@ -89,8 +111,8 @@ const DonationPage = () => {
                                 <p className="txt">
                                     <span className="px-2 border-left-3 border-green-500 surface-200">5$</span>  --  
                                     You're eligible to get the previous rewards
-                                    + <a href={URLs.letspy_pass} onClick={checkToOpen}>9 Games Pass Codes </a>
-                                    + <a href={URLs.letspy_source} onClick={checkToOpen} >Javascript source code</a> combo!
+                                    + <a href={URLs.letspy_pass} onClick={checkToOpen(3)}>9 Games Pass Codes </a>
+                                    + <a href={URLs.letspy_source} onClick={checkToOpen(0)} >Javascript source code</a> combo!
                                 </p>
                             </li>
                             <li className="flex">
@@ -98,7 +120,7 @@ const DonationPage = () => {
                                 <p className="txt">
                                     <span className="px-2 border-left-3 border-green-500 surface-200">10$</span>  --  
                                     You're eligible to get the previous rewards
-                                    + <a href={URLs.letspy_disclose} onClick={checkToOpen}>
+                                    + <a href={URLs.letspy_disclose} onClick={checkToOpen(9)}>
                                         9 Games Making workflow and Source code explanation
                                     </a>!
                                 </p>
