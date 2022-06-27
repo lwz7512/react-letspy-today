@@ -15,6 +15,7 @@ export const AppFooter = (props) => {
                 🌈 Rainbow Coding Lab
             </span>
             <a href="/privacy" className="ml-5 underline">Privacy Policy</a>
+            <a href="/terms" className="ml-5 underline">Service Terms</a>
         </div>
     );
 }

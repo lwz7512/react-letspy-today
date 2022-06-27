@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Route, useHistory } from 'react-router-dom'
+
+import { Route, Switch, useHistory } from 'react-router-dom';
+
 
 import HomePage from './pages/HomePage'
 import ProjectPage from './pages/ProjectPage'
@@ -10,6 +12,8 @@ import CheatSheetPage from './pages/CheatSheetPage'
 import DisclosurePage from './pages/DisclosurePage'
 import ChargePage from './pages/ChargePage'
 import PrivacyPage from './pages/PrivacyPage'
+import TermsPage from './pages/TermsPage'
+import NotFound from './pages/NotFound'
 
 import { AppTopbar } from './structure/AppTopbar'
 import { AppFooter } from './structure/AppFooter'
@@ -70,15 +74,19 @@ function App() {
       />
       <div className="layout-main-container">
         <div className="layout-main">
-          <Route path="/project/:pid" component={ProjectPage} />
-          <Route path="/contact" component={ContactPage} />
-          <Route path="/donation" component={DonationPage} />
-          <Route path="/profile" component={ProfilePage} />
-          <Route path="/privacy" component={PrivacyPage} />
-          <Route path="/cheatsheet/:name" component={CheatSheetPage} />
-          <Route path="/disclosure" component={DisclosurePage} />
-          <Route path="/charge/:star" component={ChargePage} />
-          <Route path="/" exact component={HomePage} />
+            <Switch>
+              <Route path="/project/:pid" component={ProjectPage} />
+              <Route path="/contact" component={ContactPage} />
+              <Route path="/donation" component={DonationPage} />
+              <Route path="/profile" component={ProfilePage} />
+              <Route path="/privacy" component={PrivacyPage} />
+              <Route path="/terms" component={TermsPage} />
+              <Route path="/cheatsheet/:name" component={CheatSheetPage} />
+              <Route path="/disclosure" component={DisclosurePage} />
+              <Route path="/charge/:star" component={ChargePage} />
+              <Route path="/" exact component={HomePage} />
+              <Route component={NotFound} />
+            </Switch>
         </div>
         <AppFooter layoutColorMode="light" />
       </div>

@@ -81,3 +81,16 @@
   border-left-width: 6px;
   border-left-style: solid;
 }
+
+.notfound-background {
+  background-image: url('../images/home/undraw_Page_not_found_re_e9o6.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 800px;
+  width: 100%;
+
+  @media screen and (max-width: 576px) {
+    height: 600px;
+    background-color: white;
+  }
+}

@@ -59,6 +59,7 @@ export const AppTopbar = ({
                             className="p-link layout-topbar-button" 
                             onClick={()=>handleRouteChange('/')}>
                             <i className="pi pi-home"/>
+                            <span>Home</span>
                         </button>
                     </li>
                     <li>
@@ -67,6 +68,7 @@ export const AppTopbar = ({
                             className="p-link layout-topbar-button" 
                             onClick={()=>handleRouteChange('/contact')}>
                             <i className="pi pi-envelope"/>
+                            <span>Contact</span>
                         </button>
                     </li>
                     <li>
@@ -75,6 +77,7 @@ export const AppTopbar = ({
                             className="p-link layout-topbar-button" 
                             onClick={()=>handleRouteChange('/donation')}>
                             <i className="pi pi-heart"/>
+                            <span>Donation</span>
                         </button>
                     </li>
                     <li>
@@ -83,6 +86,7 @@ export const AppTopbar = ({
                             className="p-link layout-topbar-button" 
                             onClick={()=>handleRouteChange('/profile')}>
                             <i className="pi pi-user"/>
+                            <span>Profile</span>
                         </button>
                     </li>
                     <li>
@@ -94,6 +98,7 @@ export const AppTopbar = ({
                             rel="noreferrer"
                             >
                             <i className="pi pi-github"/>
+                            <span>Github</span>
                         </a>
                     </li>
                 </ul>
