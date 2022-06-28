@@ -4,9 +4,8 @@
 
 > Minimal Python Coding Playground
 
-LetsPY frontend based on [PrimeReact](https://www.primefaces.org/primereact/) & [Zustand](https://github.com/pmndrs/zustand)
+LetsPY frontend codebase started on 2021/10/16 based on [PrimeReact](https://www.primefaces.org/primereact/) & [Zustand](https://github.com/pmndrs/zustand)
 
-Started @2021/10/16
 
 ## Dev log:
 
