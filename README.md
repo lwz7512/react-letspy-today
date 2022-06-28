@@ -1,12 +1,12 @@
 <img src="./public/assets/backgrounds/home_hero_md.jpg" />
 
-# letspy - frontend
+# LetsPY - frontend
+
+> Minimal Python Coding Playground
 
 LetsPY frontend based on [PrimeReact](https://www.primefaces.org/primereact/) & [Zustand](https://github.com/pmndrs/zustand)
 
 Started @2021/10/16
-
-> Minimal Python Coding Playground
 
 ## Dev log:
 
