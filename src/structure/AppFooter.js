@@ -16,6 +16,7 @@ export const AppFooter = (props) => {
             </span>
             <a href="/privacy" className="ml-5 underline">Privacy Policy</a>
             <a href="/terms" className="ml-5 underline">Service Terms</a>
+            <a href="/credits" className="ml-5 underline">Credits</a>
         </div>
     );
 }

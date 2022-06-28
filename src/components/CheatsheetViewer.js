@@ -12,7 +12,7 @@ import ReactMarkdown from 'react-markdown'
 
 const CheatsheetViewer = ({content, metadata}) => {
 
-  const defaultCoverImage = 'assets/backgrounds/peek_sm.png'
+  const defaultCoverImage = '/assets/backgrounds/peek_sm.png'
 
   useLayoutEffect(() => {
     if (!metadata) return

@@ -38,6 +38,13 @@ const PYCodeEditor = ({ onCodeCopy }) => {
   const handleEditorDidMount = (editor, _) => {
     editorRef.current = editor;
     codeValueChanged(editor.getValue())
+    // disable paste by keyboard
+    editor.onKeyDown((event)=>{
+      const {keyCode, ctrlKey, metaKey} = event;
+      if((keyCode === 33 || keyCode ===52) && (metaKey || ctrlKey)){
+        event.preventDefault();
+      }
+    })
   }
 
   const switchEditorMode = mode => () => {
@@ -93,6 +100,7 @@ const PYCodeEditor = ({ onCodeCopy }) => {
           options={codeEditorOptions}
           onMount={handleEditorDidMount}
           onChange={value => codeValueChanged(value)}
+          
         />
       )}
       {mode === EditorMode.LIVE && (

@@ -37,6 +37,16 @@ const ProjectCodeMode = () => {
     toastRef.current.show(notification);
   }
 
+  const codeAlertHander = message => {
+    const notification = {
+      severity: 'warn', 
+      summary: 'Alert!', // title
+      detail: message, 
+      life: 2000
+    }
+    toastRef.current.show(notification);
+  }
+
   useEffect(() => {
     if (!isRunning) return
   
@@ -106,7 +116,7 @@ const ProjectCodeMode = () => {
         <PYCodeEditor onCodeCopy={copyCodeHandler} />
       </div>
       <div className="result-area border-solid blue-round-panel p-0">
-        <MiniGamePanel />
+        <MiniGamePanel onCodeAlert={codeAlertHander} />
       </div>
     </>
   )

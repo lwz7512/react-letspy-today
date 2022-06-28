@@ -1,7 +1,7 @@
 ---
 title: Phaserjs Beginner Cheat Sheet
-cover: assets/backgrounds/peek_md.png
-download: pdf/phaserjs_cheatsheet.pdf
+cover: /assets/backgrounds/peek_md.png
+download: /pdf/phaserjs_cheatsheet.pdf
 description: |
   📌 Why should we take a look at Phaserjs, a javascript game engine when it comes to programming learning?
   📌 Well, investing in a popular HMTL5 Game engine like Phaserjs could make you have a better understanding the hood under some well-known online learning platform like `Prodigy` and `Scratch`. 
@@ -270,69 +270,69 @@ snippets:
 
 ## 4-Game Scene Skeleton
 
-![template_game](cheatsheets/snippets/phaser_template_game.png)
+![template_game](/cheatsheets/snippets/phaser_template_game.png)
 
 ## 5-Phaser Game Base Config
 
-![game_config](cheatsheets/snippets/phaser_base_config.png)
+![game_config](/cheatsheets/snippets/phaser_base_config.png)
 
 ## 6-Phaser Game Platformer Config
 
-![platformer_config](cheatsheets/snippets/phaser_platformer_config.png)
+![platformer_config](/cheatsheets/snippets/phaser_platformer_config.png)
 
 ## 7-Create Phaser Game Object
 
-![game_object](cheatsheets/snippets/phaser_game_object.png)
+![game_object](/cheatsheets/snippets/phaser_game_object.png)
 
 ## 8-Create Text function
 
-![create_text](cheatsheets/snippets/phaser_create_text_function.png)
+![create_text](/cheatsheets/snippets/phaser_create_text_function.png)
 
 ## 9-Preload Game Assets
 
-![preload_game_assets](cheatsheets/snippets/phaser_preload_assets.png)
+![preload_game_assets](/cheatsheets/snippets/phaser_preload_assets.png)
 
 ## 10-Create Explosion Animation
 
-![create_animation](cheatsheets/snippets/phaser_create_animation.png)
+![create_animation](/cheatsheets/snippets/phaser_create_animation.png)
 
 ## 11-Listen Mouse and Keyboard
 
-![listen_mouse_keyboard](cheatsheets/snippets/phaser_listen_mouse_keyboard.png)
+![listen_mouse_keyboard](/cheatsheets/snippets/phaser_listen_mouse_keyboard.png)
 
 ## 12-Player Move by Keyboard
 
-![player_move_by_keyboard](cheatsheets/snippets/player_move_by_keyboard.png)
+![player_move_by_keyboard](/cheatsheets/snippets/player_move_by_keyboard.png)
 
 ## 13-Shoot Enemy Detection
 
-![collision_detection](cheatsheets/snippets/phaser_collision_detection.png)
+![collision_detection](/cheatsheets/snippets/phaser_collision_detection.png)
 
 ## 14-Create Bouncing Text
 
-![create_bouncing_text](cheatsheets/snippets/phaser_create_bouncing_text.png)
+![create_bouncing_text](/cheatsheets/snippets/phaser_create_bouncing_text.png)
 
 ## 15-Lazy todo Something
 
-![lazy_todo_something](cheatsheets/snippets/phaser_delay_todo_something.png)
+![lazy_todo_something](/cheatsheets/snippets/phaser_delay_todo_something.png)
 
 ## 16-Create Tilemap and Layer
 
-![create_tilemap_layer](cheatsheets/snippets/phaser_create_tilemap_layer.png)
+![create_tilemap_layer](/cheatsheets/snippets/phaser_create_tilemap_layer.png)
 
 ## 17-Create Player Sprite
 
-![create_player_sprite](cheatsheets/snippets/phaser_create_player.png)
+![create_player_sprite](/cheatsheets/snippets/phaser_create_player.png)
 
 ## 18-Create Player Animation
 
-![create_player_anim](cheatsheets/snippets/phaser_create_player_anim.png)
+![create_player_anim](/cheatsheets/snippets/phaser_create_player_anim.png)
 
 ## 19-Hit Exit Check
 
-![hit_exit_check](cheatsheets/snippets/phaser_hit_exit_check.png)
+![hit_exit_check](/cheatsheets/snippets/phaser_hit_exit_check.png)
 
 ## 20-Close Enough Check
 
-![close_enough_check](cheatsheets/snippets/phaser_close_enough_check.png)
+![close_enough_check](/cheatsheets/snippets/phaser_close_enough_check.png)
 

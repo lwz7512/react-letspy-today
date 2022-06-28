@@ -10,5 +10,6 @@ export const codeEditorOptions = {
   fontSize: 14,
   minimap: {
     enabled: false
-  }
+  },
+  contextmenu: false,
 }

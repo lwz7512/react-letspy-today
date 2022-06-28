@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { Route, Switch, useHistory } from 'react-router-dom';
-
+import { Route, Redirect, Switch, useHistory } from 'react-router-dom'
 
 import HomePage from './pages/HomePage'
 import ProjectPage from './pages/ProjectPage'
@@ -11,8 +10,7 @@ import ContactPage from './pages/ContactPage'
 import CheatSheetPage from './pages/CheatSheetPage'
 import DisclosurePage from './pages/DisclosurePage'
 import ChargePage from './pages/ChargePage'
-import PrivacyPage from './pages/PrivacyPage'
-import TermsPage from './pages/TermsPage'
+import GeneralMDPage from './pages/GeneralMDPage'
 import NotFound from './pages/NotFound'
 
 import { AppTopbar } from './structure/AppTopbar'
@@ -74,19 +72,23 @@ function App() {
       />
       <div className="layout-main-container">
         <div className="layout-main">
-            <Switch>
-              <Route path="/project/:pid" component={ProjectPage} />
-              <Route path="/contact" component={ContactPage} />
-              <Route path="/donation" component={DonationPage} />
-              <Route path="/profile" component={ProfilePage} />
-              <Route path="/privacy" component={PrivacyPage} />
-              <Route path="/terms" component={TermsPage} />
-              <Route path="/cheatsheet/:name" component={CheatSheetPage} />
-              <Route path="/disclosure" component={DisclosurePage} />
-              <Route path="/charge/:star" component={ChargePage} />
-              <Route path="/" exact component={HomePage} />
-              <Route component={NotFound} />
-            </Switch>
+          <Switch>
+            <Route path="/project/:pid" component={ProjectPage} />
+            <Route path="/contact" component={ContactPage} />
+            <Route path="/donation" component={DonationPage} />
+            <Route path="/profile" component={ProfilePage} />
+            {/* docs url */}
+            <Redirect from="/terms" to="/doc/terms" />
+            <Redirect from="/why" to="/doc/why" />
+            <Redirect from="/privacy" to="/doc/privacy" />
+            <Redirect from="/credits" to="/doc/credits" />
+            <Route path="/doc/:name" component={GeneralMDPage} />
+            <Route path="/cheatsheet/:name" component={CheatSheetPage} />
+            <Route path="/disclosure" component={DisclosurePage} />
+            <Route path="/charge/:star" component={ChargePage} />
+            <Route path="/" exact component={HomePage} />
+            <Route component={NotFound} />
+          </Switch>
         </div>
         <AppFooter layoutColorMode="light" />
       </div>

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { useHistory,  } from 'react-router-dom';
 import { addEffect, removeEffect } from '../utils/DomUtil';
 
-const logoly = 'assets/layout/images/letspy_arcade_sm.png'
+const logoly = '/assets/layout/images/letspy_arcade_sm.png'
 
 export const AppTopbar = ({
     layoutColorMode,
@@ -39,7 +39,7 @@ export const AppTopbar = ({
     return (
         <div className="layout-topbar transition-pt5 px-3 md:px-5">
             <Link to="/" className="layout-topbar-logo">
-                <img src={layoutColorMode === 'light' ? logoly : 'assets/layout/images/logo-white.svg'} alt="logo"/>
+                <img src={layoutColorMode === 'light' ? logoly : '/assets/layout/images/logo-white.svg'} alt="logo"/>
                 <span>LetsPY</span>
             </Link>
             {/* menu button on mobile */}

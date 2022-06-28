@@ -1,6 +1,6 @@
 ---
 title: LetsPY game pass code snippets
-cover: assets/backgrounds/dandelion-g6428efc1c_1920.jpeg
+cover: /assets/backgrounds/dandelion-g6428efc1c_1920.jpeg
 description: |
   Here you could see all the key code for unlock the games, use these code for each project, or check the Tips tool on sidebar of each project.
 date: 2022/06/20

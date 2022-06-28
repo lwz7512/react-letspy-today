@@ -116,10 +116,11 @@ const ProfilePage = () => {
           </div>
           <p className="text-lg">
             {' '}
-            <b>Note:</b> this is not necessary, the benefit to do this is that
-            you could get a <b>`cheatsheet`</b> bonus after you signin and
-            earned a certain number of stars, also I could know whom and how
+            <b>Note:</b> This is not necessary, the benefit to do it is that
+            you could get some <b>`cheatsheet`</b> bonus if you signin and
+            earned a certain number of stars. Also I could know whom and how
             many of users that this app have brought achievement to!
+            <a href="/why" className="pl-2 text-base">(More explanation.)</a>
           </p>
         </div>
       )}

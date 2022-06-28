@@ -1,7 +1,7 @@
 ---
 title: Python Beginner Cheat Sheet
-cover: assets/backgrounds/lost_md.png
-download: pdf/cheatsheet_of_py_cheatsheets.pdf
+cover: /assets/backgrounds/lost_md.png
+download: /pdf/cheatsheet_of_py_cheatsheets.pdf
 description: |
   📌 Cheat sheet for programming language is just the common and small part of those coding skills.
   📌 It’s helpful and could accelerate your coding process, but not the priority of your leaning process. 

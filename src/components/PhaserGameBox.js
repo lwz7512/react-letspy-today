@@ -25,8 +25,8 @@ const PhaserGameBox = ({ codeResultCallback }) => {
   // console.log(codeExecResult)
 
   useEffect(() => {
-    audioSuccessRef.current = new Audio('assets/audio/p-ping.mp3');
-    audioFailureRef.current = new Audio('assets/audio/error_006.ogg');
+    audioSuccessRef.current = new Audio('/assets/audio/p-ping.mp3');
+    audioFailureRef.current = new Audio('/assets/audio/error_006.ogg');
   }, [])
 
   useEffect(() => {

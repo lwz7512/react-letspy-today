@@ -1,5 +1,6 @@
-letspy - frontend
---------------------
+<img src="./public/assets/backgrounds/home_hero_md.jpg" />
+
+# letspy - frontend
 
 LetsPY frontend based on [PrimeReact](https://www.primefaces.org/primereact/) & [Zustand](https://github.com/pmndrs/zustand)
 
@@ -102,10 +103,10 @@ TODO: ...add video content
 
 ## version 0.9
 
-TODO: ...
-
-- code editor disable paste, 
-- code length control,
+- fix all images path to absolute path, -- done @2022/06/28
+- add `Redirect` route to doc page with common `GeneralMDPage`
+- code editor disable paste,  -- done @2022/06/28
+- code length control,  -- done @2022/06/28
 - illegal python code detection  -- done @2020/03/24
 
 ## version 1.0
