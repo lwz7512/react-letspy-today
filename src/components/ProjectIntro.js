@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import projectStore from '../state/ProjectState'
 
@@ -14,8 +15,11 @@ const ProjectIntro = () => {
       {/* title row */}
       <div className="flex justify-content-between">
         <h3 className="text-900">
-          <span className="border-bottom-3 ">
-            {project.title}
+          <Link to="/">
+            <span className="px-1">🏠</span>
+          </Link>
+          <span className="pl-2">
+            / {project.title}
           </span>
           </h3>
         <h3>

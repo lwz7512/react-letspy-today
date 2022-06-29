@@ -22,7 +22,7 @@ const PhaserGameBox = ({ codeResultCallback }) => {
   const currentTarget = projectsCodeTarget[projectID]
   const [projects, updateProjectStatus] = useLocalStorageState('projects_status', {})
 
-  // console.log(codeExecResult)
+  console.log(codeExecResult)
 
   useEffect(() => {
     audioSuccessRef.current = new Audio('/assets/audio/p-ping.mp3');
@@ -37,6 +37,7 @@ const PhaserGameBox = ({ codeResultCallback }) => {
       currentTarget.expect, 
       codeExecResult.result
     )
+    console.log(success)
     // allowing reach to bingo without success
     const currentScene = gameRef.current.scene.getAt(0)
     currentScene.bingo(codeExecResult.result, success)

@@ -183,7 +183,7 @@ class CloneArmy extends Phaser.Scene {
 
     if (!success) return // success is a must
 
-    this._createGuideText('Bingo! continue shooting those aliens!', 70, 20)
+    this._createGuideText('Bingo! click those aliens to shot them!', 70, 20)
     this._createTextBouncing()
     // add more soliders...
     const rows = 4

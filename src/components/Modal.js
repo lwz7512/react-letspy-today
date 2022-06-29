@@ -22,7 +22,7 @@ const Modal = () => {
 
   return (
     <div className="modal hidden" >
-      <img src="cheatsheets/snippets/carbon.png" alt="snippet" />
+      <img src="/cheatsheets/snippets/carbon.png" alt="snippet" />
     </div>
   )
 
