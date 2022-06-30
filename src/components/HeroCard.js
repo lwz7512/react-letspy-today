@@ -10,6 +10,8 @@ const HeroCard = ({tileA, titleB, route, actionNow}) => {
   const thumbnailImgSrc = 'assets/backgrounds/home_hero_thumbnail.jpg'
   const rawImgSrc = 'assets/backgrounds/home_hero.jpg'
   const demoVideoSrc = 'assets/video/LETPY_joy_0320_640x360.mp4'
+  const openDoorSound = 'assets/audio/qubodup-DoorOpen01.ogg'
+  const closeDoorSound = 'assets/audio/qubodup-DoorClose01.ogg'
 
   const [imageLoaded, setImageLoaded] = useState(false)
   const [imgRawWidth, setImgRawWidth] = useState(0)
@@ -17,6 +19,8 @@ const HeroCard = ({tileA, titleB, route, actionNow}) => {
 
   const rawImgDataRef = useRef(0)
   const moveDirection = useRef(0)
+  const openSoundRef = useRef()
+  const closeSoundRef = useRef()
 
   const {text: typeWriterText } = useTypewriter({
     words: titleB,
@@ -42,6 +46,8 @@ const HeroCard = ({tileA, titleB, route, actionNow}) => {
     videoContainer.style.display = 'block'
     const contentContainer = document.getElementById('content-container')
     contentContainer.style.display = 'none'
+    // sound effect
+    openSoundRef.current.play()
   }
 
   // CLOSE VIDEO:
@@ -52,6 +58,8 @@ const HeroCard = ({tileA, titleB, route, actionNow}) => {
     setTimeout(() => {
       const contentContainer = document.getElementById('content-container')
       contentContainer.style.display = 'block'
+      // sound effect
+      closeSoundRef.current.play()
     }, 1000)
   }
 
@@ -77,6 +85,10 @@ const HeroCard = ({tileA, titleB, route, actionNow}) => {
     if (img.complete) img.onload()
   }, [])
 
+  useEffect(() => {
+    openSoundRef.current = new Audio(openDoorSound)
+    closeSoundRef.current = new Audio(closeDoorSound)
+  }, [])
 
   return (
     <div className="card hero-container border-noround md:border-round">
