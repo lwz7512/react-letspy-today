@@ -6,7 +6,8 @@ const ProjectCard = ({ project, completed }) => {
   useEffect(() => {
     const loader = new Image()
     loader.onload = () => {
-      const heroImage = document.querySelector(`#project-${project.id} .hero`)
+      const selector = `#project-${project.id} .hero`
+      const heroImage = document.querySelector(selector)
       heroImage.src = project.image
     }
     loader.src = project.image

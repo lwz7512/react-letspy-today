@@ -32,7 +32,7 @@ class PassLiveBridge extends Phaser.Scene {
       {frameWidth: 64, frameHeight: 96}
     );
   }
-  
+
   create(){
     this.add.image(0, 0, 'sky').setOrigin(0);
     

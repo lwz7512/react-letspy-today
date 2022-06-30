@@ -76,12 +76,15 @@ const ProjectTips = () => {
       <Toast ref={toastRef} />
       {/* title row */}
       <div className="flex justify-content-between">
-        <h3 className="text-900">Instructions</h3>
-        <h3>
+        <h3 className="text-900">
           <Link to="/">
             <span className="px-1">🏠</span>
           </Link>
-        </h3>
+          <span className="pl-2">
+            Instructions
+          </span>
+          </h3>
+        {/* <h3></h3> */}
       </div>
       {/* body row */}
       <div className="flex justify-content-between">

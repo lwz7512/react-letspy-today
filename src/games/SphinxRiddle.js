@@ -29,7 +29,7 @@ class SphinxRiddle extends Phaser.Scene {
       { frameWidth: 80, frameHeight: 110 }
     );
   }
-    
+
   create(){
     this.egypt = this.add.image(300, 80, 'egypt');
     this.sphinx = this.add.image(500, 100, 'sphinx');

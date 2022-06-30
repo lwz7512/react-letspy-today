@@ -16,7 +16,7 @@ class TemplateGame extends Phaser.Scene {
   preload(){
     this.load.image('logo', 'assets/sprites/phaser3-logo-small.png');
   }
-    
+
   create(){
     const logo = this.add.image(300, 20, 'logo');
   //   logo.setScale(0.5, 0.5)

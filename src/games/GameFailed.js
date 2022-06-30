@@ -10,7 +10,7 @@ class GameFailed extends Phaser.Scene {
   }
 
   preload(){
-    this.load.audio('gameover', 'assets/audio/arcade_resources_sounds_gameover2.mp3');
+    this.load.audio('gameover', '/assets/audio/arcade_resources_sounds_gameover2.mp3');
   }
     
   create(){

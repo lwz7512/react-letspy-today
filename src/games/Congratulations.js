@@ -11,11 +11,11 @@ class Congratulations extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('sparkBlue', 'assets/particles/blue.png');
-    this.load.image('sparkGreen', 'assets/particles/green.png');
-    this.load.image('sparkRed', 'assets/particles/red.png');
-    this.load.image('sparkYellow', 'assets/particles/yellow.png');
-    this.load.audio('levelup', 'assets/audio/nextLevel.mp3');
+    this.load.image('sparkBlue', '/assets/particles/blue.png');
+    this.load.image('sparkGreen', '/assets/particles/green.png');
+    this.load.image('sparkRed', '/assets/particles/red.png');
+    this.load.image('sparkYellow', '/assets/particles/yellow.png');
+    this.load.audio('levelup', '/assets/audio/nextLevel.mp3');
   }
 
   _createGuideText(message = 'Congratulations') {
@@ -26,7 +26,6 @@ class Congratulations extends Phaser.Scene {
     this.guideTxt = this.add.text(xPos, 40, message, { fill: '#00ff00' });
   }
 
-  
   create() {
 
     this._createGuideText(this.message)

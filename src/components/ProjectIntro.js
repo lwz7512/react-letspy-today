@@ -19,7 +19,7 @@ const ProjectIntro = () => {
             <span className="px-1">🏠</span>
           </Link>
           <span className="pl-2">
-            / {project.title}
+            {project.title}
           </span>
           </h3>
         <h3>

@@ -47,7 +47,7 @@ class WhichWayToGo extends Phaser.Scene {
       { frameWidth: 128, frameHeight: 130 }
     );
   }
-    
+
   create(){
     var map = this.make.tilemap({ key: 'map' });
     var tiles = map.addTilesetImage('terrain', 'ground');

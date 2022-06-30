@@ -33,7 +33,7 @@ const PYCodeEditor = ({ onCodeCopy }) => {
   )
 
   const currentProjectCode = projectsBoilerplateCode[projectID]
-  const btnCmnstl = 'p-button-rounded p-button-icon-only mx-2 mt-3'
+  const btnCmnstl = 'p-button-rounded p-button-icon-only mx-2 my-2'
 
   const handleEditorDidMount = (editor, _) => {
     editorRef.current = editor;
@@ -57,6 +57,7 @@ const PYCodeEditor = ({ onCodeCopy }) => {
 
   const resetEditorCode = () => {
     editorRef.current.setValue(currentProjectCode)
+    setMode(EditorMode.EDIT)
   }
 
   const typeDoneHandler = () => {
@@ -123,7 +124,7 @@ const PYCodeEditor = ({ onCodeCopy }) => {
         </div>
       )}
       {mode === EditorMode.REFE && (
-        <div className="reference-panel w-full p-4 bg-blue-50">
+        <div className="reference-panel w-full p-4 ">
           <ReactMarkdown 
             remarkPlugins={[remarkGfm]}
             children={projectContent}
@@ -131,7 +132,7 @@ const PYCodeEditor = ({ onCodeCopy }) => {
         </div>
       )}
       {mode === EditorMode.HELP && (
-        <div className="help-panel w-full p-3 bg-indigo-50">
+        <div className="help-panel w-full p-3 ">
           <h4>Email Me: lwz7512@gmail.com</h4>
           <h4>FollowMe: 
             <a href="https://twitter.com/lwz75121" target="_blank" rel="noreferrer">@lwz75121</a>
@@ -139,7 +140,7 @@ const PYCodeEditor = ({ onCodeCopy }) => {
         </div>
       )}
       {/* tools */}
-      <div className="tools border-left-1 border-blue-500 flex flex-column align-items-center">
+      <div className="tools border-left-1 border-blue-500 bg-yellow-50 flex flex-column align-items-center">
         {/* edit */}
         <Button
           className={`p-button-danger ${btnCmnstl} ${mode===EditorMode.EDIT?'selected':''}`}
@@ -150,7 +151,7 @@ const PYCodeEditor = ({ onCodeCopy }) => {
         </Button>
         {/* reset */}
         <Button 
-            className="p-button-warning p-button-rounded p-button-icon-only mx-2 mt-3"
+            className={`p-button-warning ${btnCmnstl} ${mode===EditorMode.RESET?'selected':''}`}
             tooltip="Reset Code to Initial"
             onClick={resetEditorCode}
             >

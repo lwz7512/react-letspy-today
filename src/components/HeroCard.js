@@ -58,7 +58,7 @@ const HeroCard = ({tileA, titleB, route, actionNow}) => {
   const closeVideoHandler = event => {
     event.preventDefault()
     const tag = event.target.tagName
-    if (tag === 'DIV') {
+    if (tag === 'DIV' || tag === 'I') {
       videoPlayingEndHandler()
     }
   }
@@ -100,6 +100,9 @@ const HeroCard = ({tileA, titleB, route, actionNow}) => {
             height="100%"
           />
         </div>
+        <p className="hint-text right">
+          <i className="pi pi-times" style={{'fontSize': '1.0em'}}></i>
+        </p>
       </div>
       <canvas id="hero_canvas_black" className="black-canvas"></canvas>
       <div id="content-container" className="absolute content-container">

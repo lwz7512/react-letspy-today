@@ -41,7 +41,7 @@ class LavaAdventure extends Phaser.Scene {
     
     this.load.audio('lose', '/assets/audio/arcade_resources_sounds_lose4.mp3');
   }
-  
+
   create(){
     this.add.image(300, 102, 'sky')
 
