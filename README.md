@@ -1,4 +1,7 @@
-<img src="./public/assets/backgrounds/home_hero_md.jpg" />
+<a href="https://interstation3d.com/per_gal_generator.php?item=16-bit%20memories">
+  <img src="./public/assets/backgrounds/home_hero_md.jpg" alt="16-BIT MEMORIES"/>
+</a>
+
 
 # LetsPY - frontend
 
