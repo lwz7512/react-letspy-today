@@ -17,8 +17,10 @@ export const getProjects = () =>
   axios.get('/data/projects.json').then((res) => res.data.data)
 
 // from local project static file
-export const getProjectContent = (id) =>
-  axios.get(`/guides/${id}.md`).then((res) => res.data)
+export const getProjectContent = (id) => {
+  const r = Math.random().toFixed(6)
+  return axios.get(`/guides/${id}.md?r=${r}`).then((res) => res.data)
+}
 
 export const getCheatsheetContent = (name) =>
   axios.get(`/cheatsheets/${name}.md`).then((res) => res.data)
