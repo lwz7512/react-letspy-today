@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.d25e8ad0.chunk.css",
+    "main.css": "/static/css/main.14c3244a.chunk.css",
     "main.js": "/static/js/main.bdd7c7e0.chunk.js",
     "main.js.map": "/static/js/main.bdd7c7e0.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.3dbe7b37.js",
@@ -12,7 +12,7 @@
     "static/js/3.0b656bab.chunk.js.map": "/static/js/3.0b656bab.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.c8e5e339.chunk.css.map": "/static/css/2.c8e5e339.chunk.css.map",
-    "static/css/main.d25e8ad0.chunk.css.map": "/static/css/main.d25e8ad0.chunk.css.map",
+    "static/css/main.14c3244a.chunk.css.map": "/static/css/main.14c3244a.chunk.css.map",
     "static/js/2.664899cd.chunk.js.LICENSE.txt": "/static/js/2.664899cd.chunk.js.LICENSE.txt",
     "static/media/buyme_a_coffee.7f818be3.svg": "/static/media/buyme_a_coffee.7f818be3.svg",
     "static/media/primeicons.css": "/static/media/primeicons.e61f3495.woff",
@@ -22,7 +22,7 @@
     "static/js/runtime-main.3dbe7b37.js",
     "static/css/2.c8e5e339.chunk.css",
     "static/js/2.664899cd.chunk.js",
-    "static/css/main.d25e8ad0.chunk.css",
+    "static/css/main.14c3244a.chunk.css",
     "static/js/main.bdd7c7e0.chunk.js"
   ]
 }
