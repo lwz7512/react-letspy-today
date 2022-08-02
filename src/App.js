@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { Route, Redirect, Switch, useHistory } from 'react-router-dom'
+import { Route, Redirect, Switch, useLocation } from 'react-router-dom'
 
 import HomePage from './pages/HomePage'
 import ProjectPage from './pages/ProjectPage'
@@ -31,7 +31,7 @@ import { getProjects } from './service/ProjectService'
 import projectStore from './state/ProjectState'
 
 function App() {
-  const history = useHistory()
+  const location = useLocation()
   const [mobileTopbarMenuActive, setMobileTopbarMenuActive] = useState(false)
   const setProjects = projectStore((state) => state.setProjects)
 
@@ -46,11 +46,10 @@ function App() {
   }
 
   useEffect(() => {
-    // window.scrollTo(0, 0);
     setTimeout(() => {
       window.scroll({ top: 0, left: 0, behavior: 'smooth' })
     }, 100) // lazy scroll top
-  }, [history.location.pathname])
+  }, [location])
 
   useEffect(() => {
     setTimeout(() => {
