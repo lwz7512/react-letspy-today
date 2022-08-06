@@ -11,5 +11,5 @@ export const codeEditorOptions = {
   minimap: {
     enabled: false
   },
-  contextmenu: false,
+  // contextmenu: false,
 }
