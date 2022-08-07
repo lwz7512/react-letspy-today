@@ -47,9 +47,7 @@ class MakeYourPath extends Phaser.Scene {
     groundLayer.setCollision([12, 122]) // 12, 122 is the tile id of path row
 
     // get exit tile
-    if (this.pickups.length === 0) {
-      this.pickups = map.filterTiles(tile => tile.index === 151);
-    }
+    this.pickups = map.filterTiles(tile => tile?.index === 151);
 
     return groundLayer
   }
@@ -174,17 +172,16 @@ class MakeYourPath extends Phaser.Scene {
     if (this.complete) return
     // reset player
     this.player.setPosition(0, 80)
-
-    const bricks = []
+    // FIXME: restrict bricks to 18 blocks @2021/12/16
+    // 19 tiles required! otherwise got undefined in collider @2022/08/07
+    const bricks = new Array(19).fill(107)
     if (Array.isArray(bridge)) {
       // add the missing bricks
       bridge.forEach((brick, index) => {
-        if (index % 2 === 0) bricks.push(107)
-        if (index % 2 === 1 && brick === 1) bricks.push(122)
+        if (brick && index % 2 === 1) bricks[index] = 122
       })
     }
-    // FIXME: restrict bricks to 18 blocks @2021/12/16
-    const withBlankLines = [...this.blankRows, bricks.slice(0, 18)]
+    const withBlankLines = [...this.blankRows, bricks]
     const bridgeLayer = this._createGroundLayer(withBlankLines)
     this.physics.add.collider(bridgeLayer, this.player);
 
