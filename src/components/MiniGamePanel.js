@@ -9,6 +9,7 @@ import { dotLoaderStyle } from '../config/project'
 import projectStore from '../state/ProjectState'
 
 import PhaserGameBox from './PhaserGameBox'
+import { CODE_LENGTH_LIMIT } from '../config/project'
 
 
 const MiniGamePanel = ({ onCodeAlert }) => {
@@ -27,7 +28,7 @@ const MiniGamePanel = ({ onCodeAlert }) => {
   const codeResultHandler = result => gameSucceed(result)
 
   const checkCodeAndRun = () => {
-    if (codeValue.length > 512) {
+    if (codeValue.length > CODE_LENGTH_LIMIT) {
       const message = 'Code length beyond the limit!'
       return onCodeAlert(message)
     }

@@ -13,3 +13,5 @@ export const codeEditorOptions = {
   },
   // contextmenu: false,
 }
+
+export const CODE_LENGTH_LIMIT = 1024
