@@ -205,7 +205,7 @@
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/female_idle.png",
       "typist": [
-        "no live coding support at this project...",
+        "# no live coding support at this project...",
         ""
       ]
     }
