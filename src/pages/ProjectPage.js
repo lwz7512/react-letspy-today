@@ -18,18 +18,18 @@ const ProjectPage = () => {
   const setProjectID = projectStore(state => state.setProjectID)
   const setProjectName = projectStore(state => state.setProjectName)
   const setProjectReference = projectStore(state => state.setProjectReference)
+  const setProject = projectStore(state => state.setProject)
 
   const params = new URLSearchParams(location.search);
   const codemode = params.get('codemode')
   const introMode = codemode === 'true' ? 
     false : projectStore(state => state.introMode)
   const projects = projectStore(state => state.projects)
+  const [ project ] = projects.filter(project => project.id === Number(pid))
 
-
-  useEffect(() => {
-    setProjectID(pid)
-    setProjectName(projectsCodeTarget[pid]?.projName)
-  })
+  setProjectID(pid)
+  setProject(project)
+  setProjectName(projectsCodeTarget[pid]?.projName)
 
   useEffect(() => {
     addEffect('.layout-topbar', '-translate-y-100')

@@ -41,6 +41,10 @@ const projectStore = create(
     projectReference: '', // markdown content
     setProjectReference: content => set({projectReference: content}),
 
+    // project details
+    project: null,
+    setProject: project => set({project}),
+
     // *** RUNTIME STATE ***
     // editor code
     codeValue: '',

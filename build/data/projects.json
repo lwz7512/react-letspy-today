@@ -23,7 +23,8 @@
         "Back to editor, remove the pound sign # at the head of last row,",
         "",
         "then hit the run button beside the game!"
-      ]
+      ],
+      "video": "https://youtu.be/MtQdPqE1N2Q"
     },
     {
       "id": 2,
@@ -48,7 +49,8 @@
         "walk(1)",
         "",
         "pivot()"
-      ]
+      ],
+      "video": "https://youtu.be/rK83JnY8Vgk"
     },
     {
       "id": 3,
@@ -80,7 +82,8 @@
         "",
         "bridge[17] = 1",
         ""
-      ]
+      ],
+      "video": "https://youtu.be/QyeK1-r1ep4"
     },
     {
       "id": 4,
@@ -98,7 +101,8 @@
       "typist": [
         "firstTwoChars = myName[:2]",
         ""
-      ]
+      ],
+      "video": "https://youtu.be/JKaI0wKnQqc"
     },
     {
       "id": 5,
@@ -125,7 +129,8 @@
         "else:",
         "",
         "....the_right_box = red_box"
-      ]
+      ],
+      "video": "https://youtu.be/r2JXbFj7orA"
     },
     {
       "id": 6,
@@ -145,7 +150,8 @@
         "",
         "....soldier.addPower('flying')",
         ""
-      ]
+      ],
+      "video": "https://youtu.be/_5wyjmMmWhQ"
     },
     {
       "id": 7,
@@ -167,7 +173,8 @@
         "",
         "........right_path = path_object",
         ""
-      ]
+      ],
+      "video": "https://youtu.be/4dSvTP8nCOk"
     },
     {
       "id": 8,
@@ -189,7 +196,8 @@
         "",
         "bridge_stones = yellow_stones + red_stones",
         ""
-      ]
+      ],
+      "video": "https://youtu.be/dVBBkFFIRyE"
     },
     {
       "id": 9,
@@ -205,9 +213,10 @@
       "image": "assets/project/matrix_md_mini.png",
       "player": "assets/project/female_idle.png",
       "typist": [
-        "no live coding support at this project...",
+        "# no live coding support at this project...",
         ""
-      ]
+      ],
+      "video": "https://youtu.be/dqbWjrR5uR0"
     }
   ]
 }

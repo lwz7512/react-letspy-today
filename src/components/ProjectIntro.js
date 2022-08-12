@@ -1,14 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import projectStore from '../state/ProjectState'
-
-
-const ProjectIntro = () => {
-
-  const projectID = projectStore(state => state.projectID)
-  const projects = projectStore(state => state.projects)
-  const [ project ] = projects.filter(project => project.id === Number(projectID))
+const ProjectIntro = ({project}) => {
 
   return (
     <div className="intro-area border-solid h-10rem blue-round-panel pb-0">

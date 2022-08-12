@@ -90,8 +90,7 @@ add contact form at homepage, send guest message to my email
 - completed video content subtitles    -- done @2022/04/07
 - completed the Phaserjs cheatsheet    -- done @2022/04/25
 - completed the game disclosures doc   -- done @2022/05/24
-
-TODO: ...add video content
+- completed the video guides           -- done @2022/08/11
 
 ## version 0.8
 
@@ -113,14 +112,4 @@ TODO: ...add video content
 
 ## version 1.0
 
-TODO: ...prepare to deploy and release
-
-
-## version 1.0 : Prepare to launch at PH
-
-...approximately at 04/16
-
-- beautify.
-- assets before launch
-
-and, stop to evolve after first release
+upload videos to youtube & release  --  @2022/08/12

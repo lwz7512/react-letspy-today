@@ -3,16 +3,17 @@ import React from 'react'
 import ReactPlayer from 'react-player'
 import ProjectIntro from './ProjectIntro';
 import MissionPanel from './MissionPanel';
+import projectStore from '../state/ProjectState'
 
 const ProjectDemoMode = () => {
-  // TODO: get project video address...
+  const project = projectStore(state => state.project)
 
   return (
     <>
-      <ProjectIntro />
-      <div className="content-area blue-round-panel dark">
+      <ProjectIntro project={project} />
+      <div className="content-area blue-round-panel dark pt-4">
         <ReactPlayer
-          url="/assets/video/logo_reveal_640x360.mp4"
+          url={project.video}
           controls={true}
           config={{
             attributes: {
